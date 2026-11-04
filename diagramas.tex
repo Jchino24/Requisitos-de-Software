@@ -1,1 +1,73 @@
-% Estructura de diagramas
+% =====================================================================
+%  diagramas.tex
+%  Los cuatro diagramas del proceso de negocio RedPepper (F-04).
+%  Las imágenes se reproducen sin retoques: conservan los rótulos
+%  originales del material entregado por el equipo.
+% =====================================================================
+
+\section{Diagramas del proceso de negocio}
+\label{sec:diagramas}
+
+Esta sección reproduce los cuatro diagramas que describen la operación de
+RedPepper. Conforme al reporte de origen (F-04), su contenido es
+descripción complementaria de la operación, el abastecimiento y el cierre;
+no constituye una nueva entrevista ni una fuente adicional de requisitos.
+
+La Figura~\ref{fig:venta-mostrador} muestra el flujo de atención en
+mostrador, desde la llegada del cliente hasta la entrega del pedido,
+separando las responsabilidades de cliente, cajero, sistema y cocina. La
+Figura~\ref{fig:abastecimiento} describe el abastecimiento y el prorrateo:
+la compra registrada se clasifica como semanal o adicional y sigue caminos
+de costo distintos antes de almacenar el comprobante. La
+Figura~\ref{fig:cierre-mensual} presenta el cierre mensual, desde la
+consolidación del margen bruto hasta la generación del reporte bajo
+estructura de operación, financiamiento y fiscal. Finalmente, la
+Figura~\ref{fig:proceso-general} integra los tres flujos anteriores en un
+diagrama general con carriles para cliente, cajero, sistema, cocina, Jerry
+como administrador, proveedor y contador.
+
+\paragraph{Advertencia de lectura.} Los diagramas son material de diseño
+propuesto por el equipo, no evidencia de un sistema ya operativo. Varias de
+sus casillas (por ejemplo, el umbral de 48 px o el reparto entre cinco días
+hábiles) coinciden con propuestas que el reporte de ilación identifica como
+pendientes de validación con Jerry y con el contador
+(Sección~\ref{sec:especificacion}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{"diagrama 1 venta mostrador v1.png"}
+  \caption{Diagrama 1: venta en mostrador. Flujo de atención con carriles
+  de cliente, cajero, sistema y cocina; la comanda se genera al registrar
+  la venta y cocina prepara al instante, sin productos precocidos.}
+  \label{fig:venta-mostrador}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{"diagrama 2 revastecimiento y prorrateo v1.png"}
+  \caption{Diagrama 2: abastecimiento y prorrateo. Tras registrar la compra
+  se decide su tipo: la compra adicional se carga al 100\,\% en la fecha de
+  ejecución y la semanal se prorratea entre cinco días hábiles; en ambos
+  casos se adjunta el comprobante y se almacena cifrado con SHA-256.}
+  \label{fig:abastecimiento}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{"Diagrama 3 CIerre Mensual NIIF 18 v1.png"}
+  \caption{Diagrama 3: cierre mensual NIIF 18. Del margen bruto mensual se
+  restan los costos indirectos fijos para obtener el BAI; con las reglas
+  tributarias que aporta el contador se calculan impuestos y cargas
+  financieras, y se genera el reporte NIIF 18 para revisión remota.}
+  \label{fig:cierre-mensual}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{"Diagrama General Del Proceso de Negocio v1.png"}
+  \caption{Diagrama general del proceso de negocio de RedPepper. Integra
+  venta en mostrador, preparación en cocina, abastecimiento con proveedor,
+  prorrateo de compras, validación tributaria del contador y cierre
+  mensual con revisión remota del administrador.}
+  \label{fig:proceso-general}
+\end{figure}
