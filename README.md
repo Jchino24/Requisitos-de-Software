@@ -89,6 +89,10 @@ pdflatex -interaction=nonstopmode Requisitos_RedPepper.tex
 Las rutas son relativas a `documento/`: las secciones se cargan con
 `\input{secciones/...}` y las figuras con `\graphicspath{{../diagramas v1/}}`.
 
+La compilación es **reproducible**: dos ejecuciones limpias producen un PDF
+idéntico byte a byte, de modo que el archivo versionado no genera diffs por
+fecha. Para verificar el resultado: `make check`.
+
 ## Autores y docente
 
 - **Docente:** Dr. Yasiel Pérez Vera

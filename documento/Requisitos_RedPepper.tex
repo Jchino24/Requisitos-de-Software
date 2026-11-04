@@ -23,6 +23,12 @@
 \graphicspath{{../diagramas v1/}}
 \renewcommand{\arraystretch}{1.25}
 
+% Compilacion reproducible: el PDF versionado no cambia por fecha ni por
+% metadatos de ruta, de modo que dos compilaciones producen el mismo archivo.
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+
 \hypersetup{
   pdftitle={Requisitos del Proyecto RedPepper},
   pdfauthor={Gabriel Pajuelo, Armando Enriquez, Victor Lupinta, Jose Chino, Jose Choquehuanca},
