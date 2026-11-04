@@ -6,13 +6,17 @@
 %  Las fuentes de las figuras están en diagramas/fuentes/.
 % =====================================================================
 
-\section{Diagramas del proceso de negocio}
+\section{Diagramas del proceso de negocio y modelo de clases}
 \label{sec:diagramas}
 
-Esta sección reproduce los cuatro diagramas que describen la operación de
-RedPepper. Conforme al reporte de origen (F-04), su contenido es
-descripción complementaria de la operación, el abastecimiento y el cierre;
-no constituye una nueva entrevista ni una fuente adicional de requisitos.
+Esta sección reúne la representación gráfica del negocio: cuatro diagramas
+de proceso y un diagrama de clases del dominio. Conforme al reporte de
+origen (F-04), los diagramas de proceso son descripción complementaria de
+la operación, el abastecimiento y el cierre; no constituyen una nueva
+entrevista ni una fuente adicional de requisitos.
+
+\subsection{Diagramas del proceso de negocio}
+\label{subsec:diagramas-proceso}
 
 En las Figuras~\ref{fig:venta-mostrador} a \ref{fig:cierre-mensual} cada
 casilla lleva el color del rol que ejecuta la tarea (cliente, caja, sistema,
@@ -76,4 +80,31 @@ identifica como pendientes de validación con Jerry y con el contador
   prorrateo y cierre mensual— y remite a los diagramas 1, 2 y 3 para el
   detalle de cada una.}
   \label{fig:proceso-general}
+\end{figure}
+
+\subsection{Diagrama de clases}
+\label{subsec:diagrama-clases}
+
+La Figura~\ref{fig:clases} documenta el modelo conceptual del sistema con
+quince clases: usuarios y turnos; venta y su detalle; producto, categoría e
+historial de precios; compras, cuotas de costo y proveedores; comprobantes;
+cierre diario; balance mensual; y reglas tributarias. El conjunto coincide
+con el modelo conceptual descrito en F-02 (sección~8), con dos diferencias
+de nomenclatura que conviene unificar: la cuota de prorrateo se denomina
+\texttt{ReporteCosto} (en F-02, \texttt{REPARTO\_COSTO}) y la compra aparece
+como \texttt{Compra} (en F-02, \texttt{COMPRA\_INSUMO}).
+
+Se trata de la \textbf{versión 1} del diagrama: expresa la estructura
+prevista, no una base de datos implementada. Sus multiplicidades y
+operaciones deben validarse con Jerry y con el contador antes de usarse como
+especificación de diseño.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{05-diagrama-clases.png}
+  \caption{Diagrama de clases (v1). Quince clases del dominio con sus
+  atributos, operaciones y multiplicidades; las reglas tributarias se
+  versionan por fecha de vigencia y el comprobante conserva su hash
+  SHA-256 para verificar integridad.}
+  \label{fig:clases}
 \end{figure}

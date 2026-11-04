@@ -13,7 +13,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (25 páginas, A4):**
+**Documento completo (26 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
@@ -23,7 +23,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 | 1. Educción | [01-educcion.pdf](pdf/secciones/01-educcion.pdf) | 5 |
 | 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 8 |
 | 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 8 |
-| 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 3 |
+| 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
 
 Cada sección conserva la numeración del documento general (la sección 2 sigue
 siendo la 2 aunque se abra sola), de modo que las referencias entre secciones
@@ -56,13 +56,15 @@ no se rompen.
 │   │   ├── 01-venta-mostrador.tex
 │   │   ├── 02-abastecimiento-prorrateo.tex
 │   │   ├── 03-cierre-mensual-niif18.tex
-│   │   └── 04-proceso-general.tex
+│   │   ├── 04-proceso-general.tex
+│   │   └── 05-diagrama-clases-original.jpg
 │   ├── 01-venta-mostrador.png
 │   ├── 02-abastecimiento-prorrateo.png
 │   ├── 03-cierre-mensual-niif18.png
-│   └── 04-proceso-general.png
+│   ├── 04-proceso-general.png
+│   └── 05-diagrama-clases.png
 └── pdf/                           # ENTREGABLES compilados
-    ├── Requisitos_RedPepper.pdf   # Documento completo (25 páginas)
+    ├── Requisitos_RedPepper.pdf   # Documento completo (26 páginas)
     └── secciones/
         ├── 01-educcion.pdf
         ├── 02-ilacion.pdf
@@ -161,6 +163,13 @@ La versión 2 corrige los defectos detectados en la v1:
   antes del cálculo del impuesto, tanto en el cierre como en la vista general.
 - **Diagrama general legible**: se reemplazaron los siete carriles ilegibles
   por tres fases encadenadas, con los roles codificados por color.
+
+El **diagrama de clases** (Figura 5) es la versión 1 aportada por el equipo y
+se conserva como imagen raster: 15 clases del dominio con atributos,
+operaciones y multiplicidades. Por su densidad, a 16 cm de ancho el texto
+interno queda en torno a 4,6 pt; para la versión final conviene exportarlo
+vectorial (PDF/SVG) desde la herramienta de origen y reemplazar
+`diagramas/05-diagrama-clases.png` conservando el nombre.
 
 ## Autores y docente
 
