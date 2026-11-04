@@ -90,14 +90,14 @@ diagramas o el texto por versiones más pulidas, no hay que renombrar rutas.
 
 - **TeX Live** (o TinyTeX) con `pdflatex` y `latexmk`.
 - Paquetes: `babel-spanish`, `csquotes`, `booktabs`, `longtable`, `array`,
-  `geometry`, `hyperref`, `graphicx`, `float`, `lmodern`.
+  `geometry`, `hyperref`, `graphicx`, `float`, `placeins`, `lmodern`.
 - Opcional: `cm-super` si se prefiere escalar fuentes Type1 en lugar de
   `lmodern`.
 
 ```bash
 # TinyTeX (sin privilegios de administrador)
 tlmgr install babel-spanish csquotes booktabs longtable array geometry \
-              hyperref graphics float lm hyphen-spanish
+              hyperref graphics float placeins lm hyphen-spanish
 ```
 
 ## Compilación
