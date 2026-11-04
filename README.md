@@ -13,7 +13,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (29 páginas, A4):**
+**Documento completo (28 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
@@ -24,7 +24,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 | 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 8 |
 | 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 8 |
 | 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
-| 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 3 |
+| 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 2 |
 
 Cada sección conserva la numeración del documento general (la sección 2 sigue
 siendo la 2 aunque se abra sola), de modo que las referencias entre secciones

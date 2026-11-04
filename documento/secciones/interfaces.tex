@@ -15,6 +15,24 @@ para discutir la interacción y la disposición de la información con Jerry.
 Por tanto, acredita intención de diseño, no funcionamiento ni cumplimiento
 normativo.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth,height=0.77\textheight,keepaspectratio]{01-dashboard-margen.png}
+  \caption{Interfaz 1: panel gerencial de margen bruto y operaciones (v1).
+  Presenta el desglose del margen diario, los indicadores de la jornada, el
+  motor de prorrateo semanal por insumo y las compras adicionales del día.}
+  \label{fig:dashboard}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{02-pos-mostrador.png}
+  \caption{Interfaz 2: terminal de mostrador (v1). Selección de productos
+  por categoría, carrito con adicionales y cantidades, total con IGV y
+  envío del pedido a cocina; el producto agotado se muestra bloqueado.}
+  \label{fig:pos}
+\end{figure}
+
 La Figura~\ref{fig:dashboard} corresponde a la vista gerencial. Ordena la
 jornada en cuatro bloques: el desglose del margen bruto diario —ventas
 confirmadas menos la cuota prorrateada y las compras directas—, los
@@ -34,23 +52,3 @@ sobre \emph{jornadas hábiles efectivas}, no sobre una semana fija de cinco
 días; así se corrigió en los diagramas 2 y 3. El prototipo debe alinearse
 con esa regla antes de considerarse definitivo. Del mismo modo, los importes
 mostrados son datos de ejemplo y no cifras reales del negocio.
-
-% La captura es una imagen de pantalla; si se cuenta con el prototipo
-% navegable, conviene exportar las vistas en formato vectorial.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth,height=0.90\textheight,keepaspectratio]{01-dashboard-margen.png}
-  \caption{Interfaz 1: panel gerencial de margen bruto y operaciones (v1).
-  Presenta el desglose del margen diario, los indicadores de la jornada, el
-  motor de prorrateo semanal por insumo y las compras adicionales del día.}
-  \label{fig:dashboard}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{02-pos-mostrador.png}
-  \caption{Interfaz 2: terminal de mostrador (v1). Selección de productos
-  por categoría, carrito con adicionales y cantidades, total con IGV y
-  envío del pedido a cocina; el producto agotado se muestra bloqueado.}
-  \label{fig:pos}
-\end{figure}
