@@ -11,39 +11,64 @@ comprobantes asociados.
 El PDF se genera a partir de LaTeX y reúne la educción, la ilación, la
 especificación de requisitos y los diagramas del proceso de negocio.
 
-## Entregable
+## Entregables
 
-- **PDF compilado:** [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf) — 25 páginas, A4.
-- **Fuente maestra:** [documento/Requisitos_RedPepper.tex](documento/Requisitos_RedPepper.tex)
-- **Secciones:** [documento/secciones/](documento/secciones/)
-- **Diagramas:** [diagramas v1/](diagramas%20v1/)
+**Documento completo (25 páginas, A4):**
+[pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
+
+**Un PDF por sección**, para leer o compartir sin abrir el documento entero:
+
+| Sección | PDF | Páginas |
+|---|---|---|
+| 1. Educción | [01-educcion.pdf](pdf/secciones/01-educcion.pdf) | 5 |
+| 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 8 |
+| 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 8 |
+| 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 3 |
+
+Cada sección conserva la numeración del documento general (la sección 2 sigue
+siendo la 2 aunque se abra sola), de modo que las referencias entre secciones
+no se rompen.
+
+**Fuentes:** [documento/](documento/) · [diagramas/](diagramas/)
 
 ## Estructura de carpetas
 
 ```
 .
-├── README.md                    # Este archivo
-├── Makefile                     # Compilación: make / make clean / make distclean
-├── .gitignore                   # Auxiliares de LaTeX y copia de trabajo del PDF
-├── documento/                   # FUENTES LaTeX (se compila desde aquí)
-│   ├── Requisitos_RedPepper.tex # Documento maestro: portada, índice, \input
-│   └── secciones/
-│       ├── educcion.tex         # 4 longtable: E-PRE, E-OBS, E-ENT1, E-ENT2
-│       ├── ilacion.tex          # Cadenas I-PRE, I-OBS, I-ENT1, I-ENT2
-│       ├── especificacion.tex   # Catálogos RF, RNF y 39 derivados
-│       └── diagramas.tex        # 4 figuras del proceso de negocio
-├── diagramas v1/                # IMÁGENES fuente (assets)
+├── README.md                      # Este archivo
+├── Makefile                       # make / make general / make secciones / make check
+├── .gitignore                     # Auxiliares de LaTeX y copia de trabajo del PDF
+├── documento/                     # FUENTES LaTeX (se compila desde aquí)
+│   ├── preambulo.tex              # Preámbulo común (paquetes, rutas, estilos)
+│   ├── Requisitos_RedPepper.tex   # Maestro: portada + índice + \input de secciones
+│   ├── sec-01-educcion.tex        # Envoltorio: genera el PDF de la sección 1
+│   ├── sec-02-ilacion.tex         # Envoltorio: sección 2
+│   ├── sec-03-especificacion.tex  # Envoltorio: sección 3
+│   ├── sec-04-diagramas.tex       # Envoltorio: sección 4
+│   └── secciones/                 # CONTENIDO de cada sección
+│       ├── educcion.tex           # 4 longtable: E-PRE, E-OBS, E-ENT1, E-ENT2
+│       ├── ilacion.tex            # Cadenas I-PRE, I-OBS, I-ENT1, I-ENT2
+│       ├── especificacion.tex     # Catálogos RF, RNF y 39 derivados
+│       └── diagramas.tex          # 4 figuras del proceso de negocio
+├── diagramas/                     # IMÁGENES fuente (se reemplazarán por versiones finales)
 │   ├── 01-venta-mostrador.png
 │   ├── 02-abastecimiento-prorrateo.png
 │   ├── 03-cierre-mensual-niif18.png
 │   └── 04-proceso-general.png
-└── pdf/
-    └── Requisitos_RedPepper.pdf # ENTREGABLE compilado (25 páginas)
+└── pdf/                           # ENTREGABLES compilados
+    ├── Requisitos_RedPepper.pdf   # Documento completo (25 páginas)
+    └── secciones/
+        ├── 01-educcion.pdf
+        ├── 02-ilacion.pdf
+        ├── 03-especificacion.pdf
+        └── 04-diagramas.pdf
 ```
 
-Cada carpeta tiene una responsabilidad: `documento/` contiene solo código
-LaTeX, `diagramas v1/` solo imágenes y `pdf/` solo el entregable. Así el
-repositorio no mezcla fuentes, recursos y resultados.
+Cada carpeta tiene una responsabilidad: `documento/` solo código LaTeX,
+`diagramas/` solo imágenes y `pdf/` solo entregables. Los nombres son
+**genéricos a propósito**: la versión de cada entrega vive en el historial de
+commits de Git, no en el nombre de la carpeta. Así, cuando se reemplacen los
+diagramas o el texto por versiones más pulidas, no hay que renombrar rutas.
 
 ## Dependencias de compilación
 
@@ -64,9 +89,12 @@ tlmgr install babel-spanish csquotes booktabs longtable array geometry \
 Desde la raíz del repositorio, con `make`:
 
 ```bash
-make            # compila documento/ y publica pdf/Requisitos_RedPepper.pdf
-make clean      # borra auxiliares, conserva el PDF
-make distclean  # borra auxiliares y también el PDF de salida
+make            # documento completo + los 4 PDF de sección
+make general    # solo pdf/Requisitos_RedPepper.pdf
+make secciones  # solo pdf/secciones/*.pdf (compila antes el maestro)
+make check      # verifica PDFs y logs (errores y referencias rotas)
+make clean      # borra auxiliares, conserva los PDF
+make distclean  # borra auxiliares y los PDF generados
 ```
 
 Equivale a ejecutar a mano:
@@ -86,12 +114,19 @@ pdflatex -interaction=nonstopmode Requisitos_RedPepper.tex
 pdflatex -interaction=nonstopmode Requisitos_RedPepper.tex
 ```
 
-Las rutas son relativas a `documento/`: las secciones se cargan con
-`\input{secciones/...}` y las figuras con `\graphicspath{{../diagramas v1/}}`.
+Las rutas son relativas a `documento/`: el preámbulo se carga con
+`\input{preambulo}`, el contenido con `\input{secciones/...}` y las figuras
+con `\graphicspath{{../diagramas/}}`.
 
-La compilación es **reproducible**: dos ejecuciones limpias producen un PDF
-idéntico byte a byte, de modo que el archivo versionado no genera diffs por
-fecha. Para verificar el resultado: `make check`.
+Los envoltorios `sec-0N-*.tex` comparten ese preámbulo y fijan el contador de
+sección para conservar la numeración del maestro. La única referencia
+cruzada entre secciones (`sec:especificacion`) se resuelve con `xr` sobre
+`refs-externas.aux`, un `.aux` filtrado que `make general` genera a partir del
+maestro; por eso `make secciones` compila antes el documento completo.
+
+La compilación es **reproducible**: dos ejecuciones limpias producen los cinco
+PDF idénticos byte a byte, de modo que los archivos versionados no generan
+diffs por fecha. Para verificar el resultado: `make check`.
 
 ## Autores y docente
 

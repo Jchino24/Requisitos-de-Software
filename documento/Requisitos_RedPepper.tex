@@ -1,46 +1,9 @@
 % =====================================================================
-%  Proyecto RedPepper - Documento de Requisitos
-%  Fuente de contenido: "Reporte de educción e ilación" (EV-PRE-01,
-%  EV-OBS-01, EV-ENT-01, EV-ENT-02) e "Informe Práctica 02" (catálogos
-%  RF-01..RF-20 y RNF-01..RNF-08).
-%  Compilar con: latexmk -pdf Requisitos_RedPepper.tex
+%  Requisitos_RedPepper.tex — documento maestro
+%  Compila el PDF general: portada, índice y las cuatro secciones.
+%  Compilar con: latexmk -pdf Requisitos_RedPepper.tex  (desde documento/)
 % =====================================================================
-\documentclass[11pt,spanish]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
-\usepackage[a4paper,margin=2.5cm]{geometry}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{float}
-\usepackage{hyperref}
-\usepackage{csquotes}
-
-\graphicspath{{../diagramas v1/}}
-\renewcommand{\arraystretch}{1.25}
-
-% Compilacion reproducible: el PDF versionado no cambia por fecha ni por
-% metadatos de ruta, de modo que dos compilaciones producen el mismo archivo.
-\pdfinfoomitdate=1
-\pdftrailerid{}
-\pdfsuppressptexinfo=-1
-
-\hypersetup{
-  pdftitle={Requisitos del Proyecto RedPepper},
-  pdfauthor={Gabriel Pajuelo, Armando Enriquez, Victor Lupinta, Jose Chino, Jose Choquehuanca},
-  pdfsubject={Ingeniería de Requisitos},
-  colorlinks=true,
-  linkcolor=black,
-  urlcolor=blue,
-  citecolor=black
-}
-
-% Columnas reutilizables
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\input{preambulo}
 
 \begin{document}
 

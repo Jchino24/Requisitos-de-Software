@@ -1,0 +1,42 @@
+% =====================================================================
+%  preambulo.tex — configuración común
+%  Compartido por el documento maestro y por los envoltorios de sección
+%  (sec-01… sec-04). Se incluye siempre desde documento/, de modo que
+%  las rutas relativas apuntan a ../diagramas/.
+% =====================================================================
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\graphicspath{{../diagramas/}}
+\renewcommand{\arraystretch}{1.25}
+
+% Compilacion reproducible: el PDF versionado no cambia por fecha ni por
+% metadatos de ruta, de modo que dos compilaciones producen el mismo archivo.
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+
+\hypersetup{
+  pdftitle={Requisitos del Proyecto RedPepper},
+  pdfauthor={Gabriel Pajuelo, Armando Enriquez, Victor Lupinta, Jose Chino, Jose Choquehuanca},
+  pdfsubject={Ingeniería de Requisitos},
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black
+}
+
+% Columnas reutilizables
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}

@@ -1,0 +1,18 @@
+% =====================================================================
+%  Sección independiente 2 — Ilación
+%  Salida: pdf/secciones/02-ilacion.pdf
+%  Usa xr para resolver la referencia a la sección de especificación,
+%  definida en el documento maestro (Requisitos_RedPepper.aux).
+% =====================================================================
+\input{preambulo}
+\usepackage{xr}
+\externaldocument{refs-externas}
+\hypersetup{
+  pdftitle={RedPepper - Seccion 2: Ilacion},
+  pdfsubject={Ingeniería de Requisitos}
+}
+
+\begin{document}
+\setcounter{section}{1}
+\input{secciones/ilacion}
+\end{document}
