@@ -1,3 +1,4 @@
+# Auxiliares de LaTeX
 *.aux
 *.log
 *.out
@@ -11,3 +12,6 @@
 *.bbl
 *.blg
 *.gz
+
+# Copia de trabajo del PDF dentro de documento/ (la version publicada va en pdf/)
+documento/Requisitos_RedPepper.pdf

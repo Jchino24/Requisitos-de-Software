@@ -14,21 +14,29 @@ especificación de requisitos y los diagramas del proceso de negocio.
 ## Estructura de carpetas
 
 ```
-github_docs/
-├── Requisitos_RedPepper.tex   # Documento principal (portada, índice, \input)
-├── educcion.tex               # 4 tablas longtable: E-PRE, E-OBS, E-ENT1, E-ENT2
-├── ilacion.tex                # 4 listas de cadenas I-PRE, I-OBS, I-ENT1, I-ENT2
-├── especificacion.tex         # Catálogos RF, RNF y requisitos derivados
-├── diagramas.tex              # 4 figuras del proceso de negocio
-├── README.md                  # Este archivo
-├── .gitignore                 # Artefactos de compilación LaTeX
-├── diagramas v1/              # Diagramas del proceso (fuente gráfica v1)
+.
+├── README.md                    # Este archivo
+├── Makefile                     # Compilación: make / make clean / make distclean
+├── .gitignore                   # Auxiliares de LaTeX y copia de trabajo del PDF
+├── documento/                   # FUENTES LaTeX (se compila desde aquí)
+│   ├── Requisitos_RedPepper.tex # Documento maestro: portada, índice, \input
+│   └── secciones/
+│       ├── educcion.tex         # 4 longtable: E-PRE, E-OBS, E-ENT1, E-ENT2
+│       ├── ilacion.tex          # Cadenas I-PRE, I-OBS, I-ENT1, I-ENT2
+│       ├── especificacion.tex   # Catálogos RF, RNF y 39 derivados
+│       └── diagramas.tex        # 4 figuras del proceso de negocio
+├── diagramas v1/                # IMÁGENES fuente (assets)
 │   ├── 01-venta-mostrador.png
 │   ├── 02-abastecimiento-prorrateo.png
 │   ├── 03-cierre-mensual-niif18.png
 │   └── 04-proceso-general.png
-└── Requisitos_RedPepper.pdf   # Salida compilada (no versionar si se prefiere)
+└── pdf/
+    └── Requisitos_RedPepper.pdf # ENTREGABLE compilado (25 páginas)
 ```
+
+Cada carpeta tiene una responsabilidad: `documento/` contiene solo código
+LaTeX, `diagramas v1/` solo imágenes y `pdf/` solo el entregable. Así el
+repositorio no mezcla fuentes, recursos y resultados.
 
 ## Dependencias de compilación
 
@@ -46,20 +54,33 @@ tlmgr install babel-spanish csquotes booktabs longtable array geometry \
 
 ## Compilación
 
+Desde la raíz del repositorio, con `make`:
+
 ```bash
-cd github_docs
-latexmk -pdf Requisitos_RedPepper.tex
+make            # compila documento/ y publica pdf/Requisitos_RedPepper.pdf
+make clean      # borra auxiliares, conserva el PDF
+make distclean  # borra auxiliares y también el PDF de salida
 ```
 
-Sin `latexmk`, basta ejecutar `pdflatex` dos veces para resolver el índice y
-las referencias cruzadas:
+Equivale a ejecutar a mano:
 
 ```bash
+cd documento
+latexmk -pdf -interaction=nonstopmode -halt-on-error Requisitos_RedPepper.tex
+cp -f Requisitos_RedPepper.pdf ../pdf/
+```
+
+Sin `latexmk`, `pdflatex` dos veces basta para resolver el índice y las
+referencias cruzadas (siempre dentro de `documento/`):
+
+```bash
+cd documento
 pdflatex -interaction=nonstopmode Requisitos_RedPepper.tex
 pdflatex -interaction=nonstopmode Requisitos_RedPepper.tex
 ```
 
-Para limpiar los artefactos intermedios: `latexmk -C`.
+Las rutas son relativas a `documento/`: las secciones se cargan con
+`\input{secciones/...}` y las figuras con `\graphicspath{{../diagramas v1/}}`.
 
 ## Autores y docente
 
@@ -86,7 +107,7 @@ No se ha inventado contenido de requisitos. No obstante:
   origen (F-02).** Los RF remiten a los criterios `V-*` de los requisitos
   derivados cuando existe vínculo documentado; el resto queda como pendiente.
   Estas ausencias están marcadas con comentarios `% TODO:` en
-  `especificacion.tex`.
+  `documento/secciones/especificacion.tex`.
 - **Las preguntas de validación abiertas** de cada evento se transcriben en la
   sección 3.4 del documento. Mientras no se respondan, los requisitos que
   dependen de ellas no deben aprobarse.
