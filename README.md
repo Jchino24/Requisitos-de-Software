@@ -11,6 +11,13 @@ comprobantes asociados.
 El PDF se genera a partir de LaTeX y reúne la educción, la ilación, la
 especificación de requisitos y los diagramas del proceso de negocio.
 
+## Entregable
+
+- **PDF compilado:** [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf) — 25 páginas, A4.
+- **Fuente maestra:** [documento/Requisitos_RedPepper.tex](documento/Requisitos_RedPepper.tex)
+- **Secciones:** [documento/secciones/](documento/secciones/)
+- **Diagramas:** [diagramas v1/](diagramas%20v1/)
+
 ## Estructura de carpetas
 
 ```
