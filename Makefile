@@ -18,7 +18,7 @@ OUTDIR   := pdf
 SECDIR   := $(OUTDIR)/secciones
 
 # Orden y nombre de las secciones (prefijo numérico = orden de lectura)
-SECTIONS := 01-educcion 02-ilacion 03-especificacion 04-diagramas
+SECTIONS := 01-educcion 02-ilacion 03-especificacion 04-diagramas 05-interfaces
 
 # Diagramas: fuentes TikZ -> PNG de 300 dpi
 DIAGDIR  := diagramas
@@ -89,7 +89,7 @@ check:
 	done
 	@! grep -qi "undefined references" $(LATEXDIR)/$(MAIN).log \
 	  || { echo "FALLO: referencias sin resolver en el documento general"; exit 1; }
-	@echo "OK: PDF general + 4 secciones, logs sin errores ni referencias rotas"
+	@echo "OK: PDF general + $(words $(SECTIONS)) secciones, logs sin errores ni referencias rotas"
 
 # --- Limpieza ---------------------------------------------------------------
 clean:

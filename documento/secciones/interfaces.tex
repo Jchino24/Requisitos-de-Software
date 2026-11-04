@@ -1,0 +1,56 @@
+% =====================================================================
+%  interfaces.tex
+%  Interfaces de usuario (v1): pantallas del prototipo RedPeppers ERP.
+% =====================================================================
+
+\section{Interfaces de usuario}
+\label{sec:interfaces}
+
+\noindent{\small\textbf{Versión 1} \textperiodcentered{} documento de trabajo sujeto a validación con el interesado.}\par\vspace{0.5em}
+
+Las Figuras~\ref{fig:dashboard} y~\ref{fig:pos} reproducen dos pantallas
+del prototipo de interfaz presentado por el equipo (ERP BackOffice v2.4).
+El prototipo \textbf{no es un sistema implementado}: es una propuesta visual
+para discutir la interacción y la disposición de la información con Jerry.
+Por tanto, acredita intención de diseño, no funcionamiento ni cumplimiento
+normativo.
+
+La Figura~\ref{fig:dashboard} corresponde a la vista gerencial. Ordena la
+jornada en cuatro bloques: el desglose del margen bruto diario —ventas
+confirmadas menos la cuota prorrateada y las compras directas—, los
+indicadores del día, el motor de prorrateo por insumo y proveedor, y las
+compras adicionales. Al costado reúne las ventas por canal y el estado de
+comprobantes ante SUNAT.
+
+La Figura~\ref{fig:pos} corresponde al terminal de mostrador. Permite elegir
+el canal de atención, filtrar por categoría y agregar productos al pedido;
+el carrito muestra adicionales, cantidades y el total con IGV, y el botón
+final envía el pedido a cocina. El producto sin stock aparece bloqueado, en
+línea con el requisito R-ENT2-05.
+
+\paragraph{Observación de coherencia.} El panel rotula el reparto como
+«5 días» y «Prorroteo 5 días». Conforme a P-14, el prorrateo debe hacerse
+sobre \emph{jornadas hábiles efectivas}, no sobre una semana fija de cinco
+días; así se corrigió en los diagramas 2 y 3. El prototipo debe alinearse
+con esa regla antes de considerarse definitivo. Del mismo modo, los importes
+mostrados son datos de ejemplo y no cifras reales del negocio.
+
+% La captura es una imagen de pantalla; si se cuenta con el prototipo
+% navegable, conviene exportar las vistas en formato vectorial.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth,height=0.90\textheight,keepaspectratio]{01-dashboard-margen.png}
+  \caption{Interfaz 1: panel gerencial de margen bruto y operaciones (v1).
+  Presenta el desglose del margen diario, los indicadores de la jornada, el
+  motor de prorrateo semanal por insumo y las compras adicionales del día.}
+  \label{fig:dashboard}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{02-pos-mostrador.png}
+  \caption{Interfaz 2: terminal de mostrador (v1). Selección de productos
+  por categoría, carrito con adicionales y cantidades, total con IGV y
+  envío del pedido a cocina; el producto agotado se muestra bloqueado.}
+  \label{fig:pos}
+\end{figure}
