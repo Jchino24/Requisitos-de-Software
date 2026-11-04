@@ -22,11 +22,11 @@ github_docs/
 ├── diagramas.tex              # 4 figuras del proceso de negocio
 ├── README.md                  # Este archivo
 ├── .gitignore                 # Artefactos de compilación LaTeX
-├── imagenes/
-│   ├── diagrama 1 venta mostrador v1.png
-│   ├── diagrama 2 revastecimiento y prorrateo v1.png
-│   ├── Diagrama 3 CIerre Mensual NIIF 18 v1.png
-│   └── Diagrama General Del Proceso de Negocio v1.png
+├── diagramas v1/              # Diagramas del proceso (fuente gráfica v1)
+│   ├── 01-venta-mostrador.png
+│   ├── 02-abastecimiento-prorrateo.png
+│   ├── 03-cierre-mensual-niif18.png
+│   └── 04-proceso-general.png
 └── Requisitos_RedPepper.pdf   # Salida compilada (no versionar si se prefiere)
 ```
 
