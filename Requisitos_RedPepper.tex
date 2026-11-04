@@ -1,0 +1,86 @@
+% =====================================================================
+%  Proyecto RedPepper - Documento de Requisitos
+%  Fuente de contenido: "Reporte de educción e ilación" (EV-PRE-01,
+%  EV-OBS-01, EV-ENT-01, EV-ENT-02) e "Informe Práctica 02" (catálogos
+%  RF-01..RF-20 y RNF-01..RNF-08).
+%  Compilar con: latexmk -pdf Requisitos_RedPepper.tex
+% =====================================================================
+\documentclass[11pt,spanish]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\graphicspath{{imagenes/}}
+\renewcommand{\arraystretch}{1.25}
+
+\hypersetup{
+  pdftitle={Requisitos del Proyecto RedPepper},
+  pdfauthor={Gabriel Pajuelo, Armando Enriquez, Victor Lupinta, Jose Chino, Jose Choquehuanca},
+  pdfsubject={Ingeniería de Requisitos},
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black
+}
+
+% Columnas reutilizables
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+% ---------------------------------------------------------------------
+% PORTADA
+% ---------------------------------------------------------------------
+\begin{titlepage}
+  \centering
+  \vspace*{2.0cm}
+
+  {\Huge\bfseries Proyecto RedPepper\par}
+  \vspace{0.6cm}
+  {\LARGE Documento de Requisitos\par}
+
+  \vspace{2.2cm}
+  \rule{\linewidth}{0.4pt}\par
+  \vspace{0.6cm}
+  {\large Ingeniería de Requisitos\par}
+  {\large Requisitos y Métodos Formales de Software\par}
+  \vspace{0.6cm}
+  \rule{\linewidth}{0.4pt}\par
+
+  \vfill
+
+  \begin{minipage}{0.82\linewidth}
+    \centering
+    \textbf{Docente:} Dr.\ Yasiel Pérez Vera\\[0.8em]
+    \textbf{Integrantes:}\\[0.3em]
+    Gabriel Pajuelo\\
+    Armando Enriquez\\
+    Victor Lupinta\\
+    Jose Chino\\
+    José Choquehuanca
+  \end{minipage}
+
+  \vfill
+
+  {\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\input{educcion}
+\input{ilacion}
+\input{especificacion}
+\input{diagramas}
+
+\end{document}
