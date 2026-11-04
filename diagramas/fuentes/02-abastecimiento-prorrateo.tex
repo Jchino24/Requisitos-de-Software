@@ -1,0 +1,46 @@
+% Diagrama 2 — Abastecimiento y prorrateo (v2)
+\input{estilo}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \encabezado{16.2cm}{2.\ \ Abastecimiento y prorrateo \quad\textbar\quad v2}{1.6}
+
+  % ---------------- Fila 1 ----------------
+  \node[ini]       (ini) at (0,0)    {Inicio};
+  \node[admin]     (p2)  at (3.6,0)  {Detecta necesidad de insumos};
+  \node[admin]     (p3)  at (7.2,0)  {Contacta al proveedor};
+  \node[proveedor] (p4)  at (10.8,0) {Entrega los insumos en el local};
+  \node[admin]     (p5)  at (14.4,0) {Registra la compra: proveedor, RUC, fecha y monto};
+
+  % ---------------- Decisión y ramas ----------------
+  \node[dec] (d) at (14.4,-3.4) {¿Tipo de compra?};
+
+  \node[sistema] (sem) at (10.2,-2.2) {Semanal: prorratea entre jornadas hábiles efectivas};
+  \node[sistema] (adi) at (10.2,-4.7) {Adicional: imputa el 100\,\% a la fecha de compra};
+
+  % ---------------- Fila 2 ----------------
+  \node[sistema] (adj)  at (7.2,-3.4) {Adjunta el comprobante (PDF o JPG)};
+  \node[sistema] (hash) at (3.6,-3.4) {Calcula hash SHA-256, cifra y vincula al egreso};
+  \node[ini]     (fin)  at (0,-3.4)   {Fin};
+
+  % ---------------- Flujo ----------------
+  \draw[flecha] (ini) -- (p2);
+  \draw[flecha] (p2)  -- (p3);
+  \draw[flecha] (p3)  -- (p4);
+  \draw[flecha] (p4)  -- (p5);
+  \draw[flecha] (p5)  -- (d);
+
+  \draw[flecha] (d.west) -- node[etiqueta, above, pos=0.5] {Semanal} (sem.east);
+  \draw[flecha] (d.west) -- node[etiqueta, below, pos=0.5] {Adicional} (adi.east);
+
+  \draw[flecha] (sem.west) -- (adj.north);
+  \draw[flecha] (adi.west) -- (adj.south);
+
+  \draw[flecha] (adj)  -- (hash);
+  \draw[flecha] (hash) -- (fin);
+
+  \leyendaRoles{0}{-5.6}
+
+\end{tikzpicture}
+\end{document}

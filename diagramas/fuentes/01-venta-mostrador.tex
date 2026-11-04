@@ -1,0 +1,45 @@
+% Diagrama 1 — Venta en mostrador (v2)
+% Compilar: pdflatex -interaction=nonstopmode 01-venta-mostrador.tex
+\input{estilo}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \encabezado{16.2cm}{1.\ \ Venta en mostrador \quad\textbar\quad v2}{3.5}
+
+  % ---------------- Fila 1 ----------------
+  \node[ini]      (ini)  at (0,0)    {Inicio};
+  \node[cliente]  (n2)   at (3.5,0)  {Solicita el pedido};
+  \node[caja]     (n3)   at (7.0,0)  {Toma el pedido en pantalla táctil (botones de 48 px o más)};
+  \node[sistema]  (n4)   at (10.5,0) {Muestra carta, precios y adicionales};
+  \node[dec]      (d1)   at (14.0,0) {¿Agrega otro producto?};
+
+  % ---------------- Bucle superior ----------------
+  \node[caja]     (n5)   at (14.0,2.2) {Añade el producto al pedido};
+
+  % ---------------- Fila 2 ----------------
+  \node[caja]     (n6)   at (14.0,-3.2) {Confirma y selecciona el medio de pago};
+  \node[sistema]  (n7)   at (10.5,-3.2) {Registra la venta, asigna un ID y genera la comanda};
+  \node[cocina]   (n8)   at (7.0,-3.2)  {Prepara al instante, sin productos precocidos};
+  \node[cocina]   (n9)   at (3.5,-3.2)  {Entrega el pedido};
+  \node[ini]      (fin)  at (0,-3.2)    {Fin};
+
+  % ---------------- Flujo ----------------
+  \draw[flecha] (ini) -- (n2);
+  \draw[flecha] (n2)  -- (n3);
+  \draw[flecha] (n3)  -- (n4);
+  \draw[flecha] (n4)  -- (d1);
+
+  \draw[flecha] (d1.north) -- node[etiqueta, right] {Sí} (n5.south);
+  \draw[flecha] (n5.west) -| node[etiqueta, pos=0.42, above] {vuelve a la carta} (n4.north);
+
+  \draw[flecha] (d1.south) -- node[etiqueta, right] {No} (n6.north);
+  \draw[flecha] (n6) -- (n7);
+  \draw[flecha] (n7) -- (n8);
+  \draw[flecha] (n8) -- (n9);
+  \draw[flecha] (n9) -- (fin);
+
+  \leyendaRoles{0}{-4.6}
+
+\end{tikzpicture}
+\end{document}

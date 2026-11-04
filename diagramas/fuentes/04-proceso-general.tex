@@ -1,0 +1,53 @@
+% Diagrama 4 — Proceso general de negocio (v2)
+\input{estilo}
+
+\begin{document}
+\begin{tikzpicture}[
+  fase/.style={fill=black!82, text=white, font=\small\bfseries, align=center,
+               minimum width=4.6cm, minimum height=0.6cm, inner sep=3pt},
+  chip/.style={proc, text width=4.25cm, minimum height=1.0cm}
+]
+
+  \encabezado{15.4cm}{4.\ \ Proceso general de negocio \quad\textbar\quad v2}{1.5}
+
+  % ---------------- Bandas de fase ----------------
+  \node[fase] (f1) at (2.3,0)  {1.\ \ Venta en mostrador};
+  \node[fase] (f2) at (7.7,0)  {2.\ \ Abastecimiento y prorrateo};
+  \node[fase] (f3) at (13.1,0) {3.\ \ Cierre mensual};
+
+  \draw[flecha] (f1.east) -- (f2.west);
+  \draw[flecha] (f2.east) -- (f3.west);
+
+  % ---------------- Fase 1 ----------------
+  \node[chip, cliente] (a1) at (2.3,-1.4) {El cliente solicita el pedido};
+  \node[chip, caja] (a2) at (2.3,-2.8) {Caja lo registra en pantalla táctil};
+  \node[chip, sistema] (a3) at (2.3,-4.2) {El sistema asigna ID y genera la comanda};
+  \node[chip, cocina] (a4) at (2.3,-5.6) {Cocina prepara al instante y entrega};
+
+  % ---------------- Fase 2 ----------------
+  \node[chip, admin] (b1) at (7.7,-1.4) {Jerry detecta la necesidad de insumos};
+  \node[chip, proveedor] (b2) at (7.7,-2.8) {El proveedor entrega en el local};
+  \node[chip, sistema] (b3) at (7.7,-4.2) {Se registra y clasifica la compra};
+  \node[chip, sistema] (b4) at (7.7,-5.6) {Se prorratea o se imputa el costo};
+
+  % ---------------- Fase 3 ----------------
+  \node[chip, sistema] (c1) at (13.1,-1.4) {Se consolida margen y resultado};
+  \node[chip, contador] (c2) at (13.1,-2.8) {El contador valida las reglas tributarias};
+  \node[chip, sistema] (c3) at (13.1,-4.2) {Se genera el reporte NIIF 18};
+  \node[chip, admin] (c4) at (13.1,-5.6) {Jerry lo revisa en el dashboard remoto};
+
+  % ---------------- Flujos verticales ----------------
+  \foreach \top/\next in {f1/a1, a1/a2, a2/a3, a3/a4,
+                          f2/b1, b1/b2, b2/b3, b3/b4,
+                          f3/c1, c1/c2, c2/c3, c3/c4}{
+    \draw[flecha] (\top) -- (\next);
+  }
+
+  % ---------------- Nota final ----------------
+  \node[font=\scriptsize\itshape, text=black!70, align=center]
+    at (7.7,-6.5) {El detalle de cada fase está en los diagramas 1, 2 y 3.};
+
+  \leyendaRoles{1.0}{-7.2}
+
+\end{tikzpicture}
+\end{document}

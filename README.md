@@ -50,7 +50,13 @@ no se rompen.
 │       ├── ilacion.tex            # Cadenas I-PRE, I-OBS, I-ENT1, I-ENT2
 │       ├── especificacion.tex     # Catálogos RF, RNF y 39 derivados
 │       └── diagramas.tex          # 4 figuras del proceso de negocio
-├── diagramas/                     # IMÁGENES fuente (se reemplazarán por versiones finales)
+├── diagramas/                     # IMÁGENES del documento (PNG 300 dpi, v2)
+│   ├── fuentes/                   # Fuentes TikZ de cada figura + estilo común
+│   │   ├── estilo.tex
+│   │   ├── 01-venta-mostrador.tex
+│   │   ├── 02-abastecimiento-prorrateo.tex
+│   │   ├── 03-cierre-mensual-niif18.tex
+│   │   └── 04-proceso-general.tex
 │   ├── 01-venta-mostrador.png
 │   ├── 02-abastecimiento-prorrateo.png
 │   ├── 03-cierre-mensual-niif18.png
@@ -92,6 +98,7 @@ Desde la raíz del repositorio, con `make`:
 make            # documento completo + los 4 PDF de sección
 make general    # solo pdf/Requisitos_RedPepper.pdf
 make secciones  # solo pdf/secciones/*.pdf (compila antes el maestro)
+make diagramas  # regenera los PNG desde las fuentes TikZ (300 dpi)
 make check      # verifica PDFs y logs (errores y referencias rotas)
 make clean      # borra auxiliares, conserva los PDF
 make distclean  # borra auxiliares y los PDF generados
@@ -127,6 +134,33 @@ maestro; por eso `make secciones` compila antes el documento completo.
 La compilación es **reproducible**: dos ejecuciones limpias producen los cinco
 PDF idénticos byte a byte, de modo que los archivos versionados no generan
 diffs por fecha. Para verificar el resultado: `make check`.
+
+## Diagramas (v2)
+
+Los cuatro diagramas se dibujan con **TikZ**, no con capturas de pantalla: son
+vectoriales, comparten tipografía y paleta con el documento, y se regeneran
+con `make diagramas` (PNG a 300 dpi). Las fuentes están en
+`diagramas/fuentes/`.
+
+La versión 2 corrige los defectos detectados en la v1:
+
+- **Errata en el rótulo**: «DIAGARAMA 1» → «Diagrama 1».
+- **Tildes faltantes** en varias etiquetas («mas», «dias habiles»).
+- **SHA-256 no cifra**: es un hash de integridad. Ahora se distingue
+  «calcula el hash SHA-256» de «cifra el archivo», como advierte el reporte
+  de ilación al separar integridad de cifrado.
+- **Cinco días hábiles → jornadas hábiles efectivas**, conforme a P-14
+  (los feriados no se prorratean).
+- **Estructura NIIF 18**: se listan las categorías reales (operación,
+  inversión, financiamiento e impuesto a las ganancias) en lugar de
+  «Operación, Financiamiento, Fiscal».
+- **Cascada del cierre**: se separan gastos financieros, BAI e impuesto a la
+  renta, para no llamar «antes de impuestos e intereses» a un subtotal que ya
+  los incluía.
+- **Coherencia entre diagramas**: el contador valida las reglas tributarias
+  antes del cálculo del impuesto, tanto en el cierre como en la vista general.
+- **Diagrama general legible**: se reemplazaron los siete carriles ilegibles
+  por tres fases encadenadas, con los roles codificados por color.
 
 ## Autores y docente
 

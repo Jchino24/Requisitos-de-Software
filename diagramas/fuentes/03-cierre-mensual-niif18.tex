@@ -1,0 +1,46 @@
+% Diagrama 3 — Cierre mensual NIIF 18 (v2)
+\input{estilo}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \encabezado{16.2cm}{3.\ \ Cierre mensual NIIF 18 \quad\textbar\quad v2}{1.6}
+
+  % ---------------- Fila 1 ----------------
+  \node[ini]      (ini) at (0,0)     {Inicio};
+  \node[sistema]  (c2)  at (3.6,0)   {Consolida el margen bruto mensual};
+  \node[sistema]  (c3)  at (7.2,0)   {Resta los costos indirectos fijos};
+  \node[sistema]  (c4)  at (10.8,0)  {Resultado operativo del mes};
+
+  % ---------------- Fila 2 ----------------
+  \node[sistema]  (c5)  at (14.4,-3.4) {Calcula los gastos financieros};
+  \node[sistema]  (c6)  at (10.8,-3.4) {BAI: beneficio antes de impuestos};
+  \node[contador] (c7)  at (7.2,-3.4)  {Valida las reglas tributarias vigentes};
+  \node[sistema]  (c8)  at (3.6,-3.4)  {Calcula el impuesto a la renta};
+
+  % ---------------- Fila 3 ----------------
+  \node[sistema]  (c9)  at (0,-7.0)    {Resultado neto del periodo};
+  \node[sistema]  (c10) at (4.1,-7.0)  {Genera el reporte NIIF 18\\[2pt]%
+        {\scriptsize (operación, inversión, financiamiento,\\ impuesto a las ganancias)}};
+  \node[admin]    (c11) at (8.6,-7.0)  {Revisa el reporte en el dashboard remoto};
+  \node[ini]      (fin) at (12.4,-7.0) {Fin};
+
+  % ---------------- Flujo ----------------
+  \draw[flecha] (ini) -- (c2);
+  \draw[flecha] (c2)  -- (c3);
+  \draw[flecha] (c3)  -- (c4);
+  \draw[flecha] (c4)  -- (c5);
+
+  \draw[flecha] (c5) -- (c6);
+  \draw[flecha] (c6) -- (c7);
+  \draw[flecha] (c7) -- (c8);
+
+  \draw[flecha] (c8) -- (c9);
+  \draw[flecha] (c9) -- (c10);
+  \draw[flecha] (c10) -- (c11);
+  \draw[flecha] (c11) -- (fin);
+
+  \leyendaRoles{0}{-8.7}
+
+\end{tikzpicture}
+\end{document}

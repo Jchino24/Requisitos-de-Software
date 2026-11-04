@@ -20,6 +20,12 @@ SECDIR   := $(OUTDIR)/secciones
 # Orden y nombre de las secciones (prefijo numérico = orden de lectura)
 SECTIONS := 01-educcion 02-ilacion 03-especificacion 04-diagramas
 
+# Diagramas: fuentes TikZ -> PNG de 300 dpi
+DIAGDIR  := diagramas
+DIAGSRC  := $(DIAGDIR)/fuentes
+DIAGRAMS := 01-venta-mostrador 02-abastecimiento-prorrateo \
+            03-cierre-mensual-niif18 04-proceso-general
+
 LATEX := latexmk -pdf -interaction=nonstopmode -halt-on-error
 
 # Si TeX Live no esta en el PATH pero existe una instalacion de usuario
@@ -31,7 +37,7 @@ ifneq (,$(wildcard $(TINYTEX)/latexmk))
   endif
 endif
 
-.PHONY: all build general secciones check clean distclean
+.PHONY: all build general secciones diagramas check clean distclean
 
 all: build
 
@@ -62,6 +68,16 @@ secciones: general
 	done
 	@echo "Listo: $(SECDIR)/"
 
+# --- Diagramas (TikZ -> PNG) -----------------------------------------------
+diagramas:
+	@command -v pdftoppm >/dev/null 2>&1 || { echo "ERROR: falta pdftoppm (poppler-utils)"; exit 1; }
+	@for d in $(DIAGRAMS); do \
+	  echo "== $$d =="; \
+	  ( cd $(DIAGSRC) && $(LATEX) $$d.tex ) || exit 1; \
+	  pdftoppm -png -r 300 -singlefile $(DIAGSRC)/$$d.pdf $(DIAGDIR)/$$d || exit 1; \
+	done
+	@echo "Listo: PNG de 300 dpi en $(DIAGDIR)/"
+
 # --- Verificacion -----------------------------------------------------------
 check:
 	@test -s $(OUTDIR)/$(MAIN).pdf || { echo "FALLO: falta el PDF general"; exit 1; }
@@ -81,5 +97,6 @@ clean:
 
 distclean:
 	cd $(LATEXDIR) && latexmk -C $(MAIN).tex $(foreach s,$(SECTIONS),sec-$(s).tex)
+	cd $(DIAGSRC) && latexmk -C $(foreach d,$(DIAGRAMS),$(d).tex)
 	rm -rf $(SECDIR)
 	rm -f $(OUTDIR)/$(MAIN).pdf
