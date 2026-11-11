@@ -13,7 +13,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (31 páginas, A4):**
+**Documento completo (33 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
@@ -21,7 +21,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 | Sección | PDF | Páginas |
 |---|---|---|
 | 1. Educción | [01-educcion.pdf](pdf/secciones/01-educcion.pdf) | 6 |
-| 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 11 |
+| 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 12 |
 | 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 8 |
 | 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
 | 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 2 |
@@ -71,7 +71,7 @@ no se rompen.
 │   ├── 01-dashboard-margen.png
 │   └── 02-pos-mostrador.png
 └── pdf/                           # ENTREGABLES compilados
-    ├── Requisitos_RedPepper.pdf   # Documento completo (31 páginas)
+    ├── Requisitos_RedPepper.pdf   # Documento completo (33 páginas)
     └── secciones/
         ├── 01-educcion.pdf
         ├── 02-ilacion.pdf
@@ -203,9 +203,9 @@ vectorial (PDF/SVG) desde la herramienta de origen y reemplazar
 Los 52 registros de educción y las 52 cadenas de ilación se presentan en
 tablas LaTeX. La sección de educción distingue a **Jerry como fuente de
 información** de los cinco integrantes, autores del documento colectivo. La
-participación individual en cada evento permanece por verificar con los
-registros de trabajo. La ilación muestra por fila evidencia, razonamiento,
-requisito o conclusión, y límite de validación; también incluye una tabla de
+distribución individual por evento se ofrece como propuesta editorial y debe
+verificarse con los registros del grupo. La ilación muestra por fila evidencia,
+razonamiento, requisito o conclusión, y límite de validación; también incluye una tabla de
 cambios con sus razones. Los actores del sistema son roles de uso y no se
 confunden con los autores del informe.
 
