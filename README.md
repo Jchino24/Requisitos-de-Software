@@ -13,7 +13,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (33 páginas, A4):**
+**Documento completo (31 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
@@ -21,8 +21,8 @@ especificación de requisitos y los diagramas del proceso de negocio.
 | Sección | PDF | Páginas |
 |---|---|---|
 | 1. Educción | [01-educcion.pdf](pdf/secciones/01-educcion.pdf) | 6 |
-| 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 12 |
-| 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 8 |
+| 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 11 |
+| 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 7 |
 | 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
 | 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 2 |
 
@@ -48,9 +48,9 @@ no se rompen.
 │   ├── sec-04-diagramas.tex       # Envoltorio: sección 4
 │   ├── sec-05-interfaces.tex      # Envoltorio: sección 5
 │   └── secciones/                 # CONTENIDO de cada sección
-│       ├── educcion.tex           # 4 longtable: E-PRE, E-OBS, E-ENT1, E-ENT2
-│       ├── ilacion.tex            # Cadenas I-PRE, I-OBS, I-ENT1, I-ENT2
-│       ├── especificacion.tex     # Catálogos RF, RNF y 39 derivados
+│       ├── educcion.tex           # 4 registros y 2 tablas de atribución
+│       ├── ilacion.tex            # Matriz única de 52 cadenas y trazabilidad
+│       ├── especificacion.tex     # Matriz única de 67 requisitos
 │       ├── diagramas.tex          # 4 figuras de proceso + diagrama de clases
 │       └── interfaces.tex         # Pantallas del prototipo (v1)
 ├── diagramas/                     # IMÁGENES del documento (PNG 300 dpi, v2)
@@ -71,7 +71,7 @@ no se rompen.
 │   ├── 01-dashboard-margen.png
 │   └── 02-pos-mostrador.png
 └── pdf/                           # ENTREGABLES compilados
-    ├── Requisitos_RedPepper.pdf   # Documento completo (33 páginas)
+    ├── Requisitos_RedPepper.pdf   # Documento completo (31 páginas)
     └── secciones/
         ├── 01-educcion.pdf
         ├── 02-ilacion.pdf
@@ -204,10 +204,12 @@ Los 52 registros de educción y las 52 cadenas de ilación se presentan en
 tablas LaTeX. La sección de educción distingue a **Jerry como fuente de
 información** de los cinco integrantes, autores del documento colectivo. La
 distribución individual por evento se ofrece como propuesta editorial y debe
-verificarse con los registros del grupo. La ilación muestra por fila evidencia,
-razonamiento, requisito o conclusión, y límite de validación; también incluye una tabla de
-cambios con sus razones. Los actores del sistema son roles de uso y no se
-confunden con los autores del informe.
+verificarse con los registros del grupo. La matriz única de ilación muestra
+en cada una de sus 52 filas evidencia, razonamiento, conclusión, actor
+relacionado y autores propuestos. La matriz de especificación reúne 20 RF,
+8 RNF y 39 requisitos candidatos, también con actor y autores por fila.
+La ilación conserva una tabla de cambios con sus razones. Los actores del
+sistema son roles de uso y no se confunden con los autores del informe.
 
 ## Advertencia sobre el estado del contenido
 

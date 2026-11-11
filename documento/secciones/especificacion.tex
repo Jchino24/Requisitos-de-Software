@@ -15,169 +15,93 @@ organización; la validación contrasta que responda a la intención del
 interesado. Un requisito candidato no pasa a formar una línea base
 aprobada por el hecho de aparecer en este documento.
 
-Se presentan tres catálogos. La Tabla~\ref{tab:rf} reproduce los veinte
-requisitos funcionales consolidados en F-02; la Tabla~\ref{tab:rnf}
-reproduce los ocho requisitos no funcionales del mismo catálogo; y la
-Tabla~\ref{tab:derivados} reúne los treinta y nueve requisitos candidatos
-derivados de las cadenas de ilación por evento. Las referencias RF y RNF
-remiten al catálogo de F-02; los identificadores R-PRE, R-OBS, R-ENT1 y
-R-ENT2 permiten rastrear la derivación sin declarar que el catálogo previo
-queda automáticamente aprobado.
-
-\subsection{Requisitos funcionales (RF)}
-\label{subsec:rf}
-
-La Tabla~\ref{tab:rf} lista los veinte requisitos funcionales del catálogo
-consolidado. La columna de prioridad se transcribe de F-02; la columna de
-criterio de validación no consta en el catálogo de origen y se completa
-con los criterios V-* de los requisitos derivados vinculados
-(Tabla~\ref{tab:derivados}) cuando existe derivación documentada.
-
-% TODO: F-02 (sección 6.1) no define criterios de validación por RF. Los
-% criterios deben aprobarse con Jerry y el contador; no se inventan aquí.
-
-{\small
-\begin{longtable}{L{1.7cm} L{2.9cm} L{4.0cm} L{1.7cm} L{3.5cm}}
-\caption{Catálogo de 20 requisitos funcionales (F-02, sección 6.1).}
-\label{tab:rf}\\
+\subsection{Matriz única de requisitos}
+\label{subsec:matriz-requisitos}
+La Tabla~\ref{tab:requisitos-unificados} reúne 20 RF, 8 RNF y 39
+candidatos derivados. Conserva prioridad o métrica, origen y criterio
+cuando constan. El actor es el rol afectado o responsable de uso;
+la autoría individual es una propuesta editorial pendiente de cotejo.
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{1.5cm} L{5.0cm} L{3.2cm} L{1.9cm} L{3.0cm}}
+\caption{Matriz única de 67 requisitos con actores y autores propuestos.}
+\label{tab:requisitos-unificados}\\
 \toprule
-\textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Prioridad} & \textbf{Criterio de validación} \\
+\textbf{ID y tipo} & \textbf{Requisito y origen} & \textbf{Validación} & \textbf{Actor relacionado} & \textbf{Autores propuestos} \\
 \midrule
 \endfirsthead
 \toprule
-\textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Prioridad} & \textbf{Criterio de validación} \\
+\textbf{ID y tipo} & \textbf{Requisito y origen} & \textbf{Validación} & \textbf{Actor relacionado} & \textbf{Autores propuestos} \\
 \midrule
 \endhead
 \bottomrule
 \endfoot
-RF-01 & Registro de ventas POS & Captura de órdenes desglosando productos, adicionales, canal y método de cobro. & Alta & V-OBS-04; pendiente de aprobación formal. \\
-RF-02 & Gestión de carta & Administración del menú, precios, estados (activo/agotado) e historial. & Alta & V-PRE-12, V-PRE-13 y V-ENT2-05. \\
-RF-03 & Cierre diario de jornada & Consolidación automática de ventas confirmadas al corte de jornada con bloqueo de edición. & Alta & V-PRE-10 y V-ENT2-03. \\
-RF-04 & Registro de compras & Ingreso de compras indicando proveedor, RUC, fecha, monto y categoría de insumo. & Alta & V-ENT1-01; validación de campos en V-ENT2-16. \\
-RF-05 & Clasificación de compra & Etiquetado de compras como \enquote{Semanal para Prorrateo} o \enquote{Adicional del Día}. & Alta & V-PRE-01 y V-ENT2-06. \\
-RF-06 & Motor de prorrateo semanal & División automática del monto de compras semanales entre los 5 días laborables de la semana. & Alta & V-PRE-02, V-ENT2-07 y V-ENT2-09. \\
-RF-07 & Imputación adicional & Carga del 100\,\% del valor de compras imprevistas a la fecha exacta de ejecución. & Alta & V-PRE-03. \\
-RF-08 & Margen bruto diario & Cálculo automático: ventas del día menos (prorrateo semanal más compras adicionales). & Alta & V-PRE-04. \\
-RF-09 & Costos indirectos fijos & Registro de gastos mensuales (sueldos, electricidad, agua, internet, contador). & Alta & V-PRE-05. \\
-RF-10 & Cálculo de utilidad (BAI) & Deducción de costos indirectos a la suma acumulada mensual de márgenes brutos. & Alta & V-PRE-06. \\
-RF-11 & Parametrización fiscal & Configuración de tasas tributarias por el contador con visto bueno del dueño. & Alta & V-PRE-07, V-ENT2-10 y V-ENT2-11. \\
-RF-12 & Liquidación de impuestos & Cálculo estimado de obligaciones tributarias en base a ventas netas del periodo. & Alta & V-PRE-07 y V-ENT2-11. \\
-RF-13 & Margen neto final & Cálculo del beneficio neto restando cargas tributarias e intereses financieros al BAI. & Alta & V-PRE-06. \\
-RF-14 & Estado financiero NIIF 18 & Generación de reporte mensual bajo estructura Operación, Financiamiento, Fiscal. & Alta & V-PRE-08. \\
-RF-15 & Gestión de comprobantes & Carga y almacenamiento comprimido de archivos PDF/JPG asociados a egresos. & Alta & V-PRE-09, V-ENT2-12 y V-ENT2-15. \\
-RF-16 & Búsqueda para SUNAT & Motor de filtrado de comprobantes por rango de fechas, RUC o código de gasto. & Media & V-ENT2-12. \\
-RF-17 & Ranking de carta & Reporte estadístico de productos por volumen de ventas físicas e ingresos. & Alta & V-ENT1-03, V-ENT1-04 y V-ENT2-04. \\
-RF-18 & Dashboard de decisión & Visualización gráfica de platos estrella y de bajo rendimiento. & Media & Pendiente de definir; F-02 no aporta criterio. \\
-RF-19 & Exportación oficial & Exportación estructurada de balances a formatos XLSX (Excel) y PDF. & Media & V-ENT2-04. \\
-RF-20 & Auditoría de historial & Registro inmutable de versiones de precios y modificaciones contables. & Alta & V-PRE-13, V-ENT2-08, V-ENT2-09 y V-ENT2-14. \\
-\end{longtable}
-}
-
-\subsection{Requisitos no funcionales (RNF)}
-\label{subsec:rnf}
-
-La Tabla~\ref{tab:rnf} lista los ocho requisitos no funcionales del
-catálogo consolidado. La columna \emph{métrica} recoge solo las magnitudes
-numéricas que F-02 declara de forma explícita; cuando el catálogo no
-cuantifica la restricción se indica esa ausencia en lugar de suponer un
-umbral.
-
-% TODO: F-02 (sección 6.2) no define criterios de validación para los RNF.
-% Las métricas ausentes deben acordarse con el equipo y el cliente.
-
-{\small
-\begin{longtable}{L{1.35cm} L{2.75cm} L{4.35cm} L{2.55cm} L{2.4cm}}
-\caption{Catálogo de 8 requisitos no funcionales (F-02, sección 6.2).}
-\label{tab:rnf}\\
-\toprule
-\textbf{ID} & \textbf{Categoría} & \textbf{Descripción} & \textbf{Métrica} & \textbf{Criterio de validación} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{ID} & \textbf{Categoría} & \textbf{Descripción} & \textbf{Métrica} & \textbf{Criterio de validación} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-RNF-01 & Seguridad RBAC & Autenticación obligatoria mediante JWT/tokens SHA-256 y control de acceso por roles. & No cuantificada en F-02. & Pendiente de definir. \\
-RNF-02 & Trazabilidad y log & Registro inmutable de mutaciones críticas (anulaciones, ediciones) con usuario, IP y timestamp. & No cuantificada en F-02. & Pendiente de definir. \\
-RNF-03 & Rendimiento & Cierre diario y renderizado de balances NIIF 18 en menos de 3.0 segundos. & Menos de 3.0 s. & Pendiente de definir en el equipo real. \\
-RNF-04 & Respaldo y tolerancia & Copia de seguridad diaria automatizada y persistencia offline local en cortes de red. & Frecuencia diaria; cobertura offline no cuantificada. & Pendiente de definir. \\
-RNF-05 & Usabilidad adaptativa & Interfaz táctil optimizada para POS (botones mayores a 48 px) e interfaz web gerencial. & Botones mayores a 48 px. & Pendiente de validar en el dispositivo; el umbral es propuesta del equipo (I-OBS-05). \\
-RNF-06 & Precisión numérica & Manejo de variables monetarias con tipo DECIMAL(12,4) para evitar redondeos. & \texttt{DECIMAL(12,4)}. & Pendiente de definir. \\
-RNF-07 & Inmutabilidad de periodos & Bloqueo lógico de lectura/escritura sobre balances de meses cerrados por el contador. & No cuantificada en F-02. & V-ENT2-13. \\
-RNF-08 & Seguridad de comprobantes & Almacenamiento de comprobantes en carpetas cifradas con compresión automática. & No cuantificada en F-02. & Pendiente de definir. \\
-\end{longtable}
-}
-
-\subsection{Requisitos derivados por evento}
-\label{subsec:derivados}
-
-La Tabla~\ref{tab:derivados} reúne los treinta y nueve requisitos
-candidatos derivados de las cadenas de ilación: catorce de EV-PRE-01,
-cuatro de EV-OBS-01, cuatro de EV-ENT-01 y diecisiete de EV-ENT-02. La
-columna \emph{origen} conserva la cadena y el dato que sustentan cada
-enunciado; la columna \emph{criterio de validación} transcribe el criterio
-V-* correspondiente. Todos ellos se encuentran en estado \emph{candidato
-pendiente de validación}.
-
-{\small
-\begin{longtable}{L{2.05cm} L{2.75cm} L{6.0cm} L{3.4cm}}
-\caption{Requisitos candidatos derivados de la ilación (39 enunciados).}
-\label{tab:derivados}\\
-\toprule
-\textbf{ID} & \textbf{Origen} & \textbf{Requisito} & \textbf{Criterio de validación} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{ID} & \textbf{Origen} & \textbf{Requisito} & \textbf{Criterio de validación} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-\multicolumn{4}{l}{\textbf{Derivados de EV-PRE-01}} \\
-R-PRE-01 & I-PRE-05; RF-05 & El sistema deberá exigir que una compra destinada al cálculo gerencial se clasifique como semanal o adicional antes de asignar su costo. & V-PRE-01: rechazar asignación sin tipo y comprobar que no se aplica a ambas categorías. \\
-R-PRE-02 & I-PRE-05; RF-06 & Para una compra semanal, el sistema deberá distribuir su monto entre las jornadas de asignación aprobadas, conservando el total de la compra. & V-PRE-02: compra de S/500 y cinco jornadas: S/100 por jornada; total S/500. \\
-R-PRE-03 & I-PRE-05; RF-07 & Para una compra adicional, el sistema deberá asignar el total a la fecha de compra registrada. & V-PRE-03: compra adicional de S/80: S/80 en su fecha y S/0 en las demás. \\
-R-PRE-04 & I-PRE-01/02/04/05; RF-08 & Para cada jornada, el sistema deberá calcular el margen bruto gerencial como ventas confirmadas menos costos gerenciales asignados a esa fecha. & V-PRE-04: ventas S/1\,000, cuota S/100 y adicional S/80: margen S/820. \\
-R-PRE-05 & I-PRE-06; RF-09 & El sistema deberá permitir registrar los costos indirectos con monto, concepto y periodo de imputación. & V-PRE-05: registrar un gasto de un mes y comprobar que se incluye una vez en ese periodo. \\
-R-PRE-06 & I-PRE-07/14; RF-10 y RF-13 & El sistema deberá calcular el resultado mensual anterior a impuestos usando las partidas y clasificaciones aprobadas por el contador. & V-PRE-06: conciliar ventas, costos, gastos y partidas financieras con el caso de referencia aprobado. \\
-R-PRE-07 & I-PRE-08/09; RF-11 y RF-12 & El sistema deberá calcular cada obligación tributaria con la regla aprobada y vigente para su tributo, régimen y periodo. & V-PRE-07: sin regla aplicable, informar configuración incompleta; con regla aprobada, reproducir su caso de prueba. \\
-R-PRE-08 & I-PRE-10/14; RF-14 & El sistema deberá generar el reporte mensual mediante la plantilla contable aprobada para el negocio. & V-PRE-08: comparar partidas, subtotales y totales con el ejemplo validado por el contador. \\
-R-PRE-09 & I-PRE-11/13; RF-15 & El sistema deberá permitir vincular un archivo PDF o JPG validado a un egreso identificado. & V-PRE-09: adjuntar un archivo permitido y abrirlo desde el egreso correcto. \\
-R-PRE-10 & I-PRE-03; RF-03 & Al finalizar una jornada, el sistema deberá mostrar el total de ventas confirmadas incluidas en el corte. & V-PRE-10: comparar el total con las ventas confirmadas de un conjunto conocido y comprobar exclusiones autorizadas. \\
-R-PRE-11 & I-PRE-02; ampliación de RF-08 & El sistema deberá permitir registrar el costo directo de un producto indicando importe, base y vigencia. & V-PRE-11: recuperar el costo registrado y comprobar que el cálculo usa solo la política de imputación aprobada. \\
-R-PRE-12 & I-PRE-12; RF-02 & El sistema deberá permitir al usuario autorizado registrar productos de la carta con nombre, categoría y precio de venta. & V-PRE-12: registrar un producto de F-07 y comprobar categoría y precio en el POS. \\
-R-PRE-13 & I-PRE-12; RF-02 y RF-20 & El sistema deberá conservar en cada venta el precio efectivamente aplicado a sus productos. & V-PRE-13: cambiar el precio de carta y comprobar que una venta anterior conserva el precio original. \\
-R-PRE-14 & I-PRE-11/13/14; RF-15, RF-16 y RF-19 & El sistema deberá generar para una fecha un reporte de egresos con tipo de costo, concepto, monto y vínculo al comprobante disponible. & V-PRE-14: comparar registros con el reporte y acceder a cada comprobante vinculado. \\
-\multicolumn{4}{l}{\textbf{Derivados de EV-OBS-01}} \\
-R-OBS-01 & I-OBS-04; RF-01 & Al confirmar un pedido, el sistema deberá asignarle un identificador único. & V-OBS-01: confirmar dos pedidos y comprobar que sus identificadores difieren. \\
-R-OBS-02 & I-OBS-02; RF-01 & Al confirmar un pedido, el sistema deberá generar una comanda con su identificador, productos, cantidades y adicionales seleccionados. & V-OBS-02: comprobar coincidencia completa entre pedido confirmado y comanda. \\
-R-OBS-03 & I-OBS-04; función de cocina de F-01 & El sistema deberá permitir al rol de cocina actualizar el estado del pedido según las transiciones autorizadas. & V-OBS-03: con la matriz de estados aprobada, aceptar una transición permitida y rechazar una prohibida. \\
-R-OBS-04 & I-OBS-03; F-04; RF-01 & El sistema deberá permitir a caja editar los ítems del pedido antes de confirmarlo. & V-OBS-04: agregar un ítem, corregir cantidad y confirmar una sola venta. \\
-\multicolumn{4}{l}{\textbf{Derivados de EV-ENT-01}} \\
-R-ENT1-01 & I-ENT1-04; RF-04 & El sistema deberá permitir registrar una compra indicando proveedor, fecha, insumo y monto. & V-ENT1-01: registrar una compra y recuperar esos cuatro campos sin alteración. \\
-R-ENT1-02 & I-ENT1-01; propuesta del equipo; RF-02 & El sistema deberá permitir al usuario autorizado actualizar la disponibilidad de un producto de la carta. & V-ENT1-02: marcar un producto agotado y comprobar su tratamiento en el POS según la política aprobada. \\
-R-ENT1-03 & I-ENT1-01; RF-17 & Para un periodo seleccionado, el sistema deberá mostrar por producto la cantidad vendida y el importe de ventas confirmado. & V-ENT1-03: comparar el ranking con un conjunto de ventas conocido, incluidas anulaciones autorizadas. \\
-R-ENT1-04 & I-ENT1-01; E-PRE-12; RF-17 & Para un periodo seleccionado, el sistema deberá incluir en el resumen comercial los productos activos de la carta que registren cero ventas. & V-ENT1-04: seleccionar un periodo con un producto sin ventas y comprobar que aparece con cantidad e importe cero. \\
-\multicolumn{4}{l}{\textbf{Derivados de EV-ENT-02}} \\
-R-ENT2-01 & I-ENT2-01/02/03; RF-18 y RNF-01 & El sistema deberá permitir consultar los reportes desde fuera del local a un usuario autenticado con permiso de administración. & V-ENT2-01: abrir el reporte con Jerry autorizado y rechazar acceso con un rol sin permiso. \\
-R-ENT2-02 & I-ENT2-04/06; RF-01 y RNF-05 & El POS deberá permitir seleccionar productos y adicionales mediante controles táctiles. & V-ENT2-02: seleccionar producto y cremas en el dispositivo aprobado y comprobar el detalle. \\
-R-ENT2-03 & I-ENT2-05/07; RF-03 & El sistema deberá permitir al usuario autorizado configurar el inicio y fin de una jornada. & V-ENT2-03: cambiar límites de jornada y comprobar qué ventas entran en el corte. \\
-R-ENT2-04 & I-ENT2-07/10; RF-17 y RF-19 & El sistema deberá generar resúmenes comerciales diarios, semanales y mensuales para el periodo seleccionado. & V-ENT2-04: conciliar el detalle de ventas con cada agregado solicitado. \\
-R-ENT2-05 & I-ENT2-11; RF-02 & El sistema deberá impedir confirmar un producto marcado como agotado. & V-ENT2-05: marcar agotado y comprobar que una nueva selección no se confirma. \\
-R-ENT2-06 & I-ENT2-12/13; RF-05 a RF-07 & El sistema deberá permitir al usuario autorizado seleccionar la modalidad diaria o semanal de imputación de una compra. & V-ENT2-06: registrar ambas modalidades y comprobar sus asignaciones diferentes. \\
-R-ENT2-07 & I-ENT2-14; RF-06 & El sistema deberá repartir una compra semanal solo entre las jornadas efectivamente laboradas del calendario aprobado. & V-ENT2-07: S/500 en cuatro jornadas: S/125 por jornada; cero en feriado; total S/500. \\
-R-ENT2-08 & I-ENT2-16; RF-20 & El sistema deberá registrar usuario, momento y motivo de una corrección del importe de compra. & V-ENT2-08: corregir S/5000 a S/500 y recuperar los valores anterior y nuevo con responsable. \\
-R-ENT2-09 & I-ENT2-16/24; RF-06 y RF-20 & El sistema deberá recalcular las asignaciones afectadas por una corrección de compra cuando los periodos estén abiertos. & V-ENT2-09: corregir una compra abierta y comprobar que las cuotas suman el nuevo monto. \\
-R-ENT2-10 & I-ENT2-18/19; RF-11 & El sistema deberá exigir autorización de Jerry antes de activar una modificación de reglas tributarias propuesta por el contador. & V-ENT2-10: impedir activar sin autorización y registrar aprobación al activar. \\
-R-ENT2-11 & I-ENT2-19; RF-11 y RF-12 & El sistema deberá seleccionar la versión de regla tributaria aplicable según la fecha de efecto y el periodo evaluado. & V-ENT2-11: probar fechas antes y después de un cambio autorizado y verificar versión usada. \\
-R-ENT2-12 & I-ENT2-22; RF-15 y RF-16 & El sistema deberá permitir acceder al comprobante asociado desde el egreso mostrado en el historial. & V-ENT2-12: consultar egreso y recuperar factura correcta con fecha y concepto. \\
-R-ENT2-13 & I-ENT2-24; RNF-07 & El sistema deberá bloquear la edición directa de ventas de un periodo cerrado. & V-ENT2-13: intentar anular una venta cerrada y comprobar rechazo sin alterar el periodo. \\
-R-ENT2-14 & I-ENT2-09/24; RF-20 & El sistema deberá permitir registrar un ajuste autorizado vinculado a una venta de periodo cerrado. & V-ENT2-14: autorizar ajuste y recuperar vínculo, responsable y efecto en el periodo aprobado. \\
-R-ENT2-15 & I-ENT2-25; RF-15; umbral pendiente & El sistema deberá comprimir adjuntos PDF que excedan el umbral aprobado sin perder legibilidad del sustento. & V-ENT2-15: con archivo de referencia y umbral aprobado, comprobar tamaño, legibilidad y vínculo al egreso. \\
-R-ENT2-16 & I-ENT2-26; validación de RF-01 y RF-04 & El sistema deberá rechazar valores inválidos según las reglas de cada campo y mostrar la causa al usuario. & V-ENT2-16: probar monto prohibido y fecha inválida, y comprobar el mensaje y ausencia de registro definitivo. \\
-R-ENT2-17 & I-ENT2-28; RF-01 & El sistema deberá registrar las ventas admitidas de cada canal de atención en el consolidado comercial. & V-ENT2-17: registrar presencial y pedido externo admitido y comprobar ambos en el resumen. \\
+\textbf{RF-01}\newline Funcional & \textbf{Registro de ventas POS.} Captura de órdenes desglosando productos, adicionales, canal y método de cobro. \emph{Prioridad:} Alta. & V-OBS-04; pendiente de aprobación formal. & Caja & Jose Chino; Victor Lupinta \\
+\textbf{RF-02}\newline Funcional & \textbf{Gestión de carta.} Administración del menú, precios, estados (activo/agotado) e historial. \emph{Prioridad:} Alta. & V-PRE-12, V-PRE-13 y V-ENT2-05. & Admi\-nistrador & Gabriel Pajuelo; Jose Chino \\
+\textbf{RF-03}\newline Funcional & \textbf{Cierre diario de jornada.} Consolidación automática de ventas confirmadas al corte de jornada con bloqueo de edición. \emph{Prioridad:} Alta. & V-PRE-10 y V-ENT2-03. & Caja; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-04}\newline Funcional & \textbf{Registro de compras.} Ingreso de compras indicando proveedor, RUC, fecha, monto y categoría de insumo. \emph{Prioridad:} Alta. & V-ENT1-01; validación de campos en V-ENT2-16. & Admi\-nistrador & Jose Chino; Victor Lupinta \\
+\textbf{RF-05}\newline Funcional & \textbf{Clasificación de compra.} Etiquetado de compras como \enquote{Semanal para Prorrateo} o \enquote{Adicional del Día}. \emph{Prioridad:} Alta. & V-PRE-01 y V-ENT2-06. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-06}\newline Funcional & \textbf{Motor de prorrateo semanal.} División automática del monto de compras semanales entre los 5 días laborables de la semana. \emph{Prioridad:} Alta. & V-PRE-02, V-ENT2-07 y V-ENT2-09. & Dueño (Jerry); contador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-07}\newline Funcional & \textbf{Imputación adicional.} Carga del 100\,\% del valor de compras imprevistas a la fecha exacta de ejecución. \emph{Prioridad:} Alta. & V-PRE-03. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-08}\newline Funcional & \textbf{Margen bruto diario.} Cálculo automático: ventas del día menos (prorrateo semanal más compras adicionales). \emph{Prioridad:} Alta. & V-PRE-04. & Dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-09}\newline Funcional & \textbf{Costos indirectos fijos.} Registro de gastos mensuales (sueldos, electricidad, agua, internet, contador). \emph{Prioridad:} Alta. & V-PRE-05. & Admi\-nistrador; contador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-10}\newline Funcional & \textbf{Cálculo de utilidad (BAI).} Deducción de costos indirectos a la suma acumulada mensual de márgenes brutos. \emph{Prioridad:} Alta. & V-PRE-06. & Dueño (Jerry); contador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-11}\newline Funcional & \textbf{Parametrización fiscal.} Configuración de tasas tributarias por el contador con visto bueno del dueño. \emph{Prioridad:} Alta. & V-PRE-07, V-ENT2-10 y V-ENT2-11. & Contador; dueño (Jerry) & Armando Enriquez; José Choquehuanca \\
+\textbf{RF-12}\newline Funcional & \textbf{Liquidación de impuestos.} Cálculo estimado de obligaciones tributarias en base a ventas netas del periodo. \emph{Prioridad:} Alta. & V-PRE-07 y V-ENT2-11. & Contador; dueño (Jerry) & Armando Enriquez; José Choquehuanca \\
+\textbf{RF-13}\newline Funcional & \textbf{Margen neto final.} Cálculo del beneficio neto restando cargas tributarias e intereses financieros al BAI. \emph{Prioridad:} Alta. & V-PRE-06. & Dueño (Jerry); contador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{RF-14}\newline Funcional & \textbf{Estado financiero NIIF 18.} Generación de reporte mensual bajo estructura Operación, Financiamiento, Fiscal. \emph{Prioridad:} Alta. & V-PRE-08. & Contador; dueño (Jerry) & Armando Enriquez; José Choquehuanca \\
+\textbf{RF-15}\newline Funcional & \textbf{Gestión de comprobantes.} Carga y almacenamiento comprimido de archivos PDF/JPG asociados a egresos. \emph{Prioridad:} Alta. & V-PRE-09, V-ENT2-12 y V-ENT2-15. & Admi\-nistrador; contador & Gabriel Pajuelo; José Choquehuanca \\
+\textbf{RF-16}\newline Funcional & \textbf{Búsqueda para SUNAT.} Motor de filtrado de comprobantes por rango de fechas, RUC o código de gasto. \emph{Prioridad:} Media. & V-ENT2-12. & Contador & Armando Enriquez; José Choquehuanca \\
+\textbf{RF-17}\newline Funcional & \textbf{Ranking de carta.} Reporte estadístico de productos por volumen de ventas físicas e ingresos. \emph{Prioridad:} Alta. & V-ENT1-03, V-ENT1-04 y V-ENT2-04. & Dueño (Jerry) & Jose Chino; Victor Lupinta \\
+\textbf{RF-18}\newline Funcional & \textbf{Dashboard de decisión.} Visualización gráfica de platos estrella y de bajo rendimiento. \emph{Prioridad:} Media. & Pendiente de definir; F-02 no aporta criterio. & Dueño (Jerry) & Gabriel Pajuelo; José Choquehuanca \\
+\textbf{RF-19}\newline Funcional & \textbf{Exportación oficial.} Exportación estructurada de balances a formatos XLSX (Excel) y PDF. \emph{Prioridad:} Media. & V-ENT2-04. & Contador; dueño (Jerry) & Armando Enriquez; José Choquehuanca \\
+\textbf{RF-20}\newline Funcional & \textbf{Auditoría de historial.} Registro inmutable de versiones de precios y modificaciones contables. \emph{Prioridad:} Alta. & V-PRE-13, V-ENT2-08, V-ENT2-09 y V-ENT2-14. & Admi\-nistrador; contador & Armando Enriquez; José Choquehuanca \\
+\textbf{RNF-01}\newline No funcional & \textbf{Seguridad RBAC.} Autenticación obligatoria mediante JWT/tokens SHA-256 y control de acceso por roles. \emph{Métrica:} No cuantificada en F-02. & Pendiente de definir. & Todos los usuarios & Gabriel Pajuelo; José Choquehuanca \\
+\textbf{RNF-02}\newline No funcional & \textbf{Trazabilidad y log.} Registro inmutable de mutaciones críticas (anulaciones, ediciones) con usuario, IP y timestamp. \emph{Métrica:} No cuantificada en F-02. & Pendiente de definir. & Admi\-nistrador; contador & Armando Enriquez; José Choquehuanca \\
+\textbf{RNF-03}\newline No funcional & \textbf{Rendimiento.} Cierre diario y renderizado de balances NIIF 18 en menos de 3.0 segundos. \emph{Métrica:} Menos de 3.0 s. & Pendiente de definir en el equipo real. & Caja; dueño (Jerry) & Jose Chino; Victor Lupinta \\
+\textbf{RNF-04}\newline No funcional & \textbf{Respaldo y tolerancia.} Copia de seguridad diaria automatizada y persistencia offline local en cortes de red. \emph{Métrica:} Frecuencia diaria; cobertura offline no cuantificada. & Pendiente de definir. & Todos los usuarios & Victor Lupinta; Armando Enriquez \\
+\textbf{RNF-05}\newline No funcional & \textbf{Usabilidad adaptativa.} Interfaz táctil optimizada para POS (botones mayores a 48 px) e interfaz web gerencial. \emph{Métrica:} Botones mayores a 48 px. & Pendiente de validar en el dispositivo; el umbral es propuesta del equipo (I-OBS-05). & Caja; dueño (Jerry) & Jose Chino; Victor Lupinta \\
+\textbf{RNF-06}\newline No funcional & \textbf{Precisión numérica.} Manejo de variables monetarias con tipo DECIMAL(12,4) para evitar redondeos. \emph{Métrica:} \texttt{DECIMAL(12,4)}. & Pendiente de definir. & Dueño (Jerry); contador & Armando Enriquez; Gabriel Pajuelo \\
+\textbf{RNF-07}\newline No funcional & \textbf{Inmutabilidad de periodos.} Bloqueo lógico de lectura/escritura sobre balances de meses cerrados por el contador. \emph{Métrica:} No cuantificada en F-02. & V-ENT2-13. & Contador; dueño (Jerry) & Armando Enriquez; José Choquehuanca \\
+\textbf{RNF-08}\newline No funcional & \textbf{Seguridad de comprobantes.} Almacenamiento de comprobantes en carpetas cifradas con compresión automática. \emph{Métrica:} No cuantificada en F-02. & Pendiente de definir. & Contador; administrador & Armando Enriquez; José Choquehuanca \\
+\textbf{R-PRE-01}\newline Candidato & \emph{Origen:} I-PRE-05; RF-05. El sistema deberá exigir que una compra destinada al cálculo gerencial se clasifique como semanal o adicional antes de asignar su costo. & V-PRE-01: rechazar asignación sin tipo y comprobar que no se aplica a ambas categorías. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-02}\newline Candidato & \emph{Origen:} I-PRE-05; RF-06. Para una compra semanal, el sistema deberá distribuir su monto entre las jornadas de asignación aprobadas, conservando el total de la compra. & V-PRE-02: compra de S/500 y cinco jornadas: S/100 por jornada; total S/500. & Admi\-nistrador; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-03}\newline Candidato & \emph{Origen:} I-PRE-05; RF-07. Para una compra adicional, el sistema deberá asignar el total a la fecha de compra registrada. & V-PRE-03: compra adicional de S/80: S/80 en su fecha y S/0 en las demás. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-04}\newline Candidato & \emph{Origen:} I-PRE-01/02/04/05; RF-08. Para cada jornada, el sistema deberá calcular el margen bruto gerencial como ventas confirmadas menos costos gerenciales asignados a esa fecha. & V-PRE-04: ventas S/1\,000, cuota S/100 y adicional S/80: margen S/820. & Dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-05}\newline Candidato & \emph{Origen:} I-PRE-06; RF-09. El sistema deberá permitir registrar los costos indirectos con monto, concepto y periodo de imputación. & V-PRE-05: registrar un gasto de un mes y comprobar que se incluye una vez en ese periodo. & Admi\-nistrador; contador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-06}\newline Candidato & \emph{Origen:} I-PRE-07/14; RF-10 y RF-13. El sistema deberá calcular el resultado mensual anterior a impuestos usando las partidas y clasificaciones aprobadas por el contador. & V-PRE-06: conciliar ventas, costos, gastos y partidas financieras con el caso de referencia aprobado. & Contador; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-07}\newline Candidato & \emph{Origen:} I-PRE-08/09; RF-11 y RF-12. El sistema deberá calcular cada obligación tributaria con la regla aprobada y vigente para su tributo, régimen y periodo. & V-PRE-07: sin regla aplicable, informar configuración incompleta; con regla aprobada, reproducir su caso de prueba. & Contador; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-08}\newline Candidato & \emph{Origen:} I-PRE-10/14; RF-14. El sistema deberá generar el reporte mensual mediante la plantilla contable aprobada para el negocio. & V-PRE-08: comparar partidas, subtotales y totales con el ejemplo validado por el contador. & Contador; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-09}\newline Candidato & \emph{Origen:} I-PRE-11/13; RF-15. El sistema deberá permitir vincular un archivo PDF o JPG validado a un egreso identificado. & V-PRE-09: adjuntar un archivo permitido y abrirlo desde el egreso correcto. & Admi\-nistrador; contador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-10}\newline Candidato & \emph{Origen:} I-PRE-03; RF-03. Al finalizar una jornada, el sistema deberá mostrar el total de ventas confirmadas incluidas en el corte. & V-PRE-10: comparar el total con las ventas confirmadas de un conjunto conocido y comprobar exclusiones autorizadas. & Caja; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-11}\newline Candidato & \emph{Origen:} I-PRE-02; ampliación de RF-08. El sistema deberá permitir registrar el costo directo de un producto indicando importe, base y vigencia. & V-PRE-11: recuperar el costo registrado y comprobar que el cálculo usa solo la política de imputación aprobada. & Admi\-nistrador; contador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-12}\newline Candidato & \emph{Origen:} I-PRE-12; RF-02. El sistema deberá permitir al usuario autorizado registrar productos de la carta con nombre, categoría y precio de venta. & V-PRE-12: registrar un producto de F-07 y comprobar categoría y precio en el POS. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-13}\newline Candidato & \emph{Origen:} I-PRE-12; RF-02 y RF-20. El sistema deberá conservar en cada venta el precio efectivamente aplicado a sus productos. & V-PRE-13: cambiar el precio de carta y comprobar que una venta anterior conserva el precio original. & Caja; administrador & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-PRE-14}\newline Candidato & \emph{Origen:} I-PRE-11/13/14; RF-15, RF-16 y RF-19. El sistema deberá generar para una fecha un reporte de egresos con tipo de costo, concepto, monto y vínculo al comprobante disponible. & V-PRE-14: comparar registros con el reporte y acceder a cada comprobante vinculado. & Contador; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez \\
+\textbf{R-OBS-01}\newline Candidato & \emph{Origen:} I-OBS-04; RF-01. Al confirmar un pedido, el sistema deberá asignarle un identificador único. & V-OBS-01: confirmar dos pedidos y comprobar que sus identificadores difieren. & Caja & Victor Lupinta; José Choquehuanca \\
+\textbf{R-OBS-02}\newline Candidato & \emph{Origen:} I-OBS-02; RF-01. Al confirmar un pedido, el sistema deberá generar una comanda con su identificador, productos, cantidades y adicionales seleccionados. & V-OBS-02: comprobar coincidencia completa entre pedido confirmado y comanda. & Caja; cocina & Victor Lupinta; José Choquehuanca \\
+\textbf{R-OBS-03}\newline Candidato & \emph{Origen:} I-OBS-04; función de cocina de F-01. El sistema deberá permitir al rol de cocina actualizar el estado del pedido según las transiciones autorizadas. & V-OBS-03: con la matriz de estados aprobada, aceptar una transición permitida y rechazar una prohibida. & Cocina & Victor Lupinta; José Choquehuanca \\
+\textbf{R-OBS-04}\newline Candidato & \emph{Origen:} I-OBS-03; F-04; RF-01. El sistema deberá permitir a caja editar los ítems del pedido antes de confirmarlo. & V-OBS-04: agregar un ítem, corregir cantidad y confirmar una sola venta. & Caja & Victor Lupinta; José Choquehuanca \\
+\textbf{R-ENT1-01}\newline Candidato & \emph{Origen:} I-ENT1-04; RF-04. El sistema deberá permitir registrar una compra indicando proveedor, fecha, insumo y monto. & V-ENT1-01: registrar una compra y recuperar esos cuatro campos sin alteración. & Admi\-nistrador & Jose Chino; Victor Lupinta \\
+\textbf{R-ENT1-02}\newline Candidato & \emph{Origen:} I-ENT1-01; propuesta del equipo; RF-02. El sistema deberá permitir al usuario autorizado actualizar la disponibilidad de un producto de la carta. & V-ENT1-02: marcar un producto agotado y comprobar su tratamiento en el POS según la política aprobada. & Admi\-nistrador; caja & Jose Chino; Victor Lupinta \\
+\textbf{R-ENT1-03}\newline Candidato & \emph{Origen:} I-ENT1-01; RF-17. Para un periodo seleccionado, el sistema deberá mostrar por producto la cantidad vendida y el importe de ventas confirmado. & V-ENT1-03: comparar el ranking con un conjunto de ventas conocido, incluidas anulaciones autorizadas. & Dueño (Jerry) & Jose Chino; Victor Lupinta \\
+\textbf{R-ENT1-04}\newline Candidato & \emph{Origen:} I-ENT1-01; E-PRE-12; RF-17. Para un periodo seleccionado, el sistema deberá incluir en el resumen comercial los productos activos de la carta que registren cero ventas. & V-ENT1-04: seleccionar un periodo con un producto sin ventas y comprobar que aparece con cantidad e importe cero. & Dueño (Jerry) & Jose Chino; Victor Lupinta \\
+\textbf{R-ENT2-01}\newline Candidato & \emph{Origen:} I-ENT2-01/02/03; RF-18 y RNF-01. El sistema deberá permitir consultar los reportes desde fuera del local a un usuario autenticado con permiso de administración. & V-ENT2-01: abrir el reporte con Jerry autorizado y rechazar acceso con un rol sin permiso. & Dueño (Jerry); administrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-02}\newline Candidato & \emph{Origen:} I-ENT2-04/06; RF-01 y RNF-05. El POS deberá permitir seleccionar productos y adicionales mediante controles táctiles. & V-ENT2-02: seleccionar producto y cremas en el dispositivo aprobado y comprobar el detalle. & Caja & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-03}\newline Candidato & \emph{Origen:} I-ENT2-05/07; RF-03. El sistema deberá permitir al usuario autorizado configurar el inicio y fin de una jornada. & V-ENT2-03: cambiar límites de jornada y comprobar qué ventas entran en el corte. & Admi\-nistrador; caja & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-04}\newline Candidato & \emph{Origen:} I-ENT2-07/10; RF-17 y RF-19. El sistema deberá generar resúmenes comerciales diarios, semanales y mensuales para el periodo seleccionado. & V-ENT2-04: conciliar el detalle de ventas con cada agregado solicitado. & Dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-05}\newline Candidato & \emph{Origen:} I-ENT2-11; RF-02. El sistema deberá impedir confirmar un producto marcado como agotado. & V-ENT2-05: marcar agotado y comprobar que una nueva selección no se confirma. & Caja & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-06}\newline Candidato & \emph{Origen:} I-ENT2-12/13; RF-05 a RF-07. El sistema deberá permitir al usuario autorizado seleccionar la modalidad diaria o semanal de imputación de una compra. & V-ENT2-06: registrar ambas modalidades y comprobar sus asignaciones diferentes. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-07}\newline Candidato & \emph{Origen:} I-ENT2-14; RF-06. El sistema deberá repartir una compra semanal solo entre las jornadas efectivamente laboradas del calendario aprobado. & V-ENT2-07: S/500 en cuatro jornadas: S/125 por jornada; cero en feriado; total S/500. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-08}\newline Candidato & \emph{Origen:} I-ENT2-16; RF-20. El sistema deberá registrar usuario, momento y motivo de una corrección del importe de compra. & V-ENT2-08: corregir S/5000 a S/500 y recuperar los valores anterior y nuevo con responsable. & Admi\-nistrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-09}\newline Candidato & \emph{Origen:} I-ENT2-16/24; RF-06 y RF-20. El sistema deberá recalcular las asignaciones afectadas por una corrección de compra cuando los periodos estén abiertos. & V-ENT2-09: corregir una compra abierta y comprobar que las cuotas suman el nuevo monto. & Admi\-nistrador; contador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-10}\newline Candidato & \emph{Origen:} I-ENT2-18/19; RF-11. El sistema deberá exigir autorización de Jerry antes de activar una modificación de reglas tributarias propuesta por el contador. & V-ENT2-10: impedir activar sin autorización y registrar aprobación al activar. & Contador; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-11}\newline Candidato & \emph{Origen:} I-ENT2-19; RF-11 y RF-12. El sistema deberá seleccionar la versión de regla tributaria aplicable según la fecha de efecto y el periodo evaluado. & V-ENT2-11: probar fechas antes y después de un cambio autorizado y verificar versión usada. & Contador; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-12}\newline Candidato & \emph{Origen:} I-ENT2-22; RF-15 y RF-16. El sistema deberá permitir acceder al comprobante asociado desde el egreso mostrado en el historial. & V-ENT2-12: consultar egreso y recuperar factura correcta con fecha y concepto. & Contador; administrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-13}\newline Candidato & \emph{Origen:} I-ENT2-24; RNF-07. El sistema deberá bloquear la edición directa de ventas de un periodo cerrado. & V-ENT2-13: intentar anular una venta cerrada y comprobar rechazo sin alterar el periodo. & Contador; administrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-14}\newline Candidato & \emph{Origen:} I-ENT2-09/24; RF-20. El sistema deberá permitir registrar un ajuste autorizado vinculado a una venta de periodo cerrado. & V-ENT2-14: autorizar ajuste y recuperar vínculo, responsable y efecto en el periodo aprobado. & Dueño (Jerry); administrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-15}\newline Candidato & \emph{Origen:} I-ENT2-25; RF-15; umbral pendiente. El sistema deberá comprimir adjuntos PDF que excedan el umbral aprobado sin perder legibilidad del sustento. & V-ENT2-15: con archivo de referencia y umbral aprobado, comprobar tamaño, legibilidad y vínculo al egreso. & Admi\-nistrador; contador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-16}\newline Candidato & \emph{Origen:} I-ENT2-26; validación de RF-01 y RF-04. El sistema deberá rechazar valores inválidos según las reglas de cada campo y mostrar la causa al usuario. & V-ENT2-16: probar monto prohibido y fecha inválida, y comprobar el mensaje y ausencia de registro definitivo. & Caja; administrador & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
+\textbf{R-ENT2-17}\newline Candidato & \emph{Origen:} I-ENT2-28; RF-01. El sistema deberá registrar las ventas admitidas de cada canal de atención en el consolidado comercial. & V-ENT2-17: registrar presencial y pedido externo admitido y comprobar ambos en el resumen. & Caja; dueño (Jerry) & Gabriel Pajuelo; Armando Enriquez; José Choquehuanca \\
 \end{longtable}
 }
 
