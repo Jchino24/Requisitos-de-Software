@@ -66,13 +66,19 @@ no se rompen.
 │   ├── 03-cierre-mensual-niif18.png
 │   ├── 04-proceso-general.png
 │   └── 05-diagrama-clases.png
+├── .agents/skills/                # 12 Agent Skills universales reutilizables
 ├── .stitch/                       # Sistema de diseño semántico Google Stitch
-│   └── DESIGN.md                  # Tokens, tipografía, movimiento y reglas anti-patrón
-├── prototipo/                     # Prototipo web funcional (HTML/CSS/JS)
-│   ├── index.html                 # 6 vistas sincronizadas por rol
-│   ├── styles.css
-│   └── app.js
-├── interfaces/                    # Capturas del prototipo funcional (v2)
+│   └── DESIGN.md                  # Tokens (#FF3131, #F64301, #1F6636), tipografía y reglas
+├── docs/                          # Auditoría, branding, UX/UI, matriz, WCAG y QA
+│   ├── branding/GUIA_MARCA_RED_PEPPER.md
+│   └── ...                        # 10 informes técnicos y trazables
+├── prototipo/                     # Plataforma web modular (HTML/CSS/JS sin bundler)
+│   ├── index.html                 # Enrutador de portales (Cliente público vs Equipo)
+│   ├── assets/                    # Logotipos SVG + fotografías gastronómicas WebP
+│   └── src/                       # styles/, core/, components/ y apps/
+├── scripts/
+│   └── qa_verify.mjs              # Suite Chromium CDP multi-viewport, WCAG AA y E2E
+├── interfaces/                    # Capturas actualizadas del prototipo (v3)
 │   ├── fuentes/                   # Capturas originales v1 conservadas como referencia
 │   ├── 01-cliente-carta-pedido.png
 │   ├── 02-pos-mostrador.png
@@ -80,8 +86,9 @@ no se rompen.
 │   ├── 04-admin-dashboard-margen.png
 │   ├── 05-admin-abastecimiento-carta.png
 │   └── 06-admin-cierre-niif18-sunat.png
+├── CHANGELOG.md                   # Registro interno segmentado por Pull Request
 └── pdf/                           # ENTREGABLES compilados
-    ├── Requisitos_RedPepper.pdf   # Documento completo (86 páginas)
+    ├── Requisitos_RedPepper.pdf   # Documento completo
     └── secciones/
         ├── 01-educcion.pdf
         ├── 02-ilacion.pdf
@@ -182,19 +189,18 @@ La versión 2 corrige los defectos detectados en la v1:
 - **Diagrama general legible**: se reemplazaron los siete carriles ilegibles
   por tres fases encadenadas, con los roles codificados por color.
 
-## Interfaces de usuario (v2)
+## Interfaces de usuario (v3)
 
-La sección 5 documenta e incluye en `prototipo/` un prototipo web funcional
-(HTML, CSS y JavaScript sin dependencias externas) estructurado con el sistema
-de diseño semántico [`.stitch/DESIGN.md`](.stitch/DESIGN.md) (*Google Stitch
-`taste-design`*: paleta Alabastro Cálido `#FAF8F5`, tinta `#18181B`, acento
-único `#C22B22`, tipografía `Plus Jakarta Sans` + `JetBrains Mono` tabular,
-animación física con resorte y objetivos táctiles ≥ 44 px / ≥ 48 px en POS)
-con seis vistas sincronizadas para **lado del cliente**, **mostrador POS
-táctil**, **cocina (KDS)** y **administración / contabilidad NIIF 18 y
-SUNAT**. Corrige el rótulo de prorrateo a *jornadas hábiles efectivas* (P-14),
-alinea los productos con F-07 y separa el cálculo fiscal del marco NIIF 18. Los
-datos iniciales corresponden a un escenario de demostración.
+La sección 5 documenta e incluye en `prototipo/` la plataforma web modular
+(**RED PEPPER — Sánguches, Salchipapas & Más**) con tokens centralizados
+([`prototipo/src/styles/tokens.css`](prototipo/src/styles/tokens.css), paleta
+oficial `#FF3131`, `#F64301` y `#1F6636` auditada WCAG 2.2 AA), activos WebP
+optimizados, componentes reutilizables (`core/`, `components/`, `apps/`) y
+separación estricta entre la **experiencia pública del cliente** y los portales
+internos (**Mostrador POS `>= 48 px`**, **Cocina KDS**, **Administración /
+NIIF 18 y SUNAT** y **Guía de Marca Interna**). Las pruebas multi-viewport
+(`320 px` – `1920 px`) y E2E se ejecutan con `node scripts/qa_verify.mjs`. Los
+datos iniciales corresponden a un escenario de demostración local.
 
 ## Diagrama de clases
 

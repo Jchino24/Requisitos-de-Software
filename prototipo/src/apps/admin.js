@@ -317,9 +317,9 @@
           <div class="card">
             <div class="card-head">
               <h2 class="card-title">Comprobantes SUNAT</h2>
-              <div>
+              <div style="flex:1 1 160px; max-width:240px;">
                 <label for="sunat-filter-mod" class="sr-only">Buscar comprobante por RUC o proveedor</label>
-                <input id="sunat-filter-mod" type="search" class="input-control" style="min-width:190px;" value="${esc(st._sunatSearch || "")}" placeholder="Buscar RUC o proveedor..." />
+                <input id="sunat-filter-mod" type="search" class="input-control" value="${esc(st._sunatSearch || "")}" placeholder="Buscar RUC o proveedor..." />
               </div>
             </div>
             <div class="table-wrap">
