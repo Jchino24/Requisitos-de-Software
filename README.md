@@ -115,7 +115,7 @@ tlmgr install babel-spanish csquotes booktabs longtable array geometry \
 Desde la raíz del repositorio, con `make`:
 
 ```bash
-make            # documento completo + los 4 PDF de sección
+make            # documento completo + los 5 PDF de sección
 make general    # solo pdf/Requisitos_RedPepper.pdf
 make secciones  # solo pdf/secciones/*.pdf (compila antes el maestro)
 make diagramas  # regenera los PNG desde las fuentes TikZ (300 dpi)
@@ -210,6 +210,19 @@ vectorial (PDF/SVG) desde la herramienta de origen y reemplazar
 - **Docente:** Dr. Yasiel Pérez Vera
 - **Integrantes:** Gabriel Pajuelo, Armando Enriquez, Victor Lupinta,
   Jose Chino, José Choquehuanca
+
+## Organización de educción e ilación
+
+Los 52 registros de educción y las 52 cadenas de ilación se presentan en
+tablas LaTeX. La sección de educción distingue a **Jerry como fuente de
+información** de los cinco integrantes, autores del documento colectivo. La
+distribución individual por evento se ofrece como propuesta editorial y debe
+verificarse con los registros del grupo. La matriz única de ilación muestra
+en cada una de sus 52 filas evidencia, razonamiento, conclusión, actor
+relacionado y autores propuestos. La matriz de especificación reúne 20 RF,
+8 RNF y 39 requisitos candidatos, también con actor y autores por fila.
+La ilación conserva una tabla de cambios con sus razones. Los actores del
+sistema son roles de uso y no se confunden con los autores del informe.
 
 ## Advertencia sobre el estado del contenido
 
