@@ -13,7 +13,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (81 páginas, A4):**
+**Documento completo (85 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
@@ -24,7 +24,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 | 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 32 |
 | 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 11 |
 | 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
-| 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 2 |
+| 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 6 |
 
 Cada sección conserva la numeración del documento general (la sección 2 sigue
 siendo la 2 aunque se abra sola), de modo que las referencias entre secciones
@@ -52,7 +52,7 @@ no se rompen.
 │       ├── ilacion.tex            # Fichas de ilación ILA-PRE, OBS, ENT1, ENT2 y RNF
 │       ├── especificacion.tex     # Catálogos RF, RNF (con fichas), y 39 derivados
 │       ├── diagramas.tex          # 4 figuras de proceso + diagrama de clases
-│       └── interfaces.tex         # Pantallas del prototipo (v1)
+│       └── interfaces.tex         # Pantallas funcionales del prototipo (v2)
 ├── diagramas/                     # IMÁGENES del documento (PNG 300 dpi, v2)
 │   ├── fuentes/                   # Fuentes TikZ de cada figura + estilo común
 │   │   ├── estilo.tex
@@ -66,12 +66,20 @@ no se rompen.
 │   ├── 03-cierre-mensual-niif18.png
 │   ├── 04-proceso-general.png
 │   └── 05-diagrama-clases.png
-├── interfaces/                    # Pantallas del prototipo (v1)
-│   ├── fuentes/                   # Capturas originales sin recomprimir
-│   ├── 01-dashboard-margen.png
-│   └── 02-pos-mostrador.png
+├── prototipo/                     # Prototipo web funcional (HTML/CSS/JS)
+│   ├── index.html                 # 6 vistas sincronizadas por rol
+│   ├── styles.css
+│   └── app.js
+├── interfaces/                    # Capturas del prototipo funcional (v2)
+│   ├── fuentes/                   # Capturas originales v1 conservadas como referencia
+│   ├── 01-cliente-carta-pedido.png
+│   ├── 02-pos-mostrador.png
+│   ├── 03-cocina-comandas.png
+│   ├── 04-admin-dashboard-margen.png
+│   ├── 05-admin-abastecimiento-carta.png
+│   └── 06-admin-cierre-niif18-sunat.png
 └── pdf/                           # ENTREGABLES compilados
-    ├── Requisitos_RedPepper.pdf   # Documento completo (26 páginas)
+    ├── Requisitos_RedPepper.pdf   # Documento completo (85 páginas)
     └── secciones/
         ├── 01-educcion.pdf
         ├── 02-ilacion.pdf
@@ -172,16 +180,15 @@ La versión 2 corrige los defectos detectados en la v1:
 - **Diagrama general legible**: se reemplazaron los siete carriles ilegibles
   por tres fases encadenadas, con los roles codificados por color.
 
-## Interfaces de usuario (v1)
+## Interfaces de usuario (v2)
 
-La sección 5 reproduce dos pantallas del prototipo (ERP BackOffice v2.4):
-el panel gerencial de margen bruto y el terminal de mostrador. Son
-**propuestas de interfaz, no un sistema implementado**, y sus importes son
-datos de ejemplo.
-
-El panel rotula el reparto como «5 días»; conforme a P-14 debe leerse como
-*jornadas hábiles efectivas*, igual que en los diagramas 2 y 3. Esa
-corrección queda pendiente en el prototipo.
+La sección 5 documenta e incluye en `prototipo/` un prototipo web funcional
+(HTML, CSS y JavaScript sin dependencias externas) con seis vistas
+sincronizadas para **lado del cliente**, **mostrador POS táctil**, **cocina
+(KDS)** y **administración / contabilidad NIIF 18 y SUNAT**. Corrige el
+rótulo de prorrateo a *jornadas hábiles efectivas* (P-14), alinea los
+productos con F-07 y separa el cálculo fiscal del marco NIIF 18. Los datos
+iniciales corresponden a un escenario de demostración.
 
 ## Diagrama de clases
 
