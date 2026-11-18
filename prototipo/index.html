@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RedPepper — Sistema Funcional de Operaciones, Cocina y Gestión ERP</title>
-  <meta name="description" content="Prototipo web funcional de RedPepper para cliente, mostrador POS, cocina KDS y administración contable NIIF 18 / SUNAT." />
+  <title>RedPepper — Operaciones y Gestión ERP</title>
+  <meta name="description" content="Prototipo funcional de RedPepper para cliente, mostrador POS, cocina KDS y contabilidad NIIF 18 / SUNAT." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,112 +12,73 @@
     <div class="topbar-inner">
       <div class="brand-group">
         <div class="brand-mark" aria-hidden="true">RP</div>
-        <div>
-          <div class="brand-title">RedPepper · Plataforma Operativa y ERP</div>
-          <div class="brand-sub">Sistema de diseño Stitch (.stitch/DESIGN.md) · Cliente · Mostrador · Cocina · Administración</div>
-        </div>
+        <div class="brand-title">RedPepper</div>
       </div>
 
-      <nav class="role-tabs" aria-label="Selector de interfaz por rol">
-        <button type="button" class="role-tab active" data-view="cliente">1. Cliente / Carta</button>
-        <button type="button" class="role-tab" data-view="pos">2. Mostrador POS</button>
-        <button type="button" class="role-tab" data-view="cocina">3. Cocina KDS</button>
-        <button type="button" class="role-tab" data-view="admin-margen">4. Admin: Margen y Prorrateo</button>
-        <button type="button" class="role-tab" data-view="admin-operaciones">5. Admin: Compras y Carta</button>
-        <button type="button" class="role-tab" data-view="admin-contabilidad">6. Contabilidad NIIF 18 / SUNAT</button>
+      <nav class="role-tabs" aria-label="Selector de interfaz">
+        <button type="button" class="role-tab active" data-view="cliente">Cliente</button>
+        <button type="button" class="role-tab" data-view="pos">Mostrador</button>
+        <button type="button" class="role-tab" data-view="cocina">Cocina</button>
+        <button type="button" class="role-tab" data-view="admin-margen">Margen</button>
+        <button type="button" class="role-tab" data-view="admin-operaciones">Compras</button>
+        <button type="button" class="role-tab" data-view="admin-contabilidad">Contabilidad</button>
       </nav>
 
       <div class="status-strip">
-        <span id="active-role-pill" class="pill pill-info">ACT-0005 · Cliente</span>
-        <span id="jornada-pill" class="pill pill-ok"><span class="status-dot" aria-hidden="true"></span>Jornada Abierta (11:00 - 23:00)</span>
-        <button type="button" class="btn btn-sm" onclick="resetDemoState()" title="Reiniciar datos de prueba">Reiniciar</button>
+        <span id="jornada-pill" class="pill pill-ok"><span class="status-dot" aria-hidden="true"></span>Abierta</span>
+        <button type="button" class="btn btn-ghost" onclick="resetDemoState()">Reiniciar</button>
       </div>
     </div>
   </header>
 
   <main class="main-shell">
-    <h1 class="sr-only" style="position:absolute;left:-9999px;">RedPepper Sistema Operativo y ERP</h1>
+    <h1 class="sr-only" style="position:absolute;left:-9999px;">RedPepper</h1>
 
-    <!-- =================================================================
-         1. LADO DEL CLIENTE: CARTA DIGITAL, PEDIDO Y SEGUIMIENTO EN VIVO
-         ================================================================= -->
+    <!-- 1. CLIENTE -->
     <section id="view-cliente" class="view-panel active" aria-labelledby="h-cliente">
       <div class="view-header">
         <div>
-          <h2 id="h-cliente">Lado del Cliente — Carta Digital y Seguimiento de Pedido</h2>
-          <p>Consulta la carta vigente (F-07), personaliza cremas, envía tu pedido y sigue el avance en cocina en tiempo real (R-OBS-01/03, R-ENT2-17).</p>
+          <h2 id="h-cliente">Carta RedPepper</h2>
+          <p class="view-sub">Preparación al instante · Precios vigentes F-07</p>
         </div>
-        <div class="header-actions">
-          <select id="client-cat-filter" aria-label="Filtrar categoría" class="btn">
-            <option value="Todos">Todas las categorías</option>
-            <option value="Salchipapas">Salchipapas</option>
-            <option value="Hamburguesas">Hamburguesas</option>
-            <option value="Especiales">Especiales</option>
-            <option value="Bebidas">Bebidas</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Bloque editorial asimétrico (Stitch taste-design) -->
-      <div class="hero-split">
-        <div>
-          <span class="hero-eyebrow">Carta Vigente F-07 · Sin precocidos</span>
-          <h3 class="hero-headline">Preparación al instante, directo a la plancha y freidora.</h3>
-          <p class="hero-copy">Cada comanda se cocina al momento con cremas personalizadas y control de stock en vivo conectado directamente con el monitor de cocina.</p>
-        </div>
-        <div class="hero-feature-box">
-          <div class="hero-feature-top">
-            <div>
-              <div class="hero-feature-title">Salchipapa Clásica (P-01)</div>
-              <div class="hero-feature-meta">Papas picadas al día + hot dog · F-07</div>
-            </div>
-            <span id="client-hero-price" class="menu-price">S/ 8.00</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
-            <span id="client-hero-status" class="pill pill-ok">Disponible en cocina</span>
-            <button type="button" id="client-hero-add" class="btn btn-primary btn-sm" onclick="addToCart('client','P-01')">
-              Pedir Clásica
-            </button>
-          </div>
-        </div>
+        <select id="client-cat-filter" aria-label="Filtrar categoría" class="btn">
+          <option value="Todos">Todas las categorías</option>
+          <option value="Salchipapas">Salchipapas</option>
+          <option value="Hamburguesas">Hamburguesas</option>
+          <option value="Especiales">Especiales</option>
+          <option value="Bebidas">Bebidas</option>
+        </select>
       </div>
 
       <div class="split-pos">
         <div class="card">
-          <div class="card-title-row">
-            <div>
-              <h3 class="card-title">Carta RedPepper</h3>
-              <p class="card-subtitle">Los productos marcados como agotados en cocina se bloquean de inmediato.</p>
-            </div>
-          </div>
-          <div id="client-channels" class="channel-bar" role="group" aria-label="Canal de atención">
-            <button type="button" class="chip-btn active" data-channel="Presencial">Presencial en local</button>
+          <div id="client-channels" class="channel-bar" style="margin-bottom:14px;" role="group" aria-label="Canal">
+            <button type="button" class="chip-btn active" data-channel="Presencial">Local</button>
             <button type="button" class="chip-btn" data-channel="Para llevar">Para llevar</button>
-            <button type="button" class="chip-btn" data-channel="Pedido externo">Pedido externo / WhatsApp</button>
+            <button type="button" class="chip-btn" data-channel="Pedido externo">WhatsApp</button>
           </div>
           <div id="client-menu-grid" class="menu-grid"></div>
         </div>
 
         <div style="display:flex; flex-direction:column; gap:16px;">
           <div class="card">
-            <div class="card-title-row">
-              <h3 class="card-title">Mi Pedido Actual</h3>
-              <button type="button" class="btn btn-sm" onclick="clearCart('client')">Vaciar borrador</button>
+            <div class="card-head">
+              <h3 class="card-title">Tu Pedido</h3>
+              <button type="button" class="btn btn-ghost" onclick="clearCart('client')">Vaciar</button>
             </div>
             <div id="client-cart-lines"></div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin:14px 0; padding-top:10px; border-top:1px solid var(--border-hairline);">
-              <span style="font-weight:700; color:var(--ink-secondary);">Total a pagar</span>
-              <span id="client-total" class="total-amount" style="font-size:22px;">S/ 0.00</span>
+            <div class="total-row">
+              <span style="font-weight:700; color:var(--ink-secondary);">Total</span>
+              <span id="client-total" class="total-amount">S/ 0.00</span>
             </div>
             <button type="button" class="btn btn-primary btn-touch" style="width:100%;" onclick="confirmOrder('client')">
-              Confirmar Pedido y Enviar a Cocina
+              Enviar Pedido
             </button>
           </div>
 
           <div class="card">
-            <div class="card-title-row">
-              <h3 class="card-title">Estado de mi Última Comanda</h3>
-              <span class="pill pill-info">R-OBS-03</span>
+            <div class="card-head">
+              <h3 class="card-title">Última Comanda</h3>
             </div>
             <div id="client-tracker"></div>
           </div>
@@ -125,28 +86,26 @@
       </div>
     </section>
 
-    <!-- =================================================================
-         2. LADO DE MOSTRADOR / CAJA: POS TÁCTIL >= 48px
-         ================================================================= -->
+    <!-- 2. MOSTRADOR POS -->
     <section id="view-pos" class="view-panel" aria-labelledby="h-pos">
       <div class="view-header">
         <div>
-          <h2 id="h-pos">Terminal de Mostrador — POS Táctil (ACT-0002)</h2>
-          <p>Controles táctiles ≥ 48 px (RNF-05 / R-ENT2-02), edición previa a confirmar (R-OBS-04), bloqueo de agotados (R-ENT2-05) y cierre diario (RF-03).</p>
+          <h2 id="h-pos">Mostrador POS</h2>
+          <p class="view-sub">Caja rápida táctil</p>
         </div>
         <div class="header-actions">
-          <span class="pill pill-neutral">Acumulado turno: <strong id="pos-turn-total" class="mono" style="margin-left:4px;">S/ 0.00</strong></span>
-          <button type="button" id="btn-cierre-jornada" class="btn btn-touch">Cerrar / Abrir Jornada (RF-03)</button>
+          <span class="pill pill-neutral">Turno: <strong id="pos-turn-total" class="mono">S/ 0.00</strong></span>
+          <button type="button" id="btn-cierre-jornada" class="btn btn-touch">Cerrar Jornada</button>
         </div>
       </div>
 
       <div class="split-pos">
         <div class="card">
-          <div class="card-title-row">
-            <div id="pos-channels" class="channel-bar" style="margin-bottom:0;">
-              <button type="button" class="chip-btn pos-chip active" data-channel="Presencial">Mostrador / Salón</button>
+          <div class="toolbar-row">
+            <div id="pos-channels" class="channel-bar">
+              <button type="button" class="chip-btn pos-chip active" data-channel="Presencial">Salón</button>
               <button type="button" class="chip-btn pos-chip" data-channel="Para llevar">Para llevar</button>
-              <button type="button" class="chip-btn pos-chip" data-channel="Pedido externo">Pedido externo</button>
+              <button type="button" class="chip-btn pos-chip" data-channel="Pedido externo">Externo</button>
             </div>
             <select id="pos-cat-filter" class="btn btn-touch" aria-label="Categoría POS">
               <option value="Todos">Todo el menú</option>
@@ -160,48 +119,35 @@
         </div>
 
         <div class="card">
-          <div class="card-title-row">
-            <div>
-              <h3 class="card-title">Comanda en Curso (Borrador)</h3>
-              <p class="card-subtitle">Se puede modificar o descartar antes de confirmar (E-ENT2-09).</p>
-            </div>
-            <button type="button" class="btn btn-sm" onclick="clearCart('pos')">Descartar</button>
+          <div class="card-head">
+            <h3 class="card-title">Comanda en Curso</h3>
+            <button type="button" class="btn btn-ghost" onclick="clearCart('pos')">Descartar</button>
           </div>
-
           <div id="pos-cart-lines"></div>
-
-          <div style="margin:14px 0 12px;">
-            <div style="font-size:12px; font-weight:700; color:var(--ink-secondary); margin-bottom:6px;">Método de cobro</div>
-            <div id="pos-pay-methods" class="channel-bar" style="margin-bottom:0;">
+          <div style="margin:12px 0;">
+            <div id="pos-pay-methods" class="channel-bar">
               <button type="button" class="chip-btn pos-chip active" data-pay="Efectivo">Efectivo</button>
               <button type="button" class="chip-btn pos-chip" data-pay="Yape / Plin">Yape / Plin</button>
-              <button type="button" class="chip-btn pos-chip" data-pay="POS Tarjeta">POS Tarjeta</button>
+              <button type="button" class="chip-btn pos-chip" data-pay="POS Tarjeta">Tarjeta</button>
             </div>
           </div>
-
-          <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-top:1px solid var(--border-hairline);">
-            <span style="font-weight:700;">TOTAL A COBRAR</span>
-            <span id="pos-total" class="total-amount" style="font-size:26px; color:var(--brand-ink);">S/ 0.00</span>
+          <div class="total-row">
+            <span style="font-weight:700;">Total</span>
+            <span id="pos-total" class="total-amount" style="color:var(--brand-ink);">S/ 0.00</span>
           </div>
-
           <button type="button" class="btn btn-primary btn-touch" style="width:100%;" onclick="confirmOrder('pos')">
-            Confirmar Venta y Emitir Comanda a Cocina (R-OBS-02)
+            Cobrar y Enviar a Cocina
           </button>
         </div>
       </div>
     </section>
 
-    <!-- =================================================================
-         3. LADO DE COCINA: MONITOR DE COMANDAS (KDS) Y STOCK RÁPIDO
-         ================================================================= -->
+    <!-- 3. COCINA KDS -->
     <section id="view-cocina" class="view-panel" aria-labelledby="h-cocina">
       <div class="view-header">
         <div>
-          <h2 id="h-cocina">Lado de Cocina — Monitor de Comandas KDS y Stock (ACT-0003)</h2>
-          <p>Preparación al instante por pedido (E-OBS-02 / E-ENT1-03), transiciones de estado autorizadas (R-OBS-03) y alerta inmediata de producto agotado (R-ENT1-02).</p>
-        </div>
-        <div class="header-actions">
-          <span class="pill pill-info">Flujo autorizado: Pendiente → En preparación → Listo</span>
+          <h2 id="h-cocina">Cocina (KDS)</h2>
+          <p class="view-sub">Comandas en tiempo real y control de stock</p>
         </div>
       </div>
 
@@ -209,7 +155,7 @@
         <div class="kds-board">
           <div class="kds-col">
             <div class="kds-col-head">
-              <span>1. Pendiente</span>
+              <span>Pendiente</span>
               <span id="kds-cnt-pendiente" class="pill pill-danger mono">0</span>
             </div>
             <div id="kds-col-pendiente"></div>
@@ -217,7 +163,7 @@
 
           <div class="kds-col">
             <div class="kds-col-head">
-              <span>2. En preparación</span>
+              <span>En preparación</span>
               <span id="kds-cnt-prep" class="pill pill-warn mono">0</span>
             </div>
             <div id="kds-col-prep"></div>
@@ -225,7 +171,7 @@
 
           <div class="kds-col">
             <div class="kds-col-head">
-              <span>3. Listo para despacho</span>
+              <span>Listo</span>
               <span id="kds-cnt-listo" class="pill pill-ok mono">0</span>
             </div>
             <div id="kds-col-listo"></div>
@@ -233,111 +179,61 @@
         </div>
 
         <div class="card">
-          <div class="card-title-row">
-            <div>
-              <h3 class="card-title">Control Rápido de Stock (Chef)</h3>
-              <p class="card-subtitle">Al marcar un producto como agotado se bloquea al instante en Cliente y POS (R-ENT2-05).</p>
-            </div>
+          <div class="card-head">
+            <h3 class="card-title">Stock Rápido</h3>
           </div>
           <div id="kds-stock-list"></div>
         </div>
       </div>
     </section>
 
-    <!-- =================================================================
-         4. LADO DE ADMINISTRACIÓN: MARGEN BRUTO DIARIO Y PRORRATEO (JERRY)
-         ================================================================= -->
+    <!-- 4. MARGEN Y PRORRATEO -->
     <section id="view-admin-margen" class="view-panel" aria-labelledby="h-admin-margen">
       <div class="view-header">
         <div>
-          <h2 id="h-admin-margen">Administración — Control de Margen Bruto Diario y Prorrateo (ACT-0001)</h2>
-          <p>Consulta remota gerencial (R-ENT2-01), prorrateo exclusivo sobre jornadas hábiles efectivas (P-14 / R-ENT2-07) y resumen comercial por canal y producto (RF-17).</p>
+          <h2 id="h-admin-margen">Margen Bruto y Prorrateo</h2>
+          <p class="view-sub">Cálculo diario sobre jornadas hábiles efectivas (P-14)</p>
         </div>
-        <div class="header-actions">
-          <button type="button" class="btn btn-primary" onclick="exportCsvReport()">Exportar Resumen CSV (RF-19)</button>
+        <button type="button" class="btn btn-primary" onclick="exportCsvReport()">Exportar CSV</button>
+      </div>
+
+      <div class="kpi-strip">
+        <div class="kpi-box">
+          <div class="kpi-label">Ventas Hoy</div>
+          <div id="m-ventas" class="kpi-val">S/ 0.00</div>
+          <div id="m-ventas-cnt" class="kpi-note">0 comandas</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Cuota Semanal</div>
+          <div id="m-cuota" class="kpi-val">S/ 0.00</div>
+          <div id="m-cuota-note" class="kpi-note">Jornadas hábiles</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Adicionales Hoy</div>
+          <div id="m-adic" class="kpi-val">S/ 0.00</div>
+          <div class="kpi-note">Imputación del día</div>
+        </div>
+        <div class="kpi-box accent">
+          <div class="kpi-label">Margen Bruto</div>
+          <div id="m-margen" class="kpi-val">S/ 0.00</div>
+          <div id="m-margen-pct" class="kpi-note">0.0%</div>
         </div>
       </div>
 
-      <!-- Fórmula matemática RF-08 / R-PRE-04 -->
-      <div class="math-bar">
-        <div class="math-step">
-          <div class="math-label">Ventas Confirmadas Hoy</div>
-          <div id="m-ventas" class="math-val">S/ 0.00</div>
-          <div id="m-ventas-cnt" class="math-note">0 comandas</div>
-        </div>
-        <div class="math-op">−</div>
-        <div class="math-step">
-          <div class="math-label">Cuota Prorrateo Semanal (RF-06)</div>
-          <div id="m-cuota" class="math-val">S/ 0.00</div>
-          <div id="m-cuota-note" class="math-note">Jornadas hábiles efectivas</div>
-        </div>
-        <div class="math-op">−</div>
-        <div class="math-step">
-          <div class="math-label">Compras Adicionales Hoy (RF-07)</div>
-          <div id="m-adic" class="math-val">S/ 0.00</div>
-          <div class="math-note">Imputación 100% en fecha</div>
-        </div>
-        <div class="math-op">=</div>
-        <div class="math-step result">
-          <div class="math-label">Margen Bruto Diario (RF-08)</div>
-          <div id="m-margen" class="math-val">S/ 0.00</div>
-          <div id="m-margen-pct" class="math-note">Margen bruto: 0.0%</div>
-        </div>
-      </div>
-
-      <!-- Calendario configurable P-14 -->
-      <div class="card" style="margin-bottom:16px;">
-        <div class="card-title-row">
-          <div>
-            <h3 class="card-title">Calendario de Jornadas Hábiles Efectivas (Regla P-14 / R-ENT2-07)</h3>
-            <p class="card-subtitle">Haz clic en un día para alternar entre jornada hábil y feriado/no laborado. Los feriados reciben S/ 0.00 y el total semanal se reparte intacto.</p>
-          </div>
-          <span class="pill pill-info">Sin prorrata fija de 5 días</span>
-        </div>
-        <div id="working-days-bar" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
-      </div>
-
-      <div class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Motor de Prorrateo Semanal (RF-05 / RF-06)</h3>
-            <span class="pill pill-info">R-PRE-02</span>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>ID</th><th>Insumo / Proveedor</th><th class="num">Total Semanal</th><th class="num">Base</th><th class="num">Cuota Hoy</th></tr>
-              </thead>
-              <tbody id="tbl-prorrateo"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Compras Adicionales del Día (RF-07)</h3>
-            <span class="pill pill-warn">R-PRE-03</span>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>ID</th><th>Concepto / Proveedor</th><th class="num">Cargo del Día</th></tr>
-              </thead>
-              <tbody id="tbl-adicionales"></tbody>
-            </table>
-          </div>
-        </div>
+      <div class="days-inline">
+        <span style="font-size:13px; font-weight:700;">Días hábiles (clic para alternar feriado):</span>
+        <div id="working-days-bar" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Ventas por Canal de Atención (R-ENT2-17)</h3>
+          <div class="card-head">
+            <h3 class="card-title">Ventas por Canal</h3>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Canal</th><th class="num">Pedidos</th><th class="num">Importe</th><th class="num">Participación</th></tr>
+                <tr><th>Canal</th><th class="num">Pedidos</th><th class="num">Importe</th><th class="num">%</th></tr>
               </thead>
               <tbody id="tbl-canales"></tbody>
             </table>
@@ -345,13 +241,13 @@
         </div>
 
         <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Ranking de Carta (RF-17 · incluye cero ventas R-ENT1-04)</h3>
+          <div class="card-head">
+            <h3 class="card-title">Ranking de Carta</h3>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Producto</th><th class="num">Unidades</th><th class="num">Ventas</th></tr>
+                <tr><th>Producto</th><th class="num">Cant.</th><th class="num">Ventas</th></tr>
               </thead>
               <tbody id="tbl-ranking"></tbody>
             </table>
@@ -360,27 +256,24 @@
       </div>
     </section>
 
-    <!-- =================================================================
-         5. LADO DE ADMINISTRACIÓN: ABASTECIMIENTO, CARTA Y AUDITORÍA
-         ================================================================= -->
+    <!-- 5. COMPRAS Y CARTA -->
     <section id="view-admin-operaciones" class="view-panel" aria-labelledby="h-admin-ops">
       <div class="view-header">
         <div>
-          <h2 id="h-admin-ops">Administración — Compras, Carta y Auditoría Inmutable</h2>
-          <p>Registro de compras con proveedor y modalidad (RF-04/05), corrección trazable con motivo (R-ENT2-08), gestión de precios con historial (R-PRE-13) y log (RNF-02).</p>
+          <h2 id="h-admin-ops">Compras y Precios de Carta</h2>
+          <p class="view-sub">Registro de egresos, correcciones y tarifas</p>
         </div>
       </div>
 
-      <div class="split-admin" style="margin-bottom:16px;">
+      <div class="split-admin" style="margin-bottom:18px;">
         <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Compras Registradas y Correcciones Auditadas</h3>
-            <span class="pill pill-neutral">R-ENT1-01 · R-ENT2-08</span>
+          <div class="card-head">
+            <h3 class="card-title">Compras Registradas</h3>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>ID</th><th>Fecha</th><th>Proveedor</th><th>Insumo</th><th>Modalidad</th><th class="num">Monto</th><th>Acción</th></tr>
+                <tr><th>Proveedor</th><th>Insumo</th><th>Tipo</th><th class="num">Monto</th><th></th></tr>
               </thead>
               <tbody id="tbl-compras-full"></tbody>
             </table>
@@ -388,40 +281,36 @@
         </div>
 
         <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Registrar Nueva Compra + Comprobante</h3>
-            <span class="pill pill-info">R-ENT2-16</span>
+          <div class="card-head">
+            <h3 class="card-title">Nueva Compra</h3>
           </div>
           <form id="form-compra" class="form-grid">
             <div class="field">
               <label for="inp-prov">Proveedor</label>
-              <input id="inp-prov" type="text" placeholder="Ej. Don Pollo S.A.C." required />
+              <input id="inp-prov" type="text" placeholder="Don Pollo S.A.C." required />
             </div>
             <div class="field">
-              <label for="inp-ruc">RUC Proveedor</label>
+              <label for="inp-ruc">RUC</label>
               <input id="inp-ruc" type="text" placeholder="20512348901" />
             </div>
             <div class="field full">
-              <label for="inp-insumo">Insumo / Concepto (solo empresa P-14b)</label>
-              <input id="inp-insumo" type="text" placeholder="Ej. Lote papas picadas 50 kg" required />
+              <label for="inp-insumo">Insumo</label>
+              <input id="inp-insumo" type="text" placeholder="Lote papas picadas 50 kg" required />
             </div>
             <div class="field">
-              <label for="inp-tipo">Modalidad de imputación (RF-05)</label>
+              <label for="inp-tipo">Modalidad</label>
               <select id="inp-tipo">
-                <option value="Semanal">Semanal (prorrateo jornadas)</option>
-                <option value="Adicional">Adicional del día (100% hoy)</option>
+                <option value="Semanal">Semanal (prorrateo)</option>
+                <option value="Adicional">Adicional (hoy)</option>
               </select>
             </div>
             <div class="field">
               <label for="inp-monto">Monto (S/)</label>
               <input id="inp-monto" type="number" step="0.01" placeholder="120.00" required />
             </div>
+            <input id="inp-size" type="hidden" value="1450" />
             <div class="field full">
-              <label for="inp-size">Tamaño archivo PDF/JPG simulado (KB — &gt;1024 KB activa compresión R-ENT2-15)</label>
-              <input id="inp-size" type="number" value="1450" />
-            </div>
-            <div class="field full">
-              <button type="submit" class="btn btn-primary" style="width:100%;">Registrar Compra y Calcular SHA-256</button>
+              <button type="submit" class="btn btn-primary" style="width:100%;">Registrar Compra</button>
             </div>
           </form>
         </div>
@@ -429,13 +318,13 @@
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Gestión de Carta y Precios (RF-02 / R-PRE-13)</h3>
+          <div class="card-head">
+            <h3 class="card-title">Precios de Carta</h3>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>ID</th><th>Producto</th><th class="num">Precio</th><th>Estado</th><th>Acciones</th></tr>
+                <tr><th>Producto</th><th class="num">Precio</th><th></th></tr>
               </thead>
               <tbody id="tbl-carta-admin"></tbody>
             </table>
@@ -443,13 +332,13 @@
         </div>
 
         <div class="card">
-          <div class="card-title-row">
-            <h3 class="card-title">Log de Auditoría Inmutable (RF-20 / RNF-02)</h3>
+          <div class="card-head">
+            <h3 class="card-title">Auditoría Reciente</h3>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Fecha / Hora</th><th>Usuario</th><th>Evento</th><th>Detalle</th></tr>
+                <tr><th>Hora</th><th>Usuario</th><th>Detalle</th></tr>
               </thead>
               <tbody id="tbl-auditoria"></tbody>
             </table>
@@ -458,77 +347,64 @@
       </div>
     </section>
 
-    <!-- =================================================================
-         6. LADO DE ADMINISTRACIÓN / CONTABILIDAD: NIIF 18, REGLAS Y SUNAT
-         ================================================================= -->
+    <!-- 6. CONTABILIDAD NIIF 18 / SUNAT -->
     <section id="view-admin-contabilidad" class="view-panel" aria-labelledby="h-admin-cont">
       <div class="view-header">
         <div>
-          <h2 id="h-admin-cont">Contabilidad y Gerencia — Cierre Mensual NIIF 18 y SUNAT (ACT-0004 &amp; ACT-0001)</h2>
-          <p>Cascada de cierre contable separando Resultado Operativo, Gastos Financieros y BAI (RF-10..RF-14), autorización de reglas tributarias (R-ENT2-10), bloqueo de periodo (RNF-07) y sustento SUNAT (RF-15/16).</p>
+          <h2 id="h-admin-cont">Contabilidad NIIF 18 y SUNAT</h2>
+          <p class="view-sub">Cierre mensual, reglas tributarias y comprobantes</p>
         </div>
         <div class="header-actions">
-          <button type="button" id="btn-period-lock" class="btn btn-primary" onclick="togglePeriodLock()">Cerrar Periodo Mensual (RNF-07)</button>
-          <button type="button" id="btn-adj-note" class="btn" onclick="registerAdjustmentNote()" disabled>Nota de Ajuste Autorizada (R-ENT2-14)</button>
+          <button type="button" id="btn-period-lock" class="btn btn-primary" onclick="togglePeriodLock()">Cerrar Periodo</button>
+          <button type="button" id="btn-adj-note" class="btn" onclick="registerAdjustmentNote()" disabled>Nota de Ajuste</button>
         </div>
       </div>
 
-      <div id="period-lock-banner" class="alert-box alert-info"></div>
+      <div id="period-lock-banner" class="alert-banner" style="display:none;"></div>
 
-      <div class="grid-2" style="margin-bottom:16px;">
+      <div class="grid-2">
         <div class="card">
-          <div class="card-title-row">
-            <div>
-              <h3 class="card-title">Estado de Resultados Mensual — Estructura NIIF 18 (Borrador)</h3>
-              <p class="card-subtitle">Separación explícita de Operación, Financiamiento e Impuesto a las ganancias (sujeto a validación del contador).</p>
-            </div>
-            <span class="pill pill-info">RF-14 · R-PRE-06</span>
+          <div class="card-head">
+            <h3 class="card-title">Estado de Resultados — NIIF 18 (Borrador)</h3>
           </div>
           <div id="niif-cascade" class="cascade-list"></div>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:16px;">
-          <div class="card">
-            <div class="card-title-row">
-              <h3 class="card-title">Costos Indirectos Fijos del Mes (RF-09 / R-PRE-05)</h3>
-            </div>
-            <div class="table-wrap">
+          <details class="indirect-details" style="margin-top:12px;">
+            <summary>Ver desglose de costos indirectos fijos</summary>
+            <div class="table-wrap" style="margin-top:8px;">
               <table>
-                <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
                 <tbody id="tbl-indirectos"></tbody>
               </table>
             </div>
-          </div>
+          </details>
+        </div>
 
+        <div style="display:flex; flex-direction:column; gap:18px;">
           <div class="card">
-            <div class="card-title-row">
-              <h3 class="card-title">Versiones de Reglas Tributarias (R-ENT2-10 / R-ENT2-11)</h3>
+            <div class="card-head">
+              <h3 class="card-title">Reglas Tributarias</h3>
             </div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>ID</th><th>Regla</th><th class="num">Tasa</th><th>Vigencia</th><th>Estado</th><th>Acción</th></tr></thead>
+                <thead><tr><th>Regla</th><th class="num">Tasa</th><th>Estado</th><th></th></tr></thead>
                 <tbody id="tbl-tax-rules"></tbody>
               </table>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="card-title-row">
-          <div>
-            <h3 class="card-title">Repositorio Documental y Búsqueda SUNAT (RF-15, RF-16, RNF-08)</h3>
-            <p class="card-subtitle">Cada comprobante conserva su vínculo al egreso, compresión verificada, hash SHA-256 de integridad y almacenamiento cifrado.</p>
+          <div class="card">
+            <div class="card-head">
+              <h3 class="card-title">Comprobantes SUNAT</h3>
+              <input id="sunat-filter" type="search" class="btn" style="min-width:190px; text-align:left; font-weight:400;" placeholder="Buscar RUC o proveedor..." />
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>RUC · Proveedor</th><th>Archivo · SHA-256</th><th class="num">Monto</th></tr>
+                </thead>
+                <tbody id="tbl-sunat"></tbody>
+              </table>
+            </div>
           </div>
-          <input id="sunat-filter" type="search" class="btn" style="min-width:260px; text-align:left; font-weight:400;" placeholder="Filtrar por RUC, proveedor o fecha..." />
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Fecha</th><th>RUC</th><th>Proveedor / Concepto</th><th>Comprobante (Compresión)</th><th>Integridad y Cifrado</th><th class="num">Monto</th></tr>
-            </thead>
-            <tbody id="tbl-sunat"></tbody>
-          </table>
         </div>
       </div>
     </section>

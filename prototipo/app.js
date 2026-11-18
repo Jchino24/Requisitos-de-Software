@@ -570,19 +570,19 @@ function exportCsvReport() {
 // Renderers
 // ---------------------------------------------------------------------------
 function renderAll() {
-  // Tabs & active panel
   document.querySelectorAll(".role-tab").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.view === state.activeView);
   });
   document.querySelectorAll(".view-panel").forEach((p) => {
     p.classList.toggle("active", p.id === `view-${state.activeView}`);
   });
-  document.getElementById("active-role-pill").textContent = state.activeRole;
   const jPill = document.getElementById("jornada-pill");
-  jPill.className = "pill " + (state.jornadaAbierta ? "pill-ok" : "pill-danger");
-  jPill.innerHTML = state.jornadaAbierta
-    ? `<span class="status-dot" aria-hidden="true"></span>Jornada Abierta (${state.jornadaHorario})`
-    : `Jornada Cerrada`;
+  if (jPill) {
+    jPill.className = "pill " + (state.jornadaAbierta ? "pill-ok" : "pill-danger");
+    jPill.innerHTML = state.jornadaAbierta
+      ? `<span class="status-dot" aria-hidden="true"></span>Abierta`
+      : `Cerrada`;
+  }
 
   renderCliente();
   renderPOS();
@@ -593,22 +593,6 @@ function renderAll() {
 }
 
 function renderCliente() {
-  const featured = state.menu.find((p) => p.id === "P-01") || state.menu[0];
-  if (featured) {
-    const heroPrice = document.getElementById("client-hero-price");
-    const heroStatus = document.getElementById("client-hero-status");
-    const heroBtn = document.getElementById("client-hero-add");
-    if (heroPrice) heroPrice.textContent = money(featured.precio);
-    if (heroStatus) {
-      heroStatus.className = `pill ${featured.disponible ? "pill-ok" : "pill-danger"}`;
-      heroStatus.textContent = featured.disponible ? "Disponible en cocina" : "Agotado temporalmente";
-    }
-    if (heroBtn) {
-      heroBtn.disabled = !featured.disponible;
-      heroBtn.textContent = featured.disponible ? "Pedir Clásica" : "Agotado";
-    }
-  }
-
   const catFilter = document.getElementById("client-cat-filter")?.value || "Todos";
   const grid = document.getElementById("client-menu-grid");
   grid.innerHTML = state.menu
@@ -621,51 +605,49 @@ function renderCliente() {
             <span class="menu-name">${p.nombre}</span>
             <span class="menu-price">${money(p.precio)}</span>
           </div>
-          <div class="menu-desc">${p.desc}</div>
+          <div class="menu-desc">${p.desc.replace(" (F-07)", "")}</div>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-          <span class="pill ${p.disponible ? "pill-ok" : "pill-danger"}">
-            ${p.disponible ? "Disponible" : "Agotado"}
-          </span>
-          <button type="button" class="btn btn-primary btn-sm" ${p.disponible ? "" : "disabled"} onclick="addToCart('client','${p.id}')">
-            + Agregar
+        <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px;">
+          ${!p.disponible ? `<span class="pill pill-danger">Agotado</span>` : ""}
+          <button type="button" class="btn btn-primary" style="width:${p.disponible ? "100%" : "auto"};" ${p.disponible ? "" : "disabled"} onclick="addToCart('client','${p.id}')">
+            ${p.disponible ? "+ Agregar" : "Sin stock"}
           </button>
         </div>
       </div>`
     )
     .join("");
 
-  // Channel buttons
   document.querySelectorAll("#client-channels .chip-btn").forEach((b) => {
     b.classList.toggle("active", b.dataset.channel === state.clientChannel);
   });
 
-  // Cart
   const cartEl = document.getElementById("client-cart-lines");
   if (!state.clientCart.length) {
-    cartEl.innerHTML = `<p style="color:var(--ink-muted); font-size:13px;">Tu pedido está vacío. Selecciona platos o bebidas de la carta.</p>`;
+    cartEl.innerHTML = `<p style="color:var(--ink-muted); font-size:13px; margin:8px 0;">Tu pedido está vacío.</p>`;
   } else {
     cartEl.innerHTML = state.clientCart
       .map(
         (line, idx) => `
         <div class="cart-line">
-          <div>
-            <strong>${line.nombre}</strong>
-            <div class="mono" style="color:var(--ink-muted); margin-top:2px;">${money(line.precio)} c/u</div>
-            <div class="crema-wrap">
-              ${state.cremas
-                .map(
-                  (c) => `<button type="button" class="crema-chip ${
-                    line.extras.includes(c) ? "selected" : ""
-                  }" onclick="toggleCartExtra('client', ${idx}, '${c}')">${c}</button>`
-                )
-                .join("")}
+          <div class="cart-top">
+            <div>
+              <strong>${line.nombre}</strong>
+              <div class="mono" style="color:var(--ink-muted);">${money(line.precio * line.qty)}</div>
+            </div>
+            <div class="cart-controls">
+              <button type="button" class="qty-btn" onclick="changeCartQty('client', ${idx}, -1)" aria-label="Menos">-</button>
+              <strong class="mono" style="min-width:18px; text-align:center;">${line.qty}</strong>
+              <button type="button" class="qty-btn" onclick="changeCartQty('client', ${idx}, 1)" aria-label="Más">+</button>
             </div>
           </div>
-          <div class="cart-controls">
-            <button type="button" class="qty-btn" onclick="changeCartQty('client', ${idx}, -1)" aria-label="Disminuir cantidad">-</button>
-            <strong class="mono" style="min-width:20px; text-align:center;">${line.qty}</strong>
-            <button type="button" class="qty-btn" onclick="changeCartQty('client', ${idx}, 1)" aria-label="Aumentar cantidad">+</button>
+          <div class="cremas-row">
+            ${state.cremas
+              .map(
+                (c) => `<button type="button" class="crema-tag ${
+                  line.extras.includes(c) ? "selected" : ""
+                }" onclick="toggleCartExtra('client', ${idx}, '${c}')">${c}</button>`
+              )
+              .join("")}
           </div>
         </div>`
       )
@@ -674,7 +656,6 @@ function renderCliente() {
   const total = state.clientCart.reduce((s, l) => s + l.precio * l.qty, 0);
   document.getElementById("client-total").textContent = money(total);
 
-  // Tracker
   const tracked = state.orders.find((o) => o.id === state.lastClientOrderId) || state.orders[0];
   const trkEl = document.getElementById("client-tracker");
   if (!tracked) {
@@ -685,17 +666,14 @@ function renderCliente() {
   const curIdx = steps.indexOf(tracked.estado);
   trkEl.innerHTML = `
     <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-      <div><strong class="mono">${tracked.id}</strong> <span class="pill pill-neutral">${tracked.canal}</span></div>
+      <strong class="mono">${tracked.id} · ${tracked.canal}</strong>
       <span class="mono">${tracked.hora} · ${money(tracked.total)}</span>
-    </div>
-    <div style="font-size:12.5px; color:var(--ink-secondary); margin-top:6px;">
-      ${tracked.items.map((i) => `${i.qty}× ${i.nombre}${i.extras.length ? " (" + i.extras.join(", ") + ")" : ""}`).join(" · ")}
     </div>
     <div class="tracker-steps">
       ${steps
         .map((st, i) => {
           const cls = i < curIdx ? "done" : i === curIdx ? (st === "Listo" ? "done" : "current") : "";
-          return `<div class="tracker-step ${cls}">${i + 1}. ${st}</div>`;
+          return `<div class="tracker-step ${cls}">${st}</div>`;
         })
         .join("")}
     </div>
@@ -710,15 +688,12 @@ function renderPOS() {
     .map(
       (p) => `
       <div class="menu-item ${p.disponible ? "" : "agotado"}">
-        <div>
-          <div class="menu-top">
-            <span class="menu-name">${p.nombre}</span>
-            <span class="menu-price">${money(p.precio)}</span>
-          </div>
-          <div class="menu-desc">${p.cat} · <span class="mono">${p.id}</span></div>
+        <div class="menu-top">
+          <span class="menu-name">${p.nombre}</span>
+          <span class="menu-price">${money(p.precio)}</span>
         </div>
         <button type="button" class="btn btn-touch ${p.disponible ? "btn-primary" : ""}" style="width:100%;" ${p.disponible ? "" : "disabled"} onclick="addToCart('pos','${p.id}')">
-          ${p.disponible ? "+ Añadir (Táctil ≥48px)" : "Bloqueado · Agotado"}
+          ${p.disponible ? "+ Añadir" : "Agotado"}
         </button>
       </div>`
     )
@@ -733,29 +708,31 @@ function renderPOS() {
 
   const cartEl = document.getElementById("pos-cart-lines");
   if (!state.posCart.length) {
-    cartEl.innerHTML = `<p style="color:var(--ink-muted); font-size:13px;">Sin ítems en borrador. Toque un producto para iniciar la comanda.</p>`;
+    cartEl.innerHTML = `<p style="color:var(--ink-muted); font-size:13px; margin:8px 0;">Sin ítems en borrador.</p>`;
   } else {
     cartEl.innerHTML = state.posCart
       .map(
         (line, idx) => `
         <div class="cart-line">
-          <div>
-            <strong>${line.nombre}</strong>
-            <div class="mono" style="color:var(--ink-secondary); margin-top:2px;">${money(line.precio * line.qty)} (${money(line.precio)} c/u)</div>
-            <div class="crema-wrap">
-              ${state.cremas
-                .map(
-                  (c) => `<button type="button" class="crema-chip ${
-                    line.extras.includes(c) ? "selected" : ""
-                  }" onclick="toggleCartExtra('pos', ${idx}, '${c}')">${c}</button>`
-                )
-                .join("")}
+          <div class="cart-top">
+            <div>
+              <strong>${line.nombre}</strong>
+              <div class="mono" style="color:var(--ink-secondary);">${money(line.precio * line.qty)}</div>
+            </div>
+            <div class="cart-controls">
+              <button type="button" class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, -1)" aria-label="Menos">-</button>
+              <strong class="mono" style="min-width:20px; text-align:center;">${line.qty}</strong>
+              <button type="button" class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, 1)" aria-label="Más">+</button>
             </div>
           </div>
-          <div class="cart-controls">
-            <button type="button" class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, -1)" aria-label="Disminuir">-</button>
-            <strong class="mono" style="min-width:22px; text-align:center;">${line.qty}</strong>
-            <button type="button" class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, 1)" aria-label="Aumentar">+</button>
+          <div class="cremas-row">
+            ${state.cremas
+              .map(
+                (c) => `<button type="button" class="crema-tag ${
+                  line.extras.includes(c) ? "selected" : ""
+                }" onclick="toggleCartExtra('pos', ${idx}, '${c}')">${c}</button>`
+              )
+              .join("")}
           </div>
         </div>`
       )
@@ -765,13 +742,13 @@ function renderPOS() {
   const total = state.posCart.reduce((s, l) => s + l.precio * l.qty, 0);
   document.getElementById("pos-total").textContent = money(total);
   const turnTotal = state.orders.reduce((s, o) => s + o.total, 0);
-  document.getElementById("pos-turn-total").textContent = `${money(turnTotal)} (${state.orders.length} comandas)`;
+  document.getElementById("pos-turn-total").textContent = `${money(turnTotal)}`;
 }
 
 function renderCocina() {
   const cols = [
-    { state: "Pendiente", elId: "kds-col-pendiente", countId: "kds-cnt-pendiente", actionLabel: "Iniciar preparación", next: "En preparación", btnCls: "btn-primary" },
-    { state: "En preparación", elId: "kds-col-prep", countId: "kds-cnt-prep", actionLabel: "Marcar listo para entrega", next: "Listo", btnCls: "btn-ok" },
+    { state: "Pendiente", elId: "kds-col-pendiente", countId: "kds-cnt-pendiente", actionLabel: "Preparar", next: "En preparación", btnCls: "btn-primary" },
+    { state: "En preparación", elId: "kds-col-prep", countId: "kds-cnt-prep", actionLabel: "Listo", next: "Listo", btnCls: "btn-ok" },
     { state: "Listo", elId: "kds-col-listo", countId: "kds-cnt-listo", actionLabel: null, next: null, btnCls: "" },
   ];
 
@@ -804,25 +781,21 @@ function renderCocina() {
             ${
               col.actionLabel
                 ? `<button type="button" class="btn ${col.btnCls} btn-touch" style="width:100%;" onclick="advanceOrderState('${o.id}','${col.next}')">${col.actionLabel}</button>`
-                : `<div class="kds-done-line">${checkSvg}<span>Listo en despacho (R-OBS-03)</span></div>`
+                : `<div class="kds-done">${checkSvg}<span>Listo</span></div>`
             }
           </div>`
           )
           .join("")
-      : `<p style="color:var(--ink-muted); font-size:12.5px;">Sin comandas en esta etapa.</p>`;
+      : `<p style="color:var(--ink-muted); font-size:12.5px;">Sin comandas.</p>`;
   });
 
-  // Quick stock panel in Kitchen
   document.getElementById("kds-stock-list").innerHTML = state.menu
     .map(
       (p) => `
       <div class="kds-stock-row">
-        <div>
-          <strong>${p.nombre}</strong>
-          <div style="font-size:12px; color:var(--ink-muted);">${p.cat}</div>
-        </div>
-        <button type="button" class="btn btn-sm ${p.disponible ? "pill-ok" : "pill-danger"}" onclick="toggleProductStock('${p.id}')">
-          ${p.disponible ? "Disponible" : "Agotado"}
+        <span style="font-weight:600;">${p.nombre}</span>
+        <button type="button" class="btn ${p.disponible ? "pill-ok" : "pill-danger"}" onclick="toggleProductStock('${p.id}')">
+          ${p.disponible ? "Activo" : "Agotado"}
         </button>
       </div>`
     )
@@ -832,52 +805,22 @@ function renderCocina() {
 function renderAdminMargen() {
   const m = computeDailyMetrics();
   document.getElementById("m-ventas").textContent = money(m.ventasHoy);
-  document.getElementById("m-ventas-cnt").textContent = `${state.orders.length} comandas confirmadas`;
+  document.getElementById("m-ventas-cnt").textContent = `${state.orders.length} comandas`;
   document.getElementById("m-cuota").textContent = money(m.cuotaDiaria);
-  document.getElementById("m-cuota-note").textContent = `${money(m.comprasSemanales)} / ${m.effectiveDays} jornadas hábiles (P-14)`;
+  document.getElementById("m-cuota-note").textContent = `${money(m.comprasSemanales)} / ${m.effectiveDays} días`;
   document.getElementById("m-adic").textContent = money(m.comprasAdicionales);
   document.getElementById("m-margen").textContent = money(m.margenBruto);
-  document.getElementById("m-margen-pct").textContent = `Margen bruto: ${m.margenPct.toFixed(1)}%`;
+  document.getElementById("m-margen-pct").textContent = `${m.margenPct.toFixed(1)}% margen`;
 
-  // Working days pills (P-14 / R-ENT2-07)
   document.getElementById("working-days-bar").innerHTML = state.workingDays
     .map(
       (d) => `
       <button type="button" class="day-pill ${d.active ? "active" : "holiday"}" onclick="toggleWorkingDay('${d.id}')">
-        ${d.label} ${d.active ? "· Hábil" : "· Feriado/No lab."}
+        ${d.label}${d.active ? "" : " (Feriado)"}
       </button>`
     )
     .join("");
 
-  // Prorrateo table
-  const semanales = state.purchases.filter((p) => p.tipo === "Semanal");
-  document.getElementById("tbl-prorrateo").innerHTML = semanales
-    .map(
-      (p) => `
-      <tr>
-        <td class="mono">${p.id}</td>
-        <td><strong>${p.insumo}</strong><div style="font-size:11.5px; color:var(--ink-muted);">${p.proveedor}</div></td>
-        <td class="num">${money(p.monto)}</td>
-        <td class="num">${m.effectiveDays} jornadas</td>
-        <td class="num"><strong>${money(p.monto / m.effectiveDays)}</strong></td>
-      </tr>`
-    )
-    .join("");
-
-  // Adicionales table
-  const adic = state.purchases.filter((p) => p.tipo === "Adicional");
-  document.getElementById("tbl-adicionales").innerHTML = adic
-    .map(
-      (p) => `
-      <tr>
-        <td class="mono">${p.id}</td>
-        <td><strong>${p.insumo}</strong><div style="font-size:11.5px; color:var(--ink-muted);">${p.proveedor}</div></td>
-        <td class="num"><strong>${money(p.monto)}</strong> (100% hoy)</td>
-      </tr>`
-    )
-    .join("");
-
-  // Sales by channel (R-ENT2-17)
   const channels = ["Presencial", "Para llevar", "Pedido externo"];
   document.getElementById("tbl-canales").innerHTML = channels
     .map((ch) => {
@@ -888,7 +831,6 @@ function renderAdminMargen() {
     })
     .join("");
 
-  // Product ranking including 0-sales active products (R-ENT1-03 / R-ENT1-04)
   const ranking = state.menu.map((prod) => {
     let qty = 0;
     let total = 0;
@@ -920,13 +862,11 @@ function renderAdminOperaciones() {
     .map(
       (p) => `
       <tr>
-        <td class="mono">${p.id}</td>
-        <td>${p.fecha}</td>
-        <td><strong>${p.proveedor}</strong><div class="mono" style="color:var(--ink-muted);">RUC ${p.ruc}</div></td>
+        <td><strong>${p.proveedor}</strong><div class="mono" style="color:var(--ink-muted);">${p.fecha}</div></td>
         <td>${p.insumo}</td>
-        <td><span class="pill ${p.tipo === "Semanal" ? "pill-info" : "pill-warn"}">${p.tipo}</span></td>
-        <td class="num"><strong>${money(p.monto)}</strong></td>
-        <td><button class="btn btn-sm" onclick="correctPurchaseAmount('${p.id}')">Corregir (RF-20)</button></td>
+        <td><span class="pill ${p.tipo === "Semanal" ? "pill-neutral" : "pill-warn"}">${p.tipo}</span></td>
+        <td class="num">${money(p.monto)}</td>
+        <td><button type="button" class="btn" onclick="correctPurchaseAmount('${p.id}')">Corregir</button></td>
       </tr>`
     )
     .join("");
@@ -935,26 +875,20 @@ function renderAdminOperaciones() {
     .map(
       (p) => `
       <tr>
-        <td class="mono">${p.id}</td>
-        <td><strong>${p.nombre}</strong><div style="font-size:11.5px; color:var(--ink-muted);">${p.cat}</div></td>
-        <td class="num"><strong>${money(p.precio)}</strong></td>
-        <td><span class="pill ${p.disponible ? "pill-ok" : "pill-danger"}">${p.disponible ? "Activo" : "Agotado"}</span></td>
-        <td style="display:flex; gap:6px;">
-          <button class="btn btn-sm" onclick="updateMenuPrice('${p.id}')">Editar precio</button>
-          <button class="btn btn-sm" onclick="toggleProductStock('${p.id}')">Stock</button>
-        </td>
+        <td><strong>${p.nombre}</strong></td>
+        <td class="num">${money(p.precio)}</td>
+        <td style="text-align:right;"><button type="button" class="btn" onclick="updateMenuPrice('${p.id}')">Editar</button></td>
       </tr>`
     )
     .join("");
 
   document.getElementById("tbl-auditoria").innerHTML = state.auditLog
-    .slice(0, 12)
+    .slice(0, 6)
     .map(
       (a) => `
       <tr>
-        <td class="mono">${a.fecha}</td>
-        <td>${a.usuario}</td>
-        <td><span class="pill pill-neutral mono">${a.accion}</span></td>
+        <td class="mono">${a.fecha.slice(11)}</td>
+        <td>${a.usuario.replace(/ \(ACT-\d+\)/, "")}</td>
         <td>${a.detalle}</td>
       </tr>`
     )
@@ -963,7 +897,6 @@ function renderAdminOperaciones() {
 
 function renderAdminContabilidad() {
   const m = computeDailyMetrics();
-  // Simulated accumulated month based on current daily run-rate + baseline open month
   const ventasMes = 42850.00 + m.ventasHoy;
   const costosDirectosMes = 6120.00 + m.costoAsignado;
   const margenBrutoMes = ventasMes - costosDirectosMes;
@@ -975,15 +908,15 @@ function renderAdminContabilidad() {
   const resultadoNeto = bai - impuestoMes;
 
   document.getElementById("niif-cascade").innerHTML = `
-    <div class="cascade-row"><span>Ingresos por ventas confirmadas (Operación)</span><span class="num">${money(ventasMes)}</span></div>
-    <div class="cascade-row"><span>(-) Costos directos y compras prorrateadas</span><span class="num">- ${money(costosDirectosMes)}</span></div>
-    <div class="cascade-row subtotal"><span>Margen Bruto Mensual</span><span class="num">${money(margenBrutoMes)}</span></div>
-    <div class="cascade-row"><span>(-) Costos indirectos fijos (salarios, servicios, contador)</span><span class="num">- ${money(indirectosMes)}</span></div>
-    <div class="cascade-row subtotal"><span>Resultado Operativo (antes de financiamiento e impuestos)</span><span class="num">${money(resultadoOperativo)}</span></div>
-    <div class="cascade-row"><span>(-) Gastos financieros / intereses bancarios (Financiamiento)</span><span class="num">- ${money(state.gastosFinancierosMes)}</span></div>
-    <div class="cascade-row subtotal"><span>Beneficio Antes de Impuestos (BAI)</span><span class="num">${money(bai)}</span></div>
-    <div class="cascade-row"><span>(-) Impuesto estimado (${activeRule.id} · ${activeRule.tasaPct}%)</span><span class="num">- ${money(impuestoMes)}</span></div>
-    <div class="cascade-row total"><span>Resultado Neto del Periodo (NIIF 18 — borrador sujeto a contador)</span><span class="num">${money(resultadoNeto)}</span></div>
+    <div class="cascade-row"><span>Ventas confirmadas</span><span class="num">${money(ventasMes)}</span></div>
+    <div class="cascade-row"><span>(-) Costos directos y prorrateo</span><span class="num">- ${money(costosDirectosMes)}</span></div>
+    <div class="cascade-row subtotal"><span>Margen Bruto</span><span class="num">${money(margenBrutoMes)}</span></div>
+    <div class="cascade-row"><span>(-) Costos indirectos fijos</span><span class="num">- ${money(indirectosMes)}</span></div>
+    <div class="cascade-row subtotal"><span>Resultado Operativo</span><span class="num">${money(resultadoOperativo)}</span></div>
+    <div class="cascade-row"><span>(-) Gastos financieros</span><span class="num">- ${money(state.gastosFinancierosMes)}</span></div>
+    <div class="cascade-row subtotal"><span>BAI</span><span class="num">${money(bai)}</span></div>
+    <div class="cascade-row"><span>(-) Impuesto (${activeRule.tasaPct}%)</span><span class="num">- ${money(impuestoMes)}</span></div>
+    <div class="cascade-row total"><span>Resultado Neto</span><span class="num">${money(resultadoNeto)}</span></div>
   `;
 
   document.getElementById("tbl-indirectos").innerHTML = state.indirectCosts
@@ -994,16 +927,14 @@ function renderAdminContabilidad() {
     .map(
       (r) => `
       <tr>
-        <td class="mono">${r.id}</td>
-        <td>${r.nombre}</td>
+        <td><strong class="mono">${r.id}</strong><div style="font-size:12px; color:var(--ink-muted);">${r.nombre}</div></td>
         <td class="num">${r.tasaPct.toFixed(2)}%</td>
-        <td class="mono">${r.vigencia}</td>
         <td><span class="pill ${r.estado === "Vigente" ? "pill-ok" : r.estado.includes("Pendiente") ? "pill-warn" : "pill-neutral"}">${r.estado}</span></td>
-        <td>
+        <td style="text-align:right;">
           ${
             r.estado.includes("Pendiente")
-              ? `<button type="button" class="btn btn-primary btn-sm" onclick="approveTaxRule('${r.id}')">Autorizar</button>`
-              : "—"
+              ? `<button type="button" class="btn btn-primary" onclick="approveTaxRule('${r.id}')">Autorizar</button>`
+              : ""
           }
         </td>
       </tr>`
@@ -1014,18 +945,16 @@ function renderAdminContabilidad() {
   const adjBtn = document.getElementById("btn-adj-note");
   const lockBanner = document.getElementById("period-lock-banner");
   if (state.periodoCerrado) {
-    lockBtn.textContent = "Periodo Cerrado (Inmutable RNF-07)";
-    lockBanner.className = "alert-box alert-danger";
-    lockBanner.textContent = "Periodo cerrado por el contador: edición directa bloqueada (RNF-07 / R-ENT2-13). Solo se permiten notas de ajuste autorizadas (R-ENT2-14).";
+    lockBtn.textContent = "Periodo Cerrado";
+    lockBanner.style.display = "block";
+    lockBanner.textContent = "Periodo cerrado: edición directa bloqueada (solo notas de ajuste autorizadas).";
     adjBtn.disabled = false;
   } else {
-    lockBtn.textContent = "Cerrar Periodo Mensual (RNF-07)";
-    lockBanner.className = "alert-box alert-info";
-    lockBanner.textContent = "Periodo abierto para revisión conjunta entre el contador y Jerry antes del cierre definitivo.";
+    lockBtn.textContent = "Cerrar Periodo";
+    lockBanner.style.display = "none";
     adjBtn.disabled = true;
   }
 
-  // SUNAT Vouchers filter (RF-16)
   const q = (document.getElementById("sunat-filter")?.value || "").toLowerCase();
   const filtered = state.purchases.filter(
     (p) =>
@@ -1038,11 +967,8 @@ function renderAdminContabilidad() {
     .map(
       (p) => `
       <tr>
-        <td class="mono">${p.fecha}</td>
-        <td class="mono">${p.ruc}</td>
-        <td>${p.proveedor} — ${p.insumo}</td>
-        <td class="mono">${p.comprobante}</td>
-        <td class="mono">${p.sha256} · ${p.cifrado ? "Cifrado" : "Plano"}</td>
+        <td><span class="mono">${p.ruc}</span> · ${p.proveedor}</td>
+        <td class="mono">${p.comprobante} · ${p.sha256}</td>
         <td class="num">${money(p.monto)}</td>
       </tr>`
     )
