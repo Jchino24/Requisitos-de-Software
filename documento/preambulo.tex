@@ -19,6 +19,10 @@
 \usepackage{placeins}
 \usepackage{hyperref}
 \usepackage{csquotes}
+\usepackage[table]{xcolor}
+
+\definecolor{FichaHeaderBg}{HTML}{2F3B47}
+\definecolor{FichaBorder}{HTML}{94A3B8}
 
 \graphicspath{{../diagramas/}{../interfaces/}}
 \renewcommand{\arraystretch}{1.25}
@@ -41,3 +45,21 @@
 
 % Columnas reutilizables
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Entorno de ficha (Campo | Contenido) segun plantillas de Ingenieria de Requisitos
+\newenvironment{ficha}[1]{%
+  \par\vspace{0.45em}\noindent
+  \begin{minipage}{\linewidth}
+  \textbf{#1}\par\vspace{0.25em}
+  \small
+  \arrayrulecolor{FichaBorder}%
+  \begin{tabular}{|L{3.9cm}|L{11.1cm}|}
+  \hline
+  \rowcolor{FichaHeaderBg}\textbf{\color{white}Campo} & \textbf{\color{white}Contenido} \\
+  \hline
+}{%
+  \end{tabular}%
+  \arrayrulecolor{black}%
+  \end{minipage}\par\vspace{0.55em}
+}
+\newcommand{\fichafila}[2]{\textbf{#1} & #2 \\ \hline}

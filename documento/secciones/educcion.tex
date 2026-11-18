@@ -1,15 +1,18 @@
 % =====================================================================
 %  educcion.tex
-%  Transcripción del registro de educción del "Reporte de educción e
-%  ilación de requisitos de RedPepper", secciones 3.2, 4.2, 5.2 y 6.2.
-%  Cada entrada conserva su identificador, contenido, fuente y
-%  naturaleza tal como aparecen en el reporte de origen.
+%  Artefacto de educción adaptado a las plantillas del curso de
+%  Requisitos de Software (Organizaciones, Actores, Autores, Expertos,
+%  Fuentes, fichas de Educción de eventos EV-PRE-01, EV-OBS-01, EV-ENT-01,
+%  EV-ENT-02 y fichas EDU-RNF-01..08).
 % =====================================================================
 
 \section{Educción}
 \label{sec:educcion}
 
-\noindent{\small\textbf{Versión 3} \textperiodcentered{} documento de trabajo sujeto a validación con el interesado.}\par\vspace{0.5em}
+\noindent{\small\textbf{Versión 4} \textperiodcentered{} documento adaptado al formato de plantillas, sujeto a validación con el interesado.}\par\vspace{0.5em}
+
+\subsection{Descripción}
+\label{subsec:educcion-descripcion}
 
 La educción es la obtención y documentación sistemática de información de
 los interesados y del entorno del problema. Su registro conserva qué se
@@ -17,159 +20,1275 @@ manifestó o describió, quién o qué lo originó, mediante qué técnica se
 obtuvo y dónde está su evidencia. Su salida inmediata es un registro de
 información del evento, no una decisión técnica ni un requisito aprobado.
 
-Las cuatro tablas siguientes reproducen los registros documentales de los
-eventos \textbf{EV-PRE-01} (preentrevista), \textbf{EV-OBS-01}
-(observación de campo), \textbf{EV-ENT-01} (entrevista operativa) y
-\textbf{EV-ENT-02} (entrevista de profundización). Las entradas son
-síntesis del material de origen, tal como el propio reporte advierte; no
-constituyen una transcripción literal nueva ni una certificación de una
-sesión adicional. El total es de 52 entradas de educción.
+Siguiendo la estructura del artefacto de educción del curso, esta sección
+identifica primero a las organizaciones, actores, autores, expertos y
+fuentes del proyecto \textbf{RedPepper}, y presenta luego las fichas
+individuales de educción de los cuatro eventos documentados
+(\textbf{EV-PRE-01}, \textbf{EV-OBS-01}, \textbf{EV-ENT-01} y
+\textbf{EV-ENT-02}, con 52 entradas en total) junto con las ocho fichas de
+educción de requisitos no funcionales (\textbf{EDU-RNF-01} a
+\textbf{EDU-RNF-08}) vinculadas al catálogo consolidado de F-02.
 
-\subsection{Evento EV-PRE-01: preentrevista sobre la idea inicial}
-\label{subsec:educcion-pre}
+Las entradas de los eventos son síntesis del material de origen, tal como
+el propio reporte advierte; no constituyen una transcripción literal nueva
+ni una certificación de una sesión adicional.
 
-La Tabla~\ref{tab:e-pre} reúne las catorce entradas del evento
-EV-PRE-01, obtenidas de F-06 (doce solicitudes escritas, aclaración de
-emisión SUNAT y modelo mensual).
-
-\begin{longtable}{L{2.05cm} L{6.25cm} L{3.1cm} L{2.85cm}}
-\caption{Registro de educción del evento EV-PRE-01 (14 entradas).}
-\label{tab:e-pre}\\
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-E-PRE-01 & 1. Ventas del día. & F-06, punto 1 & Necesidad declarada. \\
-E-PRE-02 & 2. Ingresar los costos directos del producto que se vende. & F-06, punto 2 & Necesidad declarada. \\
-E-PRE-03 & 3. Que al final del día me dé el total de ventas del día. & F-06, punto 3 & Necesidad declarada. \\
-E-PRE-04 & 4. Que me dé el margen bruto del día que sale de la resta de las ventas totales menos el total del costo directo. & F-06, punto 4 & Relación de cálculo declarada. \\
-E-PRE-05 & 5. Las compras se hacen para la semana; el software me debe prorratear las ventas entre lunes y viernes para que el margen bruto diario sea real. Cualquier compra adicional debe sumarse en el día de la compra. & F-06, punto 5 & Regla expresada con ambigüedad. \\
-E-PRE-06 & 6. Registrar los costos indirectos del mes: salarios, luz, agua, internet y contabilidad. & F-06, punto 6 & Necesidad declarada. \\
-E-PRE-07 & 7. Dar el margen antes de impuestos, BAI, beneficio antes de impuestos e intereses bancarios si los hay. & F-06, punto 7 & Subtotal declarado ambiguo. \\
-E-PRE-08 & 8. Calcular los impuestos del mes de acuerdo a las ventas. & F-06, punto 8 & Necesidad declarada incompleta. \\
-E-PRE-09 & 9. Dar el margen neto o ganancia del mes. & F-06, punto 9 & Necesidad declarada. \\
-E-PRE-10 & 10. Brindar un Estado de Resultados mensual de acuerdo con la nueva NIIF 18. & F-06, punto 10 & Necesidad de reporte y referencia externa. \\
-E-PRE-11 & 11. Almacenar facturas de las compras o boletas para justificar ante SUNAT. & F-06, punto 11 & Necesidad de sustento documental. \\
-E-PRE-12 & 12. Tener una pestaña de carta con productos y precios para resumir cuáles se venden más y menos y decidir cambios. & F-06, punto 12 & Necesidad funcional y finalidad. \\
-E-PRE-13 & Los comprobantes de pago del negocio se sacan de SUNAT. Se solicita un reporte diario de gastos que respalde el informe mensual con los datos pedidos. & F-06, aclaración posterior & Aclaración de alcance. \\
-E-PRE-14 & Modelo mensual: ventas menos costos directos igual margen bruto; menos indirectos; margen BAI; menos impuestos e intereses; igual margen neto. El reporte de gastos demuestra los costos directos e indirectos. & F-06, modelo A & Plantilla y relación de sustento. \\
-\end{longtable}
-
-\subsection{Evento EV-OBS-01: observación de campo}
-\label{subsec:educcion-obs}
-
-La Tabla~\ref{tab:e-obs} reúne las cinco entradas del evento EV-OBS-01,
-obtenidas de F-03, sección 2.2, con contraste en F-01, secciones 2 y 5.
-
-\begin{longtable}{L{2.05cm} L{6.25cm} L{3.1cm} L{2.85cm}}
-\caption{Registro de educción del evento EV-OBS-01 (5 entradas).}
-\label{tab:e-obs}\\
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-E-OBS-01 & Se describe una inspección del mostrador y la cocina durante la atención comercial. & F-03, 2.2 & Observación reportada. \\
-E-OBS-02 & La observación se reporta como preparación de pedidos al instante, sin productos precocidos. & F-03, 2.2; F-01, 5 & Observación reportada. \\
-E-OBS-03 & La preparación genera una espera propia del proceso culinario. & F-03, 2.2 & Observación reportada. \\
-E-OBS-04 & El documento describe mostrador, equipos de cocina y área de despacho. & F-03, figura 2 y 2.2 & Contexto físico documentado. \\
-E-OBS-05 & El informe propone una interfaz táctil de despacho ágil como resultado de la observación. & F-03, 2.2 & Propuesta técnica documentada. \\
-\end{longtable}
-
-\subsection{Evento EV-ENT-01: primera entrevista documentada}
-\label{subsec:educcion-ent1}
-
-La Tabla~\ref{tab:e-ent1} reúne las cinco entradas del evento EV-ENT-01,
-obtenidas de F-03, sección 2.1 (guion operativo de cuatro preguntas), con
-contraste en la carta F-07.
-
-\begin{longtable}{L{2.05cm} L{6.25cm} L{3.1cm} L{2.85cm}}
-\caption{Registro de educción del evento EV-ENT-01 (5 entradas).}
-\label{tab:e-ent1}\\
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-E-ENT1-01 & Jerry explica que redujeron la variedad de platos por costos y rentabilidad. & F-03, 2.1, pregunta 1 & Declaración y motivación de negocio. \\
-E-ENT1-02 & La elaboración manual de carnes de hamburguesa elevaba el precio final y los clientes no aceptaban ese precio. & F-03, 2.1, pregunta 1 & Antecedente declarado. \\
-E-ENT1-03 & Jerry afirma que no adelantan papas fritas ni hamburguesas y que preparan al recibir el pedido. & F-03, 2.1, pregunta 2 & Regla operativa declarada. \\
-E-ENT1-04 & Las papas llegan picadas y el pollo deshilachado se compra a una distribuidora denominada Don Pollo. & F-03, 2.1, pregunta 3 & Dato de abastecimiento declarado. \\
-E-ENT1-05 & Las gaseosas se compran a distribuidores; los refrescos naturales usan pulpa y agua hervida o mineral. & F-03, 2.1, pregunta 4 & Descripción declarada de producto y preparación. \\
-\end{longtable}
-
-\subsection{Evento EV-ENT-02: entrevista de profundización}
-\label{subsec:educcion-ent2}
-
-La Tabla~\ref{tab:e-ent2} reúne las veintiocho entradas del evento
-EV-ENT-02, correspondientes a las preguntas P-01 a P-28 de F-08
-(Preguntas.pdf). Las respuestas se resumen preservando objeciones,
-matices y temas no resueltos.
-
-{\small
-\begin{longtable}{L{2.05cm} L{6.25cm} L{3.1cm} L{2.85cm}}
-\caption{Registro de educción del evento EV-ENT-02 (28 entradas).}
-\label{tab:e-ent2}\\
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{ID} & \textbf{Descripción} & \textbf{Fuente} & \textbf{Observaciones} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-E-ENT2-01 & P-01: el programa debe abrirse en el negocio y fuera; Jerry revisa desde casa. & F-08, P-01 & Necesidad y contexto de uso. \\
-E-ENT2-02 & P-02: en el local se dedica a la operación; administra desde su escritorio en casa. & F-08, P-02 & Contexto declarado. \\
-E-ENT2-03 & P-03: acceso del dueño, contador, administrador y a veces chef por stocks. & F-08, P-03 & Necesidad de usuarios. \\
-E-ENT2-04 & P-04: pantalla táctil para servicio y mouse para administración. & F-08, P-04 & Preferencia de interacción. \\
-E-ENT2-05 & P-05: al indicar enter quiere obtener todas las ventas del día. & F-08, P-05 & Necesidad de resumen. \\
-E-ENT2-06 & P-06: seleccionar salchipapa y cremas en pantalla; sale una comanda para el chef. & F-08, P-06 & Necesidad funcional. \\
-E-ENT2-07 & P-07: reportes diarios, semanales y mensuales; el usuario decide inicio y fin de jornada. & F-08, P-07 & Necesidad y regla declarada. \\
-E-ENT2-08 & P-08: todo sistema debe guardar historial. & F-08, P-08 & Necesidad declarada. \\
-E-ENT2-09 & P-09: puede borrar antes de procesar; si ya vendió el tratamiento es otro. & F-08, P-09 & Distinción declarada incompleta. \\
-E-ENT2-10 & P-10: considera importante buscar día o plato en historial. & F-08, P-10 & Necesidad funcional. \\
-E-ENT2-11 & P-11: al teclear el producto agotado no sale y eso le alerta. & F-08, P-11 & Comportamiento esperado. \\
-E-ENT2-12 & P-12: el usuario dispone si la compra se consume en el día o en la semana. & F-08, P-12 & Regla declarada. \\
-E-ENT2-13 & P-13: responde sí al cargo del día, pero añade según montos y potestad del usuario. & F-08, P-13 & Respuesta condicionada. \\
-E-ENT2-14 & P-14: repartir entre días hábiles; artículos personales se compran aparte. & F-08, P-14 & Dos reglas declaradas. \\
-E-ENT2-15 & P-15: si sube el costo, Jerry actualiza el precio para proteger el margen. & F-08, P-15 & Política comercial declarada. \\
-E-ENT2-16 & P-16: acepta corregir montos; supervisa el estado de resultados junto al contador. & F-08, P-16 & Necesidad de corrección. \\
-E-ENT2-17 & P-17: acepta plantilla; ventas menos directos, margen menos indirectos y luego impuestos. & F-08, P-17 & Necesidad y relación de cálculo. \\
-E-ENT2-18 & P-18: solicita NIIF 18; contador propone y Jerry autoriza. & F-08, P-18 & Intención y regla de aprobación. \\
-E-ENT2-19 & P-19: espera que el cambio se aplique cuando SUNAT indique la fecha. & F-08, P-19 & Expectativa sobre vigencia. \\
-E-ENT2-20 & P-20: acepta estructura formal aprobada por el contador. & F-08, P-20 & Necesidad de validación. \\
-E-ENT2-21 & P-21: no quiere explicación paso a paso; desea estado de resultados mensual para analizar. & F-08, P-21 & Respuesta negativa y preferencia. \\
-E-ENT2-22 & P-22: el contador tiene facturas electrónicas; desde el gasto desea hallar factura, fecha y concepto. & F-08, P-22 & Necesidad de trazabilidad. \\
-E-ENT2-23 & P-23: menciona dualidad y afirma que Camaleón está homologado con SUNAT. & F-08, P-23 & Opinión y referencia a otro producto. \\
-E-ENT2-24 & P-24: acepta bloquear anulación directa y exigir nota de ajuste autorizada. & F-08, P-24 & Regla declarada. \\
-E-ENT2-25 & P-25: acepta compresión automática de PDF pesado. & F-08, P-25 & Necesidad de almacenamiento. \\
-E-ENT2-26 & P-26: acepta avisos por números negativos y fechas incorrectas. & F-08, P-26 & Necesidad de validación. \\
-E-ENT2-27 & P-27: acepta que no emite automáticamente, pero opina que SUNAT querrá afiliación. & F-08, P-27 & Acuerdo con reserva. \\
-E-ENT2-28 & P-28: insiste en que cualquier pedido que llegue sigue siendo venta y se registra. & F-08, P-28 & Necesidad comercial. \\
-\end{longtable}
-}
-
-\paragraph{Salidas de la educción.} El reporte de origen identifica cuatro
-registros documentales: EV-PRE-01-ED, EV-OBS-01-ED, EV-ENT-01-ED y
+\paragraph{Salidas y resguardo de fuentes.} El reporte de origen identifica
+cuatro registros documentales: EV-PRE-01-ED, EV-OBS-01-ED, EV-ENT-01-ED y
 EV-ENT-02-ED. Ninguno contiene todavía decisiones de implementación
 aprobadas. F-05 (audio de WhatsApp) se conserva como fuente adicional
 separada de los eventos y no se utiliza como premisa hasta contar con una
 transcripción revisable y localizadores temporales.
+
+\subsection{Organizaciones}
+\label{subsec:organizaciones}
+
+\begin{ficha}{Ficha ORG-0001: RedPepper (Organización contratante)}
+\fichafila{Código}{ORG-0001}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre de la empresa}{RedPepper}
+\fichafila{Dirección de la empresa}{Por confirmar con el interesado}
+\fichafila{Teléfono de la empresa}{Por confirmar con el interesado}
+\fichafila{Fecha}{Por completar}
+\fichafila{Representante Legal}{Jerry (nombre completo por confirmar)}
+\fichafila{Teléfono del RL}{Por confirmar}
+\fichafila{Contacto}{Jerry (Dueño / Administrador)}
+\fichafila{Teléfono del contacto}{Por confirmar}
+\fichafila{Tipo}{Contratante}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Negocio de venta de comida rápida (salchipapas, hamburguesas, bebidas) sujeto a validación de datos formales de contacto y dirección.}
+\end{ficha}
+
+\begin{ficha}{Ficha ORG-0002: Equipo de Desarrollo (Universidad La Salle)}
+\fichafila{Código}{ORG-0002}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre de la empresa}{Equipo de Desarrollo — Carrera de Ingeniería de Software (Universidad La Salle)}
+\fichafila{Dirección de la empresa}{Arequipa, Perú}
+\fichafila{Teléfono de la empresa}{No aplica}
+\fichafila{Fecha}{Por completar}
+\fichafila{Representante Legal}{Por asignar según coordinación del equipo}
+\fichafila{Teléfono del RL}{Por completar}
+\fichafila{Contacto}{Equipo RedPepper (AUT-0001 a AUT-0005)}
+\fichafila{Teléfono del contacto}{Por completar}
+\fichafila{Tipo}{Contratado}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Equipo académico responsable del levantamiento, educción, ilación y especificación de requisitos del caso RedPepper.}
+\end{ficha}
+
+\subsection{Actores}
+\label{subsec:actores}
+
+\begin{ficha}{Ficha ACT-0001: Dueño / Administrador}
+\fichafila{Código}{ACT-0001}
+\fichafila{Nombre}{Jerry (Dueño / Administrador de RedPepper)}
+\fichafila{Versión}{01.00}
+\fichafila{Rol}{Administrador y dueño del negocio}
+\fichafila{Organización}{ORG-0001 (RedPepper)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Tipo}{Principal}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Consulta reportes dentro y fuera del local, actualiza precios y carta, aprueba reglas tributarias y supervisa el cierre mensual.}
+\end{ficha}
+
+\begin{ficha}{Ficha ACT-0002: Cajero / Atención en mostrador}
+\fichafila{Código}{ACT-0002}
+\fichafila{Nombre}{Personal de Caja / Mostrador}
+\fichafila{Versión}{01.00}
+\fichafila{Rol}{Operador de punto de venta (POS) y caja}
+\fichafila{Organización}{ORG-0001 (RedPepper)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Tipo}{Principal}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Registra pedidos en interfaz táctil, edita ítems antes de confirmar, selecciona canal y método de cobro, y realiza cierre de jornada.}
+\end{ficha}
+
+\begin{ficha}{Ficha ACT-0003: Cocina / Chef}
+\fichafila{Código}{ACT-0003}
+\fichafila{Nombre}{Chef / Personal de Cocina}
+\fichafila{Versión}{01.00}
+\fichafila{Rol}{Preparación de pedidos y consulta de stock}
+\fichafila{Organización}{ORG-0001 (RedPepper)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Tipo}{Principal}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Recibe comandas al instante, actualiza estados de preparación del pedido y consulta disponibilidad de insumos/productos.}
+\end{ficha}
+
+\begin{ficha}{Ficha ACT-0004: Contador}
+\fichafila{Código}{ACT-0004}
+\fichafila{Nombre}{Contador de RedPepper (nombre por confirmar)}
+\fichafila{Versión}{01.00}
+\fichafila{Rol}{Asesor y responsable contable y tributario}
+\fichafila{Organización}{ORG-0001 (RedPepper)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Tipo}{Principal}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Propone reglas tributarias, valida la estructura del reporte NIIF 18, gestiona facturas electrónicas SUNAT y aprueba cierres mensuales. Alcance de permisos sobre ventas por confirmar (ver contradicción iii).}
+\end{ficha}
+
+\begin{ficha}{Ficha ACT-0005: Cliente}
+\fichafila{Código}{ACT-0005}
+\fichafila{Nombre}{Cliente de RedPepper}
+\fichafila{Versión}{01.00}
+\fichafila{Rol}{Consumidor final (presencial o canal externo)}
+\fichafila{Organización}{ORG-0001 (RedPepper — externo)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Tipo}{Secundario}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Realiza pedidos en mostrador o por canal externo y recibe la orden preparada.}
+\end{ficha}
+
+\begin{ficha}{Ficha ACT-0006: Proveedor / Distribuidora}
+\fichafila{Código}{ACT-0006}
+\fichafila{Nombre}{Proveedores y distribuidoras (p.\ ej., Don Pollo y distribuidores de bebidas)}
+\fichafila{Versión}{01.00}
+\fichafila{Rol}{Abastecedor de insumos y productos}
+\fichafila{Organización}{Externa (vinculada a ORG-0001)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Tipo}{Secundario}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Provee papas picadas, pollo deshilachado, pulpa, gaseosas y demás insumos, emitiendo facturas o boletas de compra.}
+\end{ficha}
+
+\subsection{Autores}
+\label{subsec:autores}
+
+\begin{ficha}{Ficha AUT-0001: Gabriel Pajuelo}
+\fichafila{Código}{AUT-0001}
+\fichafila{Versión}{01.00}
+\fichafila{Nombres y Apellidos}{Gabriel Pajuelo (usuario GitHub: \texttt{Quetzalq4321q})}
+\fichafila{Fecha}{Por completar}
+\fichafila{Rol}{Analista de requisitos / Colaborador}
+\fichafila{Organización}{ORG-0002 (Equipo de Desarrollo)}
+\fichafila{Autor}{AUT-0001}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Adaptación de artefactos de educción, ilación y requisitos no funcionales a las plantillas del curso.}
+\end{ficha}
+
+\begin{ficha}{Ficha AUT-0002: Armando Enriquez}
+\fichafila{Código}{AUT-0002}
+\fichafila{Versión}{01.00}
+\fichafila{Nombres y Apellidos}{Armando Enriquez}
+\fichafila{Fecha}{Por completar}
+\fichafila{Rol}{Analista de requisitos}
+\fichafila{Organización}{ORG-0002 (Equipo de Desarrollo)}
+\fichafila{Autor}{AUT-0001}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Integrante del equipo RedPepper.}
+\end{ficha}
+
+\begin{ficha}{Ficha AUT-0003: Victor Lupinta}
+\fichafila{Código}{AUT-0003}
+\fichafila{Versión}{01.00}
+\fichafila{Nombres y Apellidos}{Victor Lupinta}
+\fichafila{Fecha}{Por completar}
+\fichafila{Rol}{Analista de requisitos}
+\fichafila{Organización}{ORG-0002 (Equipo de Desarrollo)}
+\fichafila{Autor}{AUT-0001}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Integrante del equipo RedPepper.}
+\end{ficha}
+
+\begin{ficha}{Ficha AUT-0004: Jose Chino}
+\fichafila{Código}{AUT-0004}
+\fichafila{Versión}{01.00}
+\fichafila{Nombres y Apellidos}{Jose Chino}
+\fichafila{Fecha}{Por completar}
+\fichafila{Rol}{Analista de requisitos y coordinador de repositorio}
+\fichafila{Organización}{ORG-0002 (Equipo de Desarrollo)}
+\fichafila{Autor}{AUT-0001}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Integrante del equipo RedPepper.}
+\end{ficha}
+
+\begin{ficha}{Ficha AUT-0005: José Choquehuanca}
+\fichafila{Código}{AUT-0005}
+\fichafila{Versión}{01.00}
+\fichafila{Nombres y Apellidos}{José Choquehuanca}
+\fichafila{Fecha}{Por completar}
+\fichafila{Rol}{Analista de requisitos}
+\fichafila{Organización}{ORG-0002 (Equipo de Desarrollo)}
+\fichafila{Autor}{AUT-0001}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Integrante del equipo RedPepper.}
+\end{ficha}
+
+\subsection{Expertos}
+\label{subsec:expertos}
+
+\begin{ficha}{Ficha EXP-0001: Docente guía del curso}
+\fichafila{Código}{EXP-0001}
+\fichafila{Nombre}{Dr. Yasiel Pérez Vera}
+\fichafila{Versión}{01.00}
+\fichafila{Experiencia}{Ingeniería de Requisitos y Métodos Formales de Software}
+\fichafila{Organización}{ORG-0002 (Universidad La Salle)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Docente supervisor metodológico del proyecto.}
+\end{ficha}
+
+\begin{ficha}{Ficha EXP-0002: Experto contable y tributario (RedPepper)}
+\fichafila{Código}{EXP-0002}
+\fichafila{Nombre}{Contador de RedPepper (nombres por confirmar)}
+\fichafila{Versión}{01.00}
+\fichafila{Experiencia}{Contabilidad comercial, tributación SUNAT y presentación bajo NIIF 18}
+\fichafila{Organización}{ORG-0001 (RedPepper)}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Fecha}{Por completar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Pendiente confirmar régimen tributario, plan de cuentas y validez de plantilla NIIF 18.}
+\end{ficha}
+
+\subsection{Fuentes}
+\label{subsec:fuentes}
+
+\begin{ficha}{Ficha FUE-0001 (F-01): Documento base y funciones}
+\fichafila{Código}{FUE-0001}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{Documento de contexto inicial y funciones base (F-01, secciones 2 y 5)}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Contrastado en EV-OBS-01 para preparación de pedidos al instante y funciones de cocina.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0002 (F-02): Informe Práctica 02}
+\fichafila{Código}{FUE-0002}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{\texttt{Informe\_Practica02\_RedPepper\_Exacto\_12a14Paginas.docx} (F-02, secciones 5.2, 6.1, 6.2 y 8)}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Aporta el catálogo consolidado de 20 RF, 8 RNF, aclaración de prorrateo semanal de compras y modelo conceptual inicial.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0003 (F-03): Primera entrevista y observación de campo}
+\fichafila{Código}{FUE-0003}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{Registro de primera entrevista operativa (sección 2.1) y observación de campo (sección 2.2, figura 2)}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Sustenta EV-OBS-01 y EV-ENT-01; pendiente confirmar fecha, participantes y duración exacta de la observación.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0004 (F-04): Diagramas de proceso}
+\fichafila{Código}{FUE-0004}
+\fichafila{Versión}{02.00}
+\fichafila{Nombre}{Diagramas del proceso de negocio RedPepper (D-COM-01, D-COM-02, D-COM-03)}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Material complementario de diseño y modelado de procesos (Sección~4).}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0005 (F-05): Audio de WhatsApp}
+\fichafila{Código}{FUE-0005}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{Audio de WhatsApp de entrevista / aclaración (F-05)}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Conservado como fuente adicional separada; no se utiliza como premisa hasta contar con transcripción revisable y localizadores temporales.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0006 (F-06): Preentrevista sobre la idea inicial}
+\fichafila{Código}{FUE-0006}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{Solicitudes escritas iniciales (12 puntos), aclaración SUNAT y Modelo A}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Sustenta las 14 entradas de EV-PRE-01.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0007 (F-07): Carta de productos y precios}
+\fichafila{Código}{FUE-0007}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{Carta oficial de productos y precios de RedPepper}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Documenta precios reales de venta (p.\ ej., Salchipapa Clásica S/8.00, Hamburguesa Clásica S/8.00); no incluye costos unitarios.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0008 (F-08): Entrevista de profundización}
+\fichafila{Código}{FUE-0008}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{\texttt{Preguntas.pdf} — Guion de entrevista de profundización (P-01 a P-28)}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Sustenta las 28 entradas de EV-ENT-02; pendiente confirmar fecha, participantes y correspondencia con audio.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0009 (F-09): Reporte de educción e ilación}
+\fichafila{Código}{FUE-0009}
+\fichafila{Versión}{03.00}
+\fichafila{Nombre}{\texttt{Reporte\_RedPepper\_Educcion\_Ilacion (3).pdf}}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Concluido}
+\fichafila{Comentario}{Documento fuente que consolida los eventos EV-PRE-01, EV-OBS-01, EV-ENT-01 y EV-ENT-02, sus 52 cadenas y 39 requisitos candidatos.}
+\end{ficha}
+
+\begin{ficha}{Ficha FUE-0010 (N-05 a N-14): Referencias normativas}
+\fichafila{Código}{FUE-0010}
+\fichafila{Versión}{01.00}
+\fichafila{Nombre}{Referencias normativas contables y tributarias (N-05, N-07, N-08, N-09, N-12 a N-14)}
+\fichafila{Fecha fuente}{Por completar}
+\fichafila{Fecha plantilla}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Consultadas en I-PRE-08, I-PRE-11 e I-ENT2-19 respecto a vigencia tributaria, sustento documental y NIIF 18.}
+\end{ficha}
+
+\subsection{Requisitos bajo educción}
+\label{subsec:requisitos-educcion}
+
+A continuación se presentan las fichas de educción organizadas por evento
+de levantamiento y por requisitos no funcionales, siguiendo la plantilla
+estándar de educción (\texttt{EDU-DDDD}).
+
+\subsubsection{Evento EV-PRE-01: preentrevista sobre la idea inicial (14 fichas)}
+\label{subsec:educcion-pre}
+
+Reúne las catorce entradas del evento EV-PRE-01, obtenidas de FUE-0006 (F-06: doce solicitudes escritas, aclaración de emisión SUNAT y modelo mensual).
+
+\begin{ficha}{Educción — EDU-PRE-01 (E-PRE-01): Identificación de ventas diarias}
+\fichafila{Código educción}{EDU-PRE-01 (E-PRE-01)}
+\fichafila{Nombre}{Identificación de ventas diarias}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 1)}
+\fichafila{Código ilación}{ILA-PRE-01 (I-PRE-01)}
+\fichafila{Descripción}{1. Ventas del día.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-02 (E-PRE-02): Costo por producto frente a compra semanal}
+\fichafila{Código educción}{EDU-PRE-02 (E-PRE-02)}
+\fichafila{Nombre}{Costo por producto frente a compra semanal}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 2)}
+\fichafila{Código ilación}{ILA-PRE-02 (I-PRE-02)}
+\fichafila{Descripción}{2. Ingresar los costos directos del producto que se vende.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-03 (E-PRE-03): Cierre de jornada}
+\fichafila{Código educción}{EDU-PRE-03 (E-PRE-03)}
+\fichafila{Nombre}{Cierre de jornada}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 3)}
+\fichafila{Código ilación}{ILA-PRE-03 (I-PRE-03)}
+\fichafila{Descripción}{3. Que al final del día me dé el total de ventas del día.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-04 (E-PRE-04): Definición del margen solicitado}
+\fichafila{Código educción}{EDU-PRE-04 (E-PRE-04)}
+\fichafila{Nombre}{Definición del margen solicitado}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 4)}
+\fichafila{Código ilación}{ILA-PRE-04 (I-PRE-04)}
+\fichafila{Descripción}{4. Que me dé el margen bruto del día que sale de la resta de las ventas totales menos el total del costo directo.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Relación de cálculo declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-05 (E-PRE-05): Aclaración del objeto de prorrateo}
+\fichafila{Código educción}{EDU-PRE-05 (E-PRE-05)}
+\fichafila{Nombre}{Aclaración del objeto de prorrateo}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 5)}
+\fichafila{Código ilación}{ILA-PRE-05 (I-PRE-05)}
+\fichafila{Descripción}{5. Las compras se hacen para la semana; el software me debe prorratear las ventas entre lunes y viernes para que el margen bruto diario sea real. Cualquier compra adicional debe sumarse en el día de la compra.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Regla expresada con ambigüedad.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-06 (E-PRE-06): Imputación mensual de gastos}
+\fichafila{Código educción}{EDU-PRE-06 (E-PRE-06)}
+\fichafila{Nombre}{Imputación mensual de gastos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 6)}
+\fichafila{Código ilación}{ILA-PRE-06 (I-PRE-06)}
+\fichafila{Descripción}{6. Registrar los costos indirectos del mes: salarios, luz, agua, internet y contabilidad.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-07 (E-PRE-07): Separación de BAI y resultado antes de intereses}
+\fichafila{Código educción}{EDU-PRE-07 (E-PRE-07)}
+\fichafila{Nombre}{Separación de BAI y resultado antes de intereses}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 7)}
+\fichafila{Código ilación}{ILA-PRE-07 (I-PRE-07)}
+\fichafila{Descripción}{7. Dar el margen antes de impuestos, BAI, beneficio antes de impuestos e intereses bancarios si los hay.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Subtotal declarado ambiguo.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-08 (E-PRE-08): Determinación de reglas tributarias}
+\fichafila{Código educción}{EDU-PRE-08 (E-PRE-08)}
+\fichafila{Nombre}{Determinación de reglas tributarias}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 8)}
+\fichafila{Código ilación}{ILA-PRE-08 (I-PRE-08)}
+\fichafila{Descripción}{8. Calcular los impuestos del mes de acuerdo a las ventas.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad declarada incompleta.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-09 (E-PRE-09): Resultado monetario y porcentaje}
+\fichafila{Código educción}{EDU-PRE-09 (E-PRE-09)}
+\fichafila{Nombre}{Resultado monetario y porcentaje}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 9)}
+\fichafila{Código ilación}{ILA-PRE-09 (I-PRE-09)}
+\fichafila{Descripción}{9. Dar el margen neto o ganancia del mes.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-10 (E-PRE-10): Marco de presentación}
+\fichafila{Código educción}{EDU-PRE-10 (E-PRE-10)}
+\fichafila{Nombre}{Marco de presentación}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 10)}
+\fichafila{Código ilación}{ILA-PRE-10 (I-PRE-10)}
+\fichafila{Descripción}{10. Brindar un Estado de Resultados mensual de acuerdo con la nueva NIIF 18.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de reporte y referencia externa.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-11 (E-PRE-11): Vínculo entre comprobante y egreso}
+\fichafila{Código educción}{EDU-PRE-11 (E-PRE-11)}
+\fichafila{Nombre}{Vínculo entre comprobante y egreso}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 11)}
+\fichafila{Código ilación}{ILA-PRE-11 (I-PRE-11)}
+\fichafila{Descripción}{11. Almacenar facturas de las compras o boletas para justificar ante SUNAT.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de sustento documental.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-12 (E-PRE-12): Catálogo y estadísticas de venta}
+\fichafila{Código educción}{EDU-PRE-12 (E-PRE-12)}
+\fichafila{Nombre}{Catálogo y estadísticas de venta}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 12)}
+\fichafila{Código ilación}{ILA-PRE-12 (I-PRE-12)}
+\fichafila{Descripción}{12. Tener una pestaña de carta con productos y precios para resumir cuáles se venden más y menos y decidir cambios.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad funcional y finalidad.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-13 (E-PRE-13): Separación de emisión y reporte interno}
+\fichafila{Código educción}{EDU-PRE-13 (E-PRE-13)}
+\fichafila{Nombre}{Separación de emisión y reporte interno}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0006 (F-06, aclaración posterior)}
+\fichafila{Código ilación}{ILA-PRE-13 (I-PRE-13)}
+\fichafila{Descripción}{Los comprobantes de pago del negocio se sacan de SUNAT. Se solicita un reporte diario de gastos que respalde el informe mensual con los datos pedidos.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Aclaración de alcance.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-PRE-14 (E-PRE-14): Conciliación de reporte y soportes}
+\fichafila{Código educción}{EDU-PRE-14 (E-PRE-14)}
+\fichafila{Nombre}{Conciliación de reporte y soportes}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, modelo A)}
+\fichafila{Código ilación}{ILA-PRE-14 (I-PRE-14)}
+\fichafila{Descripción}{Modelo mensual: ventas menos costos directos igual margen bruto; menos indirectos; margen BAI; menos impuestos e intereses; igual margen neto. El reporte de gastos demuestra los costos directos e indirectos.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Plantilla y relación de sustento.}
+\end{ficha}
+
+\subsubsection{Evento EV-OBS-01: observación de campo (5 fichas)}
+\label{subsec:educcion-obs}
+
+Reúne las cinco entradas del evento EV-OBS-01, obtenidas de FUE-0003 (F-03, sección 2.2), con contraste en FUE-0001 (F-01, secciones 2 y 5).
+
+\begin{ficha}{Educción — EDU-OBS-01 (E-OBS-01): Separación de tareas}
+\fichafila{Código educción}{EDU-OBS-01 (E-OBS-01)}
+\fichafila{Nombre}{Separación de tareas}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.2)}
+\fichafila{Código ilación}{ILA-OBS-01 (I-OBS-01)}
+\fichafila{Descripción}{Se describe una inspección del mostrador y la cocina durante la atención comercial.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Observación reportada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-OBS-02 (E-OBS-02): Pedido como desencadenante}
+\fichafila{Código educción}{EDU-OBS-02 (E-OBS-02)}
+\fichafila{Nombre}{Pedido como desencadenante}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0001, FUE-0003 (F-03, 2.2; F-01, 5)}
+\fichafila{Código ilación}{ILA-OBS-02 (I-OBS-02)}
+\fichafila{Descripción}{La observación se reporta como preparación de pedidos al instante, sin productos precocidos.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Observación reportada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-OBS-03 (E-OBS-03): Separación de demoras}
+\fichafila{Código educción}{EDU-OBS-03 (E-OBS-03)}
+\fichafila{Nombre}{Separación de demoras}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.2)}
+\fichafila{Código ilación}{ILA-OBS-03 (I-OBS-03)}
+\fichafila{Descripción}{La preparación genera una espera propia del proceso culinario.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Observación reportada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-OBS-04 (E-OBS-04): Seguimiento de pedidos}
+\fichafila{Código educción}{EDU-OBS-04 (E-OBS-04)}
+\fichafila{Nombre}{Seguimiento de pedidos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, figura 2 y 2.2)}
+\fichafila{Código ilación}{ILA-OBS-04 (I-OBS-04)}
+\fichafila{Descripción}{El documento describe mostrador, equipos de cocina y área de despacho.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Contexto físico documentado.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-OBS-05 (E-OBS-05): Límite entre evidencia y solución}
+\fichafila{Código educción}{EDU-OBS-05 (E-OBS-05)}
+\fichafila{Nombre}{Límite entre evidencia y solución}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.2)}
+\fichafila{Código ilación}{ILA-OBS-05 (I-OBS-05)}
+\fichafila{Descripción}{El informe propone una interfaz táctil de despacho ágil como resultado de la observación.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Propuesta técnica documentada.}
+\end{ficha}
+
+\subsubsection{Evento EV-ENT-01: primera entrevista documentada (5 fichas)}
+\label{subsec:educcion-ent1}
+
+Reúne las cinco entradas del evento EV-ENT-01, obtenidas de FUE-0003 (F-03, sección 2.1, guion operativo de cuatro preguntas), con contraste en la carta FUE-0007 (F-07).
+
+\begin{ficha}{Educción — EDU-ENT1-01 (E-ENT1-01): Necesidad de evaluar la carta}
+\fichafila{Código educción}{EDU-ENT1-01 (E-ENT1-01)}
+\fichafila{Nombre}{Necesidad de evaluar la carta}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 1)}
+\fichafila{Código ilación}{ILA-ENT1-01 (I-ENT1-01)}
+\fichafila{Descripción}{Jerry explica que redujeron la variedad de platos por costos y rentabilidad.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Declaración y motivación de negocio.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT1-02 (E-ENT1-02): Tratamiento del antecedente}
+\fichafila{Código educción}{EDU-ENT1-02 (E-ENT1-02)}
+\fichafila{Nombre}{Tratamiento del antecedente}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0003 (Cocina / Chef); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 1)}
+\fichafila{Código ilación}{ILA-ENT1-02 (I-ENT1-02)}
+\fichafila{Descripción}{La elaboración manual de carnes de hamburguesa elevaba el precio final y los clientes no aceptaban ese precio.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Antecedente declarado.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT1-03 (E-ENT1-03): Corroboración del desencadenante}
+\fichafila{Código educción}{EDU-ENT1-03 (E-ENT1-03)}
+\fichafila{Nombre}{Corroboración del desencadenante}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 2)}
+\fichafila{Código ilación}{ILA-ENT1-03 (I-ENT1-03)}
+\fichafila{Descripción}{Jerry afirma que no adelantan papas fritas ni hamburguesas y que preparan al recibir el pedido.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Regla operativa declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT1-04 (E-ENT1-04): Registro de insumos y proveedores}
+\fichafila{Código educción}{EDU-ENT1-04 (E-ENT1-04)}
+\fichafila{Nombre}{Registro de insumos y proveedores}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0003 (Cocina / Chef); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 3)}
+\fichafila{Código ilación}{ILA-ENT1-04 (I-ENT1-04)}
+\fichafila{Descripción}{Las papas llegan picadas y el pollo deshilachado se compra a una distribuidora denominada Don Pollo.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Dato de abastecimiento declarado.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT1-05 (E-ENT1-05): Diferencia entre producto e insumo}
+\fichafila{Código educción}{EDU-ENT1-05 (E-ENT1-05)}
+\fichafila{Nombre}{Diferencia entre producto e insumo}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 4)}
+\fichafila{Código ilación}{ILA-ENT1-05 (I-ENT1-05)}
+\fichafila{Descripción}{Las gaseosas se compran a distribuidores; los refrescos naturales usan pulpa y agua hervida o mineral.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Descripción declarada de producto y preparación.}
+\end{ficha}
+
+\subsubsection{Evento EV-ENT-02: entrevista de profundización (28 fichas)}
+\label{subsec:educcion-ent2}
+
+Reúne las veintiocho entradas del evento EV-ENT-02, correspondientes a las preguntas P-01 a P-28 de FUE-0008 (F-08, Preguntas.pdf). Las respuestas se resumen preservando objeciones, matices y temas no resueltos.
+
+\begin{ficha}{Educción — EDU-ENT2-01 (E-ENT2-01): Acceso dentro y fuera del negocio}
+\fichafila{Código educción}{EDU-ENT2-01 (E-ENT2-01)}
+\fichafila{Nombre}{Acceso dentro y fuera del negocio}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-01)}
+\fichafila{Código ilación}{ILA-ENT2-01 (I-ENT2-01)}
+\fichafila{Descripción}{P-01: el programa debe abrirse en el negocio y fuera; Jerry revisa desde casa.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad y contexto de uso.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-02 (E-ENT2-02): Separación del trabajo administrativo}
+\fichafila{Código educción}{EDU-ENT2-02 (E-ENT2-02)}
+\fichafila{Nombre}{Separación del trabajo administrativo}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-02)}
+\fichafila{Código ilación}{ILA-ENT2-02 (I-ENT2-02)}
+\fichafila{Descripción}{P-02: en el local se dedica a la operación; administra desde su escritorio en casa.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Contexto declarado.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-03 (E-ENT2-03): Roles de uso}
+\fichafila{Código educción}{EDU-ENT2-03 (E-ENT2-03)}
+\fichafila{Nombre}{Roles de uso}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0003 (Cocina / Chef); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-03)}
+\fichafila{Código ilación}{ILA-ENT2-03 (I-ENT2-03)}
+\fichafila{Descripción}{P-03: acceso del dueño, contador, administrador y a veces chef por stocks.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de usuarios.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-04 (E-ENT2-04): Interacción táctil y mouse}
+\fichafila{Código educción}{EDU-ENT2-04 (E-ENT2-04)}
+\fichafila{Nombre}{Interacción táctil y mouse}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-04)}
+\fichafila{Código ilación}{ILA-ENT2-04 (I-ENT2-04)}
+\fichafila{Descripción}{P-04: pantalla táctil para servicio y mouse para administración.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Preferencia de interacción.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-05 (E-ENT2-05): Resultado al final de la jornada}
+\fichafila{Código educción}{EDU-ENT2-05 (E-ENT2-05)}
+\fichafila{Nombre}{Resultado al final de la jornada}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-05)}
+\fichafila{Código ilación}{ILA-ENT2-05 (I-ENT2-05)}
+\fichafila{Descripción}{P-05: al indicar enter quiere obtener todas las ventas del día.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de resumen.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-06 (E-ENT2-06): Selección visual y comanda}
+\fichafila{Código educción}{EDU-ENT2-06 (E-ENT2-06)}
+\fichafila{Nombre}{Selección visual y comanda}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-06)}
+\fichafila{Código ilación}{ILA-ENT2-06 (I-ENT2-06)}
+\fichafila{Descripción}{P-06: seleccionar salchipapa y cremas en pantalla; sale una comanda para el chef.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad funcional.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-07 (E-ENT2-07): Periodos y horarios ajustables}
+\fichafila{Código educción}{EDU-ENT2-07 (E-ENT2-07)}
+\fichafila{Nombre}{Periodos y horarios ajustables}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador) — Confirmar}
+\fichafila{Fuente}{FUE-0008 (F-08, P-07)}
+\fichafila{Código ilación}{ILA-ENT2-07 (I-ENT2-07)}
+\fichafila{Descripción}{P-07: reportes diarios, semanales y mensuales; el usuario decide inicio y fin de jornada.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad y regla declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-08 (E-ENT2-08): Historial de precios}
+\fichafila{Código educción}{EDU-ENT2-08 (E-ENT2-08)}
+\fichafila{Nombre}{Historial de precios}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-08)}
+\fichafila{Código ilación}{ILA-ENT2-08 (I-ENT2-08)}
+\fichafila{Descripción}{P-08: todo sistema debe guardar historial.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-09 (E-ENT2-09): Borrador y venta procesada}
+\fichafila{Código educción}{EDU-ENT2-09 (E-ENT2-09)}
+\fichafila{Nombre}{Borrador y venta procesada}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-09)}
+\fichafila{Código ilación}{ILA-ENT2-09 (I-ENT2-09)}
+\fichafila{Descripción}{P-09: puede borrar antes de procesar; si ya vendió el tratamiento es otro.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Distinción declarada incompleta.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-10 (E-ENT2-10): Búsqueda histórica}
+\fichafila{Código educción}{EDU-ENT2-10 (E-ENT2-10)}
+\fichafila{Nombre}{Búsqueda histórica}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador) — Confirmar}
+\fichafila{Fuente}{FUE-0008 (F-08, P-10)}
+\fichafila{Código ilación}{ILA-ENT2-10 (I-ENT2-10)}
+\fichafila{Descripción}{P-10: considera importante buscar día o plato en historial.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad funcional.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-11 (E-ENT2-11): Producto agotado}
+\fichafila{Código educción}{EDU-ENT2-11 (E-ENT2-11)}
+\fichafila{Nombre}{Producto agotado}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-11)}
+\fichafila{Código ilación}{ILA-ENT2-11 (I-ENT2-11)}
+\fichafila{Descripción}{P-11: al teclear el producto agotado no sale y eso le alerta.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Comportamiento esperado.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-12 (E-ENT2-12): Modalidad de asignación elegida}
+\fichafila{Código educción}{EDU-ENT2-12 (E-ENT2-12)}
+\fichafila{Nombre}{Modalidad de asignación elegida}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-12)}
+\fichafila{Código ilación}{ILA-ENT2-12 (I-ENT2-12)}
+\fichafila{Descripción}{P-12: el usuario dispone si la compra se consume en el día o en la semana.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Regla declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-13 (E-ENT2-13): Emergencia con matices}
+\fichafila{Código educción}{EDU-ENT2-13 (E-ENT2-13)}
+\fichafila{Nombre}{Emergencia con matices}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-13)}
+\fichafila{Código ilación}{ILA-ENT2-13 (I-ENT2-13)}
+\fichafila{Descripción}{P-13: responde sí al cargo del día, pero añade según montos y potestad del usuario.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Respuesta condicionada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-14 (E-ENT2-14): Días hábiles y compras personales}
+\fichafila{Código educción}{EDU-ENT2-14 (E-ENT2-14)}
+\fichafila{Nombre}{Días hábiles y compras personales}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-14)}
+\fichafila{Código ilación}{ILA-ENT2-14 (I-ENT2-14)}
+\fichafila{Descripción}{P-14: repartir entre días hábiles; artículos personales se compran aparte.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Dos reglas declaradas.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-15 (E-ENT2-15): Cambio del precio de venta}
+\fichafila{Código educción}{EDU-ENT2-15 (E-ENT2-15)}
+\fichafila{Nombre}{Cambio del precio de venta}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-15)}
+\fichafila{Código ilación}{ILA-ENT2-15 (I-ENT2-15)}
+\fichafila{Descripción}{P-15: si sube el costo, Jerry actualiza el precio para proteger el margen.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Política comercial declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-16 (E-ENT2-16): Corrección de compra errónea}
+\fichafila{Código educción}{EDU-ENT2-16 (E-ENT2-16)}
+\fichafila{Nombre}{Corrección de compra errónea}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-16)}
+\fichafila{Código ilación}{ILA-ENT2-16 (I-ENT2-16)}
+\fichafila{Descripción}{P-16: acepta corregir montos; supervisa el estado de resultados junto al contador.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de corrección.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-17 (E-ENT2-17): Plantilla de costos fijos}
+\fichafila{Código educción}{EDU-ENT2-17 (E-ENT2-17)}
+\fichafila{Nombre}{Plantilla de costos fijos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-17)}
+\fichafila{Código ilación}{ILA-ENT2-17 (I-ENT2-17)}
+\fichafila{Descripción}{P-17: acepta plantilla; ventas menos directos, margen menos indirectos y luego impuestos.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad y relación de cálculo.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-18 (E-ENT2-18): Norma y autorización del dueño}
+\fichafila{Código educción}{EDU-ENT2-18 (E-ENT2-18)}
+\fichafila{Nombre}{Norma y autorización del dueño}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-18)}
+\fichafila{Código ilación}{ILA-ENT2-18 (I-ENT2-18)}
+\fichafila{Descripción}{P-18: solicita NIIF 18; contador propone y Jerry autoriza.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Intención y regla de aprobación.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-19 (E-ENT2-19): Vigencia de cambios tributarios}
+\fichafila{Código educción}{EDU-ENT2-19 (E-ENT2-19)}
+\fichafila{Nombre}{Vigencia de cambios tributarios}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-19)}
+\fichafila{Código ilación}{ILA-ENT2-19 (I-ENT2-19)}
+\fichafila{Descripción}{P-19: espera que el cambio se aplique cuando SUNAT indique la fecha.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Expectativa sobre vigencia.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-20 (E-ENT2-20): Aprobación del reporte}
+\fichafila{Código educción}{EDU-ENT2-20 (E-ENT2-20)}
+\fichafila{Nombre}{Aprobación del reporte}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-20)}
+\fichafila{Código ilación}{ILA-ENT2-20 (I-ENT2-20)}
+\fichafila{Descripción}{P-20: acepta estructura formal aprobada por el contador.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de validación.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-21 (E-ENT2-21): Prioridad de contenido del reporte}
+\fichafila{Código educción}{EDU-ENT2-21 (E-ENT2-21)}
+\fichafila{Nombre}{Prioridad de contenido del reporte}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-21)}
+\fichafila{Código ilación}{ILA-ENT2-21 (I-ENT2-21)}
+\fichafila{Descripción}{P-21: no quiere explicación paso a paso; desea estado de resultados mensual para analizar.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Respuesta negativa y preferencia.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-22 (E-ENT2-22): Archivo electrónico ligado al gasto}
+\fichafila{Código educción}{EDU-ENT2-22 (E-ENT2-22)}
+\fichafila{Nombre}{Archivo electrónico ligado al gasto}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-22)}
+\fichafila{Código ilación}{ILA-ENT2-22 (I-ENT2-22)}
+\fichafila{Descripción}{P-22: el contador tiene facturas electrónicas; desde el gasto desea hallar factura, fecha y concepto.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de trazabilidad.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-23 (E-ENT2-23): Referencia a Camaleón}
+\fichafila{Código educción}{EDU-ENT2-23 (E-ENT2-23)}
+\fichafila{Nombre}{Referencia a Camaleón}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-23)}
+\fichafila{Código ilación}{ILA-ENT2-23 (I-ENT2-23)}
+\fichafila{Descripción}{P-23: menciona dualidad y afirma que Camaleón está homologado con SUNAT.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Opinión y referencia a otro producto.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-24 (E-ENT2-24): Ajuste de periodo cerrado}
+\fichafila{Código educción}{EDU-ENT2-24 (E-ENT2-24)}
+\fichafila{Nombre}{Ajuste de periodo cerrado}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-24)}
+\fichafila{Código ilación}{ILA-ENT2-24 (I-ENT2-24)}
+\fichafila{Descripción}{P-24: acepta bloquear anulación directa y exigir nota de ajuste autorizada.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Regla declarada.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-25 (E-ENT2-25): Compresión de adjuntos}
+\fichafila{Código educción}{EDU-ENT2-25 (E-ENT2-25)}
+\fichafila{Nombre}{Compresión de adjuntos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador) — Confirmar}
+\fichafila{Fuente}{FUE-0008 (F-08, P-25)}
+\fichafila{Código ilación}{ILA-ENT2-25 (I-ENT2-25)}
+\fichafila{Descripción}{P-25: acepta compresión automática de PDF pesado.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de almacenamiento.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-26 (E-ENT2-26): Validación de entradas}
+\fichafila{Código educción}{EDU-ENT2-26 (E-ENT2-26)}
+\fichafila{Nombre}{Validación de entradas}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-26)}
+\fichafila{Código ilación}{ILA-ENT2-26 (I-ENT2-26)}
+\fichafila{Descripción}{P-26: acepta avisos por números negativos y fechas incorrectas.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad de validación.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-27 (E-ENT2-27): Emisión SUNAT y expectativa de afiliación}
+\fichafila{Código educción}{EDU-ENT2-27 (E-ENT2-27)}
+\fichafila{Nombre}{Emisión SUNAT y expectativa de afiliación}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-27)}
+\fichafila{Código ilación}{ILA-ENT2-27 (I-ENT2-27)}
+\fichafila{Descripción}{P-27: acepta que no emite automáticamente, pero opina que SUNAT querrá afiliación.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Acuerdo con reserva.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-ENT2-28 (E-ENT2-28): Ventas por distintos canales}
+\fichafila{Código educción}{EDU-ENT2-28 (E-ENT2-28)}
+\fichafila{Nombre}{Ventas por distintos canales}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-28)}
+\fichafila{Código ilación}{ILA-ENT2-28 (I-ENT2-28)}
+\fichafila{Descripción}{P-28: insiste en que cualquier pedido que llegue sigue siendo venta y se registra.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Necesidad comercial.}
+\end{ficha}
+
+\subsubsection{Requisitos no funcionales bajo educción (8 fichas)}
+\label{subsec:educcion-rnf}
+
+Reúne las ocho fichas de educción correspondientes a los requisitos no funcionales del catálogo FUE-0002 (F-02, sección 6.2), estructuradas conforme al formato de plantilla de educción para RNF.
+
+\begin{ficha}{Educción — EDU-RNF-01: Seguridad RBAC y control de acceso}
+\fichafila{Código educción}{EDU-RNF-01}
+\fichafila{Nombre}{Seguridad RBAC y control de acceso}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja), ACT-0003 (Cocina), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-01 a P-03)}
+\fichafila{Código ilación}{ILA-RNF-01}
+\fichafila{Descripción}{El sistema requiere autenticación obligatoria mediante JWT/tokens SHA-256 y control de acceso diferenciado por roles para operar dentro y fuera del local.}
+\fichafila{Importancia}{Vital}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Confirmar permisos específicos del rol contador sobre ventas (contradicción iii). Definir política de expiración de sesión y criterios de validación de RNF-01.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-RNF-02: Trazabilidad y registro de auditoría}
+\fichafila{Código educción}{EDU-RNF-02}
+\fichafila{Nombre}{Trazabilidad y registro de auditoría}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-08, P-09, P-16)}
+\fichafila{Código ilación}{ILA-RNF-02}
+\fichafila{Descripción}{El negocio requiere un registro inmutable de mutaciones críticas (anulaciones, ediciones de precios y montos) indicando usuario responsable, dirección IP y marca temporal.}
+\fichafila{Importancia}{Vital}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Confirmar eventos auditables, plazo de retención del log y criterio de validación verificable para RNF-02.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-RNF-03: Rendimiento en cierre diario y reportes NIIF 18}
+\fichafila{Código educción}{EDU-RNF-03}
+\fichafila{Nombre}{Rendimiento en cierre diario y reportes NIIF 18}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-05, P-07)}
+\fichafila{Código ilación}{ILA-RNF-03}
+\fichafila{Descripción}{El sistema debe ejecutar el cierre diario y renderizar los balances NIIF 18 en un tiempo inferior a 3,0 segundos.}
+\fichafila{Importancia}{Vital}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Definir volumen de datos de prueba, concurrencia esperada y hardware objetivo para validar el umbral de 3,0 s en el equipo real (RNF-03).}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-RNF-04: Respaldo automatizado y tolerancia a fallos de red}
+\fichafila{Código educción}{EDU-RNF-04}
+\fichafila{Nombre}{Respaldo automatizado y tolerancia a fallos de red}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Código ilación}{ILA-RNF-04}
+\fichafila{Descripción}{El sistema debe realizar copias de seguridad diarias automatizadas y ofrecer persistencia local offline ante cortes de red.}
+\fichafila{Importancia}{Vital}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Cobertura offline no cuantificada en F-02; definir duración máxima de operación sin conexión, estrategia de sincronización y alcance real ante corte eléctrico (contradicción v).}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-RNF-05: Usabilidad adaptativa en POS táctil y web gerencial}
+\fichafila{Código educción}{EDU-RNF-05}
+\fichafila{Nombre}{Usabilidad adaptativa en POS táctil y web gerencial}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0003 (F-03, 2.2); FUE-0008 (F-08, P-04)}
+\fichafila{Código ilación}{ILA-RNF-05}
+\fichafila{Descripción}{La interfaz del punto de venta debe optimizarse para uso táctil con botones mayores a 48 px, mientras la vista administrativa debe adaptarse al uso web gerencial con mouse.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{El umbral de 48 px es propuesta del equipo (I-OBS-05 / I-ENT2-04); debe validarse directamente en la pantalla real del mostrador.}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-RNF-06: Precisión numérica en cálculos monetarios}
+\fichafila{Código educción}{EDU-RNF-06}
+\fichafila{Nombre}{Precisión numérica en cálculos monetarios}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Código ilación}{ILA-RNF-06}
+\fichafila{Descripción}{Las variables monetarias de ventas, prorrateos, márgenes e impuestos deben manejarse con tipo DECIMAL(12,4) para evitar errores de redondeo.}
+\fichafila{Importancia}{Vital}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Acordar política de redondeo en visualización e importes finales frente a comprobantes SUNAT y pruebas de conciliación (RNF-06).}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-RNF-07: Inmutabilidad de periodos contables cerrados}
+\fichafila{Código educción}{EDU-RNF-07}
+\fichafila{Nombre}{Inmutabilidad de periodos contables cerrados}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-24)}
+\fichafila{Código ilación}{ILA-RNF-07}
+\fichafila{Descripción}{Una vez cerrado un mes contable por el contador, el sistema debe impedir la edición o anulación directa sobre ventas y egresos de ese periodo.}
+\fichafila{Importancia}{Vital}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Confirmar procedimiento de nota de ajuste autorizada vinculado a periodos cerrados (V-ENT2-13 y V-ENT2-14).}
+\end{ficha}
+
+\begin{ficha}{Educción — EDU-RNF-08: Seguridad y compresión de comprobantes adjuntos}
+\fichafila{Código educción}{EDU-RNF-08}
+\fichafila{Nombre}{Seguridad y compresión de comprobantes adjuntos}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0006 (F-06, punto 11); FUE-0008 (F-08, P-25)}
+\fichafila{Código ilación}{ILA-RNF-08}
+\fichafila{Descripción}{Los comprobantes digitales (PDF/JPG) asociados a egresos deben almacenarse en carpetas cifradas con compresión automática sin perder legibilidad.}
+\fichafila{Importancia}{Vital / Opcional — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Aclarar uso de hash SHA-256 para integridad frente al cifrado real del repositorio (contradicción iv) y definir umbral máximo de tamaño para compresión (V-ENT2-15).}
+\end{ficha}

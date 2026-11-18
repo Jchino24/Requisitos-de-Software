@@ -110,6 +110,121 @@ RNF-08 & Seguridad de comprobantes & Almacenamiento de comprobantes en carpetas 
 \end{longtable}
 }
 
+
+\paragraph{Fichas individuales de requisitos no funcionales.} Siguiendo la plantilla oficial de requerimientos no funcionales (\texttt{RNF-DDDD}), a continuación se detalla cada requisito de la Tabla~\ref{tab:rnf}:
+
+\begin{ficha}{Requerimiento no funcional — RNF-01: Seguridad RBAC}
+\fichafila{Código}{RNF-01}
+\fichafila{Nombre}{Seguridad RBAC}
+\fichafila{Atributo de calidad}{Seguridad (Control de acceso RBAC)}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Autenticación obligatoria mediante JWT/tokens SHA-256 y control de acceso por roles.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: No cuantificada en F-02. Criterio de validación: Pendiente de definir.}
+\end{ficha}
+
+\begin{ficha}{Requerimiento no funcional — RNF-02: Trazabilidad y log}
+\fichafila{Código}{RNF-02}
+\fichafila{Nombre}{Trazabilidad y log}
+\fichafila{Atributo de calidad}{Seguridad / Auditabilidad (Trazabilidad)}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Registro inmutable de mutaciones críticas (anulaciones, ediciones) con usuario, IP y timestamp.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: No cuantificada en F-02. Criterio de validación: Pendiente de definir.}
+\end{ficha}
+
+\begin{ficha}{Requerimiento no funcional — RNF-03: Rendimiento}
+\fichafila{Código}{RNF-03}
+\fichafila{Nombre}{Rendimiento}
+\fichafila{Atributo de calidad}{Eficiencia de desempeño (Tiempo de respuesta)}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Cierre diario y renderizado de balances NIIF 18 en menos de 3.0 segundos.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: Menos de 3.0 s. Criterio de validación: Pendiente de definir en el equipo real.}
+\end{ficha}
+
+\begin{ficha}{Requerimiento no funcional — RNF-04: Respaldo y tolerancia}
+\fichafila{Código}{RNF-04}
+\fichafila{Nombre}{Respaldo y tolerancia}
+\fichafila{Atributo de calidad}{Fiabilidad / Tolerancia a fallos}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Copia de seguridad diaria automatizada y persistencia offline local en cortes de red.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: Frecuencia diaria; cobertura offline no cuantificada. Criterio de validación: Pendiente de definir.}
+\end{ficha}
+
+\begin{ficha}{Requerimiento no funcional — RNF-05: Usabilidad adaptativa}
+\fichafila{Código}{RNF-05}
+\fichafila{Nombre}{Usabilidad adaptativa}
+\fichafila{Atributo de calidad}{Usabilidad adaptativa}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Interfaz táctil optimizada para POS (botones mayores a 48 px) e interfaz web gerencial.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: Botones mayores a 48 px. Criterio de validación: Pendiente de validar en el dispositivo; el umbral es propuesta del equipo (I-OBS-05).}
+\end{ficha}
+
+\begin{ficha}{Requerimiento no funcional — RNF-06: Precisión numérica}
+\fichafila{Código}{RNF-06}
+\fichafila{Nombre}{Precisión numérica}
+\fichafila{Atributo de calidad}{Exactitud / Precisión numérica}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Manejo de variables monetarias con tipo DECIMAL(12,4) para evitar redondeos.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: \texttt{DECIMAL(12,4)}. Criterio de validación: Pendiente de definir.}
+\end{ficha}
+
+\begin{ficha}{Requerimiento no funcional — RNF-07: Inmutabilidad de periodos}
+\fichafila{Código}{RNF-07}
+\fichafila{Nombre}{Inmutabilidad de periodos}
+\fichafila{Atributo de calidad}{Integridad e inmutabilidad de datos}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Bloqueo lógico de lectura/escritura sobre balances de meses cerrados por el contador.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: No cuantificada en F-02. Criterio de validación: V-ENT2-13.}
+\end{ficha}
+
+\begin{ficha}{Requerimiento no funcional — RNF-08: Seguridad de comprobantes}
+\fichafila{Código}{RNF-08}
+\fichafila{Nombre}{Seguridad de comprobantes}
+\fichafila{Atributo de calidad}{Seguridad de archivos y almacenamiento}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Descripción}{Almacenamiento de comprobantes en carpetas cifradas con compresión automática.}
+\fichafila{Importancia}{Vital — Por validar}
+\fichafila{Estado}{Pendiente}
+\fichafila{Comentario}{Métrica declarada: No cuantificada en F-02. Criterio de validación: Pendiente de definir.}
+\end{ficha}
+
 \subsection{Requisitos derivados por evento}
 \label{subsec:derivados}
 

@@ -1,528 +1,895 @@
 % =====================================================================
 %  ilacion.tex
 %  Cadenas analíticas del "Reporte de educción e ilación de requisitos
-%  de RedPepper" (secciones 3.3, 4.3, 5.3 y 6.3).
-%  Cada cadena muestra el paso evidencia -> interpretación -> requisito.
+%  de RedPepper" (secciones 3.3, 4.3, 5.3 y 6.3) adaptadas al formato de
+%  fichas de ilación (evidencia -> justificación -> requisitos derivados),
+%  más las fichas ILA-RNF-01..08.
 % =====================================================================
 
 \section{Ilación}
 \label{sec:ilacion}
 
-\noindent{\small\textbf{Versión 3} \textperiodcentered{} documento de trabajo sujeto a validación con el interesado.}\par\vspace{0.5em}
+\noindent{\small\textbf{Versión 4} \textperiodcentered{} documento adaptado al formato de fichas de ilación, sujeto a validación con el interesado.}\par\vspace{0.5em}
 
 La ilación es el razonamiento explícito que relaciona datos de la educción
 para identificar necesidades, reglas, conflictos, consecuencias o
-requisitos candidatos. Cada cadena indica premisas, operación de análisis,
-conclusión y límites. Puede incluir interpretación, contraste y formulación
-de hipótesis; una observación aislada no demuestra una regla universal. Su
-salida es una conclusión argumentada que debe validarse cuando excede la
-evidencia.
-
-Las cuatro listas siguientes reproducen las 52 cadenas del reporte de
-origen. En cada una se explicita el paso \emph{evidencia} (dato de la
-educción), \emph{interpretación} (razonamiento) y \emph{requisito}
-(candidato derivado o, cuando la cadena no genera obligación, la
-conclusión de contexto). Los requisitos se detallan en la
+requisitos candidatos. Cada ficha indica su educción de origen, las premisas
+de análisis, la justificación con sus límites y los requisitos derivados
+(o la conclusión de contexto cuando no genera obligación independiente).
+Los requisitos consolidados se detallan en la
 Sección~\ref{sec:especificacion}.
 
-\subsection{Cadenas del evento EV-PRE-01}
+\subsection{Cadenas del evento EV-PRE-01 (14 fichas)}
 \label{subsec:ilacion-pre}
 
-\begin{enumerate}
-  \item \textbf{I-PRE-01. Identificación de ventas diarias.}\\
-  \textbf{Evidencia:} E-PRE-01.\\
-  \textbf{Interpretación:} la solicitud requiere conservar fecha e importe
-  de cada venta y distinguir registros confirmados de borradores.\\
-  \textbf{Requisito derivado:} R-PRE-04.\\
-  \textbf{Conclusión y salida:} registro de ventas asociado a la jornada.\\
-  \textbf{Límite:} confirmar si la fecha corresponde al cobro, pedido o
-  entrega.
+\begin{ficha}{Ilación — ILA-PRE-01 (I-PRE-01): Identificación de ventas diarias}
+\fichafila{Código ilación}{ILA-PRE-01 (I-PRE-01)}
+\fichafila{Nombre}{Identificación de ventas diarias}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 1)}
+\fichafila{Educción de origen}{EDU-PRE-01 (E-PRE-01)}
+\fichafila{Descripción}{registro de ventas asociado a la jornada.\\}
+\fichafila{Justificación}{la solicitud requiere conservar fecha e importe de cada venta y distinguir registros confirmados de borradores.\\ \textit{Límite:} confirmar si la fecha corresponde al cobro, pedido o entrega.}
+\fichafila{R-PRE-04}{Para cada jornada, el sistema deberá calcular el margen bruto gerencial como ventas confirmadas menos costos gerenciales asignados a esa fecha.}
+\end{ficha}
 
-  \item \textbf{I-PRE-02. Costo por producto frente a compra semanal.}\\
-  \textbf{Evidencia:} E-PRE-02.\\
-  \textbf{Interpretación:} se solicita costo directo del producto, mientras
-  el punto 5 usa compras semanales. Son bases distintas y no deben sumarse
-  sin una política que evite duplicación.\\
-  \textbf{Requisito derivado:} R-PRE-04 y R-PRE-11.\\
-  \textbf{Conclusión y salida:} necesidad de registrar costos directos y
-  definir su base de cálculo.\\
-  \textbf{Límite:} validar si se usan recetas y consumo, costo unitario
-  manual o asignación de compras.
+\begin{ficha}{Ilación — ILA-PRE-02 (I-PRE-02): Costo por producto frente a compra semanal}
+\fichafila{Código ilación}{ILA-PRE-02 (I-PRE-02)}
+\fichafila{Nombre}{Costo por producto frente a compra semanal}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 2)}
+\fichafila{Educción de origen}{EDU-PRE-02 (E-PRE-02)}
+\fichafila{Descripción}{necesidad de registrar costos directos y definir su base de cálculo.\\}
+\fichafila{Justificación}{se solicita costo directo del producto, mientras el punto 5 usa compras semanales. Son bases distintas y no deben sumarse sin una política que evite duplicación.\\ \textit{Límite:} validar si se usan recetas y consumo, costo unitario manual o asignación de compras.}
+\fichafila{R-PRE-04}{Para cada jornada, el sistema deberá calcular el margen bruto gerencial como ventas confirmadas menos costos gerenciales asignados a esa fecha.}
+\fichafila{R-PRE-11}{El sistema deberá permitir registrar el costo directo de un producto indicando importe, base y vigencia.}
+\end{ficha}
 
-  \item \textbf{I-PRE-03. Cierre de jornada.}\\
-  \textbf{Evidencia:} E-PRE-03.\\
-  \textbf{Interpretación:} el total exige un criterio de corte y selección
-  de ventas incluidas. Un resumen no obliga por sí solo a bloquear todas
-  las correcciones.\\
-  \textbf{Requisito derivado:} R-PRE-10.\\
-  \textbf{Conclusión y salida:} consolidado diario con detalle de ventas
-  incluidas.\\
-  \textbf{Límite:} confirmar anulaciones, devoluciones y horario de corte.
+\begin{ficha}{Ilación — ILA-PRE-03 (I-PRE-03): Cierre de jornada}
+\fichafila{Código ilación}{ILA-PRE-03 (I-PRE-03)}
+\fichafila{Nombre}{Cierre de jornada}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 3)}
+\fichafila{Educción de origen}{EDU-PRE-03 (E-PRE-03)}
+\fichafila{Descripción}{consolidado diario con detalle de ventas incluidas.\\}
+\fichafila{Justificación}{el total exige un criterio de corte y selección de ventas incluidas. Un resumen no obliga por sí solo a bloquear todas las correcciones.\\ \textit{Límite:} confirmar anulaciones, devoluciones y horario de corte.}
+\fichafila{R-PRE-10}{Al finalizar una jornada, el sistema deberá mostrar el total de ventas confirmadas incluidas en el corte.}
+\end{ficha}
 
-  \item \textbf{I-PRE-04. Definición del margen solicitado.}\\
-  \textbf{Evidencia:} E-PRE-04.\\
-  \textbf{Interpretación:} la resta expresa una métrica diaria; sus entradas
-  deben usar la misma jornada y una política de costos definida.\\
-  \textbf{Requisito derivado:} R-PRE-04.\\
-  \textbf{Conclusión y salida:} margen diario con ventas y costos trazables.\\
-  \textbf{Límite:} la calidad contable depende de cómo se reconoce el costo
-  directo.
+\begin{ficha}{Ilación — ILA-PRE-04 (I-PRE-04): Definición del margen solicitado}
+\fichafila{Código ilación}{ILA-PRE-04 (I-PRE-04)}
+\fichafila{Nombre}{Definición del margen solicitado}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 4)}
+\fichafila{Educción de origen}{EDU-PRE-04 (E-PRE-04)}
+\fichafila{Descripción}{margen diario con ventas y costos trazables.\\}
+\fichafila{Justificación}{la resta expresa una métrica diaria; sus entradas deben usar la misma jornada y una política de costos definida.\\ \textit{Límite:} la calidad contable depende de cómo se reconoce el costo directo.}
+\fichafila{R-PRE-04}{Para cada jornada, el sistema deberá calcular el margen bruto gerencial como ventas confirmadas menos costos gerenciales asignados a esa fecha.}
+\end{ficha}
 
-  \item \textbf{I-PRE-05. Aclaración del objeto de prorrateo.}\\
-  \textbf{Evidencia:} E-PRE-05.\\
-  \textbf{Interpretación:} la frase original dice ventas, aunque se motiva
-  en compras semanales. F-02, sección 5.2, documenta la aclaración posterior
-  de repartir compras. Se conserva la discrepancia y se adopta el reparto de
-  costos como regla candidata apoyada en ese contraste.\\
-  \textbf{Requisito derivado:} R-PRE-01, R-PRE-02, R-PRE-03 y R-PRE-04.\\
-  \textbf{Conclusión y salida:} asignación semanal del costo y cargo diario
-  de adicionales, sin redistribuir ingresos.\\
-  \textbf{Límite:} obtener confirmación explícita de Jerry sobre el objeto
-  del prorrateo y feriados.
+\begin{ficha}{Ilación — ILA-PRE-05 (I-PRE-05): Aclaración del objeto de prorrateo}
+\fichafila{Código ilación}{ILA-PRE-05 (I-PRE-05)}
+\fichafila{Nombre}{Aclaración del objeto de prorrateo}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 5)}
+\fichafila{Educción de origen}{EDU-PRE-05 (E-PRE-05)}
+\fichafila{Descripción}{asignación semanal del costo y cargo diario de adicionales, sin redistribuir ingresos.\\}
+\fichafila{Justificación}{la frase original dice ventas, aunque se motiva en compras semanales. F-02, sección 5.2, documenta la aclaración posterior de repartir compras. Se conserva la discrepancia y se adopta el reparto de costos como regla candidata apoyada en ese contraste.\\ \textit{Límite:} obtener confirmación explícita de Jerry sobre el objeto del prorrateo y feriados.}
+\fichafila{R-PRE-01}{El sistema deberá exigir que una compra destinada al cálculo gerencial se clasifique como semanal o adicional antes de asignar su costo.}
+\fichafila{R-PRE-02}{Para una compra semanal, el sistema deberá distribuir su monto entre las jornadas de asignación aprobadas, conservando el total de la compra.}
+\fichafila{R-PRE-03}{Para una compra adicional, el sistema deberá asignar el total a la fecha de compra registrada.}
+\fichafila{R-PRE-04}{Para cada jornada, el sistema deberá calcular el margen bruto gerencial como ventas confirmadas menos costos gerenciales asignados a esa fecha.}
+\end{ficha}
 
-  \item \textbf{I-PRE-06. Imputación mensual de gastos.}\\
-  \textbf{Evidencia:} E-PRE-06.\\
-  \textbf{Interpretación:} concepto, monto y mes de imputación permiten
-  consolidar gastos sin confundir fecha de pago y periodo al que
-  corresponden.\\
-  \textbf{Requisito derivado:} R-PRE-05.\\
-  \textbf{Conclusión y salida:} registro de gastos indirectos por periodo.\\
-  \textbf{Límite:} confirmar devengo, pagos adelantados y gastos
-  compartidos.
+\begin{ficha}{Ilación — ILA-PRE-06 (I-PRE-06): Imputación mensual de gastos}
+\fichafila{Código ilación}{ILA-PRE-06 (I-PRE-06)}
+\fichafila{Nombre}{Imputación mensual de gastos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 6)}
+\fichafila{Educción de origen}{EDU-PRE-06 (E-PRE-06)}
+\fichafila{Descripción}{registro de gastos indirectos por periodo.\\}
+\fichafila{Justificación}{concepto, monto y mes de imputación permiten consolidar gastos sin confundir fecha de pago y periodo al que corresponden.\\ \textit{Límite:} confirmar devengo, pagos adelantados y gastos compartidos.}
+\fichafila{R-PRE-05}{El sistema deberá permitir registrar los costos indirectos con monto, concepto y periodo de imputación.}
+\end{ficha}
 
-  \item \textbf{I-PRE-07. Separación de BAI y resultado antes de intereses.}\\
-  \textbf{Evidencia:} E-PRE-07.\\
-  \textbf{Interpretación:} el texto llama BAI a un subtotal anterior a
-  impuestos e intereses. Cuando existen intereses, esas denominaciones no
-  coinciden. La ilación identifica el conflicto; no cambia la declaración de
-  origen.\\
-  \textbf{Requisito derivado:} R-PRE-06.\\
-  \textbf{Conclusión y salida:} subtotales separados y nombres aprobados por
-  el contador.\\
-  \textbf{Límite:} definir si se desea resultado antes de financiación e
-  impuestos o BAI después de financiación.
+\begin{ficha}{Ilación — ILA-PRE-07 (I-PRE-07): Separación de BAI y resultado antes de intereses}
+\fichafila{Código ilación}{ILA-PRE-07 (I-PRE-07)}
+\fichafila{Nombre}{Separación de BAI y resultado antes de intereses}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 7)}
+\fichafila{Educción de origen}{EDU-PRE-07 (E-PRE-07)}
+\fichafila{Descripción}{subtotales separados y nombres aprobados por el contador.\\}
+\fichafila{Justificación}{el texto llama BAI a un subtotal anterior a impuestos e intereses. Cuando existen intereses, esas denominaciones no coinciden. La ilación identifica el conflicto; no cambia la declaración de origen.\\ \textit{Límite:} definir si se desea resultado antes de financiación e impuestos o BAI después de financiación.}
+\fichafila{R-PRE-06}{El sistema deberá calcular el resultado mensual anterior a impuestos usando las partidas y clasificaciones aprobadas por el contador.}
+\end{ficha}
 
-  \item \textbf{I-PRE-08. Determinación de reglas tributarias.}\\
-  \textbf{Evidencia:} E-PRE-08.\\
-  \textbf{Interpretación:} ventas del mes no basta para definir todos los
-  tributos. Se necesitan régimen, tributo, base, vigencia y aprobación del
-  contador.\\
-  \textbf{Requisito derivado:} R-PRE-07.\\
-  \textbf{Conclusión y salida:} motor de reglas tributarias configurables
-  para el caso. Fuentes de consulta para sus variaciones: N-07 y N-12 a
-  N-14; régimen del negocio no confirmado.\\
-  \textbf{Límite:} no se infiere una tasa única ni impuesto a la renta
-  siempre proporcional a ventas.
+\begin{ficha}{Ilación — ILA-PRE-08 (I-PRE-08): Determinación de reglas tributarias}
+\fichafila{Código ilación}{ILA-PRE-08 (I-PRE-08)}
+\fichafila{Nombre}{Determinación de reglas tributarias}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 8)}
+\fichafila{Educción de origen}{EDU-PRE-08 (E-PRE-08)}
+\fichafila{Descripción}{motor de reglas tributarias configurables para el caso. Fuentes de consulta para sus variaciones: N-07 y N-12 a N-14; régimen del negocio no confirmado.\\}
+\fichafila{Justificación}{ventas del mes no basta para definir todos los tributos. Se necesitan régimen, tributo, base, vigencia y aprobación del contador.\\ \textit{Límite:} no se infiere una tasa única ni impuesto a la renta siempre proporcional a ventas.}
+\fichafila{R-PRE-07}{El sistema deberá calcular cada obligación tributaria con la regla aprobada y vigente para su tributo, régimen y periodo.}
+\end{ficha}
 
-  \item \textbf{I-PRE-09. Resultado monetario y porcentaje.}\\
-  \textbf{Evidencia:} E-PRE-09.\\
-  \textbf{Interpretación:} el cliente usa margen y ganancia como
-  equivalentes. Debe distinguirse importe neto del periodo de margen
-  porcentual.\\
-  \textbf{Requisito derivado:} R-PRE-07.\\
-  \textbf{Conclusión y salida:} resultado neto monetario y, si se aprueba,
-  porcentaje sobre ventas.\\
-  \textbf{Límite:} confirmar denominador y tratamiento de ventas cero.
+\begin{ficha}{Ilación — ILA-PRE-09 (I-PRE-09): Resultado monetario y porcentaje}
+\fichafila{Código ilación}{ILA-PRE-09 (I-PRE-09)}
+\fichafila{Nombre}{Resultado monetario y porcentaje}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 9)}
+\fichafila{Educción de origen}{EDU-PRE-09 (E-PRE-09)}
+\fichafila{Descripción}{resultado neto monetario y, si se aprueba, porcentaje sobre ventas.\\}
+\fichafila{Justificación}{el cliente usa margen y ganancia como equivalentes. Debe distinguirse importe neto del periodo de margen porcentual.\\ \textit{Límite:} confirmar denominador y tratamiento de ventas cero.}
+\fichafila{R-PRE-07}{El sistema deberá calcular cada obligación tributaria con la regla aprobada y vigente para su tributo, régimen y periodo.}
+\end{ficha}
 
-  \item \textbf{I-PRE-10. Marco de presentación.}\\
-  \textbf{Evidencia:} E-PRE-10.\\
-  \textbf{Interpretación:} la intención del cliente requiere una plantilla y
-  clasificaciones aprobadas. No acredita obligación de aplicar NIIF 18 ni
-  cumplimiento integral.\\
-  \textbf{Requisito derivado:} R-PRE-08.\\
-  \textbf{Conclusión y salida:} reporte financiero mensual con plantilla
-  contable identificada.\\
-  \textbf{Límite:} validar marco aplicable y política de presentación con el
-  contador.
+\begin{ficha}{Ilación — ILA-PRE-10 (I-PRE-10): Marco de presentación}
+\fichafila{Código ilación}{ILA-PRE-10 (I-PRE-10)}
+\fichafila{Nombre}{Marco de presentación}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 10)}
+\fichafila{Educción de origen}{EDU-PRE-10 (E-PRE-10)}
+\fichafila{Descripción}{reporte financiero mensual con plantilla contable identificada.\\}
+\fichafila{Justificación}{la intención del cliente requiere una plantilla y clasificaciones aprobadas. No acredita obligación de aplicar NIIF 18 ni cumplimiento integral.\\ \textit{Límite:} validar marco aplicable y política de presentación con el contador.}
+\fichafila{R-PRE-08}{El sistema deberá generar el reporte mensual mediante la plantilla contable aprobada para el negocio.}
+\end{ficha}
 
-  \item \textbf{I-PRE-11. Vínculo entre comprobante y egreso.}\\
-  \textbf{Evidencia:} E-PRE-11.\\
-  \textbf{Interpretación:} guardar archivos sin vínculo no permite explicar
-  qué costo sustentan. Se deriva una asociación recuperable entre documento
-  y registro.\\
-  \textbf{Requisito derivado:} R-PRE-09 y R-PRE-14.\\
-  \textbf{Conclusión y salida:} repositorio documental vinculado a compras y
-  gastos. Contraste documental: N-08 y N-09; una copia adjunta no demuestra
-  por sí sola la deducibilidad fiscal.\\
-  \textbf{Límite:} acordar formatos, retención, acceso y tratamiento de
-  datos personales.
+\begin{ficha}{Ilación — ILA-PRE-11 (I-PRE-11): Vínculo entre comprobante y egreso}
+\fichafila{Código ilación}{ILA-PRE-11 (I-PRE-11)}
+\fichafila{Nombre}{Vínculo entre comprobante y egreso}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 11)}
+\fichafila{Educción de origen}{EDU-PRE-11 (E-PRE-11)}
+\fichafila{Descripción}{repositorio documental vinculado a compras y gastos. Contraste documental: N-08 y N-09; una copia adjunta no demuestra por sí sola la deducibilidad fiscal.\\}
+\fichafila{Justificación}{guardar archivos sin vínculo no permite explicar qué costo sustentan. Se deriva una asociación recuperable entre documento y registro.\\ \textit{Límite:} acordar formatos, retención, acceso y tratamiento de datos personales.}
+\fichafila{R-PRE-09}{El sistema deberá permitir vincular un archivo PDF o JPG validado a un egreso identificado.}
+\fichafila{R-PRE-14}{El sistema deberá generar para una fecha un reporte de egresos con tipo de costo, concepto, monto y vínculo al comprobante disponible.}
+\end{ficha}
 
-  \item \textbf{I-PRE-12. Catálogo y estadísticas de venta.}\\
-  \textbf{Evidencia:} E-PRE-12.\\
-  \textbf{Interpretación:} el catálogo define qué se vende y a qué precio; el
-  historial evita recalcular ventas antiguas con un precio nuevo. El ranking
-  se basa en cantidades e importes, no prueba margen por plato.\\
-  \textbf{Requisito derivado:} R-PRE-12 y R-PRE-13.\\
-  \textbf{Conclusión y salida:} carta editable, precio aplicado por venta y
-  resúmenes de productos.\\
-  \textbf{Límite:} confirmar métricas del ranking y autorización para
-  cambios de precio.
+\begin{ficha}{Ilación — ILA-PRE-12 (I-PRE-12): Catálogo y estadísticas de venta}
+\fichafila{Código ilación}{ILA-PRE-12 (I-PRE-12)}
+\fichafila{Nombre}{Catálogo y estadísticas de venta}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0006 (F-06, punto 12)}
+\fichafila{Educción de origen}{EDU-PRE-12 (E-PRE-12)}
+\fichafila{Descripción}{carta editable, precio aplicado por venta y resúmenes de productos.\\}
+\fichafila{Justificación}{el catálogo define qué se vende y a qué precio; el historial evita recalcular ventas antiguas con un precio nuevo. El ranking se basa en cantidades e importes, no prueba margen por plato.\\ \textit{Límite:} confirmar métricas del ranking y autorización para cambios de precio.}
+\fichafila{R-PRE-12}{El sistema deberá permitir al usuario autorizado registrar productos de la carta con nombre, categoría y precio de venta.}
+\fichafila{R-PRE-13}{El sistema deberá conservar en cada venta el precio efectivamente aplicado a sus productos.}
+\end{ficha}
 
-  \item \textbf{I-PRE-13. Separación de emisión y reporte interno.}\\
-  \textbf{Evidencia:} E-PRE-13.\\
-  \textbf{Interpretación:} el cliente mantiene la emisión de comprobantes de
-  venta en SUNAT. El software solicitado lleva control interno de gastos y
-  su sustento; no debe confundirse con un emisor electrónico.\\
-  \textbf{Requisito derivado:} R-PRE-09 y R-PRE-14.\\
-  \textbf{Conclusión y salida:} reporte diario de egresos vinculado al
-  consolidado mensual.\\
-  \textbf{Límite:} confirmar eventual importación de comprobantes; no se
-  presupone integración automática con SUNAT.
+\begin{ficha}{Ilación — ILA-PRE-13 (I-PRE-13): Separación de emisión y reporte interno}
+\fichafila{Código ilación}{ILA-PRE-13 (I-PRE-13)}
+\fichafila{Nombre}{Separación de emisión y reporte interno}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0006 (F-06, aclaración posterior)}
+\fichafila{Educción de origen}{EDU-PRE-13 (E-PRE-13)}
+\fichafila{Descripción}{reporte diario de egresos vinculado al consolidado mensual.\\}
+\fichafila{Justificación}{el cliente mantiene la emisión de comprobantes de venta en SUNAT. El software solicitado lleva control interno de gastos y su sustento; no debe confundirse con un emisor electrónico.\\ \textit{Límite:} confirmar eventual importación de comprobantes; no se presupone integración automática con SUNAT.}
+\fichafila{R-PRE-09}{El sistema deberá permitir vincular un archivo PDF o JPG validado a un egreso identificado.}
+\fichafila{R-PRE-14}{El sistema deberá generar para una fecha un reporte de egresos con tipo de costo, concepto, monto y vínculo al comprobante disponible.}
+\end{ficha}
 
-  \item \textbf{I-PRE-14. Conciliación de reporte y soportes.}\\
-  \textbf{Evidencia:} E-PRE-14.\\
-  \textbf{Interpretación:} el esquema exige que los totales del mes puedan
-  desagregarse en registros sustentados. También mantiene la ambigüedad del
-  BAI antes de intereses, identificada en I-PRE-07.\\
-  \textbf{Requisito derivado:} R-PRE-06, R-PRE-08 y R-PRE-14.\\
-  \textbf{Conclusión y salida:} reporte mensual conciliable con gastos
-  diarios y subtotales definidos.\\
-  \textbf{Límite:} la plantilla gerencial inicial debe conciliarse con el
-  modelo contable aprobado.
-\end{enumerate}
+\begin{ficha}{Ilación — ILA-PRE-14 (I-PRE-14): Conciliación de reporte y soportes}
+\fichafila{Código ilación}{ILA-PRE-14 (I-PRE-14)}
+\fichafila{Nombre}{Conciliación de reporte y soportes}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0006 (F-06, modelo A)}
+\fichafila{Educción de origen}{EDU-PRE-14 (E-PRE-14)}
+\fichafila{Descripción}{reporte mensual conciliable con gastos diarios y subtotales definidos.\\}
+\fichafila{Justificación}{el esquema exige que los totales del mes puedan desagregarse en registros sustentados. También mantiene la ambigüedad del BAI antes de intereses, identificada en I-PRE-07.\\ \textit{Límite:} la plantilla gerencial inicial debe conciliarse con el modelo contable aprobado.}
+\fichafila{R-PRE-06}{El sistema deberá calcular el resultado mensual anterior a impuestos usando las partidas y clasificaciones aprobadas por el contador.}
+\fichafila{R-PRE-08}{El sistema deberá generar el reporte mensual mediante la plantilla contable aprobada para el negocio.}
+\fichafila{R-PRE-14}{El sistema deberá generar para una fecha un reporte de egresos con tipo de costo, concepto, monto y vínculo al comprobante disponible.}
+\end{ficha}
 
-\subsection{Cadenas del evento EV-OBS-01}
+\subsection{Cadenas del evento EV-OBS-01 (5 fichas)}
 \label{subsec:ilacion-obs}
 
-\begin{enumerate}
-  \item \textbf{I-OBS-01. Separación de tareas.}\\
-  \textbf{Evidencia:} E-OBS-01.\\
-  \textbf{Interpretación:} la disposición y los roles descritos permiten
-  distinguir captura del pedido, preparación y entrega. Esta interpretación
-  modela responsabilidades, sin afirmar que cada rol sea una persona
-  distinta.\\
-  \textbf{Requisito derivado:} ninguno. Conclusión de contexto: no se
-  especifica una obligación independiente.\\
-  \textbf{Conclusión y salida:} modelo operativo con responsabilidades de
-  caja, cocina y despacho.\\
-  \textbf{Límite:} confirmar quién desempeña cada rol por turno.
+\begin{ficha}{Ilación — ILA-OBS-01 (I-OBS-01): Separación de tareas}
+\fichafila{Código ilación}{ILA-OBS-01 (I-OBS-01)}
+\fichafila{Nombre}{Separación de tareas}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.2)}
+\fichafila{Educción de origen}{EDU-OBS-01 (E-OBS-01)}
+\fichafila{Descripción}{modelo operativo con responsabilidades de caja, cocina y despacho.\\}
+\fichafila{Justificación}{la disposición y los roles descritos permiten distinguir captura del pedido, preparación y entrega. Esta interpretación modela responsabilidades, sin afirmar que cada rol sea una persona distinta.\\ \textit{Límite:} confirmar quién desempeña cada rol por turno.}
+\fichafila{Requisito derivado}{ninguno. Conclusión de contexto: no se especifica una obligación independiente.\\}
+\end{ficha}
 
-  \item \textbf{I-OBS-02. Pedido como desencadenante.}\\
-  \textbf{Evidencia:} E-OBS-02.\\
-  \textbf{Interpretación:} si la preparación empieza por un pedido entrante,
-  cocina necesita conocer los productos solicitados. La automatización de
-  esa comunicación es una consecuencia propuesta; no fue observada como
-  software ya existente.\\
-  \textbf{Requisito derivado:} R-OBS-02.\\
-  \textbf{Conclusión y salida:} necesidad de entregar a cocina información
-  del pedido confirmado.\\
-  \textbf{Límite:} la universalidad de la regla debe confirmarse con Jerry;
-  la entrevista 1 aporta corroboración documental.
+\begin{ficha}{Ilación — ILA-OBS-02 (I-OBS-02): Pedido como desencadenante}
+\fichafila{Código ilación}{ILA-OBS-02 (I-OBS-02)}
+\fichafila{Nombre}{Pedido como desencadenante}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0001, FUE-0003 (F-03, 2.2; F-01, 5)}
+\fichafila{Educción de origen}{EDU-OBS-02 (E-OBS-02)}
+\fichafila{Descripción}{necesidad de entregar a cocina información del pedido confirmado.\\}
+\fichafila{Justificación}{si la preparación empieza por un pedido entrante, cocina necesita conocer los productos solicitados. La automatización de esa comunicación es una consecuencia propuesta; no fue observada como software ya existente.\\ \textit{Límite:} la universalidad de la regla debe confirmarse con Jerry; la entrevista 1 aporta corroboración documental.}
+\fichafila{R-OBS-02}{Al confirmar un pedido, el sistema deberá generar una comanda con su identificador, productos, cantidades y adicionales seleccionados.}
+\end{ficha}
 
-  \item \textbf{I-OBS-03. Separación de demoras.}\\
-  \textbf{Evidencia:} E-OBS-03.\\
-  \textbf{Interpretación:} la espera de cocina y la demora que añada una
-  interfaz tienen causas diferentes. Reducir el tiempo de registro puede
-  evitar espera administrativa, pero no elimina el tiempo de cocción.\\
-  \textbf{Requisito derivado:} R-OBS-04.\\
-  \textbf{Conclusión y salida:} necesidad de captura y envío ágiles del
-  pedido.\\
-  \textbf{Límite:} no existen mediciones de tiempos ni muestra de pedidos en
-  las fuentes.
+\begin{ficha}{Ilación — ILA-OBS-03 (I-OBS-03): Separación de demoras}
+\fichafila{Código ilación}{ILA-OBS-03 (I-OBS-03)}
+\fichafila{Nombre}{Separación de demoras}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.2)}
+\fichafila{Educción de origen}{EDU-OBS-03 (E-OBS-03)}
+\fichafila{Descripción}{necesidad de captura y envío ágiles del pedido.\\}
+\fichafila{Justificación}{la espera de cocina y la demora que añada una interfaz tienen causas diferentes. Reducir el tiempo de registro puede evitar espera administrativa, pero no elimina el tiempo de cocción.\\ \textit{Límite:} no existen mediciones de tiempos ni muestra de pedidos en las fuentes.}
+\fichafila{R-OBS-04}{El sistema deberá permitir a caja editar los ítems del pedido antes de confirmarlo.}
+\end{ficha}
 
-  \item \textbf{I-OBS-04. Seguimiento de pedidos.}\\
-  \textbf{Evidencia:} E-OBS-04.\\
-  \textbf{Interpretación:} la separación de áreas introduce un punto de
-  transferencia de información. Para evitar confusión al entregar, se
-  propone conservar un identificador común durante el recorrido.\\
-  \textbf{Requisito derivado:} R-OBS-01 y R-OBS-03.\\
-  \textbf{Conclusión y salida:} identificador de pedido y seguimiento de
-  preparación y entrega.\\
-  \textbf{Límite:} los estados Pendiente, En preparación y Listo son
-  candidatos del equipo.
+\begin{ficha}{Ilación — ILA-OBS-04 (I-OBS-04): Seguimiento de pedidos}
+\fichafila{Código ilación}{ILA-OBS-04 (I-OBS-04)}
+\fichafila{Nombre}{Seguimiento de pedidos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, figura 2 y 2.2)}
+\fichafila{Educción de origen}{EDU-OBS-04 (E-OBS-04)}
+\fichafila{Descripción}{identificador de pedido y seguimiento de preparación y entrega.\\}
+\fichafila{Justificación}{la separación de áreas introduce un punto de transferencia de información. Para evitar confusión al entregar, se propone conservar un identificador común durante el recorrido.\\ \textit{Límite:} los estados Pendiente, En preparación y Listo son candidatos del equipo.}
+\fichafila{R-OBS-01}{Al confirmar un pedido, el sistema deberá asignarle un identificador único.}
+\fichafila{R-OBS-03}{El sistema deberá permitir al rol de cocina actualizar el estado del pedido según las transiciones autorizadas.}
+\end{ficha}
 
-  \item \textbf{I-OBS-05. Límite entre evidencia y solución.}\\
-  \textbf{Evidencia:} E-OBS-05.\\
-  \textbf{Interpretación:} la fuente presenta el POS táctil como solución
-  derivada. No corresponde registrarlo como un dispositivo ya observado ni
-  atribuir un tamaño en píxeles al comportamiento de cocina.\\
-  \textbf{Requisito derivado:} ninguno. Conclusión de contexto: no se
-  especifica una obligación independiente.\\
-  \textbf{Conclusión y salida:} separación entre necesidad de agilidad y
-  alternativa de interfaz.\\
-  \textbf{Límite:} el umbral mayor a 48 px procede de la especificación
-  previa y debe validarse en el equipo real.
-\end{enumerate}
+\begin{ficha}{Ilación — ILA-OBS-05 (I-OBS-05): Límite entre evidencia y solución}
+\fichafila{Código ilación}{ILA-OBS-05 (I-OBS-05)}
+\fichafila{Nombre}{Límite entre evidencia y solución}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.2)}
+\fichafila{Educción de origen}{EDU-OBS-05 (E-OBS-05)}
+\fichafila{Descripción}{separación entre necesidad de agilidad y alternativa de interfaz.\\}
+\fichafila{Justificación}{la fuente presenta el POS táctil como solución derivada. No corresponde registrarlo como un dispositivo ya observado ni atribuir un tamaño en píxeles al comportamiento de cocina.\\ \textit{Límite:} el umbral mayor a 48 px procede de la especificación previa y debe validarse en el equipo real.}
+\fichafila{Requisito derivado}{ninguno. Conclusión de contexto: no se especifica una obligación independiente.\\}
+\end{ficha}
 
-\subsection{Cadenas del evento EV-ENT-01}
+\subsection{Cadenas del evento EV-ENT-01 (5 fichas)}
 \label{subsec:ilacion-ent1}
 
-\begin{enumerate}
-  \item \textbf{I-ENT1-01. Necesidad de evaluar la carta.}\\
-  \textbf{Evidencia:} E-ENT1-01.\\
-  \textbf{Interpretación:} la decisión comercial se vincula al costo y a la
-  aceptación del precio. Por ello, conocer solo las ventas no basta para
-  comparar rentabilidad por producto.\\
-  \textbf{Requisito derivado:} R-ENT1-02, R-ENT1-03 y R-ENT1-04.\\
-  \textbf{Conclusión y salida:} necesidad de información para evaluar
-  desempeño de la carta.\\
-  \textbf{Límite:} el dato no define recetas, costos unitarios ni un
-  algoritmo de margen por plato.
+\begin{ficha}{Ilación — ILA-ENT1-01 (I-ENT1-01): Necesidad de evaluar la carta}
+\fichafila{Código ilación}{ILA-ENT1-01 (I-ENT1-01)}
+\fichafila{Nombre}{Necesidad de evaluar la carta}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 1)}
+\fichafila{Educción de origen}{EDU-ENT1-01 (E-ENT1-01)}
+\fichafila{Descripción}{necesidad de información para evaluar desempeño de la carta.\\}
+\fichafila{Justificación}{la decisión comercial se vincula al costo y a la aceptación del precio. Por ello, conocer solo las ventas no basta para comparar rentabilidad por producto.\\ \textit{Límite:} el dato no define recetas, costos unitarios ni un algoritmo de margen por plato.}
+\fichafila{R-ENT1-02}{El sistema deberá permitir al usuario autorizado actualizar la disponibilidad de un producto de la carta.}
+\fichafila{R-ENT1-03}{Para un periodo seleccionado, el sistema deberá mostrar por producto la cantidad vendida y el importe de ventas confirmado.}
+\fichafila{R-ENT1-04}{Para un periodo seleccionado, el sistema deberá incluir en el resumen comercial los productos activos de la carta que registren cero ventas.}
+\end{ficha}
 
-  \item \textbf{I-ENT1-02. Tratamiento del antecedente.}\\
-  \textbf{Evidencia:} E-ENT1-02.\\
-  \textbf{Interpretación:} la afirmación explica una decisión pasada. No
-  obliga al sistema a prohibir productos artesanales ni demuestra que esa
-  producción sea siempre inviable.\\
-  \textbf{Requisito derivado:} ninguno. Conclusión de contexto: no se
-  especifica una obligación independiente.\\
-  \textbf{Conclusión y salida:} antecedente del problema y pregunta sobre
-  estructura de costo por producto.\\
-  \textbf{Límite:} mantenerlo como contexto hasta obtener cantidades,
-  rendimientos y costos verificables.
+\begin{ficha}{Ilación — ILA-ENT1-02 (I-ENT1-02): Tratamiento del antecedente}
+\fichafila{Código ilación}{ILA-ENT1-02 (I-ENT1-02)}
+\fichafila{Nombre}{Tratamiento del antecedente}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0003 (Cocina / Chef); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 1)}
+\fichafila{Educción de origen}{EDU-ENT1-02 (E-ENT1-02)}
+\fichafila{Descripción}{antecedente del problema y pregunta sobre estructura de costo por producto.\\}
+\fichafila{Justificación}{la afirmación explica una decisión pasada. No obliga al sistema a prohibir productos artesanales ni demuestra que esa producción sea siempre inviable.\\ \textit{Límite:} mantenerlo como contexto hasta obtener cantidades, rendimientos y costos verificables.}
+\fichafila{Requisito derivado}{ninguno. Conclusión de contexto: no se especifica una obligación independiente.\\}
+\end{ficha}
 
-  \item \textbf{I-ENT1-03. Corroboración del desencadenante.}\\
-  \textbf{Evidencia:} E-ENT1-03.\\
-  \textbf{Interpretación:} la respuesta coincide con E-OBS-02. Esta
-  convergencia documental refuerza el modelo de preparación por pedido, pero
-  no acredita tiempos de preparación ni contempla todas las excepciones.\\
-  \textbf{Requisito derivado:} ninguno propio. Corrobora R-OBS-02
-  (candidato de otro evento).\\
-  \textbf{Conclusión y salida:} regla candidata de iniciar la preparación
-  tras recibir el pedido.\\
-  \textbf{Límite:} confirmar tratamiento de bebidas listas, pedidos
-  anticipados y productos especiales.
+\begin{ficha}{Ilación — ILA-ENT1-03 (I-ENT1-03): Corroboración del desencadenante}
+\fichafila{Código ilación}{ILA-ENT1-03 (I-ENT1-03)}
+\fichafila{Nombre}{Corroboración del desencadenante}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 2)}
+\fichafila{Educción de origen}{EDU-ENT1-03 (E-ENT1-03)}
+\fichafila{Descripción}{regla candidata de iniciar la preparación tras recibir el pedido.\\}
+\fichafila{Justificación}{la respuesta coincide con E-OBS-02. Esta convergencia documental refuerza el modelo de preparación por pedido, pero no acredita tiempos de preparación ni contempla todas las excepciones.\\ \textit{Límite:} confirmar tratamiento de bebidas listas, pedidos anticipados y productos especiales.}
+\fichafila{Requisito derivado}{ninguno propio. Corrobora R-OBS-02 (candidato de otro evento).\\}
+\end{ficha}
 
-  \item \textbf{I-ENT1-04. Registro de insumos y proveedores.}\\
-  \textbf{Evidencia:} E-ENT1-04.\\
-  \textbf{Interpretación:} el negocio adquiere insumos con distintas
-  presentaciones. El registro debe poder identificar lo comprado y su
-  proveedor. Don Pollo es un valor del catálogo, no una constante del
-  algoritmo.\\
-  \textbf{Requisito derivado:} R-ENT1-01.\\
-  \textbf{Conclusión y salida:} necesidad de registrar proveedor, insumo y
-  presentación de compra.\\
-  \textbf{Límite:} la respuesta no establece exclusividad, frecuencia
-  semanal ni integración digital con el proveedor.
+\begin{ficha}{Ilación — ILA-ENT1-04 (I-ENT1-04): Registro de insumos y proveedores}
+\fichafila{Código ilación}{ILA-ENT1-04 (I-ENT1-04)}
+\fichafila{Nombre}{Registro de insumos y proveedores}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0003 (Cocina / Chef); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 3)}
+\fichafila{Educción de origen}{EDU-ENT1-04 (E-ENT1-04)}
+\fichafila{Descripción}{necesidad de registrar proveedor, insumo y presentación de compra.\\}
+\fichafila{Justificación}{el negocio adquiere insumos con distintas presentaciones. El registro debe poder identificar lo comprado y su proveedor. Don Pollo es un valor del catálogo, no una constante del algoritmo.\\ \textit{Límite:} la respuesta no establece exclusividad, frecuencia semanal ni integración digital con el proveedor.}
+\fichafila{R-ENT1-01}{El sistema deberá permitir registrar una compra indicando proveedor, fecha, insumo y monto.}
+\end{ficha}
 
-  \item \textbf{I-ENT1-05. Diferencia entre producto e insumo.}\\
-  \textbf{Evidencia:} E-ENT1-05.\\
-  \textbf{Interpretación:} una bebida comprada lista y un refresco preparado
-  requieren representación distinta si se desea calcular consumo o costo
-  unitario. La descripción por sí sola no define esa representación.\\
-  \textbf{Requisito derivado:} ninguno. Conclusión de contexto: no se
-  especifica una obligación independiente.\\
-  \textbf{Conclusión y salida:} distinción conceptual entre producto de
-  venta e insumo de preparación.\\
-  \textbf{Límite:} no se infiere automáticamente un módulo de recetas ni
-  control sanitario.
-\end{enumerate}
+\begin{ficha}{Ilación — ILA-ENT1-05 (I-ENT1-05): Diferencia entre producto e insumo}
+\fichafila{Código ilación}{ILA-ENT1-05 (I-ENT1-05)}
+\fichafila{Nombre}{Diferencia entre producto e insumo}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0003 (F-03, 2.1, pregunta 4)}
+\fichafila{Educción de origen}{EDU-ENT1-05 (E-ENT1-05)}
+\fichafila{Descripción}{distinción conceptual entre producto de venta e insumo de preparación.\\}
+\fichafila{Justificación}{una bebida comprada lista y un refresco preparado requieren representación distinta si se desea calcular consumo o costo unitario. La descripción por sí sola no define esa representación.\\ \textit{Límite:} no se infiere automáticamente un módulo de recetas ni control sanitario.}
+\fichafila{Requisito derivado}{ninguno. Conclusión de contexto: no se especifica una obligación independiente.\\}
+\end{ficha}
 
-\subsection{Cadenas del evento EV-ENT-02}
+\subsection{Cadenas del evento EV-ENT-02 (28 fichas)}
 \label{subsec:ilacion-ent2}
 
-{\small
-\begin{enumerate}
-  \item \textbf{I-ENT2-01. Acceso dentro y fuera del negocio.}\\
-  \textbf{Evidencia:} E-ENT2-01. \textbf{Interpretación:} las ubicaciones
-  expresan acceso remoto, no una arquitectura específica.
-  \textbf{Requisito derivado:} R-ENT2-01. \textbf{Conclusión:} consulta
-  administrativa remota autorizada. \textbf{Límite:} validar conectividad y
-  funcionamiento ante pérdida de red.
+\begin{ficha}{Ilación — ILA-ENT2-01 (I-ENT2-01): Acceso dentro y fuera del negocio}
+\fichafila{Código ilación}{ILA-ENT2-01 (I-ENT2-01)}
+\fichafila{Nombre}{Acceso dentro y fuera del negocio}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-01)}
+\fichafila{Educción de origen}{EDU-ENT2-01 (E-ENT2-01)}
+\fichafila{Descripción}{consulta administrativa remota autorizada.}
+\fichafila{Justificación}{las ubicaciones expresan acceso remoto, no una arquitectura específica. \textit{Límite:} validar conectividad y funcionamiento ante pérdida de red.}
+\fichafila{R-ENT2-01}{El sistema deberá permitir consultar los reportes desde fuera del local a un usuario autenticado con permiso de administración.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-02. Separación del trabajo administrativo.}\\
-  \textbf{Evidencia:} E-ENT2-02. \textbf{Interpretación:} distinguir tareas
-  evita cargar la pantalla de caja con análisis gerencial.
-  \textbf{Requisito derivado:} R-ENT2-01. \textbf{Conclusión:} vistas según
-  tarea y entorno. \textbf{Límite:} separar vistas no exige dos aplicaciones
-  o dos bases de datos.
+\begin{ficha}{Ilación — ILA-ENT2-02 (I-ENT2-02): Separación del trabajo administrativo}
+\fichafila{Código ilación}{ILA-ENT2-02 (I-ENT2-02)}
+\fichafila{Nombre}{Separación del trabajo administrativo}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-02)}
+\fichafila{Educción de origen}{EDU-ENT2-02 (E-ENT2-02)}
+\fichafila{Descripción}{vistas según tarea y entorno.}
+\fichafila{Justificación}{distinguir tareas evita cargar la pantalla de caja con análisis gerencial. \textit{Límite:} separar vistas no exige dos aplicaciones o dos bases de datos.}
+\fichafila{R-ENT2-01}{El sistema deberá permitir consultar los reportes desde fuera del local a un usuario autenticado con permiso de administración.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-03. Roles de uso.}\\
-  \textbf{Evidencia:} E-ENT2-03. \textbf{Interpretación:} los roles
-  requieren permisos definidos, no acceso idéntico. \textbf{Requisito
-  derivado:} R-ENT2-01. \textbf{Conclusión:} matriz de autorización por
-  función. \textbf{Límite:} la respuesta no prohíbe al contador ver ventas;
-  no mantener esa restricción sin acuerdo.
+\begin{ficha}{Ilación — ILA-ENT2-03 (I-ENT2-03): Roles de uso}
+\fichafila{Código ilación}{ILA-ENT2-03 (I-ENT2-03)}
+\fichafila{Nombre}{Roles de uso}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0003 (Cocina / Chef); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-03)}
+\fichafila{Educción de origen}{EDU-ENT2-03 (E-ENT2-03)}
+\fichafila{Descripción}{matriz de autorización por función.}
+\fichafila{Justificación}{los roles requieren permisos definidos, no acceso idéntico. \textit{Límite:} la respuesta no prohíbe al contador ver ventas; no mantener esa restricción sin acuerdo.}
+\fichafila{R-ENT2-01}{El sistema deberá permitir consultar los reportes desde fuera del local a un usuario autenticado con permiso de administración.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-04. Interacción táctil y mouse.}\\
-  \textbf{Evidencia:} E-ENT2-04. \textbf{Interpretación:} cada contexto
-  justifica interacción distinta. El tamaño de controles requiere prueba del
-  dispositivo. \textbf{Requisito derivado:} R-ENT2-02. \textbf{Conclusión:}
-  POS táctil y vista administrativa compatible con mouse. \textbf{Límite:}
-  más de 48 px es un parámetro del equipo, no una medida indicada en la
-  respuesta.
+\begin{ficha}{Ilación — ILA-ENT2-04 (I-ENT2-04): Interacción táctil y mouse}
+\fichafila{Código ilación}{ILA-ENT2-04 (I-ENT2-04)}
+\fichafila{Nombre}{Interacción táctil y mouse}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-04)}
+\fichafila{Educción de origen}{EDU-ENT2-04 (E-ENT2-04)}
+\fichafila{Descripción}{POS táctil y vista administrativa compatible con mouse.}
+\fichafila{Justificación}{cada contexto justifica interacción distinta. El tamaño de controles requiere prueba del dispositivo. \textit{Límite:} más de 48 px es un parámetro del equipo, no una medida indicada en la respuesta.}
+\fichafila{R-ENT2-02}{El POS deberá permitir seleccionar productos y adicionales mediante controles táctiles.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-05. Resultado al final de la jornada.}\\
-  \textbf{Evidencia:} E-ENT2-05. \textbf{Interpretación:} la intención es
-  obtener el resultado por una acción directa; no obliga a utilizar
-  exclusivamente la tecla Enter. \textbf{Requisito derivado:} R-ENT2-03.
-  \textbf{Conclusión:} resumen diario iniciado por el usuario.
-  \textbf{Límite:} acordar horario de corte y tipos de venta incluidos.
+\begin{ficha}{Ilación — ILA-ENT2-05 (I-ENT2-05): Resultado al final de la jornada}
+\fichafila{Código ilación}{ILA-ENT2-05 (I-ENT2-05)}
+\fichafila{Nombre}{Resultado al final de la jornada}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-05)}
+\fichafila{Educción de origen}{EDU-ENT2-05 (E-ENT2-05)}
+\fichafila{Descripción}{resumen diario iniciado por el usuario.}
+\fichafila{Justificación}{la intención es obtener el resultado por una acción directa; no obliga a utilizar exclusivamente la tecla Enter. \textit{Límite:} acordar horario de corte y tipos de venta incluidos.}
+\fichafila{R-ENT2-03}{El sistema deberá permitir al usuario autorizado configurar el inicio y fin de una jornada.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-06. Selección visual y comanda.}\\
-  \textbf{Evidencia:} E-ENT2-06. \textbf{Interpretación:} la comanda debe
-  reflejar lo seleccionado. La analogía con McDonald's no exige copiar su
-  interfaz. \textbf{Requisito derivado:} R-ENT2-02. \textbf{Conclusión:}
-  pedido desglosado y comanda asociada. \textbf{Límite:} precisar impresión
-  o monitor y momento de emisión.
+\begin{ficha}{Ilación — ILA-ENT2-06 (I-ENT2-06): Selección visual y comanda}
+\fichafila{Código ilación}{ILA-ENT2-06 (I-ENT2-06)}
+\fichafila{Nombre}{Selección visual y comanda}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0003 (Cocina / Chef)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-06)}
+\fichafila{Educción de origen}{EDU-ENT2-06 (E-ENT2-06)}
+\fichafila{Descripción}{pedido desglosado y comanda asociada.}
+\fichafila{Justificación}{la comanda debe reflejar lo seleccionado. La analogía con McDonald's no exige copiar su interfaz. \textit{Límite:} precisar impresión o monitor y momento de emisión.}
+\fichafila{R-ENT2-02}{El POS deberá permitir seleccionar productos y adicionales mediante controles táctiles.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-07. Periodos y horarios ajustables.}\\
-  \textbf{Evidencia:} E-ENT2-07. \textbf{Interpretación:} los periodos de
-  consulta y el corte operativo son conceptos diferentes.
-  \textbf{Requisito derivado:} R-ENT2-03 y R-ENT2-04. \textbf{Conclusión:}
-  filtros por periodo y jornada configurable. \textbf{Límite:} no se presume
-  que la jornada coincide siempre con el día calendario.
+\begin{ficha}{Ilación — ILA-ENT2-07 (I-ENT2-07): Periodos y horarios ajustables}
+\fichafila{Código ilación}{ILA-ENT2-07 (I-ENT2-07)}
+\fichafila{Nombre}{Periodos y horarios ajustables}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador) — Confirmar}
+\fichafila{Fuente}{FUE-0008 (F-08, P-07)}
+\fichafila{Educción de origen}{EDU-ENT2-07 (E-ENT2-07)}
+\fichafila{Descripción}{filtros por periodo y jornada configurable.}
+\fichafila{Justificación}{los periodos de consulta y el corte operativo son conceptos diferentes. \textit{Límite:} no se presume que la jornada coincide siempre con el día calendario.}
+\fichafila{R-ENT2-03}{El sistema deberá permitir al usuario autorizado configurar el inicio y fin de una jornada.}
+\fichafila{R-ENT2-04}{El sistema deberá generar resúmenes comerciales diarios, semanales y mensuales para el periodo seleccionado.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-08. Historial de precios.}\\
-  \textbf{Evidencia:} E-ENT2-08. \textbf{Interpretación:} aplicado a
-  precios, permite conservar el valor cobrado aunque cambie la carta.
-  \textbf{Requisito derivado:} ninguno propio. Corrobora R-PRE-13
-  (candidato de otro evento). \textbf{Conclusión:} precio histórico por
-  venta y cambios identificados. \textbf{Límite:} definir permiso de cambio y
-  vigencia.
+\begin{ficha}{Ilación — ILA-ENT2-08 (I-ENT2-08): Historial de precios}
+\fichafila{Código ilación}{ILA-ENT2-08 (I-ENT2-08)}
+\fichafila{Nombre}{Historial de precios}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-08)}
+\fichafila{Educción de origen}{EDU-ENT2-08 (E-ENT2-08)}
+\fichafila{Descripción}{precio histórico por venta y cambios identificados.}
+\fichafila{Justificación}{aplicado a precios, permite conservar el valor cobrado aunque cambie la carta. \textit{Límite:} definir permiso de cambio y vigencia.}
+\fichafila{Requisito derivado}{ninguno propio. Corrobora R-PRE-13 (candidato de otro evento).}
+\end{ficha}
 
-  \item \textbf{I-ENT2-09. Borrador y venta procesada.}\\
-  \textbf{Evidencia:} E-ENT2-09. \textbf{Interpretación:} una venta
-  confirmada no debe borrarse como un borrador; su ajuste exige política
-  específica. \textbf{Requisito derivado:} R-ENT2-14. \textbf{Conclusión:}
-  eliminación de borrador y corrección trazable de venta confirmada.
-  \textbf{Límite:} la frase nota de pedido no define todavía el documento de
-  ajuste.
+\begin{ficha}{Ilación — ILA-ENT2-09 (I-ENT2-09): Borrador y venta procesada}
+\fichafila{Código ilación}{ILA-ENT2-09 (I-ENT2-09)}
+\fichafila{Nombre}{Borrador y venta procesada}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-09)}
+\fichafila{Educción de origen}{EDU-ENT2-09 (E-ENT2-09)}
+\fichafila{Descripción}{eliminación de borrador y corrección trazable de venta confirmada.}
+\fichafila{Justificación}{una venta confirmada no debe borrarse como un borrador; su ajuste exige política específica. \textit{Límite:} la frase nota de pedido no define todavía el documento de ajuste.}
+\fichafila{R-ENT2-14}{El sistema deberá permitir registrar un ajuste autorizado vinculado a una venta de periodo cerrado.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-10. Búsqueda histórica.}\\
-  \textbf{Evidencia:} E-ENT2-10. \textbf{Interpretación:} la búsqueda exige
-  conservar fecha e identidad estable del producto. \textbf{Requisito
-  derivado:} R-ENT2-04. \textbf{Conclusión:} consulta por fecha y producto.
-  \textbf{Límite:} distinguir productos homónimos de categorías diferentes.
+\begin{ficha}{Ilación — ILA-ENT2-10 (I-ENT2-10): Búsqueda histórica}
+\fichafila{Código ilación}{ILA-ENT2-10 (I-ENT2-10)}
+\fichafila{Nombre}{Búsqueda histórica}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador) — Confirmar}
+\fichafila{Fuente}{FUE-0008 (F-08, P-10)}
+\fichafila{Educción de origen}{EDU-ENT2-10 (E-ENT2-10)}
+\fichafila{Descripción}{consulta por fecha y producto.}
+\fichafila{Justificación}{la búsqueda exige conservar fecha e identidad estable del producto. \textit{Límite:} distinguir productos homónimos de categorías diferentes.}
+\fichafila{R-ENT2-04}{El sistema deberá generar resúmenes comerciales diarios, semanales y mensuales para el periodo seleccionado.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-11. Producto agotado.}\\
-  \textbf{Evidencia:} E-ENT2-11. \textbf{Interpretación:} la disponibilidad
-  debe reflejarse en la selección; requiere un origen de datos de stock
-  definido. \textbf{Requisito derivado:} R-ENT2-05. \textbf{Conclusión:}
-  aviso o bloqueo del producto no disponible. \textbf{Límite:} no se deduce
-  consumo automático por receta sin modelar insumos.
+\begin{ficha}{Ilación — ILA-ENT2-11 (I-ENT2-11): Producto agotado}
+\fichafila{Código ilación}{ILA-ENT2-11 (I-ENT2-11)}
+\fichafila{Nombre}{Producto agotado}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-11)}
+\fichafila{Educción de origen}{EDU-ENT2-11 (E-ENT2-11)}
+\fichafila{Descripción}{aviso o bloqueo del producto no disponible.}
+\fichafila{Justificación}{la disponibilidad debe reflejarse en la selección; requiere un origen de datos de stock definido. \textit{Límite:} no se deduce consumo automático por receta sin modelar insumos.}
+\fichafila{R-ENT2-05}{El sistema deberá impedir confirmar un producto marcado como agotado.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-12. Modalidad de asignación elegida.}\\
-  \textbf{Evidencia:} E-ENT2-12. \textbf{Interpretación:} el tipo no se
-  deriva solo del monto ni del proveedor. El usuario selecciona modalidad.
-  \textbf{Requisito derivado:} R-ENT2-06. \textbf{Conclusión:} compra con
-  modalidad diaria o semanal elegida. \textbf{Límite:} validar permisos y
-  correcciones de modalidad.
+\begin{ficha}{Ilación — ILA-ENT2-12 (I-ENT2-12): Modalidad de asignación elegida}
+\fichafila{Código ilación}{ILA-ENT2-12 (I-ENT2-12)}
+\fichafila{Nombre}{Modalidad de asignación elegida}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-12)}
+\fichafila{Educción de origen}{EDU-ENT2-12 (E-ENT2-12)}
+\fichafila{Descripción}{compra con modalidad diaria o semanal elegida.}
+\fichafila{Justificación}{el tipo no se deriva solo del monto ni del proveedor. El usuario selecciona modalidad. \textit{Límite:} validar permisos y correcciones de modalidad.}
+\fichafila{R-ENT2-06}{El sistema deberá permitir al usuario autorizado seleccionar la modalidad diaria o semanal de imputación de una compra.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-13. Emergencia con matices.}\\
-  \textbf{Evidencia:} E-ENT2-13. \textbf{Interpretación:} el cargo directo
-  es el caso habitual; la respuesta no acepta una imposición rígida para
-  toda compra de emergencia. \textbf{Requisito derivado:} R-ENT2-06.
-  \textbf{Conclusión:} valor por defecto diario con cambio autorizado según
-  política. \textbf{Límite:} no inventar umbrales de monto que la respuesta
-  no aporta.
+\begin{ficha}{Ilación — ILA-ENT2-13 (I-ENT2-13): Emergencia con matices}
+\fichafila{Código ilación}{ILA-ENT2-13 (I-ENT2-13)}
+\fichafila{Nombre}{Emergencia con matices}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-13)}
+\fichafila{Educción de origen}{EDU-ENT2-13 (E-ENT2-13)}
+\fichafila{Descripción}{valor por defecto diario con cambio autorizado según política.}
+\fichafila{Justificación}{el cargo directo es el caso habitual; la respuesta no acepta una imposición rígida para toda compra de emergencia. \textit{Límite:} no inventar umbrales de monto que la respuesta no aporta.}
+\fichafila{R-ENT2-06}{El sistema deberá permitir al usuario autorizado seleccionar la modalidad diaria o semanal de imputación de una compra.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-14. Días hábiles y compras personales.}\\
-  \textbf{Evidencia:} E-ENT2-14. \textbf{Interpretación:} separar P-14a
-  sobre calendario de P-14b sobre compras de empresa conserva ambas
-  decisiones. \textbf{Requisito derivado:} R-ENT2-07. \textbf{Conclusión:}
-  excluir jornadas no laboradas y separar gastos personales. \textbf{Límite:}
-  la respuesta no solicita una función de porcentajes para facturas mixtas.
+\begin{ficha}{Ilación — ILA-ENT2-14 (I-ENT2-14): Días hábiles y compras personales}
+\fichafila{Código ilación}{ILA-ENT2-14 (I-ENT2-14)}
+\fichafila{Nombre}{Días hábiles y compras personales}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0006 (Proveedor / Distribuidora)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-14)}
+\fichafila{Educción de origen}{EDU-ENT2-14 (E-ENT2-14)}
+\fichafila{Descripción}{excluir jornadas no laboradas y separar gastos personales.}
+\fichafila{Justificación}{separar P-14a sobre calendario de P-14b sobre compras de empresa conserva ambas decisiones. \textit{Límite:} la respuesta no solicita una función de porcentajes para facturas mixtas.}
+\fichafila{R-ENT2-07}{El sistema deberá repartir una compra semanal solo entre las jornadas efectivamente laboradas del calendario aprobado.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-15. Cambio del precio de venta.}\\
-  \textbf{Evidencia:} E-ENT2-15. \textbf{Interpretación:} se necesita
-  edición de precios, pero no se deriva ajuste automático ni garantía de no
-  perder. \textbf{Requisito derivado:} ninguno propio. Corrobora R-PRE-12 y
-  R-PRE-13. \textbf{Conclusión:} cambio manual autorizado con vigencia e
-  historial. \textbf{Límite:} no recalcular precios de ventas anteriores.
+\begin{ficha}{Ilación — ILA-ENT2-15 (I-ENT2-15): Cambio del precio de venta}
+\fichafila{Código ilación}{ILA-ENT2-15 (I-ENT2-15)}
+\fichafila{Nombre}{Cambio del precio de venta}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-15)}
+\fichafila{Educción de origen}{EDU-ENT2-15 (E-ENT2-15)}
+\fichafila{Descripción}{cambio manual autorizado con vigencia e historial.}
+\fichafila{Justificación}{se necesita edición de precios, pero no se deriva ajuste automático ni garantía de no perder. \textit{Límite:} no recalcular precios de ventas anteriores.}
+\fichafila{Requisito derivado}{ninguno propio. Corrobora R-PRE-12 y R-PRE-13.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-16. Corrección de compra errónea.}\\
-  \textbf{Evidencia:} E-ENT2-16. \textbf{Interpretación:} la corrección debe
-  ajustar asignaciones relacionadas y dejar rastro. \textbf{Requisito
-  derivado:} R-ENT2-08 y R-ENT2-09. \textbf{Conclusión:} compra corregible
-  con motivo y efecto controlado. \textbf{Límite:} P-24 limita
-  modificaciones directas sobre periodos cerrados.
+\begin{ficha}{Ilación — ILA-ENT2-16 (I-ENT2-16): Corrección de compra errónea}
+\fichafila{Código ilación}{ILA-ENT2-16 (I-ENT2-16)}
+\fichafila{Nombre}{Corrección de compra errónea}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-16)}
+\fichafila{Educción de origen}{EDU-ENT2-16 (E-ENT2-16)}
+\fichafila{Descripción}{compra corregible con motivo y efecto controlado.}
+\fichafila{Justificación}{la corrección debe ajustar asignaciones relacionadas y dejar rastro. \textit{Límite:} P-24 limita modificaciones directas sobre periodos cerrados.}
+\fichafila{R-ENT2-08}{El sistema deberá registrar usuario, momento y motivo de una corrección del importe de compra.}
+\fichafila{R-ENT2-09}{El sistema deberá recalcular las asignaciones afectadas por una corrección de compra cuando los periodos estén abiertos.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-17. Plantilla de costos fijos.}\\
-  \textbf{Evidencia:} E-ENT2-17. \textbf{Interpretación:} se pueden
-  reutilizar conceptos periódicos sin asumir que el monto permanece fijo.
-  \textbf{Requisito derivado:} ninguno propio. Corrobora R-PRE-05.
-  \textbf{Conclusión:} plantilla mensual editable de gastos indirectos.
-  \textbf{Límite:} la financiación se valida aparte del esquema verbal.
+\begin{ficha}{Ilación — ILA-ENT2-17 (I-ENT2-17): Plantilla de costos fijos}
+\fichafila{Código ilación}{ILA-ENT2-17 (I-ENT2-17)}
+\fichafila{Nombre}{Plantilla de costos fijos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-17)}
+\fichafila{Educción de origen}{EDU-ENT2-17 (E-ENT2-17)}
+\fichafila{Descripción}{plantilla mensual editable de gastos indirectos.}
+\fichafila{Justificación}{se pueden reutilizar conceptos periódicos sin asumir que el monto permanece fijo. \textit{Límite:} la financiación se valida aparte del esquema verbal.}
+\fichafila{Requisito derivado}{ninguno propio. Corrobora R-PRE-05.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-18. Norma y autorización del dueño.}\\
-  \textbf{Evidencia:} E-ENT2-18. \textbf{Interpretación:} distinguir
-  referencia normativa de autorización operativa. Una opinión sobre SUNAT
-  requiere contraste externo. \textbf{Requisito derivado:} R-ENT2-10.
-  \textbf{Conclusión:} cambios de configuración contable con autorización del
-  dueño. \textbf{Límite:} la declaración no acredita obligatoriedad legal de
-  NIIF 18 para este negocio.
+\begin{ficha}{Ilación — ILA-ENT2-18 (I-ENT2-18): Norma y autorización del dueño}
+\fichafila{Código ilación}{ILA-ENT2-18 (I-ENT2-18)}
+\fichafila{Nombre}{Norma y autorización del dueño}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador); ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-18)}
+\fichafila{Educción de origen}{EDU-ENT2-18 (E-ENT2-18)}
+\fichafila{Descripción}{cambios de configuración contable con autorización del dueño.}
+\fichafila{Justificación}{distinguir referencia normativa de autorización operativa. Una opinión sobre SUNAT requiere contraste externo. \textit{Límite:} la declaración no acredita obligatoriedad legal de NIIF 18 para este negocio.}
+\fichafila{R-ENT2-10}{El sistema deberá exigir autorización de Jerry antes de activar una modificación de reglas tributarias propuesta por el contador.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-19. Vigencia de cambios tributarios.}\\
-  \textbf{Evidencia:} E-ENT2-19. \textbf{Interpretación:} la regla aplicable
-  se identifica por fecha de efecto, no por la fecha de edición.
-  \textbf{Requisito derivado:} R-ENT2-10 y R-ENT2-11. \textbf{Conclusión:}
-  versiones tributarias con inicio de vigencia. Fuente puntual: N-05, Título
-  Preliminar, Normas IV y X; consultar la disposición de vigencia de cada
-  modificación. \textbf{Límite:} no afirmar que ningún cambio a mitad de mes
-  pueda ocurrir; verificar norma concreta.
+\begin{ficha}{Ilación — ILA-ENT2-19 (I-ENT2-19): Vigencia de cambios tributarios}
+\fichafila{Código ilación}{ILA-ENT2-19 (I-ENT2-19)}
+\fichafila{Nombre}{Vigencia de cambios tributarios}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-19)}
+\fichafila{Educción de origen}{EDU-ENT2-19 (E-ENT2-19)}
+\fichafila{Descripción}{versiones tributarias con inicio de vigencia. Fuente puntual: N-05, Título Preliminar, Normas IV y X; consultar la disposición de vigencia de cada modificación.}
+\fichafila{Justificación}{la regla aplicable se identifica por fecha de efecto, no por la fecha de edición. \textit{Límite:} no afirmar que ningún cambio a mitad de mes pueda ocurrir; verificar norma concreta.}
+\fichafila{R-ENT2-10}{El sistema deberá exigir autorización de Jerry antes de activar una modificación de reglas tributarias propuesta por el contador.}
+\fichafila{R-ENT2-11}{El sistema deberá seleccionar la versión de regla tributaria aplicable según la fecha de efecto y el periodo evaluado.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-20. Aprobación del reporte.}\\
-  \textbf{Evidencia:} E-ENT2-20. \textbf{Interpretación:} la plantilla de
-  presentación debe contar con revisión del responsable contable.
-  \textbf{Requisito derivado:} ninguno propio. Corrobora R-PRE-08.
-  \textbf{Conclusión:} reporte mensual con versión aprobada.
-  \textbf{Límite:} no tratar el modelo inicial como plantilla final
-  certificada.
+\begin{ficha}{Ilación — ILA-ENT2-20 (I-ENT2-20): Aprobación del reporte}
+\fichafila{Código ilación}{ILA-ENT2-20 (I-ENT2-20)}
+\fichafila{Nombre}{Aprobación del reporte}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-20)}
+\fichafila{Educción de origen}{EDU-ENT2-20 (E-ENT2-20)}
+\fichafila{Descripción}{reporte mensual con versión aprobada.}
+\fichafila{Justificación}{la plantilla de presentación debe contar con revisión del responsable contable. \textit{Límite:} no tratar el modelo inicial como plantilla final certificada.}
+\fichafila{Requisito derivado}{ninguno propio. Corrobora R-PRE-08.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-21. Prioridad de contenido del reporte.}\\
-  \textbf{Evidencia:} E-ENT2-21. \textbf{Interpretación:} el sistema
-  conserva detalle para auditoría, pero la vista principal debe entregar el
-  estado mensual. \textbf{Requisito derivado:} ninguno propio. Corrobora
-  R-PRE-08. \textbf{Conclusión:} vista mensual con acceso al sustento cuando
-  se solicite. \textbf{Límite:} no imponer una pantalla tutorial de cálculo
-  como requisito del cliente.
+\begin{ficha}{Ilación — ILA-ENT2-21 (I-ENT2-21): Prioridad de contenido del reporte}
+\fichafila{Código ilación}{ILA-ENT2-21 (I-ENT2-21)}
+\fichafila{Nombre}{Prioridad de contenido del reporte}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-21)}
+\fichafila{Educción de origen}{EDU-ENT2-21 (E-ENT2-21)}
+\fichafila{Descripción}{vista mensual con acceso al sustento cuando se solicite.}
+\fichafila{Justificación}{el sistema conserva detalle para auditoría, pero la vista principal debe entregar el estado mensual. \textit{Límite:} no imponer una pantalla tutorial de cálculo como requisito del cliente.}
+\fichafila{Requisito derivado}{ninguno propio. Corrobora R-PRE-08.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-22. Archivo electrónico ligado al gasto.}\\
-  \textbf{Evidencia:} E-ENT2-22. \textbf{Interpretación:} el problema es
-  localizar el sustento, no digitalizar obligatoriamente un papel.
-  \textbf{Requisito derivado:} R-ENT2-12. \textbf{Conclusión:} vínculo
-  egreso-comprobante y consulta desde reportes. \textbf{Límite:} permitir
-  cargar archivo existente; foto de celular no es modalidad obligatoria.
+\begin{ficha}{Ilación — ILA-ENT2-22 (I-ENT2-22): Archivo electrónico ligado al gasto}
+\fichafila{Código ilación}{ILA-ENT2-22 (I-ENT2-22)}
+\fichafila{Nombre}{Archivo electrónico ligado al gasto}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-22)}
+\fichafila{Educción de origen}{EDU-ENT2-22 (E-ENT2-22)}
+\fichafila{Descripción}{vínculo egreso-comprobante y consulta desde reportes.}
+\fichafila{Justificación}{el problema es localizar el sustento, no digitalizar obligatoriamente un papel. \textit{Límite:} permitir cargar archivo existente; foto de celular no es modalidad obligatoria.}
+\fichafila{R-ENT2-12}{El sistema deberá permitir acceder al comprobante asociado desde el egreso mostrado en el historial.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-23. Referencia a Camaleón.}\\
-  \textbf{Evidencia:} E-ENT2-23. \textbf{Interpretación:} la mención sirve
-  para preguntar por expectativas de integración; no demuestra homologación
-  del sistema propuesto. \textbf{Requisito derivado:} ninguno. Conclusión de
-  contexto: no se especifica una obligación independiente.
-  \textbf{Conclusión:} cuestión de alcance sobre respaldos e integración.
-  \textbf{Límite:} verificar producto y obligación concreta antes de
-  especificar homologación.
+\begin{ficha}{Ilación — ILA-ENT2-23 (I-ENT2-23): Referencia a Camaleón}
+\fichafila{Código ilación}{ILA-ENT2-23 (I-ENT2-23)}
+\fichafila{Nombre}{Referencia a Camaleón}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-23)}
+\fichafila{Educción de origen}{EDU-ENT2-23 (E-ENT2-23)}
+\fichafila{Descripción}{cuestión de alcance sobre respaldos e integración.}
+\fichafila{Justificación}{la mención sirve para preguntar por expectativas de integración; no demuestra homologación del sistema propuesto. \textit{Límite:} verificar producto y obligación concreta antes de especificar homologación.}
+\fichafila{Requisito derivado}{ninguno. Conclusión de contexto: no se especifica una obligación independiente.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-24. Ajuste de periodo cerrado.}\\
-  \textbf{Evidencia:} E-ENT2-24. \textbf{Interpretación:} puede conservarse
-  el cierre y permitir una corrección por procedimiento controlado.
-  \textbf{Requisito derivado:} R-ENT2-09, R-ENT2-13 y R-ENT2-14.
-  \textbf{Conclusión:} periodo cerrado sin edición directa y ajuste
-  autorizado trazable. \textbf{Límite:} definir autorización, tipo de nota y
-  periodo del efecto.
+\begin{ficha}{Ilación — ILA-ENT2-24 (I-ENT2-24): Ajuste de periodo cerrado}
+\fichafila{Código ilación}{ILA-ENT2-24 (I-ENT2-24)}
+\fichafila{Nombre}{Ajuste de periodo cerrado}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-24)}
+\fichafila{Educción de origen}{EDU-ENT2-24 (E-ENT2-24)}
+\fichafila{Descripción}{periodo cerrado sin edición directa y ajuste autorizado trazable.}
+\fichafila{Justificación}{puede conservarse el cierre y permitir una corrección por procedimiento controlado. \textit{Límite:} definir autorización, tipo de nota y periodo del efecto.}
+\fichafila{R-ENT2-09}{El sistema deberá recalcular las asignaciones afectadas por una corrección de compra cuando los periodos estén abiertos.}
+\fichafila{R-ENT2-13}{El sistema deberá bloquear la edición directa de ventas de un periodo cerrado.}
+\fichafila{R-ENT2-14}{El sistema deberá permitir registrar un ajuste autorizado vinculado a una venta de periodo cerrado.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-25. Compresión de adjuntos.}\\
-  \textbf{Evidencia:} E-ENT2-25. \textbf{Interpretación:} la reducción no
-  debe perder legibilidad ni desvincular el archivo. \textbf{Requisito
-  derivado:} R-ENT2-15. \textbf{Conclusión:} adjunto optimizado y
-  recuperable. \textbf{Límite:} aprobar límite de tamaño, formatos y
-  preservación del original.
+\begin{ficha}{Ilación — ILA-ENT2-25 (I-ENT2-25): Compresión de adjuntos}
+\fichafila{Código ilación}{ILA-ENT2-25 (I-ENT2-25)}
+\fichafila{Nombre}{Compresión de adjuntos}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador) — Confirmar}
+\fichafila{Fuente}{FUE-0008 (F-08, P-25)}
+\fichafila{Educción de origen}{EDU-ENT2-25 (E-ENT2-25)}
+\fichafila{Descripción}{adjunto optimizado y recuperable.}
+\fichafila{Justificación}{la reducción no debe perder legibilidad ni desvincular el archivo. \textit{Límite:} aprobar límite de tamaño, formatos y preservación del original.}
+\fichafila{R-ENT2-15}{El sistema deberá comprimir adjuntos PDF que excedan el umbral aprobado sin perder legibilidad del sustento.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-26. Validación de entradas.}\\
-  \textbf{Evidencia:} E-ENT2-26. \textbf{Interpretación:} se requieren
-  validaciones específicas por campo; algunos ajustes pueden necesitar
-  importes negativos autorizados. \textbf{Requisito derivado:} R-ENT2-16.
-  \textbf{Conclusión:} mensaje explicativo y rechazo de entrada inválida.
-  \textbf{Límite:} definir reglas por operación y excepciones de ajustes.
+\begin{ficha}{Ilación — ILA-ENT2-26 (I-ENT2-26): Validación de entradas}
+\fichafila{Código ilación}{ILA-ENT2-26 (I-ENT2-26)}
+\fichafila{Nombre}{Validación de entradas}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0001 (Dueño / Administrador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-26)}
+\fichafila{Educción de origen}{EDU-ENT2-26 (E-ENT2-26)}
+\fichafila{Descripción}{mensaje explicativo y rechazo de entrada inválida.}
+\fichafila{Justificación}{se requieren validaciones específicas por campo; algunos ajustes pueden necesitar importes negativos autorizados. \textit{Límite:} definir reglas por operación y excepciones de ajustes.}
+\fichafila{R-ENT2-16}{El sistema deberá rechazar valores inválidos según las reglas de cada campo y mostrar la causa al usuario.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-27. Emisión SUNAT y expectativa de afiliación.}\\
-  \textbf{Evidencia:} E-ENT2-27. \textbf{Interpretación:} la respuesta
-  confirma emisión externa con una expectativa no resuelta. Debe consignarse
-  como acuerdo condicionado. \textbf{Requisito derivado:} ninguno. Conclusión
-  de contexto: no se especifica una obligación independiente.
-  \textbf{Conclusión:} emisión fuera del sistema; integración pendiente de
-  decisión documentada. \textbf{Límite:} la opinión no constituye una
-  obligación legal verificada.
+\begin{ficha}{Ilación — ILA-ENT2-27 (I-ENT2-27): Emisión SUNAT y expectativa de afiliación}
+\fichafila{Código ilación}{ILA-ENT2-27 (I-ENT2-27)}
+\fichafila{Nombre}{Emisión SUNAT y expectativa de afiliación}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-27)}
+\fichafila{Educción de origen}{EDU-ENT2-27 (E-ENT2-27)}
+\fichafila{Descripción}{emisión fuera del sistema; integración pendiente de decisión documentada.}
+\fichafila{Justificación}{la respuesta confirma emisión externa con una expectativa no resuelta. Debe consignarse como acuerdo condicionado. \textit{Límite:} la opinión no constituye una obligación legal verificada.}
+\fichafila{Requisito derivado}{ninguno. Conclusión de contexto: no se especifica una obligación independiente.}
+\end{ficha}
 
-  \item \textbf{I-ENT2-28. Ventas por distintos canales.}\\
-  \textbf{Evidencia:} E-ENT2-28. \textbf{Interpretación:} registrar el canal
-  es distinto de controlar repartidores. \textbf{Requisito derivado:}
-  R-ENT2-17. \textbf{Conclusión:} ventas de distintos canales en el mismo
-  registro. \textbf{Límite:} no inferir GPS, ruteo o administración de
-  motorizados.
-\end{enumerate}
-}
+\begin{ficha}{Ilación — ILA-ENT2-28 (I-ENT2-28): Ventas por distintos canales}
+\fichafila{Código ilación}{ILA-ENT2-28 (I-ENT2-28)}
+\fichafila{Nombre}{Ventas por distintos canales}
+\fichafila{Versión}{03.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo) — equipo RedPepper}
+\fichafila{Actor}{ACT-0002 (Caja / Mostrador); ACT-0005 (Cliente)}
+\fichafila{Fuente}{FUE-0008 (F-08, P-28)}
+\fichafila{Educción de origen}{EDU-ENT2-28 (E-ENT2-28)}
+\fichafila{Descripción}{ventas de distintos canales en el mismo registro.}
+\fichafila{Justificación}{registrar el canal es distinto de controlar repartidores. \textit{Límite:} no inferir GPS, ruteo o administración de motorizados.}
+\fichafila{R-ENT2-17}{El sistema deberá registrar las ventas admitidas de cada canal de atención en el consolidado comercial.}
+\end{ficha}
+
+\subsection{Cadenas de requisitos no funcionales (8 fichas)}
+\label{subsec:ilacion-rnf}
+
+\begin{ficha}{Ilación — ILA-RNF-01: Seguridad RBAC y control de acceso}
+\fichafila{Código ilación}{ILA-RNF-01}
+\fichafila{Nombre}{Seguridad RBAC y control de acceso}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja), ACT-0003 (Cocina), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-01 a P-03)}
+\fichafila{Educción de origen}{EDU-RNF-01}
+\fichafila{Descripción}{Se derivan condiciones de seguridad y control de acceso por roles para uso local y remoto.}
+\fichafila{Justificación}{La operación en tienda y la consulta gerencial desde casa requieren separar capacidades por rol y proteger credenciales de sesión. Límite: definir permisos del contador sobre ventas y criterios de prueba.}
+\fichafila{RNF-01}{Autenticación obligatoria mediante JWT/tokens SHA-256 y control de acceso por roles (métrica y criterio de validación pendientes de definir).}
+\end{ficha}
+
+\begin{ficha}{Ilación — ILA-RNF-02: Trazabilidad y registro de auditoría}
+\fichafila{Código ilación}{ILA-RNF-02}
+\fichafila{Nombre}{Trazabilidad y registro de auditoría}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-08, P-09, P-16)}
+\fichafila{Educción de origen}{EDU-RNF-02}
+\fichafila{Descripción}{Se deriva la exigencia de conservar un rastro auditable e inmutable de operaciones críticas.}
+\fichafila{Justificación}{Las correcciones de montos, precios y anulaciones deben identificar quién ejecutó la acción, cuándo y desde dónde para respaldar el control interno. Límite: precisar eventos cubiertos y retención.}
+\fichafila{RNF-02}{Registro inmutable de mutaciones críticas (anulaciones, ediciones) con usuario, IP y timestamp (métrica y criterio pendientes de definir).}
+\end{ficha}
+
+\begin{ficha}{Ilación — ILA-RNF-03: Rendimiento en cierre diario y reportes NIIF 18}
+\fichafila{Código ilación}{ILA-RNF-03}
+\fichafila{Nombre}{Rendimiento en cierre diario y reportes NIIF 18}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-05, P-07)}
+\fichafila{Educción de origen}{EDU-RNF-03}
+\fichafila{Descripción}{Se establece la cota de tiempo de respuesta para cierre diario y generación de reportes financieros.}
+\fichafila{Justificación}{El usuario espera resultados inmediatos al concluir la jornada y consultar el reporte mensual sin esperas operativas. Límite: validar el umbral de 3,0 s sobre el dispositivo y volumen real.}
+\fichafila{RNF-03}{Cierre diario y renderizado de balances NIIF 18 en menos de 3,0 segundos (criterio de validación pendiente en el equipo real).}
+\end{ficha}
+
+\begin{ficha}{Ilación — ILA-RNF-04: Respaldo automatizado y tolerancia a fallos de red}
+\fichafila{Código ilación}{ILA-RNF-04}
+\fichafila{Nombre}{Respaldo automatizado y tolerancia a fallos de red}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Educción de origen}{EDU-RNF-04}
+\fichafila{Descripción}{Se deriva la necesidad de continuidad operativa local y respaldo periódico ante fallos de conectividad.}
+\fichafila{Justificación}{Los cortes de red no deben detener el registro en mostrador ni ocasionar pérdida de transacciones. Límite: cuantificar cobertura offline y precisar alcance frente a corte eléctrico (contradicción v).}
+\fichafila{RNF-04}{Copia de seguridad diaria automatizada y persistencia offline local en cortes de red (cobertura offline y criterio pendientes de definir).}
+\end{ficha}
+
+\begin{ficha}{Ilación — ILA-RNF-05: Usabilidad adaptativa en POS táctil y web gerencial}
+\fichafila{Código ilación}{ILA-RNF-05}
+\fichafila{Nombre}{Usabilidad adaptativa en POS táctil y web gerencial}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0002 (Caja)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0003 (F-03, 2.2); FUE-0008 (F-08, P-04)}
+\fichafila{Educción de origen}{EDU-RNF-05}
+\fichafila{Descripción}{Se separan los criterios de interacción entre mostrador táctil y administración por escritorio.}
+\fichafila{Justificación}{La atención en mostrador exige controles amplios y rápidos, mientras el análisis gerencial se realiza con mouse en web. Límite: validar en el dispositivo real el umbral de 48 px propuesto por el equipo.}
+\fichafila{RNF-05}{Interfaz táctil optimizada para POS (botones mayores a 48 px) e interfaz web gerencial (pendiente validar en dispositivo real).}
+\end{ficha}
+
+\begin{ficha}{Ilación — ILA-RNF-06: Precisión numérica en cálculos monetarios}
+\fichafila{Código ilación}{ILA-RNF-06}
+\fichafila{Nombre}{Precisión numérica en cálculos monetarios}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2)}
+\fichafila{Educción de origen}{EDU-RNF-06}
+\fichafila{Descripción}{Se especifica la representación decimal fija para evitar desviaciones por punto flotante.}
+\fichafila{Justificación}{El prorrateo de compras semanales, el cálculo de márgenes y las obligaciones tributarias requieren exactitud aritmética en todos los acumulados. Límite: acordar regla de redondeo final.}
+\fichafila{RNF-06}{Manejo de variables monetarias con tipo DECIMAL(12,4) para evitar redondeos (criterio de validación pendiente de definir).}
+\end{ficha}
+
+\begin{ficha}{Ilación — ILA-RNF-07: Inmutabilidad de periodos contables cerrados}
+\fichafila{Código ilación}{ILA-RNF-07}
+\fichafila{Nombre}{Inmutabilidad de periodos contables cerrados}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0008 (F-08, P-24)}
+\fichafila{Educción de origen}{EDU-RNF-07}
+\fichafila{Descripción}{Se deriva la restricción de bloqueo sobre registros históricos tras el cierre contable mensual.}
+\fichafila{Justificación}{Preservar la integridad de los estados financieros cerrados impide alteraciones retroactivas directas, canalizando cambios mediante ajustes autorizados. Límite: vincular con R-ENT2-13 y R-ENT2-14.}
+\fichafila{RNF-07}{Bloqueo lógico de lectura/escritura sobre balances de meses cerrados por el contador (criterio vinculado: V-ENT2-13).}
+\end{ficha}
+
+\begin{ficha}{Ilación — ILA-RNF-08: Seguridad y compresión de comprobantes adjuntos}
+\fichafila{Código ilación}{ILA-RNF-08}
+\fichafila{Nombre}{Seguridad y compresión de comprobantes adjuntos}
+\fichafila{Versión}{01.00}
+\fichafila{Fecha}{Por completar}
+\fichafila{Autor}{AUT-0001 (Gabriel Pajuelo)}
+\fichafila{Actor}{ACT-0001 (Dueño), ACT-0004 (Contador)}
+\fichafila{Fuente}{FUE-0002 (F-02, sección 6.2); FUE-0006 (F-06, punto 11); FUE-0008 (F-08, P-25)}
+\fichafila{Educción de origen}{EDU-RNF-08}
+\fichafila{Descripción}{Se derivan condiciones de resguardo confidencial, integridad y optimización de espacio para sustentos.}
+\fichafila{Justificación}{Los comprobantes ante SUNAT deben almacenarse de forma segura, recuperable y sin saturar almacenamiento. Límite: distinguir hash SHA-256 de cifrado (contradicción iv) y fijar umbral de compresión.}
+\fichafila{RNF-08}{Almacenamiento de comprobantes en carpetas cifradas con compresión automática (métrica y criterio pendientes de definir).}
+\end{ficha}
 
 \subsection{Integración y trazabilidad entre eventos}
 \label{subsec:integracion}

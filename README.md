@@ -13,16 +13,16 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (28 páginas, A4):**
+**Documento completo (81 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
 
 | Sección | PDF | Páginas |
 |---|---|---|
-| 1. Educción | [01-educcion.pdf](pdf/secciones/01-educcion.pdf) | 5 |
-| 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 8 |
-| 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 8 |
+| 1. Educción | [01-educcion.pdf](pdf/secciones/01-educcion.pdf) | 32 |
+| 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 32 |
+| 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 11 |
 | 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
 | 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 2 |
 
@@ -48,9 +48,9 @@ no se rompen.
 │   ├── sec-04-diagramas.tex       # Envoltorio: sección 4
 │   ├── sec-05-interfaces.tex      # Envoltorio: sección 5
 │   └── secciones/                 # CONTENIDO de cada sección
-│       ├── educcion.tex           # 4 longtable: E-PRE, E-OBS, E-ENT1, E-ENT2
-│       ├── ilacion.tex            # Cadenas I-PRE, I-OBS, I-ENT1, I-ENT2
-│       ├── especificacion.tex     # Catálogos RF, RNF y 39 derivados
+│       ├── educcion.tex           # Organizaciones, actores, autores, expertos, fuentes y fichas EDU
+│       ├── ilacion.tex            # Fichas de ilación ILA-PRE, OBS, ENT1, ENT2 y RNF
+│       ├── especificacion.tex     # Catálogos RF, RNF (con fichas), y 39 derivados
 │       ├── diagramas.tex          # 4 figuras de proceso + diagrama de clases
 │       └── interfaces.tex         # Pantallas del prototipo (v1)
 ├── diagramas/                     # IMÁGENES del documento (PNG 300 dpi, v2)
