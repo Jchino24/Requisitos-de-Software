@@ -9,15 +9,19 @@
 \section{Interfaces de usuario}
 \label{sec:interfaces}
 
-\noindent{\small\textbf{Versión 2} \textperiodcentered{} prototipo web funcional implementado en \texttt{prototipo/} (HTML, CSS y JavaScript con estado sincronizado en vivo), sujeto a validación final con el interesado.}\par\vspace{0.5em}
+\noindent{\small\textbf{Versión 2} \textperiodcentered{} prototipo web funcional implementado en \texttt{prototipo/} (HTML, CSS y JavaScript con estado sincronizado en vivo) bajo el sistema de diseño semántico \texttt{.stitch/DESIGN.md} (\emph{Google Stitch taste-design}), sujeto a validación final con el interesado.}\par\vspace{0.5em}
 
 En esta segunda versión se reemplazan las capturas estáticas de la v1 por
 \textbf{interfaces reales y funcionales} organizadas por rol operativo:
 \textbf{lado del cliente}, \textbf{mostrador POS}, \textbf{cocina (KDS)}
 y \textbf{administración / contabilidad}. Todas comparten un modelo de datos
-sincronizado: un pedido confirmado en Cliente o POS genera una comanda que
-avanza en Cocina, bloquea productos agotados al instante y actualiza los
-cálculos de margen, prorrateo, auditoría y cierre NIIF 18.
+sincronizado y tokens visuales unificados (paleta Alabastro Cálido
+\texttt{\#FAF8F5}, tinta Zinc-950 \texttt{\#18181B}, único acento
+Carmesí Brasas \texttt{\#C22B22}, cifras tabulares monoespaciadas y
+controles táctiles mínimos de 44\,px / 48\,px): un pedido confirmado en
+Cliente o POS genera una comanda que avanza en Cocina, bloquea productos
+agotados al instante y actualiza los cálculos de margen, prorrateo,
+auditoría y cierre NIIF 18.
 
 \paragraph{Correcciones aplicadas respecto a la versión 1.} La versión 2
 resuelve las observaciones detectadas en la v1: (i) corrige el rótulo

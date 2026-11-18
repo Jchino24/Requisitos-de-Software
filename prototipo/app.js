@@ -152,7 +152,7 @@ const INITIAL_STATE = {
   gastosFinancierosMes: 180.00,
   taxRules: [
     { id: "REG-2026-01", nombre: "Régimen MYPE Tributario (estimado mensual)", tasaPct: 1.50, vigencia: "2026-01-01", estado: "Vigente", propuestaPor: "Contador" },
-    { id: "REG-2026-02", nombre: "Actualización tramo Renta / IGV según parámetro contador", tasaPct: 1.80, vigencia: "2026-12-01", estado: "Pendiente autorización Jerry", propuestaPor: "Contador" },
+    { id: "REG-2026-02", nombre: "Actualización tramo Renta / IGV según parámetro contador", tasaPct: 1.80, vigencia: "2026-12-01", estado: "Pendiente Jerry", propuestaPor: "Contador" },
   ],
   periodoCerrado: false,
   auditLog: [
@@ -579,8 +579,10 @@ function renderAll() {
   });
   document.getElementById("active-role-pill").textContent = state.activeRole;
   const jPill = document.getElementById("jornada-pill");
-  jPill.textContent = state.jornadaAbierta ? `Jornada Abierta (${state.jornadaHorario})` : "Jornada Cerrada";
   jPill.className = "pill " + (state.jornadaAbierta ? "pill-ok" : "pill-danger");
+  jPill.innerHTML = state.jornadaAbierta
+    ? `<span class="status-dot" aria-hidden="true"></span>Jornada Abierta (${state.jornadaHorario})`
+    : `Jornada Cerrada`;
 
   renderCliente();
   renderPOS();
@@ -591,6 +593,22 @@ function renderAll() {
 }
 
 function renderCliente() {
+  const featured = state.menu.find((p) => p.id === "P-01") || state.menu[0];
+  if (featured) {
+    const heroPrice = document.getElementById("client-hero-price");
+    const heroStatus = document.getElementById("client-hero-status");
+    const heroBtn = document.getElementById("client-hero-add");
+    if (heroPrice) heroPrice.textContent = money(featured.precio);
+    if (heroStatus) {
+      heroStatus.className = `pill ${featured.disponible ? "pill-ok" : "pill-danger"}`;
+      heroStatus.textContent = featured.disponible ? "Disponible en cocina" : "Agotado temporalmente";
+    }
+    if (heroBtn) {
+      heroBtn.disabled = !featured.disponible;
+      heroBtn.textContent = featured.disponible ? "Pedir Clásica" : "Agotado";
+    }
+  }
+
   const catFilter = document.getElementById("client-cat-filter")?.value || "Todos";
   const grid = document.getElementById("client-menu-grid");
   grid.innerHTML = state.menu
@@ -609,7 +627,7 @@ function renderCliente() {
           <span class="pill ${p.disponible ? "pill-ok" : "pill-danger"}">
             ${p.disponible ? "Disponible" : "Agotado"}
           </span>
-          <button class="btn btn-primary btn-sm" ${p.disponible ? "" : "disabled"} onclick="addToCart('client','${p.id}')">
+          <button type="button" class="btn btn-primary btn-sm" ${p.disponible ? "" : "disabled"} onclick="addToCart('client','${p.id}')">
             + Agregar
           </button>
         </div>
@@ -633,21 +651,21 @@ function renderCliente() {
         <div class="cart-line">
           <div>
             <strong>${line.nombre}</strong>
-            <div style="font-size:11.5px; color:var(--ink-muted);">${money(line.precio)} c/u</div>
-            <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;">
+            <div class="mono" style="color:var(--ink-muted); margin-top:2px;">${money(line.precio)} c/u</div>
+            <div class="crema-wrap">
               ${state.cremas
                 .map(
-                  (c) => `<button type="button" class="btn btn-sm" style="padding:2px 7px; font-size:11px; ${
-                    line.extras.includes(c) ? "background:var(--ink-primary); color:#fff; border-color:var(--ink-primary);" : ""
+                  (c) => `<button type="button" class="crema-chip ${
+                    line.extras.includes(c) ? "selected" : ""
                   }" onclick="toggleCartExtra('client', ${idx}, '${c}')">${c}</button>`
                 )
                 .join("")}
             </div>
           </div>
           <div class="cart-controls">
-            <button class="qty-btn" onclick="changeCartQty('client', ${idx}, -1)">-</button>
-            <strong>${line.qty}</strong>
-            <button class="qty-btn" onclick="changeCartQty('client', ${idx}, 1)">+</button>
+            <button type="button" class="qty-btn" onclick="changeCartQty('client', ${idx}, -1)" aria-label="Disminuir cantidad">-</button>
+            <strong class="mono" style="min-width:20px; text-align:center;">${line.qty}</strong>
+            <button type="button" class="qty-btn" onclick="changeCartQty('client', ${idx}, 1)" aria-label="Aumentar cantidad">+</button>
           </div>
         </div>`
       )
@@ -666,12 +684,12 @@ function renderCliente() {
   const steps = ["Pendiente", "En preparación", "Listo"];
   const curIdx = steps.indexOf(tracked.estado);
   trkEl.innerHTML = `
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-      <div><strong>Pedido ${tracked.id}</strong> <span class="pill pill-neutral">${tracked.canal}</span></div>
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+      <div><strong class="mono">${tracked.id}</strong> <span class="pill pill-neutral">${tracked.canal}</span></div>
       <span class="mono">${tracked.hora} · ${money(tracked.total)}</span>
     </div>
-    <div style="font-size:12px; color:var(--ink-secondary); margin-top:4px;">
-      ${tracked.items.map((i) => `${i.qty}x ${i.nombre}${i.extras.length ? " (" + i.extras.join(", ") + ")" : ""}`).join(" · ")}
+    <div style="font-size:12.5px; color:var(--ink-secondary); margin-top:6px;">
+      ${tracked.items.map((i) => `${i.qty}× ${i.nombre}${i.extras.length ? " (" + i.extras.join(", ") + ")" : ""}`).join(" · ")}
     </div>
     <div class="tracker-steps">
       ${steps
@@ -697,9 +715,9 @@ function renderPOS() {
             <span class="menu-name">${p.nombre}</span>
             <span class="menu-price">${money(p.precio)}</span>
           </div>
-          <div class="menu-desc">${p.cat} · ${p.id}</div>
+          <div class="menu-desc">${p.cat} · <span class="mono">${p.id}</span></div>
         </div>
-        <button class="btn btn-touch ${p.disponible ? "btn-primary" : ""}" style="width:100%;" ${p.disponible ? "" : "disabled"} onclick="addToCart('pos','${p.id}')">
+        <button type="button" class="btn btn-touch ${p.disponible ? "btn-primary" : ""}" style="width:100%;" ${p.disponible ? "" : "disabled"} onclick="addToCart('pos','${p.id}')">
           ${p.disponible ? "+ Añadir (Táctil ≥48px)" : "Bloqueado · Agotado"}
         </button>
       </div>`
@@ -723,21 +741,21 @@ function renderPOS() {
         <div class="cart-line">
           <div>
             <strong>${line.nombre}</strong>
-            <div style="font-size:12px; color:var(--ink-secondary);">${money(line.precio * line.qty)} (${money(line.precio)} c/u)</div>
-            <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:5px;">
+            <div class="mono" style="color:var(--ink-secondary); margin-top:2px;">${money(line.precio * line.qty)} (${money(line.precio)} c/u)</div>
+            <div class="crema-wrap">
               ${state.cremas
                 .map(
-                  (c) => `<button type="button" class="btn btn-sm" style="min-height:32px; ${
-                    line.extras.includes(c) ? "background:var(--ink-primary); color:#fff; border-color:var(--ink-primary);" : ""
+                  (c) => `<button type="button" class="crema-chip ${
+                    line.extras.includes(c) ? "selected" : ""
                   }" onclick="toggleCartExtra('pos', ${idx}, '${c}')">${c}</button>`
                 )
                 .join("")}
             </div>
           </div>
           <div class="cart-controls">
-            <button class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, -1)">-</button>
-            <strong style="min-width:20px; text-align:center;">${line.qty}</strong>
-            <button class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, 1)">+</button>
+            <button type="button" class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, -1)" aria-label="Disminuir">-</button>
+            <strong class="mono" style="min-width:22px; text-align:center;">${line.qty}</strong>
+            <button type="button" class="qty-btn touch-48" onclick="changeCartQty('pos', ${idx}, 1)" aria-label="Aumentar">+</button>
           </div>
         </div>`
       )
@@ -757,6 +775,8 @@ function renderCocina() {
     { state: "Listo", elId: "kds-col-listo", countId: "kds-cnt-listo", actionLabel: null, next: null, btnCls: "" },
   ];
 
+  const checkSvg = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
   cols.forEach((col) => {
     const list = state.orders.filter((o) => o.estado === col.state);
     document.getElementById(col.countId).textContent = list.length;
@@ -766,16 +786,16 @@ function renderCocina() {
             (o) => `
           <div class="kds-ticket">
             <div class="kds-ticket-head">
-              <strong>${o.id}</strong>
+              <strong class="mono">${o.id}</strong>
               <span class="pill ${col.state === "Listo" ? "pill-ok" : col.state === "En preparación" ? "pill-warn" : "pill-danger"}">
-                ${o.canal} · ${o.hora}
+                ${o.canal} · <span class="mono">${o.hora}</span>
               </span>
             </div>
             <ul class="kds-items">
               ${o.items
                 .map(
                   (i) =>
-                    `<li><strong>${i.qty}×</strong> ${i.nombre}${
+                    `<li><strong class="mono">${i.qty}×</strong> ${i.nombre}${
                       i.extras.length ? ` <span style="color:var(--ink-muted);">[${i.extras.join(", ")}]</span>` : ""
                     }</li>`
                 )
@@ -783,8 +803,8 @@ function renderCocina() {
             </ul>
             ${
               col.actionLabel
-                ? `<button class="btn ${col.btnCls} btn-touch" style="width:100%;" onclick="advanceOrderState('${o.id}','${col.next}')">${col.actionLabel}</button>`
-                : `<div style="font-size:12px; color:var(--ok-ink); font-weight:600;">✓ Listo en despacho (R-OBS-03)</div>`
+                ? `<button type="button" class="btn ${col.btnCls} btn-touch" style="width:100%;" onclick="advanceOrderState('${o.id}','${col.next}')">${col.actionLabel}</button>`
+                : `<div class="kds-done-line">${checkSvg}<span>Listo en despacho (R-OBS-03)</span></div>`
             }
           </div>`
           )
@@ -796,13 +816,13 @@ function renderCocina() {
   document.getElementById("kds-stock-list").innerHTML = state.menu
     .map(
       (p) => `
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border-hairline);">
+      <div class="kds-stock-row">
         <div>
           <strong>${p.nombre}</strong>
-          <div style="font-size:11.5px; color:var(--ink-muted);">${p.cat}</div>
+          <div style="font-size:12px; color:var(--ink-muted);">${p.cat}</div>
         </div>
-        <button class="btn btn-sm ${p.disponible ? "pill-ok" : "pill-danger"}" onclick="toggleProductStock('${p.id}')">
-          ${p.disponible ? "Disponible (clic agotar)" : "Agotado (clic activar)"}
+        <button type="button" class="btn btn-sm ${p.disponible ? "pill-ok" : "pill-danger"}" onclick="toggleProductStock('${p.id}')">
+          ${p.disponible ? "Disponible" : "Agotado"}
         </button>
       </div>`
     )
@@ -982,7 +1002,7 @@ function renderAdminContabilidad() {
         <td>
           ${
             r.estado.includes("Pendiente")
-              ? `<button class="btn btn-primary btn-sm" onclick="approveTaxRule('${r.id}')">Autorizar (Jerry)</button>`
+              ? `<button type="button" class="btn btn-primary btn-sm" onclick="approveTaxRule('${r.id}')">Autorizar</button>`
               : "—"
           }
         </td>
@@ -1034,6 +1054,9 @@ function renderAdminContabilidad() {
 // ---------------------------------------------------------------------------
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
+  if (params.get("capture") === "1") {
+    document.documentElement.classList.add("no-anim");
+  }
   const viewParam = params.get("view");
   if (viewParam && VIEW_ROLES[viewParam]) {
     state.activeView = viewParam;

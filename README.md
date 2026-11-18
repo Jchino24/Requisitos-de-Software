@@ -13,7 +13,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (85 páginas, A4):**
+**Documento completo (86 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
@@ -24,7 +24,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 | 2. Ilación | [02-ilacion.pdf](pdf/secciones/02-ilacion.pdf) | 32 |
 | 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 11 |
 | 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
-| 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 6 |
+| 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 7 |
 
 Cada sección conserva la numeración del documento general (la sección 2 sigue
 siendo la 2 aunque se abra sola), de modo que las referencias entre secciones
@@ -66,6 +66,8 @@ no se rompen.
 │   ├── 03-cierre-mensual-niif18.png
 │   ├── 04-proceso-general.png
 │   └── 05-diagrama-clases.png
+├── .stitch/                       # Sistema de diseño semántico Google Stitch
+│   └── DESIGN.md                  # Tokens, tipografía, movimiento y reglas anti-patrón
 ├── prototipo/                     # Prototipo web funcional (HTML/CSS/JS)
 │   ├── index.html                 # 6 vistas sincronizadas por rol
 │   ├── styles.css
@@ -79,7 +81,7 @@ no se rompen.
 │   ├── 05-admin-abastecimiento-carta.png
 │   └── 06-admin-cierre-niif18-sunat.png
 └── pdf/                           # ENTREGABLES compilados
-    ├── Requisitos_RedPepper.pdf   # Documento completo (85 páginas)
+    ├── Requisitos_RedPepper.pdf   # Documento completo (86 páginas)
     └── secciones/
         ├── 01-educcion.pdf
         ├── 02-ilacion.pdf
@@ -183,12 +185,16 @@ La versión 2 corrige los defectos detectados en la v1:
 ## Interfaces de usuario (v2)
 
 La sección 5 documenta e incluye en `prototipo/` un prototipo web funcional
-(HTML, CSS y JavaScript sin dependencias externas) con seis vistas
-sincronizadas para **lado del cliente**, **mostrador POS táctil**, **cocina
-(KDS)** y **administración / contabilidad NIIF 18 y SUNAT**. Corrige el
-rótulo de prorrateo a *jornadas hábiles efectivas* (P-14), alinea los
-productos con F-07 y separa el cálculo fiscal del marco NIIF 18. Los datos
-iniciales corresponden a un escenario de demostración.
+(HTML, CSS y JavaScript sin dependencias externas) estructurado con el sistema
+de diseño semántico [`.stitch/DESIGN.md`](.stitch/DESIGN.md) (*Google Stitch
+`taste-design`*: paleta Alabastro Cálido `#FAF8F5`, tinta `#18181B`, acento
+único `#C22B22`, tipografía `Plus Jakarta Sans` + `JetBrains Mono` tabular,
+animación física con resorte y objetivos táctiles ≥ 44 px / ≥ 48 px en POS)
+con seis vistas sincronizadas para **lado del cliente**, **mostrador POS
+táctil**, **cocina (KDS)** y **administración / contabilidad NIIF 18 y
+SUNAT**. Corrige el rótulo de prorrateo a *jornadas hábiles efectivas* (P-14),
+alinea los productos con F-07 y separa el cálculo fiscal del marco NIIF 18. Los
+datos iniciales corresponden a un escenario de demostración.
 
 ## Diagrama de clases
 

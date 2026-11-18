@@ -11,10 +11,10 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand-group">
-        <div class="brand-mark">RP</div>
+        <div class="brand-mark" aria-hidden="true">RP</div>
         <div>
-          <div class="brand-title">RedPepper · Plataforma Operativa &amp; ERP</div>
-          <div class="brand-sub">Prototipo funcional v2 · Cliente · Mostrador · Cocina · Administración</div>
+          <div class="brand-title">RedPepper · Plataforma Operativa y ERP</div>
+          <div class="brand-sub">Sistema de diseño Stitch (.stitch/DESIGN.md) · Cliente · Mostrador · Cocina · Administración</div>
         </div>
       </div>
 
@@ -29,7 +29,7 @@
 
       <div class="status-strip">
         <span id="active-role-pill" class="pill pill-info">ACT-0005 · Cliente</span>
-        <span id="jornada-pill" class="pill pill-ok">Jornada Abierta (11:00 - 23:00)</span>
+        <span id="jornada-pill" class="pill pill-ok"><span class="status-dot" aria-hidden="true"></span>Jornada Abierta (11:00 - 23:00)</span>
         <button type="button" class="btn btn-sm" onclick="resetDemoState()" title="Reiniciar datos de prueba">Reiniciar</button>
       </div>
     </div>
@@ -44,7 +44,7 @@
     <section id="view-cliente" class="view-panel active" aria-labelledby="h-cliente">
       <div class="view-header">
         <div>
-          <h2 id="h-cliente" style="margin:0; font-size:21px;">Lado del Cliente — Carta Digital y Seguimiento de Pedido</h2>
+          <h2 id="h-cliente">Lado del Cliente — Carta Digital y Seguimiento de Pedido</h2>
           <p>Consulta la carta vigente (F-07), personaliza cremas, envía tu pedido y sigue el avance en cocina en tiempo real (R-OBS-01/03, R-ENT2-17).</p>
         </div>
         <div class="header-actions">
@@ -58,12 +58,36 @@
         </div>
       </div>
 
+      <!-- Bloque editorial asimétrico (Stitch taste-design) -->
+      <div class="hero-split">
+        <div>
+          <span class="hero-eyebrow">Carta Vigente F-07 · Sin precocidos</span>
+          <h3 class="hero-headline">Preparación al instante, directo a la plancha y freidora.</h3>
+          <p class="hero-copy">Cada comanda se cocina al momento con cremas personalizadas y control de stock en vivo conectado directamente con el monitor de cocina.</p>
+        </div>
+        <div class="hero-feature-box">
+          <div class="hero-feature-top">
+            <div>
+              <div class="hero-feature-title">Salchipapa Clásica (P-01)</div>
+              <div class="hero-feature-meta">Papas picadas al día + hot dog · F-07</div>
+            </div>
+            <span id="client-hero-price" class="menu-price">S/ 8.00</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <span id="client-hero-status" class="pill pill-ok">Disponible en cocina</span>
+            <button type="button" id="client-hero-add" class="btn btn-primary btn-sm" onclick="addToCart('client','P-01')">
+              Pedir Clásica
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div class="split-pos">
         <div class="card">
           <div class="card-title-row">
             <div>
-              <h3 class="card-title">Carta RedPepper (Precios vigentes F-07)</h3>
-              <p class="card-subtitle">Preparación al instante, sin productos precocidos. Los productos sin stock se bloquean automáticamente.</p>
+              <h3 class="card-title">Carta RedPepper</h3>
+              <p class="card-subtitle">Los productos marcados como agotados en cocina se bloquean de inmediato.</p>
             </div>
           </div>
           <div id="client-channels" class="channel-bar" role="group" aria-label="Canal de atención">
@@ -74,16 +98,16 @@
           <div id="client-menu-grid" class="menu-grid"></div>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; flex-direction:column; gap:16px;">
           <div class="card">
             <div class="card-title-row">
               <h3 class="card-title">Mi Pedido Actual</h3>
               <button type="button" class="btn btn-sm" onclick="clearCart('client')">Vaciar borrador</button>
             </div>
             <div id="client-cart-lines"></div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin:14px 0;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin:14px 0; padding-top:10px; border-top:1px solid var(--border-hairline);">
               <span style="font-weight:700; color:var(--ink-secondary);">Total a pagar</span>
-              <span id="client-total" style="font-size:22px; font-weight:800;">S/ 0.00</span>
+              <span id="client-total" class="total-amount" style="font-size:22px;">S/ 0.00</span>
             </div>
             <button type="button" class="btn btn-primary btn-touch" style="width:100%;" onclick="confirmOrder('client')">
               Confirmar Pedido y Enviar a Cocina
@@ -92,7 +116,7 @@
 
           <div class="card">
             <div class="card-title-row">
-              <h3 class="card-title">Estado de mi Última Comanda (En vivo)</h3>
+              <h3 class="card-title">Estado de mi Última Comanda</h3>
               <span class="pill pill-info">R-OBS-03</span>
             </div>
             <div id="client-tracker"></div>
@@ -107,11 +131,11 @@
     <section id="view-pos" class="view-panel" aria-labelledby="h-pos">
       <div class="view-header">
         <div>
-          <h2 id="h-pos" style="margin:0; font-size:21px;">Terminal de Mostrador — POS Táctil (ACT-0002)</h2>
+          <h2 id="h-pos">Terminal de Mostrador — POS Táctil (ACT-0002)</h2>
           <p>Controles táctiles ≥ 48 px (RNF-05 / R-ENT2-02), edición previa a confirmar (R-OBS-04), bloqueo de agotados (R-ENT2-05) y cierre diario (RF-03).</p>
         </div>
         <div class="header-actions">
-          <span class="pill pill-neutral">Acumulado turno: <strong id="pos-turn-total" style="margin-left:4px;">S/ 0.00</strong></span>
+          <span class="pill pill-neutral">Acumulado turno: <strong id="pos-turn-total" class="mono" style="margin-left:4px;">S/ 0.00</strong></span>
           <button type="button" id="btn-cierre-jornada" class="btn btn-touch">Cerrar / Abrir Jornada (RF-03)</button>
         </div>
       </div>
@@ -146,7 +170,7 @@
 
           <div id="pos-cart-lines"></div>
 
-          <div style="margin:14px 0 10px;">
+          <div style="margin:14px 0 12px;">
             <div style="font-size:12px; font-weight:700; color:var(--ink-secondary); margin-bottom:6px;">Método de cobro</div>
             <div id="pos-pay-methods" class="channel-bar" style="margin-bottom:0;">
               <button type="button" class="chip-btn pos-chip active" data-pay="Efectivo">Efectivo</button>
@@ -157,7 +181,7 @@
 
           <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-top:1px solid var(--border-hairline);">
             <span style="font-weight:700;">TOTAL A COBRAR</span>
-            <span id="pos-total" style="font-size:26px; font-weight:800; color:var(--brand-ink);">S/ 0.00</span>
+            <span id="pos-total" class="total-amount" style="font-size:26px; color:var(--brand-ink);">S/ 0.00</span>
           </div>
 
           <button type="button" class="btn btn-primary btn-touch" style="width:100%;" onclick="confirmOrder('pos')">
@@ -173,7 +197,7 @@
     <section id="view-cocina" class="view-panel" aria-labelledby="h-cocina">
       <div class="view-header">
         <div>
-          <h2 id="h-cocina" style="margin:0; font-size:21px;">Lado de Cocina — Monitor de Comandas KDS y Stock (ACT-0003)</h2>
+          <h2 id="h-cocina">Lado de Cocina — Monitor de Comandas KDS y Stock (ACT-0003)</h2>
           <p>Preparación al instante por pedido (E-OBS-02 / E-ENT1-03), transiciones de estado autorizadas (R-OBS-03) y alerta inmediata de producto agotado (R-ENT1-02).</p>
         </div>
         <div class="header-actions">
@@ -186,7 +210,7 @@
           <div class="kds-col">
             <div class="kds-col-head">
               <span>1. Pendiente</span>
-              <span id="kds-cnt-pendiente" class="pill pill-danger">0</span>
+              <span id="kds-cnt-pendiente" class="pill pill-danger mono">0</span>
             </div>
             <div id="kds-col-pendiente"></div>
           </div>
@@ -194,7 +218,7 @@
           <div class="kds-col">
             <div class="kds-col-head">
               <span>2. En preparación</span>
-              <span id="kds-cnt-prep" class="pill pill-warn">0</span>
+              <span id="kds-cnt-prep" class="pill pill-warn mono">0</span>
             </div>
             <div id="kds-col-prep"></div>
           </div>
@@ -202,7 +226,7 @@
           <div class="kds-col">
             <div class="kds-col-head">
               <span>3. Listo para despacho</span>
-              <span id="kds-cnt-listo" class="pill pill-ok">0</span>
+              <span id="kds-cnt-listo" class="pill pill-ok mono">0</span>
             </div>
             <div id="kds-col-listo"></div>
           </div>
@@ -226,7 +250,7 @@
     <section id="view-admin-margen" class="view-panel" aria-labelledby="h-admin-margen">
       <div class="view-header">
         <div>
-          <h2 id="h-admin-margen" style="margin:0; font-size:21px;">Administración — Control de Margen Bruto Diario y Prorrateo (ACT-0001)</h2>
+          <h2 id="h-admin-margen">Administración — Control de Margen Bruto Diario y Prorrateo (ACT-0001)</h2>
           <p>Consulta remota gerencial (R-ENT2-01), prorrateo exclusivo sobre jornadas hábiles efectivas (P-14 / R-ENT2-07) y resumen comercial por canal y producto (RF-17).</p>
         </div>
         <div class="header-actions">
@@ -342,7 +366,7 @@
     <section id="view-admin-operaciones" class="view-panel" aria-labelledby="h-admin-ops">
       <div class="view-header">
         <div>
-          <h2 id="h-admin-ops" style="margin:0; font-size:21px;">Administración — Compras, Carta y Auditoría Inmutable</h2>
+          <h2 id="h-admin-ops">Administración — Compras, Carta y Auditoría Inmutable</h2>
           <p>Registro de compras con proveedor y modalidad (RF-04/05), corrección trazable con motivo (R-ENT2-08), gestión de precios con historial (R-PRE-13) y log (RNF-02).</p>
         </div>
       </div>
@@ -393,7 +417,7 @@
               <input id="inp-monto" type="number" step="0.01" placeholder="120.00" required />
             </div>
             <div class="field full">
-              <label for="inp-size">Tamaño archivo PDF/JPG simulado (KB — >1024 KB activa compresión R-ENT2-15)</label>
+              <label for="inp-size">Tamaño archivo PDF/JPG simulado (KB — &gt;1024 KB activa compresión R-ENT2-15)</label>
               <input id="inp-size" type="number" value="1450" />
             </div>
             <div class="field full">
@@ -440,7 +464,7 @@
     <section id="view-admin-contabilidad" class="view-panel" aria-labelledby="h-admin-cont">
       <div class="view-header">
         <div>
-          <h2 id="h-admin-cont" style="margin:0; font-size:21px;">Contabilidad y Gerencia — Cierre Mensual NIIF 18 y SUNAT (ACT-0004 &amp; ACT-0001)</h2>
+          <h2 id="h-admin-cont">Contabilidad y Gerencia — Cierre Mensual NIIF 18 y SUNAT (ACT-0004 &amp; ACT-0001)</h2>
           <p>Cascada de cierre contable separando Resultado Operativo, Gastos Financieros y BAI (RF-10..RF-14), autorización de reglas tributarias (R-ENT2-10), bloqueo de periodo (RNF-07) y sustento SUNAT (RF-15/16).</p>
         </div>
         <div class="header-actions">
@@ -460,10 +484,10 @@
             </div>
             <span class="pill pill-info">RF-14 · R-PRE-06</span>
           </div>
-          <div id="niif-cascade"></div>
+          <div id="niif-cascade" class="cascade-list"></div>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; flex-direction:column; gap:16px;">
           <div class="card">
             <div class="card-title-row">
               <h3 class="card-title">Costos Indirectos Fijos del Mes (RF-09 / R-PRE-05)</h3>
