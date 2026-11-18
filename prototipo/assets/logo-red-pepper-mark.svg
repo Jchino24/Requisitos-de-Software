@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="rp-mark-title">
+  <title id="rp-mark-title">RED PEPPER</title>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#FF3131"/>
+  <path d="M33 11 C36 7, 42 7, 44 10 C40 14, 38 16, 36 19 Z" fill="#1F6636"/>
+  <path d="M24 19 C32 14, 46 20, 46 33 C46 45, 32 54, 19 52 C16 51, 15 47, 18 45 C26 40, 29 33, 27 25 C25 21, 21 21, 24 19 Z" fill="#FFFFFF"/>
+  <path d="M35 22 C40 25, 42 32, 40 39 C38 45, 31 49, 23 49 C30 43, 36 35, 35 22 Z" fill="#F64301"/>
+</svg>

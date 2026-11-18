@@ -1,101 +1,80 @@
 ---
-name: RedPepper ERP
+name: RED PEPPER — Sánguches, Salchipapas & Más
 colors:
-  surface: '#faf8f5'
-  surface-dim: '#ece8e1'
-  surface-bright: '#ffffff'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f4f1ec'
-  surface-container: '#eeeae3'
-  surface-container-high: '#e5e0d7'
-  surface-container-highest: '#dbd5ca'
-  on-surface: '#18181b'
-  on-surface-variant: '#52525b'
-  inverse-surface: '#27272a'
-  inverse-on-surface: '#faf8f5'
-  outline: '#a1a1aa'
-  outline-variant: '#e4e2dd'
-  surface-tint: '#c22b22'
-  primary: '#c22b22'
-  on-primary: '#ffffff'
-  primary-container: '#fef2f2'
-  on-primary-container: '#991b1b'
-  secondary: '#27272a'
-  on-secondary: '#faf8f5'
-  secondary-container: '#f4f1ec'
-  on-secondary-container: '#3f3f46'
-  error: '#b91c1c'
-  on-error: '#ffffff'
-  error-container: '#fee2e2'
-  on-error-container: '#7f1d1d'
-  background: '#faf8f5'
-  on-background: '#18181b'
+  brand-red: '#FF3131'
+  brand-red-cta: '#D91B1B'
+  brand-orange: '#F64301'
+  brand-green: '#1F6636'
+  background: '#FAF8F5'
+  surface: '#FFFFFF'
+  surface-subtle: '#F4F1EC'
+  surface-dark: '#1C1917'
+  on-surface: '#1C1917'
+  on-surface-variant: '#57534E'
+  outline-variant: '#E4DFD6'
+  status-ok-bg: '#ECF7EF'
+  status-ok-ink: '#1F6636'
+  status-warn-bg: '#FEF3C7'
+  status-warn-ink: '#92400E'
+  status-danger-bg: '#FEF2F2'
+  status-danger-ink: '#B91C1C'
 typography:
   display-lg:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 24px
+    fontFamily: Source Sans 3
+    fontSize: 28px
     fontWeight: '800'
-    lineHeight: 30px
+    lineHeight: 34px
     letterSpacing: -0.025em
   headline-md:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 16px
+    fontFamily: Source Sans 3
+    fontSize: 18px
     fontWeight: '700'
-    lineHeight: 22px
+    lineHeight: 24px
     letterSpacing: -0.015em
   body-base:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 14px
+    fontFamily: Source Sans 3
+    fontSize: 15px
     fontWeight: '400'
-    lineHeight: 21px
-    letterSpacing: '0'
+    lineHeight: 22px
+    letter-spacing: '0'
   mono-tabular:
     fontFamily: JetBrains Mono
     fontSize: 13px
     fontWeight: '600'
     lineHeight: 18px
-    letterSpacing: -0.01em
+    letter-spacing: -0.01em
 ---
 
-# Design System: RedPepper ERP & Operaciones
+# Design System: RED PEPPER — Sánguches, Salchipapas & Más
 
 ## 1. Visual Theme & Atmosphere
-Una estética culinaria-editorial sobria y de alta precisión operativa: fondo **Alabastro Cálido** (`#FAF8F5`) combinado con superficies limpias de papel (`#FFFFFF`) y tinta **Carbón Zinc-950** (`#18181B`) que garantiza legibilidad inmediata tanto en pantallas táctiles de mostrador y cocina como en impresiones A4 del documento de requisitos.
+Identidad gastronómica vibrante, apetitosa y cercana para comida rápida al instante (*sánguches, hamburguesas y salchipapas*), calibrada con sobriedad operativa cuando la marca se despliega en mostrador POS, cocina KDS o gerencia NIIF 18.
 
-La densidad se calibra según el rol: aireada y asimétrica para la carta del cliente (densidad 4/10), táctil y directa en el terminal de mostrador y monitor de cocina KDS (densidad 6/10), y de alta precisión numérica con tipografía monoespaciada tabular en los paneles de margen, prorrateo P-14 y cierre contable NIIF 18 (densidad 8/10).
+El lienzo **Alabastro Cálido** (`#FAF8F5`) evita la frialdad tecnológica genérica y sirve de escenario limpio para la fotografía real de producto y el trío oficial de marca: **Rojo Brillante** (`#FF3131`), **Naranja Vivo** (`#F64301`) y **Verde Oscuro** (`#1F6636`), dosificados con contraste verificado WCAG 2.2 AA.
 
 ## 2. Color Palette & Roles
-### Base Neutral (sin negro puro)
-- **Alabastro Cálido** (`#FAF8F5`) — Fondo principal de lienzo y descanso visual.
-- **Blanco Papel** (`#FFFFFF`) — Contenedores elevados, tarjetas de comandas y paneles de datos.
-- **Piedra Suave** (`#F4F1EC`) — Superficies secundarias, encabezados de tabla y columnas KDS.
-- **Carbón Zinc-950** (`#18181B`) — Tinta principal, títulos y cifras clave (nunca `#000000`).
-- **Grafito Medio** (`#52525B`) — Etiquetas descriptivas, metadatos y subtítulos.
-- **Línea Sutil** (`#E4E2DD`) — Divisores estructurales de 1 px sin sombras agresivas.
+### Colores Oficiales de Marca
+- **Rojo Brillante (`#FF3131`)** — Identidad principal de marca, emblema y acento visual grande. Para texto blanco en botones medianos/pequeños se emplea su variante accesible **`#D91B1B`** (`5.09:1`) y en texto sobre blanco **`#B91C1C`** (`6.47:1`).
+- **Naranja Vivo (`#F64301`)** — Etiquetas promocionales, destacados de canal y calor gastronómico (`#1C1917` encima = `4.77:1`; `#C23500` para texto sobre blanco = `5.52:1`).
+- **Verde Oscuro (`#1F6636`)** — Color secundario de frescura, disponibilidad activa, jornadas abiertas, estados *Listo* y elementos de identidad (`6.97:1` con blanco y sobre blanco).
 
-### Acento Único (< 80 % saturación)
-- **Carmesí Brasas** (`#C22B22`) — Único color de acento para llamadas a la acción primarias, pestaña activa y resultado de margen bruto diario. Hover en `#A3221A`.
-
-### Estados Funcionales
-- **Verde Salvia** (`#15803D` sobre `#ECFDF5`) — Disponible, jornada abierta, regla vigente, comanda lista.
-- **Ámbar Tostado** (`#B45309` sobre `#FEF3C7`) — En preparación, pendiente de autorización de Jerry.
-- **Carmesí Alerta** (`#B91C1C` sobre `#FEE2E2`) — Producto agotado bloqueado, periodo cerrado, feriado excluido del prorrateo.
+### Neutros y Superficies
+- **Lienzo Alabastro (`#FAF8F5`)**, **Superficie Pura (`#FFFFFF`)**, **Piedra Suave (`#F4F1EC`)**
+- **Carbón Cálido (`#1C1917`)** como tinta principal (nunca `#000000`), **Grafito Cálido (`#57534E`)** como tinta secundaria y **Borde Sutil (`#E4DFD6`)**.
 
 ## 3. Typography Rules
-- **Sans-Serif de Marca y UI:** `Plus Jakarta Sans` (con respaldo `Geist`, `Satoshi`, `system-ui`) — tracking ajustado en títulos (`-0.025em`) y lectura cómoda en cuerpo (`14px`, máximo `65ch`).
-- **Monoespaciada Tabular:** `JetBrains Mono` — obligatoria para precios (`S/ 8.00`), totales de caja, cuotas de prorrateo, importes NIIF 18, hashes SHA-256, RUCs y códigos de comanda (`CMD-0845`).
-- **Prohibiciones:** `Inter`, fuentes serif genéricas y `LABEL // YEAR` quedan explícitamente prohibidos.
+- **UI y Marca:** `Source Sans 3` (respaldo limpio `Inter`, `Segoe UI`, `system-ui`) para legibilidad inmediata en carta móvil y tableros administrativos.
+- **Cifras y Códigos:** `JetBrains Mono` con `font-variant-numeric: tabular-nums` en precios (`S/ 8.00`), totales, prorrateos P-14, importes NIIF 18, RUCs y comandas (`CMD-0845`).
 
 ## 4. Component Stylings
-- **Botones:** Planos y táctiles, sin brillos exteriores (`box-shadow` de neón prohibido). Transición tipo resorte (`cubic-bezier(0.22, 1, 0.36, 1)`) y retroalimentación de empuje (`translateY(1px)` al presionar). Mínimo `44px` de altura en toda la interfaz y `48px` en controles táctiles del POS (`RNF-05`).
-- **Tarjetas y Divisores:** Bordes de `1px` en `#E4E2DD` con esquinas suavemente redondeadas (`10px`). En vistas densas (cascada NIIF 18 y tablas de auditoría), priorizar divisores horizontales en lugar de tarjetas anidadas.
-- **Entradas de Formulario:** Etiqueta fija sobre el campo, foco limpio en `#C22B22` sin etiquetas flotantes ni bordes luminosos de colores arbitrarios.
+- **Separación de portales:** La experiencia pública de Cliente tiene barra superior/inferior propia (`4` destinos) sin mezclar módulos internos de POS, Cocina o Contabilidad.
+- **Botones táctiles:** Mínimo `44px` en toda la interfaz y `48px` en controles del Mostrador POS (`RNF-05`).
+- **Modales accesibles:** Reemplazan todo `prompt()`/`alert()` nativo con captura de foco, cierre por `Escape` y validación en línea.
 
 ## 5. Layout Principles
-- **Contenedor:** Ancho máximo `1400px` centrado con CSS Grid responsivo (nunca cálculos porcentuales con `calc()` en flexbox).
-- **Asimetría en Vista Cliente:** Destacar la propuesta operativa (preparación al instante F-07) junto a la grilla de productos y panel fijo derecho de pedido + seguimiento en vivo, evitando hileras simétricas genéricas de 3 tarjetas promocionales.
-- **Colapso Móvil:** Por debajo de `768px`, todas las grillas colapsan a una sola columna sin desbordamiento horizontal.
+- Contenedor `1320px` centrado, CSS Grid con `min-width: 0` en hijos para cero scroll horizontal desde `320px` hasta `1920px+`.
+- Límite de `4` a `5` elementos por barra de navegación y revelación progresiva en detalles secundarios.
 
 ## 6. Motion & Anti-Patterns
-- **Movimiento:** Exclusivamente sobre `transform` y `opacity` (`220ms cubic-bezier(0.22, 1, 0.36, 1)`), con entrada escalonada sutil al cambiar de vista y pulso discreto de estado en la insignia de jornada activa.
-- **Reglas Prohibidas (Stitch Taste):** Cero emojis en UI, cero `Inter`, cero negro puro `#000000`, cero acentos morados sobre fondo oscuro, cero sombras neón y cero datos métricos ficticios de SLA/latencia no respaldados por requisitos.
+- Movimiento exclusivo sobre `transform` y `opacity` (`220ms cubic-bezier(0.22, 1, 0.36, 1)`), respetando `prefers-reduced-motion` y `?capture=1`.
+- Prohibido saturar un mismo componente con los 3 colores fuertes a la vez, colocar texto blanco pequeño sobre `#FF3131`/`#F64301`, o inventar métricas falsas.
