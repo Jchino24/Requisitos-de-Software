@@ -17,14 +17,15 @@ La marca debe transmitir en cada pantalla:
 - **Profesional y sobria en operaciones:** cuando la identidad pasa a Cocina, Mostrador POS o Contabilidad NIIF 18, la energía cromática se dosifica sobre neutros cálidos para evitar fatiga visual en turnos completos.
 - **No tecnológica genérica:** evitar degradados neón, tonos violetas o estéticas frías de *software SaaS* estándar.
 
-## 3. Logotipo Oficial y Variantes
-> **Nota de auditoría de activos:** No se adjuntó un archivo maestro de logotipo en `upload/` dentro de este entorno; por ello se construyó el sistema vectorial maestro respetando fielmente el nombre **RED PEPPER**, el descriptor **Sánguches, Salchipapas & Más** y los tres colores oficiales, listo para sustitución directa si se provee un archivo vectorial histórico.
+## 3. Logotipo Oficial Vectorizado y Variantes
+> **Origen del activo:** Logotipo original oficial de **RED PEPPER** provisto por el negocio, vectorizado fielmente en formato SVG preservando su composición circular sobre fondo verde (`#1F6636`), aro blanco perimetral, rotulación apilada en rojo brillante (`#FF3131`) con contorno blanco tipo *sticker* y el descriptor tipográfico **`SÁNGUCHES - SALCHIPAPAS & MÁS`**.
 
 | Variante | Archivo | Uso recomendado |
 |---|---|---|
-| Lockup principal horizontal | [`logo-red-pepper.svg`](../../prototipo/assets/logo-red-pepper.svg) | Cabecera de carta cliente, impresiones y pantalla gerencial sobre fondo claro `#FFFFFF` / `#FAF8F5`. |
-| Lockup versión oscura | [`logo-red-pepper-dark.svg`](../../prototipo/assets/logo-red-pepper-dark.svg) | Fondos carbón `#1C1917`, pie de página o barras oscuras operativas. |
-| Isotipo compacto | [`logo-red-pepper-mark.svg`](../../prototipo/assets/logo-red-pepper-mark.svg) | Favicon, barra colapsada en móvil `320px` y terminal POS compacto. |
+| Sello oficial original (cuadrado) | [`logo-red-pepper-badge.svg`](../../prototipo/assets/logo-red-pepper-badge.svg) | Vista *El Local*, tarjetas institucionales, impresiones y visor de marca (`viewBox="0 0 500 500"`). |
+| Isotipo circular compacto | [`logo-red-pepper-mark.svg`](../../prototipo/assets/logo-red-pepper-mark.svg) | Favicon, cabecera móvil (`320px`) y selector compacto. |
+| Lockup horizontal (claro) | [`logo-red-pepper.svg`](../../prototipo/assets/logo-red-pepper.svg) | Sello circular oficial + rotulación legible en cabeceras web (`44px`) sobre `#FFFFFF` / `#FAF8F5`. |
+| Lockup horizontal (oscuro) | [`logo-red-pepper-dark.svg`](../../prototipo/assets/logo-red-pepper-dark.svg) | Fondos carbón `#1C1917`, pie de página o barras oscuras operativas. |
 
 ## 4. Zona de Protección y Tamaños Mínimos
 - **Zona de seguridad:** mínimo el equivalente al ancho del bloque rojo del isotipo (`16 px` en web) libre alrededor en los cuatro lados.
@@ -87,9 +88,11 @@ Definidos de forma única en [`prototipo/src/styles/tokens.css`](../../prototipo
 - Prohibido el uso de emojis en controles operativos, tablas contables o botones principales.
 
 ## 13. Fotografía Gastronómica y Recursos WebP
-- Todas las fotografías de carta se almacenan optimizadas en **WebP** (`<= 640×480 px`, `36–62 KB`) en [`prototipo/assets/`](../../prototipo/assets/):
-  - `salchipapa.webp` (Salchipapas)
-  - `hamburguesa.webp` (Hamburguesas & Sánguches)
+- Todas las fotografías de carta se almacenan optimizadas en **WebP** (`<= 640×480 px`, `30–63 KB`) en [`prototipo/assets/`](../../prototipo/assets/):
+  - `salchipapa.webp` (Salchipapa Clásica con cremas — imagen referencial oficial)
+  - `salchipapa-especial.webp` (Salchipapa Especial con pollo deshilachado — imagen referencial oficial)
+  - `hamburguesa.webp` (Hamburguesa Clásica — imagen referencial oficial)
+  - `sanguche-pollo.webp` (Burger / Sánguche de Pollo Deshilachado — imagen referencial oficial)
   - `alitas.webp` (Especiales / Alitas)
   - `refresco.webp` (Refrescos de pulpa natural y bebidas)
 - Encuadre natural, iluminación cálida y relación de aspecto `4:3` constante con `object-fit: cover`.

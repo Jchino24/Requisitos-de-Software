@@ -26,8 +26,8 @@
     menu: [
       { id: "P-01", nombre: "Salchipapa Clásica", cat: "Salchipapas", precio: 8.00, img: "assets/salchipapa.webp", destacado: true, desc: "Papas picadas fritas al instante con hot dog clásico.", disponible: true },
       { id: "P-02", nombre: "Hamburguesa Clásica", cat: "Hamburguesas", precio: 8.00, img: "assets/hamburguesa.webp", destacado: true, desc: "Carne a la plancha preparada al pedido con pan y ensalada.", disponible: true },
-      { id: "P-03", nombre: "Salchipapa Especial", cat: "Salchipapas", precio: 12.00, img: "assets/salchipapa.webp", destacado: false, desc: "Porción doble con pollo deshilachado de Don Pollo y queso.", disponible: true },
-      { id: "P-04", nombre: "Burger Pollo Deshilachado", cat: "Hamburguesas", precio: 10.50, img: "assets/hamburguesa.webp", destacado: false, desc: "Pollo deshilachado de distribuidora con salsa de la casa.", disponible: false },
+      { id: "P-03", nombre: "Salchipapa Especial", cat: "Salchipapas", precio: 12.00, img: "assets/salchipapa-especial.webp", destacado: false, desc: "Porción doble con pollo deshilachado de Don Pollo y queso.", disponible: true },
+      { id: "P-04", nombre: "Burger Pollo Deshilachado", cat: "Hamburguesas", precio: 10.50, img: "assets/sanguche-pollo.webp", destacado: false, desc: "Pollo deshilachado de distribuidora con salsa de la casa.", disponible: false },
       { id: "P-05", nombre: "Refresco Pulpa Natural", cat: "Bebidas", precio: 4.50, img: "assets/refresco.webp", destacado: false, desc: "Pulpa natural preparada con agua hervida o mineral (500 ml).", disponible: true },
       { id: "P-06", nombre: "Gaseosa Personal", cat: "Bebidas", precio: 3.50, img: "assets/refresco.webp", destacado: false, desc: "Botella helada de 500 ml para acompañar tu pedido.", disponible: true },
       { id: "P-07", nombre: "Alitas Pepper x6", cat: "Especiales", precio: 15.00, img: "assets/alitas.webp", destacado: true, desc: "Seis piezas preparadas al momento con guarnición.", disponible: true },
@@ -173,10 +173,16 @@
   function hydrateMenu(parsedMenu) {
     if (!Array.isArray(parsedMenu)) return structuredClone(INITIAL_STATE.menu);
     const defaultImgs = new Map(INITIAL_STATE.menu.map((m) => [m.id, m.img]));
-    return parsedMenu.map((item) => ({
-      ...item,
-      img: item.img || defaultImgs.get(item.id) || "assets/salchipapa.webp",
-    }));
+    return parsedMenu.map((item) => {
+      const fallback = defaultImgs.get(item.id) || "assets/salchipapa.webp";
+      const useNewAsset =
+        (item.id === "P-03" && item.img === "assets/salchipapa.webp") ||
+        (item.id === "P-04" && item.img === "assets/hamburguesa.webp");
+      return {
+        ...item,
+        img: useNewAsset || !item.img ? fallback : item.img,
+      };
+    });
   }
 
   function loadState() {

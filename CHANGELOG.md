@@ -4,6 +4,16 @@ Este archivo documenta los cambios mayores realizados sobre la plataforma **RED 
 
 ---
 
+## [PR 5/5] — Vectorización del Logotipo Oficial y Adaptación de Fotografías Referenciales (`feat/pr-05-logo-activos-reales`)
+**Qué se agrega / modifica:**
+- Vectorización fiel a curvas Bézier cúbicas (SVG escalable) del logotipo circular oficial de **RED PEPPER — Sánguches - Salchipapas & Más**, conservando su fondo verde `#1F6636`, aro blanco, rotulación apilada en rojo `#FF3131` con contorno blanco tipo *sticker* y descriptor original:
+  - [`prototipo/assets/logo-red-pepper-badge.svg`](prototipo/assets/logo-red-pepper-badge.svg), [`logo-red-pepper-mark.svg`](prototipo/assets/logo-red-pepper-mark.svg), [`logo-red-pepper.svg`](prototipo/assets/logo-red-pepper.svg) y [`logo-red-pepper-dark.svg`](prototipo/assets/logo-red-pepper-dark.svg).
+- Optimización `4:3` en formato **WebP** (`640 × 480 px`, `30–38 KB`) de las 4 fotografías gastronómicas referenciales del negocio:
+  - `salchipapa.webp` (Clásica con cremas), `salchipapa-especial.webp` (Salchipapa Especial), `hamburguesa.webp` (Hamburguesa Clásica) y `sanguche-pollo.webp` (Burger / Sánguche de Pollo Deshilachado).
+- Actualización de [`prototipo/src/core/store.js`](prototipo/src/core/store.js), [`prototipo/src/apps/cliente.js`](prototipo/src/apps/cliente.js) (*El Local*), [`prototipo/src/apps/brand-guide.js`](prototipo/src/apps/brand-guide.js), documentación en `docs/`, capturas `interfaces/*.png` y recompilación LaTeX (`pdf/Requisitos_RedPepper.pdf` + `05-interfaces.pdf`).
+
+---
+
 ## [PR 4/4] — Calidad Automatizada, Documentación Integral y Compilación LaTeX (`feat/pr-04-qa-docs-latex`)
 **Qué se agrega / modifica:**
 - Suite automatizada `scripts/qa_verify.mjs` sobre Chromium headless vía CDP (35 combinaciones vista × viewport `320px–1920px`, accesibilidad DOM, E2E cliente->cocina->stock->P-14->NIIF 18 y capturas limpias).

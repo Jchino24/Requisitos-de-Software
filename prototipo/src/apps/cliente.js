@@ -309,9 +309,12 @@
     const esc = RP.format.escapeHtml;
     return `
       <div class="view-header">
-        <div>
-          <h1>RED PEPPER — El Local</h1>
-          <p class="view-sub">Sánguches, Salchipapas &amp; Más · Atención directa al instante</p>
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <img src="assets/logo-red-pepper-badge.svg" alt="Sello oficial RED PEPPER" width="64" height="64" style="border-radius:12px; flex-shrink:0;" />
+          <div>
+            <h1>RED PEPPER — El Local</h1>
+            <p class="view-sub">Sánguches, Salchipapas &amp; Más · Atención directa al instante</p>
+          </div>
         </div>
       </div>
       <div class="grid-3">

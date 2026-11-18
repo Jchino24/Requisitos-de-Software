@@ -6,18 +6,20 @@ Aplicando [`performance-optimizer`](../.agents/skills/performance-optimizer/SKIL
 
 ## 1. Compresión y Dimensionamiento de Fotografías Gastronómicas (WebP)
 
-Todas las fotografías de carta se redimensionaron a un máximo de `640 × 478 px` y se convirtieron a **WebP** (`quality=82, method=6` con Pillow):
+Todas las fotografías de carta se ajustaron a `640 × 480 px` (relación `4:3`) en formato **WebP** (`quality=82, method=6` con Pillow):
 
-| Recurso | Tamaño original (.jpg) | Tamaño optimizado (.webp) | Reducción |
+| Recurso | Origen | Tamaño optimizado (.webp) | Dimensiones |
 |---|---|---|---|
-| `salchipapa.webp` | `815 KB` | `53 KB` | `-93.5 %` |
-| `hamburguesa.webp` | `802 KB` | `47 KB` | `-94.1 %` |
-| `alitas.webp` | `908 KB` | `62 KB` | `-93.2 %` |
-| `refresco.webp` | `735 KB` | `36 KB` | `-95.1 %` |
-| **Total 4 fotografías** | **`3,260 KB` (`3.18 MB`)** | **`198 KB`** | **`-93.9 %`** |
+| `salchipapa.webp` | Imagen referencial oficial | `31.5 KB` | `640 × 480` |
+| `salchipapa-especial.webp` | Imagen referencial oficial | `32.6 KB` | `640 × 480` |
+| `hamburguesa.webp` | Imagen referencial oficial | `30.7 KB` | `640 × 480` |
+| `sanguche-pollo.webp` | Imagen referencial oficial | `38.0 KB` | `640 × 480` |
+| `alitas.webp` | Activo complementario | `62.5 KB` | `640 × 478` |
+| `refresco.webp` | Activo complementario | `36.9 KB` | `640 × 478` |
+| **Total 6 fotografías** | **Carta completa** | **`232.2 KB`** | `4:3` constante |
 
 Adicionalmente:
-- Los logotipos utilizan **SVG vectorial** (`< 1.5 KB` cada variante), nítidos en cualquier densidad de pantalla.
+- El logotipo oficial original fue vectorizado a trazados Bézier cúbicos en **4 variantes SVG** (`~39 KB` cada una: sello oficial `logo-red-pepper-badge.svg`, isotipo circular `logo-red-pepper-mark.svg`, y lockups `logo-red-pepper.svg` / `logo-red-pepper-dark.svg`), escalables sin pixelación desde favicon hasta gran formato.
 - Las tarjetas incluyen `width="640" height="478"`, `loading="lazy"` y `decoding="async"` para evitar saltos de maquetación (*CLS*).
 
 ---
