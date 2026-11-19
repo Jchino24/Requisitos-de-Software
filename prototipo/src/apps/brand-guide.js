@@ -26,13 +26,15 @@
 
       <div class="grid-2" style="margin-bottom:18px;">
         <div class="card">
-          <div class="card-head"><h2 class="card-title">Logotipo Oficial y Variantes</h2></div>
+          <div class="card-head"><h2 class="card-title">Logotipo Oficial Vectorizado y Variantes</h2></div>
           <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="padding:14px; border:1px solid var(--color-border); border-radius:var(--radius-sm); background:#FFFFFF;">
-              <img src="assets/logo-red-pepper.svg" alt="Logotipo horizontal RED PEPPER sobre claro" style="height:54px;" />
+            <div style="padding:14px; border:1px solid var(--color-border); border-radius:var(--radius-sm); background:#FFFFFF; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+              <img src="assets/logo-red-pepper.svg" alt="Logotipo horizontal RED PEPPER sobre claro" style="height:52px; max-width:100%;" />
+              <img src="assets/logo-red-pepper-badge.svg" alt="Sello original vectorizado RED PEPPER" style="width:68px; height:68px; border-radius:10px;" />
             </div>
-            <div style="padding:14px; border-radius:var(--radius-sm); background:var(--color-surface-dark);">
-              <img src="assets/logo-red-pepper-dark.svg" alt="Logotipo horizontal RED PEPPER sobre oscuro" style="height:54px;" />
+            <div style="padding:14px; border-radius:var(--radius-sm); background:var(--color-surface-dark); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+              <img src="assets/logo-red-pepper-dark.svg" alt="Logotipo horizontal RED PEPPER sobre oscuro" style="height:52px; max-width:100%;" />
+              <img src="assets/logo-red-pepper-mark.svg" alt="Isotipo circular compacto RED PEPPER" style="width:56px; height:56px;" />
             </div>
           </div>
         </div>
