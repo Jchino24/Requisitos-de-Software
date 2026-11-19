@@ -286,6 +286,10 @@
   align-items: start;
 }
 
+.grid-2 > *, .grid-3 > *, .split-pos > *, .split-admin > * {
+  min-width: 0;
+}
+
 /* ---------- Botones & Chips ---------- */
 .btn {
   display: inline-flex;

@@ -1,38 +1,38 @@
 % =====================================================================
 %  interfaces.tex
-%  Interfaces de usuario (v2): prototipo web real y funcional
-%  (prototipo/index.html) para cliente, mostrador POS, cocina KDS y
-%  administración / contabilidad NIIF 18 y SUNAT.
+%  Interfaces de usuario (v3): arquitectura modular con branding oficial
+%  RED PEPPER (#FF3131, #F64301, #1F6636), separación cliente/equipo,
+%  fotografía WebP y componentes reutilizables accesibles WCAG 2.2 AA.
 % =====================================================================
 
 \FloatBarrier
 \section{Interfaces de usuario}
 \label{sec:interfaces}
 
-\noindent{\small\textbf{Versión 2} \textperiodcentered{} prototipo web funcional implementado en \texttt{prototipo/} (HTML, CSS y JavaScript con estado sincronizado en vivo) bajo el sistema de diseño semántico \texttt{.stitch/DESIGN.md} (\emph{Google Stitch taste-design}), sujeto a validación final con el interesado.}\par\vspace{0.5em}
+\noindent{\small\textbf{Versión 3} \textperiodcentered{} plataforma web modular implementada en \texttt{prototipo/} (\texttt{core/}, \texttt{components/} y \texttt{apps/} sin dependencias externas) con identidad oficial \textbf{RED PEPPER — Sánguches, Salchipapas \& Más}, sujeta a validación final con el interesado.}\par\vspace{0.5em}
 
-En esta segunda versión se reemplazan las capturas estáticas de la v1 por
-\textbf{interfaces reales y funcionales} organizadas por rol operativo:
-\textbf{lado del cliente}, \textbf{mostrador POS}, \textbf{cocina (KDS)}
-y \textbf{administración / contabilidad}. Todas comparten un modelo de datos
-sincronizado y tokens visuales unificados (paleta Alabastro Cálido
-\texttt{\#FAF8F5}, tinta Zinc-950 \texttt{\#18181B}, único acento
-Carmesí Brasas \texttt{\#C22B22}, cifras tabulares monoespaciadas y
-controles táctiles mínimos de 44\,px / 48\,px): un pedido confirmado en
-Cliente o POS genera una comanda que avanza en Cocina, bloquea productos
-agotados al instante y actualiza los cálculos de margen, prorrateo,
-auditoría y cierre NIIF 18.
+En esta versión se reorganiza el prototipo en \textbf{subaplicaciones
+desacopladas} que separan la \textbf{experiencia pública del cliente}
+(navegación limpia de cuatro destinos, fotografía gastronómica en formato
+WebP y seguimiento en vivo) de los \textbf{portales internos del equipo}
+(\textbf{mostrador POS}, \textbf{cocina KDS}, \textbf{gerencia / NIIF 18} y
+\textbf{guía de marca interna}). Todos los componentes consumen tokens
+centralizados en \texttt{prototipo/src/styles/tokens.css} con la paleta
+oficial Rojo Brillante (\texttt{\#FF3131}), Naranja Vivo (\texttt{\#F64301})
+y Verde Oscuro (\texttt{\#1F6636}), calibrada para cumplir contraste WCAG 2.2 AA
+(\texttt{\#D91B1B} en botones primarios con texto blanco, \texttt{\#1F6636} en
+disponibilidad y estados listos), cifras tabulares monoespaciadas y modales
+accesibles en lugar de diálogos nativos del navegador.
 
-\paragraph{Correcciones aplicadas respecto a la versión 1.} La versión 2
-resuelve las observaciones detectadas en la v1: (i) corrige el rótulo
-«Prorroteo 5 días» por \emph{prorrateo sobre jornadas hábiles efectivas}
-con calendario configurable (regla P-14 / R-ENT2-07); (ii) separa el
-cálculo tributario del marco de presentación NIIF 18; (iii) alinea la carta
-con los productos y precios documentados en F-07 y EV-ENT-01 (Salchipapa
-Clásica S/8.00, Hamburguesa Clásica S/8.00, pollo deshilachado y refrescos
-de pulpa natural); e (iv) incorpora las vistas faltantes de cliente,
-cocina, abastecimiento, auditoría inmutable y cierre NIIF 18 / SUNAT. Los
-importes y movimientos iniciales siguen siendo datos de demostración, no
+\paragraph{Evolución respecto a las versiones anteriores.} Respecto a v1 y v2,
+la v3 incorpora: (i) separación estricta entre la barra pública del comensal
+y el acceso interno del personal; (ii) reducción de saturación visual a un
+máximo de cuatro acciones principales por barra y revelación progresiva en
+detalles de plato y costos indirectos; (iii) verificación automatizada de
+responsividad desde 320\,px hasta 1920\,px (\texttt{scripts/qa\_verify.mjs})
+con objetivos táctiles mínimos de 44\,px / 48\,px en POS; y (iv) documentación
+técnica trazable en \texttt{docs/}. Los importes iniciales corresponden a un
+escenario de demostración local y no sustituyen un backend transaccional ni
 registros contables reales.
 
 \subsection{Lado del cliente y atención en mostrador}
@@ -41,20 +41,21 @@ registros contables reales.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{01-cliente-carta-pedido.png}
-  \caption{Interfaz 1 (v2): lado del cliente — carta digital,
-  personalización de cremas, selección de canal y seguimiento en vivo del
-  estado de la comanda (\emph{Pendiente} $\rightarrow$ \emph{En
-  preparación} $\rightarrow$ \emph{Listo}, conforme a R-OBS-03 y R-ENT2-17).}
+  \caption{Interfaz 1 (v3): portal público del cliente — marca oficial
+  RED PEPPER, carta digital con fotografía WebP, buscador, selección de
+  canal, personalización de cremas y seguimiento en vivo (\emph{Pendiente}
+  $\rightarrow$ \emph{En preparación} $\rightarrow$ \emph{Listo}, conforme a
+  R-OBS-03 y R-ENT2-17).}
   \label{fig:cliente-carta}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{02-pos-mostrador.png}
-  \caption{Interfaz 2 (v2): terminal de mostrador POS táctil. Botones con
-  altura mínima de 48\,px (RNF-05 / R-ENT2-02), edición de borrador previa
-  a la confirmación (R-OBS-04), bloqueo de productos agotados (R-ENT2-05)
-  y acceso directo al cierre de jornada (RF-03).}
+  \caption{Interfaz 2 (v3): terminal interno de mostrador POS táctil.
+  Controles con altura mínima de 48\,px (RNF-05 / R-ENT2-02), edición previa
+  a la confirmación (R-OBS-04), bloqueo de productos agotados (R-ENT2-05) y
+  confirmación modal de cierre de jornada (RF-03).}
   \label{fig:pos}
 \end{figure}
 
@@ -64,7 +65,7 @@ registros contables reales.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{03-cocina-comandas.png}
-  \caption{Interfaz 3 (v2): monitor de comandas en cocina (KDS) y control
+  \caption{Interfaz 3 (v3): monitor de comandas en cocina (KDS) y control
   rápido de stock. Refleja preparación al instante sin precocidos
   (E-OBS-02 / E-ENT1-03), transiciones autorizadas de estado (R-OBS-03) y
   cambio inmediato de disponibilidad sincronizado con Cliente y POS
@@ -78,7 +79,7 @@ registros contables reales.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{04-admin-dashboard-margen.png}
-  \caption{Interfaz 4 (v2): panel gerencial de margen bruto diario y
+  \caption{Interfaz 4 (v3): panel gerencial de margen bruto diario y
   prorrateo (ACT-0001). Calcula el margen diario (RF-08 / R-PRE-04),
   permite alternar jornadas hábiles y feriados conforme a P-14
   (R-ENT2-07), desglosa ventas por canal (R-ENT2-17) y muestra el ranking
@@ -89,23 +90,22 @@ registros contables reales.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{05-admin-abastecimiento-carta.png}
-  \caption{Interfaz 5 (v2): gestión de abastecimiento, carta y auditoría
-  inmutable. Permite registrar compras semanales o adicionales con
-  validación de campos (R-ENT2-16) y compresión de comprobantes
-  (R-ENT2-15), corregir importes con motivo obligatorio (R-ENT2-08),
-  actualizar precios preservando historial (R-PRE-13) y consultar el log
-  inmutable (RF-20 / RNF-02).}
+  \caption{Interfaz 5 (v3): gestión de abastecimiento, carta y auditoría
+  inmutable. Permite registrar compras con validación (R-ENT2-16), corregir
+  importes mediante modal accesible con motivo obligatorio (R-ENT2-08), dar
+  de alta o editar precios preservando historial (R-PRE-12 / R-PRE-13) y
+  consultar la bitácora (RF-20 / RNF-02).}
   \label{fig:admin-operaciones}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth,height=0.76\textheight,keepaspectratio]{06-admin-cierre-niif18-sunat.png}
-  \caption{Interfaz 6 (v2): cierre mensual NIIF 18, reglas tributarias y
+  \caption{Interfaz 6 (v3): cierre mensual NIIF 18, reglas tributarias y
   repositorio SUNAT. Separa Resultado Operativo, Gastos Financieros y BAI
   (RF-10 a RF-14), implementa la autorización de Jerry sobre reglas
   propuestas por el contador (R-ENT2-10), aplica bloqueo de periodo cerrado
-  con nota de ajuste (RNF-07 / R-ENT2-14) y filtra comprobantes con hash
-  SHA-256 y cifrado (RF-16 / RNF-08).}
+  con modal de nota de ajuste (RNF-07 / R-ENT2-14) y filtra comprobantes
+  con hash SHA-256 (RF-16 / RNF-08).}
   \label{fig:admin-contabilidad}
 \end{figure}
