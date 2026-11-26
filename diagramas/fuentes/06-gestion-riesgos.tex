@@ -1,0 +1,88 @@
+% =====================================================================
+%  Diagrama 6 — Proceso de gestión de riesgos en los requisitos
+%  Adapta la figura 9.1 del capítulo 9 de referencia al caso RedPepper:
+%  el ciclo identificar -> analizar -> evaluar -> tratar se repite en cada
+%  etapa (educción, ilación y especificación), dentro de un marco de
+%  registro, control y retroalimentación.
+%  Se incluye desde diagramas/fuentes/ y se exporta a PNG de 300 dpi.
+% =====================================================================
+\input{estilo}
+
+\definecolor{cLoop}{HTML}{B45309}
+
+\begin{document}
+\begin{tikzpicture}[
+  etapa/.style={rounded corners=9pt, draw=black!55, dashed, line width=0.7pt,
+                fill=#1, inner sep=6pt},
+  paso/.style={draw=black!45, rounded corners=2.5pt, fill=white,
+               font=\small, align=center, minimum height=1.0cm,
+               text width=3.9cm, inner sep=2pt,
+               execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  banda/.style={draw=black!55, fill=black!84, text=white,
+                font=\footnotesize\bfseries, align=center, inner sep=4pt,
+                minimum height=0.5cm},
+  rail/.style={draw=black!55, fill=black!10, text=black!85,
+               font=\footnotesize\bfseries, align=center, inner sep=4pt},
+  flujo/.style={-{Stealth[length=2mm,width=1.4mm]}, draw=black!65,
+                line width=0.7pt},
+  flujod/.style={flujo, dashed},
+  nota/.style={font=\footnotesize, align=center, text=black!70}
+]
+
+  \def\dxA{0}
+  \def\dxB{5.9}
+  \def\dxC{11.8}
+  \def\yTop{3.55}
+  \def\yBot{-3.95}
+
+  % ---------------- Etapas ----------------
+  \node[etapa=cSistema,   minimum width=4.6cm, minimum height=5.9cm] (cA) at (\dxA,0) {};
+  \node[etapa=cCaja,      minimum width=4.6cm, minimum height=5.9cm] (cB) at (\dxB,0) {};
+  \node[etapa=cProveedor, minimum width=4.6cm, minimum height=5.9cm] (cC) at (\dxC,0) {};
+
+  \node[font=\footnotesize\bfseries, text=black!85] at (\dxA,2.45) {1.\ \ Educción};
+  \node[font=\footnotesize\bfseries, text=black!85] at (\dxB,2.45) {2.\ \ Ilación};
+  \node[font=\footnotesize\bfseries, text=black!85] at (\dxC,2.45) {3.\ \ Especificación};
+
+  \foreach \dx in {\dxA,\dxB,\dxC}{
+    \node[paso] at (\dx,1.55) {Identificar el riesgo};
+    \node[paso] at (\dx,0.45) {Analizar probabilidad e impacto};
+    \node[paso] at (\dx,-0.65) {Evaluar P-I y exposición};
+    \node[paso] at (\dx,-1.75) {Tratar: mitigar, transferir o aceptar};
+    \draw[flujo] (\dx,1.05) -- (\dx,0.95);
+    \draw[flujo] (\dx,-0.05) -- (\dx,-0.15);
+    \draw[flujo] (\dx,-1.15) -- (\dx,-1.25);
+  }
+
+  % ---------------- Marco: bandas superior e inferior ----------------
+  \node[banda, minimum width=17.7cm] at (\dxB,\yTop) {Registro y consolidación del riesgo por etapa};
+  \node[banda, minimum width=17.7cm] at (\dxB,\yBot) {Revisión y retroalimentación entre etapas};
+
+  \node[rail, rotate=90, minimum width=7.3cm, minimum height=0.48cm] at (-2.95,0)
+    {Identificación y análisis de requisitos};
+  \node[rail, rotate=90, minimum width=7.3cm, minimum height=0.48cm] at (14.75,0)
+    {Control y seguimiento};
+
+  % ---------------- Conexiones verticales ----------------
+  \foreach \dx in {\dxA,\dxB,\dxC}{
+    \draw[flujo] (\dx,3.30) -- (\dx,2.97);
+    \draw[flujo] (\dx,-2.97) -- (\dx,-3.70);
+  }
+
+  % ---------------- Flujo horizontal entre etapas ----------------
+  \draw[flujo] (2.33,0) -- (3.57,0);
+  \draw[flujo] (8.23,0) -- (9.47,0);
+
+  % ---------------- Entrada y salida del marco ----------------
+  \draw[flujo] (-2.69,0.45) -- (-2.33,0.45);
+  \draw[flujo] (14.13,-0.65) -- (14.49,-0.65);
+
+  % ---------------- Ciclo de realimentación ----------------
+  % La revisión (banda inferior) vuelve al registro (banda superior) por
+  % fuera del marco: lo revisado se consolida antes de volver a identificar.
+  \draw[flujod, draw=cLoop] (-3.20,\yBot) -- (-4.35,\yBot) -- (-4.35,4.10)
+    -- (-1.30,4.10) -- (-1.30,3.82);
+
+
+\end{tikzpicture}
+\end{document}

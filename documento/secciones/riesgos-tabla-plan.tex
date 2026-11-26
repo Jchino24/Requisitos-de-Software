@@ -1,0 +1,34 @@
+% =====================================================================
+%  riesgos-tabla-plan.tex — GENERADO AUTOMÁTICAMENTE
+%  Fuente: plantillas/registro_riesgos.csv
+%  Regenerar con: python3 scripts/generar_riesgos.py  (o make riesgos)
+%  No editar a mano: cualquier cambio se pierde al regenerar.
+% =====================================================================
+\begin{landscape}
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{longtable}{L{2.4cm} L{3.0cm} L{5.5cm} L{2.3cm} L{3.3cm} L{3.5cm} R{1.6cm}}
+\caption{Plan de mitigación y seguimiento de los diez riesgos principales.}
+\label{tab:riesgos-plan}\\
+\toprule
+\textbf{Código} & \textbf{Riesgo} & \textbf{Acción de mitigación} & \textbf{Responsable} & \textbf{Disparador} & \textbf{Indicador de cierre} & \textbf{P res. (\%)} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Código} & \textbf{Riesgo} & \textbf{Acción de mitigación} & \textbf{Responsable} & \textbf{Disparador} & \textbf{Indicador de cierre} & \textbf{P res. (\%)} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+EDU-PRE-08 & Régimen y tasas tributarias sin confirmar & Acta con el contador con régimen, tributos y vigencia; matriz de reglas por tributo y periodo; versión por fecha de efecto. & Contador / Jerry & El contador no entrega la regla antes del cierre & Matriz de reglas firmada & 45 \\
+RF-14 & Reporte NIIF 18 sin nota de alcance legal & Nota de alcance en el reporte y en el acta; separar la estructura gerencial del cumplimiento acreditado. & Jerry & El cliente presenta el reporte ante SUNAT & Nota de alcance visible & 40 \\
+EDU-PRE-05 & Objeto del prorrateo sin confirmar & Sesión grabada con Jerry (30 min) para fijar el objeto; congelar la definición en R-PRE-02; actualizar el diagrama 2 con dos casos de prueba (5 y 4 jornadas). & Jerry / Gabriel Pajuelo & Jerry no confirma en la revisión & Acta firmada y V-PRE-02 aprobado & 40 \\
+R-PRE-07 & Regla tributaria sin versionado por fecha & Versionado por fecha de vigencia y periodo evaluado; prueba con fechas anteriores y posteriores a un cambio autorizado. & Contador & Cambio de tasa a mitad de periodo & Versión correcta en la prueba & 30 \\
+RF-11 & Parametrización fiscal sin matriz de reglas & Matriz de reglas con vigencia y responsable; el usuario solo selecciona la regla, no edita la tasa. & Contador & Usuario edita una tasa directamente & Matriz aprobada y bloqueo de edición & 30 \\
+ILA-PRE-02 & Doble contabilización del costo directo & Política única de imputación: el prorrateo de compras reemplaza al costo directo en el margen gerencial; prueba de conciliación. & Gabriel Pajuelo & El margen difiere del caso de referencia & Conciliación sin doble conteo & 30 \\
+R-PRE-08 & Plantilla contable mensual sin aprobar & Plantilla firmada con partidas, subtotales y totales; congelarla antes de construir el reporte. & Contador & Nueva estructura en la revisión & Plantilla 1.0 congelada & 30 \\
+EDU-ENT1-01 & Carta sin costos unitarios ni recetas & Ficha técnica por plato con rendimiento y costo; separar precio de venta de costo directo; validar con Jerry tres platos piloto. & Jerry / José Chino & El cliente no entrega recetas & Tres fichas técnicas aprobadas & 35 \\
+RNF-03 & Umbral de 3 s sin referencia de medición & Benchmark con 12 meses de datos y el dispositivo aprobado; registrar tiempos y percentiles. & José Choquehuanca & El cierre tarda más de 3 s en el local & Benchmark documentado & 30 \\
+R-PRE-02 & Prorrateo sin criterio de aceptación verificable & Ampliar V-PRE-02: S/ 500 en cinco jornadas y en cuatro jornadas, cero en feriado y total conservado. & Gabriel Pajuelo & Semana con feriado en el caso de prueba & V-PRE-02 aprobado con dos casos & 35 \\
+\end{longtable}
+}
+\end{landscape}

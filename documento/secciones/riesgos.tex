@@ -1,0 +1,564 @@
+% =====================================================================
+%  riesgos.tex
+%  Sección 6 — Plan de gestión de riesgos asociado a los requisitos.
+%  Aplica el proceso del capítulo 9 de referencia (identificar, analizar,
+%  evaluar y tratar el riesgo en cada etapa de la ingeniería de
+%  requisitos) al catálogo de RedPepper.
+%  Las tablas de registro, ranking y plan se generan desde
+%  plantillas/registro_riesgos.csv con scripts/generar_riesgos.py.
+% =====================================================================
+
+\input{secciones/riesgos-macros}
+
+\clearpage
+\section{Plan de gestión de riesgos asociado a los requisitos}
+\label{sec:riesgos}
+
+\noindent{\small\textbf{Versión 1} \textperiodcentered{} avance para la
+revisión del 26 de noviembre de 2026 \textperiodcentered{} cuantificación
+preliminar sujeta a validación con el equipo y con el interesado.}\par\vspace{0.5em}
+
+\subsection{Propósito y alcance}
+\label{subsec:riesgos-proposito}
+
+La ingeniería de requisitos se mueve entre lo informal de la necesidad y lo
+formal de la especificación. En ese tránsito, el riesgo no es una amenaza
+que deba evitarse: es una condición incierta que, si no se trata a tiempo,
+se convierte en un defecto de concepción, en un retrabajo o en un requisito
+de calidad descubierto cuando el producto ya está en producción. Esta
+sección operacionaliza esa idea, siguiendo el proceso del capítulo 9
+\enquote{Gestión del riesgo en los requisitos} de Huertas Niquén, Pérez Vera
+y Cabrera Málaga, sobre el catálogo de RedPepper: identifica
+los riesgos asociados a los requisitos, los analiza en probabilidad e
+impacto, los evalúa con un índice cuantitativo y define el tratamiento de
+los diez más severos.
+
+El alcance es acotado y explícito. Se trabaja sobre los requisitos de las
+secciones anteriores (52 fichas de educción, 52 cadenas de ilación, 20 RF,
+8 RNF y 39 derivados candidatos), no sobre el proyecto completo: los riesgos
+de cronograma, presupuesto, proveedores o personal se recogen solo en
+cuanto afectan la definición de un requisito. La unidad de registro es el
+requisito, identificado con su código de ficha (\texttt{EDU-},
+\texttt{ILA-}) o con el código del requisito especificado (\texttt{RF-},
+\texttt{RNF-}, \texttt{R-}) y numerado con el prefijo \texttt{R-} para el
+seguimiento.
+
+\paragraph{Resumen ejecutivo.} El avance deja cuatro resultados
+verificables:
+
+\begin{itemize}
+  \item Se identificaron y registraron \RiesgosTotal{} riesgos, distribuidos
+  en las tres etapas: nueve en educción, ocho en ilación y trece en
+  especificación (Tabla~\ref{tab:riesgos-resumen}).
+  \item Hay \RiesgosCriticos{} riesgos críticos y \RiesgosAltos{} altos según
+  el índice P-I; solo \RiesgosResueltos{} está cerrado y \RiesgosAbiertos{}
+  siguen abiertos.
+  \item La exposición total estimada asciende a S/\,\ExposicionTotal{} y el
+  colchón de exposición bruta de los diez riesgos principales a
+  \ColchonBruto{} jornadas, equivalentes al \ColchonPorcentaje\,\% de un
+  cronograma de \JornadasProyecto{} jornadas. Con la mitigación prevista, el
+  colchón residual baja a \ColchonResidual{} jornadas
+  (\ColchonResidualPorcentaje\,\%).
+  \item Los diez riesgos principales concentran el 51\,\% del índice P-I
+  total y cuatro de ellos pertenecen al bloque tributario-contable, lo que
+  confirma que la validación con el contador es la actividad crítica del
+  proyecto.
+\end{itemize}
+
+\paragraph{Naturaleza de los datos.} Los valores de probabilidad, impacto y
+costo por error son estimaciones preliminares del equipo, obtenidas por
+consenso en una ronda de juicio experto y documentadas para que puedan
+corregirse. No provienen de un histórico de proyectos ni de una medición
+instrumentada; por eso el registro se versiona en un archivo editable
+(\texttt{registro\_riesgos.csv}, en la carpeta \texttt{plantillas}) y todas
+las cifras de esta sección se recalculan desde él.
+
+\subsection{Marco conceptual}
+\label{subsec:riesgos-marco}
+
+\subsubsection{Activos, vulnerabilidades, amenazas, impacto y suposición}
+\label{subsubsec:riesgos-conceptos}
+
+Antes de definir el riesgo conviene fijar los conceptos que lo rodean,
+porque en la práctica se confunden con facilidad. La
+Tabla~\ref{tab:riesgos-conceptos} los resume con un ejemplo tomado del
+propio catálogo.
+
+{\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{L{2.4cm} L{6.9cm} L{5.7cm}}
+\caption{Conceptos asociados al riesgo, con su manifestación en RedPepper.}
+\label{tab:riesgos-conceptos}\\
+\toprule
+\textbf{Concepto} & \textbf{Definición operativa} & \textbf{Ejemplo en RedPepper} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Concepto} & \textbf{Definición operativa} & \textbf{Ejemplo en RedPepper} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Activo & Recurso de hardware, software, información o documentación cuyo
+valor depende de que el requisito se defina bien. & El catálogo de
+requisitos (Sección~3), la matriz de trazabilidad (Tabla~1), las reglas
+tributarias y los comprobantes de sustento. \\
+Vulnerabilidad & Debilidad que puede ser accionada de forma accidental o
+intencional y que expone al activo. & RNF-03 fija un umbral de 3 s sin
+dispositivo ni volumen de datos de referencia: la métrica no se puede
+verificar. \\
+Amenaza & Hecho que activa la vulnerabilidad y desencadena el daño. & El
+contador cambia una tasa a mitad de periodo; Jerry no asiste a la sesión de
+validación del prorrateo. \\
+Impacto & Daño efectivo sobre el activo si la amenaza se materializa. &
+Rehacer la cascada del cierre y el reporte NIIF 18 después de codificar el
+módulo contable. \\
+Suposición & Afirmación que se toma como cierta sin sustento y que debe
+analizarse, controlarse y documentarse. & Que el prorrateo reparte compras
+y no ventas; que el usuario final no tiene discapacidad en las extremidades
+superiores. \\
+\end{longtable}
+}
+
+La suposición merece un comentario aparte. Comparte con el riesgo sus dos
+dimensiones, probabilidad e impacto, y por eso suele tratarse como un riesgo
+de segunda categoría. En este plan se registra como riesgo toda suposición
+de probabilidad baja e impacto alto, y se deja constancia escrita de las
+demás para que no se confundan con hechos validados.
+
+\subsubsection{Definición y dimensiones del riesgo}
+\label{subsubsec:riesgos-definicion}
+
+La Real Academia Española define el riesgo como la \enquote{contingencia o
+proximidad de un daño}. La norma INTECO lo describe como el \enquote{evento
+o condición incierto que, si se produce, tendrá un efecto positivo o
+negativo sobre al menos un objetivo}, y el PMI como el \enquote{evento o
+condición incierta que, si ocurre, tendrá un efecto positivo o negativo en
+los objetivos del proyecto}. Las tres definiciones coinciden en dos notas:
+la incertidumbre, que se expresa como probabilidad, y la consecuencia, que
+se expresa como impacto.
+
+En gestión de requisitos el impacto se mide preferentemente en jornadas de
+retrabajo, porque el efecto inmediato de un requisito mal definido es
+tiempo: volver a entrevistar, reescribir la ficha, rehacer el diagrama o
+repetir la validación. El costo monetario entra después, cuando el error
+atraviesa la etapa de detección y llega al diseño o a la construcción. Este
+plan recoge ambas dimensiones en dos columnas distintas para no mezclarlas:
+el \emph{índice P-I} mide tiempo esperado y la \emph{exposición} pondera
+ese tiempo por el costo de corrección.
+
+\subsection{Riesgos del proyecto de requisitos}
+\label{subsec:riesgos-familias}
+
+No todos los riesgos se adhieren a un requisito concreto. Algunos afectan al
+proceso completo y se manifiestan en varios requisitos a la vez. Siguiendo la
+práctica del capítulo de referencia, se agrupan en cuatro familias:
+personas, proceso, producto y tecnología. La
+Tabla~\ref{tab:riesgos-familias} recoge veinte riesgos de este tipo y los
+vincula con su manifestación concreta en RedPepper; los que además tienen un
+requisito responsable se cuantifican en el registro de la
+Sección~\ref{subsec:riesgos-registro}.
+
+\paragraph{Personas.} La familia más costosa de corregir, porque no se
+resuelve con una herramienta. En RedPepper se concentra en la dependencia
+del contador y de Jerry para validar reglas tributarias y de negocio, y en
+la ausencia de bitácora de las sesiones de educción.
+
+\paragraph{Proceso.} Recoge las fallas de planificación, de control de
+versiones y de criterio de salida. Es la familia que este plan puede
+corregir con mayor rapidez, porque depende del equipo y no de terceros.
+
+\paragraph{Producto.} Agrupa los riesgos del artefacto: alcance inflado,
+expectativas equivocadas sobre el prototipo y afirmaciones que el documento
+no puede sostener, como la obligatoriedad de NIIF 18.
+
+\paragraph{Tecnología.} Incluye la dependencia de un dispositivo no medido,
+la ausencia de un backend transaccional que permita probar rendimiento y
+respaldo, y la confusión entre integridad (hash) y confidencialidad
+(cifrado).
+
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{1.3cm} L{1.7cm} L{4.2cm} L{5.4cm} L{2.3cm}}
+\caption{Riesgos del proyecto de requisitos por familia, con su
+manifestación en RedPepper.}
+\label{tab:riesgos-familias}\\
+\toprule
+\textbf{Código} & \textbf{Familia} & \textbf{Riesgo} & \textbf{Manifestación en RedPepper} & \textbf{Requisito o etapa afectada} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Código} & \textbf{Familia} & \textbf{Riesgo} & \textbf{Manifestación en RedPepper} & \textbf{Requisito o etapa afectada} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+P-01 & Personas & El equipo no domina NIIF 18 ni la normativa tributaria. & Interpretación errónea de la cascada del cierre y de las reglas tributarias. & RF-10 a RF-14 \\
+P-02 & Personas & Los usuarios finales no participan en el diseño de las interfaces. & Las seis pantallas del prototipo se validaron solo con el equipo. & RNF-05; Figuras 6 a 11 \\
+P-03 & Personas & Fechas, participantes y responsables de las entrevistas no constan. & La trazabilidad de las fichas se apoya en reportes sin bitácora de sesión. & EV-PRE-01 a EV-ENT-02 \\
+P-04 & Personas & La agenda del contador y de Jerry limita las validaciones. & Preguntas abiertas de los cuatro eventos sin respuesta. & EV-PRE-01; EV-ENT-02 \\
+P-05 & Personas & Carga académica y rotación de los cinco integrantes. & Estimaciones optimistas y entregables concentrados en la fecha límite. & Cronograma del proyecto \\
+PR-01 & Proceso & Planificación optimista, sin holgura para revalidar. & Cada corrección de requisito se traslada al prototipo sin margen. & Cronograma del proyecto \\
+PR-02 & Proceso & Control de versiones del requisito y del prototipo desalineado. & El catálogo, las fichas y el prototipo pueden citar versiones distintas. & RF-01 a RF-20 \\
+PR-03 & Proceso & Criterios de validación ausentes en el catálogo de origen F-02. & Los RF y RNF no son verificables sin umbral acordado. & RF-01 a RNF-08 \\
+PR-04 & Proceso & Preguntas de validación abiertas en los cuatro eventos. & Los 39 requisitos derivados permanecen como candidatos. & R-PRE, R-OBS, R-ENT1, R-ENT2 \\
+PR-05 & Proceso & Sin control de calidad por etapa. & Los defectos de la educción llegan a la especificación y al prototipo. & Todas las etapas \\
+PD-01 & Producto & NIIF 18 presentada como obligación cuando solo es intención. & Riesgo legal y comercial si el cliente la presenta ante SUNAT. & RF-14 \\
+PD-02 & Producto & Precios de carta corregidos sin costos unitarios. & El margen por plato no se puede calcular con sustento. & RF-08; R-PRE-11 \\
+PD-03 & Producto & Funciones añadidas por el equipo (ranking y dashboard). & Alcance mayor al solicitado y sin validación en F-02. & RF-17; RF-18 \\
+PD-04 & Producto & El prototipo con datos de demostración parece producto terminado. & Expectativa equivocada sobre el avance real de la construcción. & Sección 5; prototipo \\
+T-01 & Tecnología & Dependencia de un dispositivo táctil que no se ha medido. & RNF-05 no se puede verificar en el hardware real del local. & RNF-05 \\
+T-02 & Tecnología & Prototipo sin backend transaccional. & RNF-03 y RNF-04 no se prueban con volumen ni con cortes de red. & RNF-03; RNF-04 \\
+T-03 & Tecnología & Confusión entre hash SHA-256 y cifrado. & Falsa sensación de confidencialidad de los comprobantes. & RNF-08; Diagrama 2 \\
+T-04 & Tecnología & Curva de aprendizaje de LaTeX/TikZ y del stack sin bundler. & Retrasos en la recompilación de entregables y de diagramas. & Documento y prototipo \\
+T-05 & Tecnología & Diagrama de clases de origen raster con texto a 4,6 pt. & Lectura ilegible y dificultad para mantener el modelo. & Figura 5 \\
+\end{longtable}
+}
+
+\subsection{Proceso de gestión de riesgos}
+\label{subsec:riesgos-proceso}
+
+El proceso se ejecuta en cada una de las tres etapas y no una sola vez al
+final. En cada etapa se identifican, analizan, evalúan y tratan los riesgos
+asociados a los requisitos que esa etapa produce; al cerrar la etapa, los
+riesgos no tratados vuelven a la anterior o bloquean el paso a la línea
+base. La Figura~\ref{fig:riesgos-proceso} representa el ciclo.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{06-gestion-riesgos.png}
+  \caption{Proceso de gestión de riesgos en los requisitos. El ciclo
+  identificar, analizar, evaluar y tratar se repite en la educción, la
+  ilación y la especificación, dentro de un marco de registro, control y
+  retroalimentación que impide aprobar un requisito con un riesgo crítico
+  abierto.}
+  \label{fig:riesgos-proceso}
+\end{figure}
+
+\paragraph{Identificar.} Se revisa cada ficha y cada requisito con una
+pregunta única: qué condición incierta podría obligar a rehacerlo. La
+respuesta se anota en el registro con el código del requisito, sin valorar
+todavía. En esta etapa se apoya en las preguntas abiertas de la
+Sección~3.4, en las marcas \texttt{TODO} heredadas de F-02 y en las
+discrepancias que la ilación ya dejó documentadas.
+
+\paragraph{Analizar.} Se asigna probabilidad cualitativa y cuantitativa, y
+se estima el impacto en jornadas de retrabajo. La estimación se hace por
+consenso del equipo y se contrasta con el responsable del requisito.
+
+\paragraph{Evaluar.} Se calcula el índice P-I, se estima el costo por error
+y se obtiene la exposición. Con ambos valores se asigna la banda de
+severidad y se decide si el riesgo entra en los diez principales.
+
+\paragraph{Tratar.} Se elige una de cuatro respuestas: mitigar (reducir
+probabilidad o impacto), transferir (trasladar la responsabilidad, por
+ejemplo al contador), aceptar (documentar y monitorear) o evitar (retirar
+el requisito del alcance). Cada tratamiento tiene responsable, disparador e
+indicador de cierre.
+
+\paragraph{Criterio de salida.} Un requisito no pasa a la línea base
+mientras tenga un riesgo crítico abierto. La excepción debe registrarse por
+escrito, con el responsable que asume la aceptación.
+
+\subsection{Diseño de la plantilla de trabajo}
+\label{subsec:riesgos-plantilla}
+
+\subsubsection{Columnas de la plantilla}
+\label{subsubsec:riesgos-columnas}
+
+La plantilla conserva las once columnas del capítulo de referencia y añade,
+en el encabezado del registro, los datos de auditoría que el mismo capítulo
+propone: código del registro, versión, responsable y fecha de actualización.
+La Tabla~\ref{tab:riesgos-columnas} describe cada columna con el ejemplo de
+la primera fila del registro.
+
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{r L{3.0cm} L{7.3cm} L{3.2cm}}
+\caption{Columnas de la plantilla de gestión de riesgos.}
+\label{tab:riesgos-columnas}\\
+\toprule
+\textbf{\#} & \textbf{Columna} & \textbf{Qué registra} & \textbf{Ejemplo (R-01)} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{Columna} & \textbf{Qué registra} & \textbf{Ejemplo (R-01)} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1 & Código requisito & Código de la ficha o del requisito (EDU-, ILA-, RF-, RNF- o R-). & EDU-PRE-05 \\
+2 & Riesgo identificado & Enunciado del evento incierto y de su efecto sobre el requisito. & Objeto del prorrateo sin confirmar. \\
+3 & Probabilidad (cualitativa) & Etiqueta de la escala de siete niveles. & Muy alta \\
+4 & Probabilidad & Porcentaje de ocurrencia, de 0\,\% a 100\,\%. & 95 \\
+5 & Impacto & Jornadas de retrabajo si el riesgo ocurre. & 4 \\
+6 & Índice P-I & Producto de probabilidad por impacto. & 3,80 \\
+7 & Costo por error & Costo de corrección si el error llega a producción. & S/\,1\,800 \\
+8 & Exposición al riesgo & Producto del índice P-I por el costo por error. & S/\,6\,840 \\
+9 & Estado & Semáforo del tratamiento: resuelto, en proceso, pendiente o retrasado. & en proceso \\
+10 & Plan de mitigación & Acción, responsable y condición de cierre del tratamiento. & Sesión con Jerry; acta y V-PRE-02 aprobado. \\
+11 & Código artefacto & Artefacto vinculado al requisito (diagrama, interfaz, matriz). & D-02 \\
+\end{longtable}
+}
+
+\subsubsection{Escalas de probabilidad, impacto y severidad}
+\label{subsubsec:riesgos-escalas}
+
+La probabilidad se expresa en una escala de siete niveles para evitar la
+falsa precisión de un porcentaje único. La
+Tabla~\ref{tab:riesgos-escala-probabilidad} fija la equivalencia y el
+criterio de uso; la asignación la hace el equipo y la revisa el responsable
+del requisito.
+
+{\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{L{2.6cm} R{1.8cm} L{10.1cm}}
+\caption{Escala cualitativa de probabilidad y su equivalencia cuantitativa.}
+\label{tab:riesgos-escala-probabilidad}\\
+\toprule
+\textbf{Nivel} & \textbf{Prob.} & \textbf{Criterio de uso} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Nivel} & \textbf{Prob.} & \textbf{Criterio de uso} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Muy baja & 5\,\% & Exigiría un cambio normativo o una decisión externa improbable en el periodo. \\
+Baja & 10\,\% & Depende de un tercero que ya confirmó su disponibilidad. \\
+Media-baja & 25\,\% & Hay indicios de que la condición puede ocurrir, sin evidencia directa. \\
+Media & 50\,\% & La condición es tan probable como su contraria; no hay información para decidir. \\
+Media-alta & 75\,\% & La evidencia apunta a que ocurrirá si no se actúa. \\
+Alta & 90\,\% & Ya ocurrió en una versión anterior del requisito o en un proyecto similar. \\
+Muy alta & 95\,\% & Está ocurriendo ahora mismo y solo falta documentarlo. \\
+\end{longtable}
+}
+
+El impacto se mide en jornadas de retrabajo y se interpreta con cuatro
+tramos: menor (1 a 2 jornadas), moderado (3 a 4), mayor (5 a 6) y severo
+(más de 6). El índice P-I resultante se clasifica con los umbrales de la
+Tabla~\ref{tab:riesgos-severidad}, que se calibraron sobre la distribución
+observada en este registro y no sobre una escala universal.
+
+{\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{L{2.0cm} L{2.2cm} L{6.2cm} L{4.2cm}}
+\caption{Bandas de severidad del índice P-I y acción asociada.}
+\label{tab:riesgos-severidad}\\
+\toprule
+\textbf{Banda} & \textbf{Índice P-I} & \textbf{Lectura} & \textbf{Acción} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Banda} & \textbf{Índice P-I} & \textbf{Lectura} & \textbf{Acción} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Crítico & 4,5 o más & El riesgo puede consumir una semana o más de retrabajo. & Tratamiento obligatorio antes del cierre de la etapa. \\
+Alto & 3,0 a 4,49 & Retrabajo significativo, con impacto en el cronograma. & Tratamiento planificado y seguimiento semanal. \\
+Medio & 1,5 a 2,99 & Retrabajo acotado y absorbible. & Seguimiento quincenal. \\
+Bajo & menos de 1,5 & Retrabajo menor o poco probable. & Se acepta y se monitorea. \\
+\end{longtable}
+}
+
+\subsubsection{Semáforo de estado y catálogo de artefactos}
+\label{subsubsec:riesgos-semaforo}
+
+El estado del riesgo se representa con los cuatro valores de la
+Tabla~\ref{tab:riesgos-estado}. El capítulo de referencia enumera tres
+—retrasado, en proceso y pendiente— y usa el verde para el riesgo resuelto;
+aquí se incorpora \emph{resuelto} como cuarto valor para poder cerrar el
+ciclo y medir el avance del plan.
+
+{\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{L{1.9cm} L{1.7cm} L{6.4cm} L{4.2cm}}
+\caption{Estados del riesgo y color asociado.}
+\label{tab:riesgos-estado}\\
+\toprule
+\textbf{Estado} & \textbf{Color} & \textbf{Significado} & \textbf{Qué se hace} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Estado} & \textbf{Color} & \textbf{Significado} & \textbf{Qué se hace} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Resuelto & Verde & El tratamiento se aplicó y el indicador de cierre se cumplió. & Se conserva la evidencia y se archiva la fila. \\
+En proceso & Amarillo & La acción de mitigación está en ejecución. & Se revisa en la reunión semanal. \\
+Pendiente & Gris & El riesgo está identificado y sin acción iniciada. & Se asigna responsable y fecha. \\
+Retrasado & Rojo & La acción debía haber cerrado y no ocurrió. & Se escala al responsable del proyecto. \\
+\end{longtable}
+}
+
+Cada fila del registro se vincula con uno o más artefactos. El
+catálogo de la Tabla~\ref{tab:riesgos-artefactos} fija los códigos que se
+usan en la columna once y evita que el registro dependa de nombres de
+archivo.
+
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{1.4cm} L{6.4cm} L{2.8cm} L{4.0cm}}
+\caption{Catálogo de artefactos vinculables a un requisito.}
+\label{tab:riesgos-artefactos}\\
+\toprule
+\textbf{Código} & \textbf{Artefacto} & \textbf{Ubicación} & \textbf{Uso en el registro} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Código} & \textbf{Artefacto} & \textbf{Ubicación} & \textbf{Uso en el registro} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+D-01 & Venta en mostrador & Figura 1 & Flujo del pedido y del corte \\
+D-02 & Abastecimiento y prorrateo & Figura 2 & Reglas de imputación de compras \\
+D-03 & Cierre mensual NIIF 18 & Figura 3 & Cascada del resultado y del reporte \\
+D-04 & Proceso general del negocio & Figura 4 & Contexto de las tres fases \\
+D-05 & Diagrama de clases & Figura 5 & Modelo de datos y reglas de cálculo \\
+UI-01 & Carta y pedido del cliente & Figura 6 & Interfaz pública del comensal \\
+UI-02 & Mostrador POS & Figura 7 & Operación de caja y controles táctiles \\
+UI-03 & Cocina KDS & Figura 8 & Estados del pedido y disponibilidad \\
+UI-04 & Dashboard de margen & Figura 9 & Indicadores y ranking de carta \\
+UI-05 & Abastecimiento y carta & Figura 10 & Compras, precios y auditoría \\
+UI-06 & Cierre NIIF 18 y SUNAT & Figura 11 & Reglas tributarias y comprobantes \\
+M-01 & Modelo de datos y reglas de cálculo & Sección 3 & Precisión y redondeo monetario \\
+M-02 & Matriz única de requisitos & Tabla 2 & Criterio de aceptación del requisito \\
+N-01 & Referencias normativas & F-10 & Reglas tributarias y NIIF 18 \\
+T-01 & Tablas de educción e ilación & Sección 2 & Evidencia de la sesión de educción \\
+P-01 & Prototipo funcional & Sección 5 & Verificación de la interfaz \\
+\end{longtable}
+}
+
+\subsection{Resumen del registro}
+\label{subsec:riesgos-resumen}
+
+La Tabla~\ref{tab:riesgos-resumen} resume la distribución por etapa y
+estado. Los riesgos se codifican con el mismo identificador de la ficha de
+origen y se numeran con el prefijo \texttt{R-} para poder citarlos en el
+seguimiento. La etapa con mayor exposición acumulada es la especificación,
+porque concentra los requisitos que el cliente ya reconoce como propios y,
+por tanto, los que más cuesta cambiar.
+
+\input{secciones/riesgos-tabla-resumen}
+
+\subsection{Registro de riesgos por requisito}
+\label{subsec:riesgos-registro}
+
+La Tabla~\ref{tab:riesgos-registro} aplica la plantilla de once columnas a
+los \RiesgosTotal{} riesgos identificados. Las columnas de cálculo
+(\emph{índice P-I} y \emph{exposición}) se generan a partir de la
+probabilidad y del impacto, de modo que el registro no puede quedar
+internamente inconsistente. El estado se colorea con el semáforo de la
+Tabla~\ref{tab:riesgos-estado}.
+
+\input{secciones/riesgos-tabla-registro}
+
+\subsection{Los diez riesgos principales y el colchón del proyecto}
+\label{subsec:riesgos-top10}
+
+La Tabla~\ref{tab:riesgos-top10} ordena los riesgos por índice P-I y, en
+caso de empate, por exposición al riesgo. La columna \emph{acumulado} suma
+el índice de los riesgos ya ordenados y permite leer cuántas jornadas
+aporta cada uno al colchón.
+
+\input{secciones/riesgos-tabla-top10}
+
+\paragraph{Lectura del ranking.} Los diez riesgos principales concentran el
+51\,\% del índice P-I total del registro. El patrón es claro y tiene tres
+bloques. El primero es tributario-contable: el régimen sin confirmar, la
+nota de alcance de NIIF 18, el versionado de la regla por fecha y la matriz
+de parametrización ocupan cuatro de los cinco primeros puestos. El segundo
+es el prorrateo y el costo: el objeto del prorrateo, la doble
+contabilización y el criterio de aceptación del reparto. El tercero es la
+base documental: la plantilla contable, los costos unitarios de la carta y
+la medición de rendimiento.
+
+\paragraph{El colchón.} El colchón de exposición bruta se calcula como la
+suma de los índices P-I de los diez riesgos principales:
+
+\[
+\mbox{Colchón} = \sum_{i=1}^{10} P_i \times I_i = \ColchonBruto\ \mbox{jornadas}
+\]
+
+Sobre un cronograma de referencia de \JornadasProyecto{} jornadas (16
+semanas de lunes a viernes), ese valor equivale al \ColchonPorcentaje\,\%.
+No es un plazo que deba añadirse al cronograma: es la exposición esperada
+si no se actúa. Con la mitigación prevista, la probabilidad residual de los
+diez riesgos baja y el colchón se reduce a \ColchonResidual{} jornadas
+(\ColchonResidualPorcentaje\,\%), es decir, \ColchonAhorro{} jornadas menos.
+La recomendación para la revisión es reservar el colchón residual
+(\ColchonResidual{} jornadas) como reserva de contingencia y liberar cinco
+jornadas adicionales como reserva de gestión, revisando ambas al cierre de
+cada etapa.
+
+\paragraph{Qué no dice el colchón.} El índice P-I no distingue entre riesgos
+que ocurren en paralelo y riesgos que se suman; tampoco incorpora el costo
+financiero del retraso ni el efecto de un riesgo sobre otro. Es una
+herramienta de priorización, no una predicción. Su valor está en comparar y
+ordenar, y en obligar a que cada riesgo tenga un responsable y una condición
+de cierre.
+
+\subsection{Plan de mitigación y seguimiento}
+\label{subsec:riesgos-plan}
+
+La Tabla~\ref{tab:riesgos-plan} desarrolla el tratamiento de los diez
+riesgos principales: acción, responsable, disparador que activa la acción,
+indicador de cierre y probabilidad residual estimada una vez aplicada la
+mitigación.
+
+\input{secciones/riesgos-tabla-plan}
+
+\paragraph{Ritmo de seguimiento.} El registro se revisa en una reunión
+semanal de veinte minutos con el responsable de cada riesgo abierto. En cada
+revisión se actualiza el estado, se registra la fecha y la nota en la
+columna de auditoría y se recalculan el índice y el colchón. Al cierre de
+cada etapa se presenta el resumen a Jerry y al contador, con los riesgos
+críticos y las decisiones que dependen de ellos.
+
+\paragraph{Indicadores del plan.} Se siguen cuatro indicadores: porcentaje
+de riesgos cerrados sobre el total, variación del colchón respecto de la
+línea base, número de mitigaciones retrasadas y exposición acumulada de los
+riesgos críticos. El primero mide avance; el segundo, eficacia; el tercero,
+disciplina; el cuarto, riesgo residual.
+
+\paragraph{Escalamiento.} Un riesgo crítico sin tratamiento al cierre de la
+etapa se escala al responsable del proyecto y se registra como excepción
+firmada. Un riesgo retrasado dos semanas consecutivas se escala al docente
+y al cliente. Un riesgo que cambia de banda de severidad se renegocia con
+el responsable del requisito antes de la siguiente revisión.
+
+\subsection{Estado del avance, limitaciones y decisiones para la revisión}
+\label{subsec:riesgos-estado}
+
+\paragraph{Lo que está hecho.} El registro cubre las tres etapas con
+\RiesgosTotal{} riesgos, de los cuales \RiesgosCriticos{} son críticos y
+\RiesgosAltos{} altos. Los diez principales tienen plan de mitigación con
+responsable, disparador e indicador de cierre. El cálculo del índice, de la
+exposición y del colchón es reproducible: se regenera desde el archivo de
+datos con un comando y no se edita a mano.
+
+\paragraph{Lo que falta.} La cuantificación es preliminar y debe validarse
+en tres frentes: una ronda de juicio experto con el equipo para confirmar
+probabilidades e impactos; una revisión de los costos por error con el
+contador; y la asignación de fechas comprometidas a cada mitigación. Además,
+treinta y siete requisitos del catálogo no tienen un riesgo asociado, lo que
+no significa que estén libres de riesgo: significa que el equipo no
+identificó uno en esta primera pasada y debe declararlo así.
+
+\paragraph{Limitaciones.} Los valores no provienen de un histórico de
+proyectos. El costo por error se estima con el criterio de que un defecto
+detectado en producción cuesta entre diez y veinte veces más que uno
+detectado en requisitos, pero no se aplicó un factor formal por etapa. El
+colchón es una heurística de priorización y no reemplaza al plan de riesgos
+del proyecto completo, que debe cubrir cronograma, presupuesto, proveedores
+y personal. La moneda es el sol peruano y los importes no incluyen IGV.
+
+\paragraph{Decisiones que se solicitan en la revisión.} Aprobar la escala de
+probabilidad y los umbrales de severidad; aprobar la plantilla de once
+columnas y el catálogo de artefactos; validar los diez riesgos principales y
+sus responsables; fijar la fecha de la primera revisión semanal; y autorizar
+la conversión de los riesgos tributarios en requisitos de calidad
+verificables, con el contador como responsable de la regla.
+
+\paragraph{Cierre.} La lección del capítulo de referencia se cumple en este
+caso: los riesgos de requisitos no se evitan, se transforman. El objeto del
+prorrateo, la vigencia de la regla tributaria y la nota de alcance de NIIF 18
+dejan de ser supuestos y pasan a ser requisitos con criterio de aceptación.
+Ese es el resultado que el plan persigue y el que la revisión debe confirmar.

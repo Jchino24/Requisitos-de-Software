@@ -18,13 +18,14 @@ OUTDIR   := pdf
 SECDIR   := $(OUTDIR)/secciones
 
 # Orden y nombre de las secciones (prefijo numérico = orden de lectura)
-SECTIONS := 01-educcion 02-ilacion 03-especificacion 04-diagramas 05-interfaces
+SECTIONS := 01-educcion 02-ilacion 03-especificacion 04-diagramas 05-interfaces 06-riesgos
 
 # Diagramas: fuentes TikZ -> PNG de 300 dpi
 DIAGDIR  := diagramas
 DIAGSRC  := $(DIAGDIR)/fuentes
 DIAGRAMS := 01-venta-mostrador 02-abastecimiento-prorrateo \
-            03-cierre-mensual-niif18 04-proceso-general
+            03-cierre-mensual-niif18 04-proceso-general \
+            06-gestion-riesgos
 
 LATEX := latexmk -pdf -interaction=nonstopmode -halt-on-error
 
@@ -37,7 +38,7 @@ ifneq (,$(wildcard $(TINYTEX)/latexmk))
   endif
 endif
 
-.PHONY: all build general secciones diagramas check clean distclean
+.PHONY: all build general secciones diagramas riesgos check clean distclean
 
 all: build
 
@@ -77,6 +78,11 @@ diagramas:
 	  pdftoppm -png -r 300 -singlefile $(DIAGSRC)/$$d.pdf $(DIAGDIR)/$$d || exit 1; \
 	done
 	@echo "Listo: PNG de 300 dpi en $(DIAGDIR)/"
+
+# --- Registro de riesgos (CSV -> tablas LaTeX y resumen Markdown) -----------
+riesgos:
+	@command -v python3 >/dev/null 2>&1 || { echo "ERROR: falta python3"; exit 1; }
+	python3 scripts/generar_riesgos.py
 
 # --- Verificacion -----------------------------------------------------------
 check:

@@ -20,9 +20,16 @@
 \usepackage{hyperref}
 \usepackage{csquotes}
 \usepackage[table]{xcolor}
+\usepackage{pdflscape}
 
 \definecolor{FichaHeaderBg}{HTML}{2F3B47}
 \definecolor{FichaBorder}{HTML}{94A3B8}
+
+% Semáforo del registro de riesgos (sección 6)
+\definecolor{EstadoResuelto}{HTML}{D8EBDC}
+\definecolor{EstadoEnProceso}{HTML}{FFF6DB}
+\definecolor{EstadoPendiente}{HTML}{EEF0F2}
+\definecolor{EstadoRetrasado}{HTML}{F7D5D3}
 
 \graphicspath{{../diagramas/}{../interfaces/}}
 \renewcommand{\arraystretch}{1.25}
@@ -45,6 +52,7 @@
 
 % Columnas reutilizables
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 % Entorno de ficha (Campo | Contenido) segun plantillas de Ingenieria de Requisitos
 \newenvironment{ficha}[1]{%

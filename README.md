@@ -13,7 +13,7 @@ especificación de requisitos y los diagramas del proceso de negocio.
 
 ## Entregables
 
-**Documento completo (86 páginas, A4):**
+**Documento completo (105 páginas, A4):**
 [pdf/Requisitos_RedPepper.pdf](pdf/Requisitos_RedPepper.pdf)
 
 **Un PDF por sección**, para leer o compartir sin abrir el documento entero:
@@ -25,12 +25,14 @@ especificación de requisitos y los diagramas del proceso de negocio.
 | 3. Especificación | [03-especificacion.pdf](pdf/secciones/03-especificacion.pdf) | 11 |
 | 4. Diagramas | [04-diagramas.pdf](pdf/secciones/04-diagramas.pdf) | 4 |
 | 5. Interfaces | [05-interfaces.pdf](pdf/secciones/05-interfaces.pdf) | 7 |
+| 6. Plan de gestión de riesgos | [06-riesgos.pdf](pdf/secciones/06-riesgos.pdf) | 18 |
 
 Cada sección conserva la numeración del documento general (la sección 2 sigue
 siendo la 2 aunque se abra sola), de modo que las referencias entre secciones
 no se rompen.
 
-**Fuentes:** [documento/](documento/) · [diagramas/](diagramas/)
+**Fuentes:** [documento/](documento/) · [diagramas/](diagramas/) ·
+[plantillas/](plantillas/)
 
 ## Estructura de carpetas
 
@@ -47,12 +49,16 @@ no se rompen.
 │   ├── sec-03-especificacion.tex  # Envoltorio: sección 3
 │   ├── sec-04-diagramas.tex       # Envoltorio: sección 4
 │   ├── sec-05-interfaces.tex      # Envoltorio: sección 5
+│   ├── sec-06-riesgos.tex         # Envoltorio: sección 6
 │   └── secciones/                 # CONTENIDO de cada sección
 │       ├── educcion.tex           # Organizaciones, actores, autores, expertos, fuentes y fichas EDU
 │       ├── ilacion.tex            # Fichas de ilación ILA-PRE, OBS, ENT1, ENT2 y RNF
 │       ├── especificacion.tex     # Catálogos RF, RNF (con fichas), y 39 derivados
 │       ├── diagramas.tex          # 4 figuras de proceso + diagrama de clases
-│       └── interfaces.tex         # Pantallas funcionales del prototipo (v2)
+│       ├── interfaces.tex         # Pantallas funcionales del prototipo (v3)
+│       ├── riesgos.tex            # Sección 6: plan de gestión de riesgos
+│       ├── riesgos-macros.tex     # GENERADO: indicadores citados en el texto
+│       └── riesgos-tabla-*.tex    # GENERADO: resumen, registro, top-10 y plan
 ├── diagramas/                     # IMÁGENES del documento (PNG 300 dpi, v2)
 │   ├── fuentes/                   # Fuentes TikZ de cada figura + estilo común
 │   │   ├── estilo.tex
@@ -60,12 +66,14 @@ no se rompen.
 │   │   ├── 02-abastecimiento-prorrateo.tex
 │   │   ├── 03-cierre-mensual-niif18.tex
 │   │   ├── 04-proceso-general.tex
+│   │   ├── 06-gestion-riesgos.tex
 │   │   └── 05-diagrama-clases-original.jpg
 │   ├── 01-venta-mostrador.png
 │   ├── 02-abastecimiento-prorrateo.png
 │   ├── 03-cierre-mensual-niif18.png
 │   ├── 04-proceso-general.png
-│   └── 05-diagrama-clases.png
+│   ├── 05-diagrama-clases.png
+│   └── 06-gestion-riesgos.png
 ├── .agents/skills/                # 12 Agent Skills universales reutilizables
 ├── .stitch/                       # Sistema de diseño semántico Google Stitch
 │   └── DESIGN.md                  # Tokens (#FF3131, #F64301, #1F6636), tipografía y reglas
@@ -77,7 +85,12 @@ no se rompen.
 │   ├── assets/                    # Logotipos SVG + fotografías gastronómicas WebP
 │   └── src/                       # styles/, core/, components/ y apps/
 ├── scripts/
-│   └── qa_verify.mjs              # Suite Chromium CDP multi-viewport, WCAG AA y E2E
+│   ├── qa_verify.mjs              # Suite Chromium CDP multi-viewport, WCAG AA y E2E
+│   └── generar_riesgos.py         # CSV -> tablas LaTeX + resumen Markdown
+├── plantillas/                    # Registro de riesgos editable
+│   ├── registro_riesgos.csv       # Fuente única de verdad (30 riesgos)
+│   ├── registro_riesgos.md        # Resumen legible (generado)
+│   └── registro_riesgos.xlsx      # Plantilla con fórmulas y validaciones (generada)
 ├── interfaces/                    # Capturas actualizadas del prototipo (v3)
 │   ├── fuentes/                   # Capturas originales v1 conservadas como referencia
 │   ├── 01-cliente-carta-pedido.png
@@ -94,7 +107,8 @@ no se rompen.
         ├── 02-ilacion.pdf
         ├── 03-especificacion.pdf
         ├── 04-diagramas.pdf
-        └── 05-interfaces.pdf
+        ├── 05-interfaces.pdf
+        └── 06-riesgos.pdf
 ```
 
 Cada carpeta tiene una responsabilidad: `documento/` solo código LaTeX,
@@ -107,14 +121,15 @@ diagramas o el texto por versiones más pulidas, no hay que renombrar rutas.
 
 - **TeX Live** (o TinyTeX) con `pdflatex` y `latexmk`.
 - Paquetes: `babel-spanish`, `csquotes`, `booktabs`, `longtable`, `array`,
-  `geometry`, `hyperref`, `graphicx`, `float`, `placeins`, `lmodern`.
+  `geometry`, `hyperref`, `graphicx`, `float`, `placeins`, `lmodern`,
+  `colortbl` y `pdflscape` (páginas horizontales del registro de riesgos).
 - Opcional: `cm-super` si se prefiere escalar fuentes Type1 en lugar de
   `lmodern`.
 
 ```bash
 # TinyTeX (sin privilegios de administrador)
 tlmgr install babel-spanish csquotes booktabs longtable array geometry \
-              hyperref graphics float placeins lm hyphen-spanish
+              hyperref graphics float placeins lm hyphen-spanish colortbl pdflscape
 ```
 
 ## Compilación
@@ -122,10 +137,11 @@ tlmgr install babel-spanish csquotes booktabs longtable array geometry \
 Desde la raíz del repositorio, con `make`:
 
 ```bash
-make            # documento completo + los 5 PDF de sección
+make            # documento completo + los 6 PDF de sección
 make general    # solo pdf/Requisitos_RedPepper.pdf
 make secciones  # solo pdf/secciones/*.pdf (compila antes el maestro)
 make diagramas  # regenera los PNG desde las fuentes TikZ (300 dpi)
+make riesgos    # regenera las tablas de la sección 6 desde el CSV
 make check      # verifica PDFs y logs (errores y referencias rotas)
 make clean      # borra auxiliares, conserva los PDF
 make distclean  # borra auxiliares y los PDF generados
@@ -158,7 +174,7 @@ cruzada entre secciones (`sec:especificacion`) se resuelve con `xr` sobre
 `refs-externas.aux`, un `.aux` filtrado que `make general` genera a partir del
 maestro; por eso `make secciones` compila antes el documento completo.
 
-La compilación es **reproducible**: dos ejecuciones limpias producen los cinco
+La compilación es **reproducible**: dos ejecuciones limpias producen los seis
 PDF idénticos byte a byte, de modo que los archivos versionados no generan
 diffs por fecha. Para verificar el resultado: `make check`.
 
@@ -201,6 +217,30 @@ internos (**Mostrador POS `>= 48 px`**, **Cocina KDS**, **Administración /
 NIIF 18 y SUNAT** y **Guía de Marca Interna**). Las pruebas multi-viewport
 (`320 px` – `1920 px`) y E2E se ejecutan con `node scripts/qa_verify.mjs`. Los
 datos iniciales corresponden a un escenario de demostración local.
+
+## Plan de gestión de riesgos (sección 6)
+
+La sección 6 aplica el proceso del capítulo de referencia —identificar,
+analizar, evaluar y tratar el riesgo en cada etapa de la ingeniería de
+requisitos— al catálogo de RedPepper. Contiene el marco conceptual, veinte
+riesgos del proyecto agrupados en personas, proceso, producto y tecnología,
+la figura del proceso, la plantilla de once columnas, el registro de treinta
+riesgos, el ranking de los diez principales con el cálculo del colchón y el
+plan de mitigación con responsables, disparadores e indicadores de cierre.
+
+Los datos viven en
+[`plantillas/registro_riesgos.csv`](plantillas/registro_riesgos.csv), que es la
+fuente única de verdad. `python3 scripts/generar_riesgos.py` (o `make riesgos`)
+recalcula el índice P-I y la exposición, y regenera las tablas LaTeX, el
+resumen [`plantillas/registro_riesgos.md`](plantillas/registro_riesgos.md) y los
+indicadores que el texto cita. La plantilla
+[`plantillas/registro_riesgos.xlsx`](plantillas/registro_riesgos.xlsx) replica
+el registro con fórmulas, validación de estados y semáforo por índice.
+
+Cifras de la versión 1 (estimaciones preliminares, sujetas a validación): 30
+riesgos, 2 críticos y 7 altos, uno resuelto; exposición total de S/ 135 415;
+colchón bruto de 35,15 jornadas (43,9 % de un cronograma de 80 jornadas) y
+colchón residual de 15,05 jornadas (18,8 %) con la mitigación prevista.
 
 ## Diagrama de clases
 
